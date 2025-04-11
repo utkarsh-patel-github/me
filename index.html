@@ -1,8 +1,118 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Utkarsh</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkarsh Patel - Portfolio</title>    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 </head>
 <body>
-<h1>Hello, I am Utkarsh Patel.. A full stack web developer.</h1>
+    <nav class="navbar">
+        <div class="nav-logo">UP</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>    <section id="home" class="hero">
+        <div id="hero-background"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="glitch-text">Utkarsh Patel</h1>
+            <p class="tagline typewriter">Web Developer | Tech Enthusiast | Student</p>
+            <div class="cta-container" data-aos="fade-up" data-aos-delay="300">
+                <a href="#contact" class="cta-button">
+                    <span>Get in Touch</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Hello! I'm Utkarsh Patel, a passionate web developer with over 6 years of experience. Currently, I'm a Class 10th student who loves to create amazing web experiences.</p>
+                <p>Despite my young age, I've dedicated myself to mastering various web technologies and continuously learning new skills in the ever-evolving tech world.</p>
+            </div>
+        </div>
+    </section>    <section id="skills" class="skills">
+        <h2 data-aos="fade-down">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="100">
+                <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                <h3>HTML5</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" data-progress="95"></div>
+                </div>
+            </div>
+            <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="200">
+                <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                <h3>CSS3</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" data-progress="90"></div>
+                </div>
+            </div>
+            <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="300">
+                <div class="skill-icon"><i class="fab fa-js"></i></div>
+                <h3>JavaScript</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" data-progress="85"></div>
+                </div>
+            </div>
+            <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="400">
+                <div class="skill-icon"><i class="fab fa-react"></i></div>
+                <h3>React</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" data-progress="80"></div>
+                </div>
+            </div>
+            <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="500">
+                <div class="skill-icon"><i class="fab fa-node"></i></div>
+                <h3>Node.js</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" data-progress="75"></div>
+                </div>
+            </div>
+            <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="600">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3>MongoDB</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" data-progress="70"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Utkarsh Patel. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

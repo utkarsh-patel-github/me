@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utkarsh Patel - Portfolio</title>    <link rel="stylesheet" href="style.css">
+    <title>Utkarsh Patel - Portfolio</title>    
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -13,17 +14,27 @@
 <body>
     <nav class="navbar">
         <div class="nav-logo">UP</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#tech-stack">Tech Stack</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav>    <section id="home" class="hero">
+    </nav>    
+    
+    <section id="home" class="hero">
         <div id="hero-background"></div>
         <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
             <h1 class="glitch-text">Utkarsh Patel</h1>
-            <p class="tagline typewriter">Web Developer | Tech Enthusiast | Student</p>
+            <p class="tagline typewriter">Full Stack Developer | AI/ML Engineer | Cyber Security Expert</p>
             <div class="cta-container" data-aos="fade-up" data-aos-delay="300">
                 <a href="#contact" class="cta-button">
                     <span>Get in Touch</span>
@@ -44,64 +55,176 @@
     </section>
 
     <section id="about" class="about">
-        <h2>About Me</h2>
+        <h2 data-aos="fade-down">About Me</h2>
         <div class="about-content">
-            <div class="about-text">
-                <p>Hello! I'm Utkarsh Patel, a passionate web developer with over 6 years of experience. Currently, I'm a Class 10th student who loves to create amazing web experiences.</p>
-                <p>Despite my young age, I've dedicated myself to mastering various web technologies and continuously learning new skills in the ever-evolving tech world.</p>
+            <div class="about-text" data-aos="fade-up">
+                <p>Hello! I'm Utkarsh Patel, a passionate full-stack developer and technology enthusiast with extensive experience across multiple domains in the tech industry.</p>
+                <p>I specialize in building robust web applications, native and progressive web apps, implementing machine learning solutions, and working with AI technologies. My expertise in cyber security helps me create secure and resilient applications.</p>
+                <p>As both a working professional and continuous learner, I constantly strive to stay updated with the latest technologies and industry best practices to deliver innovative solutions.</p>
             </div>
         </div>
-    </section>    <section id="skills" class="skills">
+    </section>    
+    
+    <section id="skills" class="skills">
         <h2 data-aos="fade-down">Technical Skills</h2>
         <div class="skills-grid">
             <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="100">
-                <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                <h3>HTML5</h3>
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3>Web Development</h3>
                 <div class="skill-progress">
                     <div class="progress-bar" data-progress="95"></div>
                 </div>
             </div>
             <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="200">
-                <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                <h3>CSS3</h3>
+                <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>App Development</h3>
                 <div class="skill-progress">
                     <div class="progress-bar" data-progress="90"></div>
                 </div>
             </div>
             <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="300">
-                <div class="skill-icon"><i class="fab fa-js"></i></div>
-                <h3>JavaScript</h3>
+                <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                <h3>Machine Learning</h3>
                 <div class="skill-progress">
                     <div class="progress-bar" data-progress="85"></div>
                 </div>
             </div>
             <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="400">
-                <div class="skill-icon"><i class="fab fa-react"></i></div>
-                <h3>React</h3>
+                <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Cyber Security</h3>
                 <div class="skill-progress">
                     <div class="progress-bar" data-progress="80"></div>
                 </div>
             </div>
             <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="500">
-                <div class="skill-icon"><i class="fab fa-node"></i></div>
-                <h3>Node.js</h3>
+                <div class="skill-icon"><i class="fas fa-server"></i></div>
+                <h3>Backend Development</h3>
                 <div class="skill-progress">
-                    <div class="progress-bar" data-progress="75"></div>
+                    <div class="progress-bar" data-progress="90"></div>
                 </div>
             </div>
             <div class="skill-card" data-tilt data-aos="flip-left" data-aos-delay="600">
                 <div class="skill-icon"><i class="fas fa-database"></i></div>
-                <h3>MongoDB</h3>
+                <h3>Database Management</h3>
                 <div class="skill-progress">
-                    <div class="progress-bar" data-progress="70"></div>
+                    <div class="progress-bar" data-progress="85"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="achievements">
+        <h2 data-aos="fade-down">Achievements</h2>
+        <div class="achievements-container">
+            <div class="achievement-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+                <h3>National Hackathon Winner</h3>
+                <p>Won first place in the National AI Innovation Hackathon, developing a machine learning solution for healthcare diagnosis.</p>
+            </div>
+            <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
+                <h3>Certified Ethical Hacker</h3>
+                <p>Obtained the CEH certification, demonstrating expertise in identifying vulnerabilities and securing applications against cyber threats.</p>
+            </div>
+            <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="achievement-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3>Open Source Contributor</h3>
+                <p>Active contributor to several open-source projects with over 500+ commits and 10+ accepted pull requests to major repositories.</p>
+            </div>
+            <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="achievement-icon"><i class="fas fa-code-branch"></i></div>
+                <h3>Full-Stack Application</h3>
+                <p>Developed and deployed a production-level application that serves 10,000+ users monthly, implementing microservices architecture.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech-stack" class="tech-stack">
+        <h2 data-aos="fade-down">My Tech Stack</h2>
+        <div class="tech-container" data-aos="fade-up">
+            <div class="tech-item"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="tech-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+            <div class="tech-item"><i class="fab fa-sass"></i> SCSS</div>
+            <div class="tech-item"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="tech-item"><i class="fab fa-node-js"></i> Node.js</div>
+            <div class="tech-item"><i class="fab fa-react"></i> React.js</div>
+            <div class="tech-item"><i class="fab fa-node-js"></i> Express.js</div>
+            <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+            <div class="tech-item"><i class="fas fa-code"></i> C/C++</div>
+            <div class="tech-item"><i class="fas fa-dharmachakra"></i> Kubernetes</div>
+            <div class="tech-item"><i class="fas fa-server"></i> Microservices</div>
+            <div class="tech-item"><i class="fas fa-database"></i> MongoDB</div>
+            <div class="tech-item"><i class="fas fa-database"></i> SQL</div>
+            <div class="tech-item"><i class="fas fa-mobile-alt"></i> PWA</div>
+            <div class="tech-item"><i class="fas fa-brain"></i> Machine Learning</div>
+            <div class="tech-item"><i class="fas fa-robot"></i> AI</div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 data-aos="fade-down">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-image">
+                    <img src="https://via.placeholder.com/350x200" alt="Project 1">
+                </div>
+                <div class="project-content">
+                    <h3>E-Commerce Platform</h3>
+                    <p>A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.</p>
+                    <div class="project-tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image">
+                    <img src="https://via.placeholder.com/350x200" alt="Project 2">
+                </div>
+                <div class="project-content">
+                    <h3>Task Management App</h3>
+                    <p>A responsive task management application with real-time updates, drag-and-drop functionality, and team collaboration features.</p>
+                    <div class="project-tags">
+                        <span>JavaScript</span>
+                        <span>CSS3</span>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="project-image">
+                    <img src="https://via.placeholder.com/350x200" alt="Project 3">
+                </div>
+                <div class="project-content">
+                    <h3>Weather Dashboard</h3>
+                    <p>An interactive weather application that provides real-time weather data, forecasts, and location-based services using multiple APIs.</p>
+                    <div class="project-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>APIs</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
-        <h2>Get in Touch</h2>
-        <div class="social-links">
+        <h2 data-aos="fade-down">Get in Touch</h2>
+        <p data-aos="fade-up">Ready to collaborate on your next project or just want to say hello? Feel free to reach out through any of the channels below.</p>
+        <div class="social-links" data-aos="fade-up" data-aos-delay="200">
             <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -114,5 +237,12 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true
+        });
+    </script>
 </body>
 </html>

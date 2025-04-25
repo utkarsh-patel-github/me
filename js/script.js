@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavbar() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const navbar = document.querySelector('.nav-container');
     
     if (hamburger) {
         hamburger.addEventListener('click', () => {
@@ -28,16 +29,29 @@ function initNavbar() {
         });
     });
     
-    // Change navbar background on scroll
+    // Hide/show navbar on scroll
+    let lastScrollTop = 0;
+    
     window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.nav-container');
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(13, 17, 23, 0.95)';
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Add box shadow when not at the top
+        if (scrollTop > 10) {
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = 'rgba(13, 17, 23, 0.8)';
-            navbar.style.boxShadow = 'none';
+            navbar.classList.remove('scrolled');
         }
+        
+        // Hide/show based on scroll direction
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down & not at the top
+            navbar.classList.add('nav-hidden');
+        } else {
+            // Scrolling up or at the top
+            navbar.classList.remove('nav-hidden');
+        }
+        
+        lastScrollTop = scrollTop;
     });
 }
 

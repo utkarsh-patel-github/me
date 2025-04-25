@@ -166,13 +166,19 @@
 }
 
 [data-theme="light"] .gradient-bg {
-  background: linear-gradient(to bottom, #f9fafb, #ffffff);
+  background: linear-gradient(to bottom, #f0f4f8, #ffffff);
 }
 
 [data-theme="light"] .blob-1,
 [data-theme="light"] .blob-2 {
-  opacity: 0.06;
-  filter: blur(90px);
+  opacity: 0.03;
+  filter: blur(120px);
+  transform: scale(0.85);
+}
+
+[data-theme="light"] .blob-1 path,
+[data-theme="light"] .blob-2 path {
+  fill: #4a6cf7;
 }
 
 [data-theme="light"] .nav-container {
@@ -279,6 +285,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 80px; /* Account for fixed navbar */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -484,6 +491,9 @@ body {
 }
 
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0;
   width: 100%;
   max-width: 1200px;
@@ -492,7 +502,26 @@ body {
 
 .nav-container {
   width: 100%;
-  padding: 0;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Styling for scrolled state */
+.nav-container.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .nav-container.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Hide navbar when scrolling down */
+.nav-container.nav-hidden {
+  transform: translateY(-100%);
 }
 
 .nav-links a {
@@ -542,6 +571,7 @@ section {
 .hero {
   position: relative;
   overflow: hidden;
+  padding-top: 20px;
 }
 
 /* Statistics animation */
@@ -772,15 +802,38 @@ section {
   background-color: var(--primary-color);
 }
 
-/* Improve SVGs in light mode */
+/* Fix container padding */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Better fix for SVGs in light mode */
 [data-theme="light"] .blob-1 {
-  opacity: 0.04;
-  filter: blur(100px);
-  transform: scale(0.8);
+  opacity: 0.03;
+  filter: blur(120px);
+  transform: scale(0.85);
+}
+
+[data-theme="light"] .blob-1 path {
+  fill: #4a6cf7;
 }
 
 [data-theme="light"] .blob-2 {
-  opacity: 0.03;
-  filter: blur(100px);
-  transform: scale(0.8);
+  opacity: 0.025;
+  filter: blur(120px);
+  transform: scale(0.85);
+}
+
+[data-theme="light"] .blob-2 path {
+  fill: #4a6cf7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
 } 

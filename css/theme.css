@@ -484,9 +484,15 @@ body {
 }
 
 .navbar {
-  background-color: var(--header-bg);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
+  padding: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-container {
+  width: 100%;
+  padding: 0;
 }
 
 .nav-links a {
@@ -764,4 +770,17 @@ section {
 
 [data-theme="light"] .dot.active {
   background-color: var(--primary-color);
+}
+
+/* Improve SVGs in light mode */
+[data-theme="light"] .blob-1 {
+  opacity: 0.04;
+  filter: blur(100px);
+  transform: scale(0.8);
+}
+
+[data-theme="light"] .blob-2 {
+  opacity: 0.03;
+  filter: blur(100px);
+  transform: scale(0.8);
 } 

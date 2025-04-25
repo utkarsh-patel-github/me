@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="financeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF00FF" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8A2BE2" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- FinSecure Logo - Shield with Financial Symbols -->
+  <path d="M50 20 L75 30 L75 60 C75 70, 65 75, 50 80 C35 75, 25 70, 25 60 L25 30 Z" 
+        fill="#161B22" stroke="url(#financeGradient)" stroke-width="2" filter="url(#glow)"/>
+  
+  <!-- Dollar Symbol -->
+  <path d="M50 30 C55 30, 60 33, 60 38 C60 43, 55 46, 50 46 C45 46, 40 49, 40 54 C40 59, 45 62, 50 62 M50 30 L50 25 M50 62 L50 67" 
+        fill="none" stroke="#00FFFF" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Security Lock -->
+  <circle cx="50" cy="70" r="5" fill="#FF00FF" opacity="0.8"/>
+  <rect x="45" y="70" width="10" height="8" rx="2" fill="#FF00FF" opacity="0.8"/>
+  
+  <!-- Digital Payment Lines -->
+  <line x1="30" y1="40" x2="40" y2="40" stroke="#00FFFF" stroke-width="1" stroke-dasharray="2,1"/>
+  <line x1="60" y1="40" x2="70" y2="40" stroke="#00FFFF" stroke-width="1" stroke-dasharray="2,1"/>
+  <line x1="30" y1="50" x2="40" y2="50" stroke="#00FFFF" stroke-width="1" stroke-dasharray="2,1"/>
+  <line x1="60" y1="50" x2="70" y2="50" stroke="#00FFFF" stroke-width="1" stroke-dasharray="2,1"/>
+  
+  <!-- Secure Points -->
+  <circle cx="30" cy="40" r="2" fill="#FF00FF"/>
+  <circle cx="70" cy="40" r="2" fill="#FF00FF"/>
+  <circle cx="30" cy="50" r="2" fill="#FF00FF"/>
+  <circle cx="70" cy="50" r="2" fill="#FF00FF"/>
+  <circle cx="50" cy="25" r="2" fill="#00FFFF"/>
+  <circle cx="50" cy="67" r="2" fill="#00FFFF"/>
+</svg> 

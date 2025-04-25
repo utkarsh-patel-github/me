@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="companyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A2BE2" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#00FFFF" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Tech Corp Logo - Cloud with Server Layers -->
+  <path d="M50 20 C70 20, 80 30, 80 45 C80 60, 70 70, 50 70 C30 70, 20 60, 20 45 C20 30, 30 20, 50 20 Z" 
+        fill="#161B22" stroke="url(#companyGradient)" stroke-width="2" filter="url(#glow)"/>
+  
+  <!-- Server Layers -->
+  <rect x="35" y="35" width="30" height="5" rx="2" fill="url(#companyGradient)" opacity="0.8"/>
+  <rect x="35" y="45" width="30" height="5" rx="2" fill="url(#companyGradient)" opacity="0.8"/>
+  <rect x="35" y="55" width="30" height="5" rx="2" fill="url(#companyGradient)" opacity="0.8"/>
+  
+  <!-- Network Connections -->
+  <line x1="50" y1="40" x2="50" y2="45" stroke="#00FFFF" stroke-width="1"/>
+  <line x1="50" y1="50" x2="50" y2="55" stroke="#00FFFF" stroke-width="1"/>
+  
+  <!-- Data Points -->
+  <circle cx="35" cy="35" r="2" fill="#00FFFF"/>
+  <circle cx="65" cy="35" r="2" fill="#00FFFF"/>
+  <circle cx="35" cy="45" r="2" fill="#00FFFF"/>
+  <circle cx="65" cy="45" r="2" fill="#00FFFF"/>
+  <circle cx="35" cy="55" r="2" fill="#00FFFF"/>
+  <circle cx="65" cy="55" r="2" fill="#00FFFF"/>
+  <circle cx="35" cy="60" r="2" fill="#00FFFF"/>
+  <circle cx="65" cy="60" r="2" fill="#00FFFF"/>
+</svg> 

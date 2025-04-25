@@ -56,7 +56,20 @@
   transition: background-color 0.3s ease, 
               color 0.3s ease, 
               border-color 0.3s ease, 
-              box-shadow 0.3s ease;
+              box-shadow 0.3s ease,
+              opacity 0.3s ease,
+              filter 0.3s ease;
+}
+
+/* Improved global transitions for theme switching */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-property: background-color, color, border-color, box-shadow, transform, opacity, filter;
+  transition-delay: 0s !important;
 }
 
 /* Theme toggle button */
@@ -350,6 +363,7 @@ header {
 }
 
 /* Light Theme (default) */
+/*
 --primary-color: #2A85FF;
 --secondary-color: #5856D6;
 --bg-color: #FFFFFF;
@@ -366,7 +380,10 @@ header {
 --nav-bg: rgba(255, 255, 255, 0.8);
 --button-hover: #1A73E8;
 --card-hover: #F5F8FF;
+*/
 
+/* Remove duplicate dark theme definition */
+/*
 [data-theme="dark"] {
   --primary-color: #3291FF;
   --secondary-color: #6B66FA;
@@ -384,6 +401,7 @@ header {
   --button-hover: #2563EB;
   --card-hover: #2D3748;
 }
+*/
 
 /* Theme transition */
 .theme-transition,
@@ -460,13 +478,13 @@ header {
 
 /* Apply theme styles to body and elements */
 body {
-  background-color: var(--bg-color);
+  background-color: var(--background-color);
   color: var(--text-color);
-  font-family: var(--font-main);
+  font-family: var(--font-body);
 }
 
 .navbar {
-  background-color: var(--nav-bg);
+  background-color: var(--header-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
 }
@@ -489,7 +507,7 @@ body {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  background-color: var(--card-hover);
+  background-color: var(--background-secondary);
 }
 
 .btn-primary {
@@ -498,19 +516,19 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: var(--button-hover);
+  background-color: var(--primary-dark);
 }
 
 section {
-  background-color: var(--bg-color);
+  background-color: var(--background-color);
 }
 
 .alternate-section {
-  background-color: var(--bg-secondary);
+  background-color: var(--background-secondary);
 }
 
 .footer {
-  background-color: var(--bg-secondary);
+  background-color: var(--background-secondary);
   border-top: 1px solid var(--border-color);
 }
 
@@ -694,4 +712,56 @@ section {
   color: transparent;
   font-weight: bold;
   text-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+
+/* Fix theme toggle button in light mode */
+[data-theme="light"] .theme-toggle-btn {
+  color: var(--text-color);
+}
+
+[data-theme="light"] .theme-toggle-btn:hover {
+  background-color: rgba(74, 108, 247, 0.1);
+}
+
+/* Fix card hover effects */
+[data-theme="light"] .program-card:hover,
+[data-theme="light"] .hacker-card:hover,
+[data-theme="light"] .resource-card:hover {
+  box-shadow: 0 15px 30px rgba(74, 108, 247, 0.15);
+  border-color: rgba(74, 108, 247, 0.3);
+}
+
+/* Fix footer in light theme */
+[data-theme="light"] .footer-bottom {
+  border-top: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .social-links a {
+  background-color: var(--background-secondary);
+  color: var(--text-color);
+}
+
+[data-theme="light"] .social-links a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Fix testimonial cards in light theme */
+[data-theme="light"] .testimonial-content p {
+  color: var(--text-color);
+}
+
+/* Ensure proper contrast for slider controls */
+[data-theme="light"] .prev-btn, 
+[data-theme="light"] .next-btn {
+  color: var(--primary-color);
+}
+
+[data-theme="light"] .dot {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .dot.active {
+  background-color: var(--primary-color);
 } 

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Age Calculator - Daily Tools</title>
+    <meta name="description" content="Calculate your exact age in years, months, days, hours, and even seconds with our free and accurate Age Calculator tool.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="../../index.html" class="logo">
+            <i class="ri-tools-fill logo-icon"></i>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="#">Popular Tools</a>
+            <a href="#">Categories</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                <i class="ri-sun-line light-icon"></i>
+                <i class="ri-moon-line dark-icon"></i>
+            </div>
+            <div class="notification-icon" aria-label="Notifications">
+                <i class="ri-notification-2-fill"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="profile-icon" aria-label="User profile">
+                <i class="ri-user-3-fill"></i>
+            </div>  
+        </div>
+        <div class="menu-icon" id="menu-toggle" aria-label="Toggle menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="tool-container">
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="../../index.html">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="#">Time & Date</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Age Calculator</span>
+                </div>
+                <h1><i class="ri-cake-3-line"></i> Age Calculator</h1>
+                <p class="description">Calculate your exact age in years, months, days, hours, and even seconds. Perfect for official documents, celebrations, or just satisfying your curiosity about your precise age.</p>
+                
+                <div class="meta">
+                    <div class="meta-item">
+                        <i class="ri-calendar-check-fill"></i>
+                        <span>Last Updated: May 5, 2023</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-star-fill"></i>
+                        <span>Rating: 4.8/5</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-eye-fill"></i>
+                        <span>Used 123,456 times</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card calculator-card">
+                <h2><i class="ri-cake-fill"></i> Calculate Your Age</h2>
+                
+                <div class="calculator-container">
+                    <div class="input-section">
+                        <div class="date-inputs">
+                            <div class="date-field">
+                                <label for="birth-date">Birth Date <i class="ri-calendar-event-fill"></i></label>
+                                <input type="date" id="birth-date" class="date-input" required>
+                                <span class="calendar-icon"><i class="ri-calendar-line"></i></span>
+                            </div>
+                            
+                            <div class="separator">to</div>
+                            
+                            <div class="date-field">
+                                <label for="current-date">Current Date <i class="ri-calendar-check-fill"></i></label>
+                                <input type="date" id="current-date" class="date-input">
+                                <span class="calendar-icon"><i class="ri-calendar-line"></i></span>
+                                <div class="current-date-option">
+                                    <input type="checkbox" id="use-today" checked>
+                                    <label for="use-today">Use Today's Date</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <button id="calculate-btn" class="btn btn-primary">
+                                <i class="ri-calculator-fill"></i> Calculate Age
+                            </button>
+                            <button id="reset-btn" class="btn btn-secondary">
+                                <i class="ri-refresh-line"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-section" id="result-section">
+                        <div class="result-heading">Your Age is:</div>
+                        <div class="age-display">
+                            <div class="age-unit">
+                                <div class="age-value" id="years">--</div>
+                                <div class="age-label">Years</div>
+                            </div>
+                            <div class="age-divider"></div>
+                            <div class="age-unit">
+                                <div class="age-value" id="months">--</div>
+                                <div class="age-label">Months</div>
+                            </div>
+                            <div class="age-divider"></div>
+                            <div class="age-unit">
+                                <div class="age-value" id="days">--</div>
+                                <div class="age-label">Days</div>
+                            </div>
+                        </div>
+                        
+                        <div class="detailed-results">
+                            <div class="detail-item">
+                                <span class="detail-label">Total Months:</span>
+                                <span class="detail-value" id="total-months">--</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Total Days:</span>
+                                <span class="detail-value" id="total-days">--</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Total Hours:</span>
+                                <span class="detail-value" id="total-hours">--</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Total Minutes:</span>
+                                <span class="detail-value" id="total-minutes">--</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Next Birthday:</span>
+                                <span class="detail-value" id="next-birthday">--</span>
+                            </div>
+                        </div>
+                        
+                        <div class="share-results">
+                            <button class="btn btn-secondary copy-btn" data-copy-target="result-text">
+                                <i class="ri-clipboard-line"></i> Copy Results
+                            </button>
+                            <button class="btn btn-secondary share-btn">
+                                <i class="ri-share-line"></i> Share
+                            </button>
+                            <button class="btn btn-secondary print-btn">
+                                <i class="ri-printer-line"></i> Print
+                            </button>
+                            <textarea id="result-text" hidden></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-sidebar">
+                <div class="sidebar-card">
+                    <h3><i class="ri-link-m"></i> Related Tools</h3>
+                    <div class="related-tools">
+                        <a href="../word-counter/" class="related-tool">
+                            <i class="ri-file-text-fill"></i>
+                            <span>Word Counter</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-calendar-fill"></i>
+                            <span>Date Calculator</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-timer-fill"></i>
+                            <span>Time Zone Converter</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-calendar-event-fill"></i>
+                            <span>Date Formatter</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-time-fill"></i>
+                            <span>Countdown Timer</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3><i class="ri-lightbulb-flash-line"></i> Quick Tips</h3>
+                    <ul class="quick-tips">
+                        <li>Enter your birth date to calculate your current age</li>
+                        <li>Uncheck "Use Today" to calculate age at a specific date</li>
+                        <li>Results include total months, days, hours and minutes</li>
+                        <li>Works accurately with leap years and varying month lengths</li>
+                        <li>Copy and share your results with the buttons below</li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3><i class="ri-share-forward-fill"></i> Share This Tool</h3>
+                    <div class="social-share">
+                        <a href="#" class="social-btn facebook" title="Share on Facebook">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="social-btn twitter" title="Share on Twitter">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="#" class="social-btn linkedin" title="Share on LinkedIn">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="#" class="social-btn whatsapp" title="Share on WhatsApp">
+                            <i class="ri-whatsapp-fill"></i>
+                        </a>
+                        <a href="#" class="social-btn email" title="Share via Email">
+                            <i class="ri-mail-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-info-section">
+                <div class="info-tabs">
+                    <div class="info-tab active" data-tab="how-to-use"><i class="ri-guide-fill"></i> How to Use</div>
+                    <div class="info-tab" data-tab="examples"><i class="ri-file-list-3-fill"></i> Examples</div>
+                    <div class="info-tab" data-tab="features"><i class="ri-function-fill"></i> Features</div>
+                    <div class="info-tab" data-tab="calculations"><i class="ri-calculator-line"></i> Calculation Method</div>
+                    <div class="info-tab" data-tab="faq"><i class="ri-questionnaire-fill"></i> FAQ</div>
+                </div>
+                
+                <div id="how-to-use" class="tab-content active">
+                    <h3>How to Use the Age Calculator</h3>
+                    <p>Using the Age Calculator is quick and simple:</p>
+                    <ol>
+                        <li><strong>Enter Your Birth Date</strong> - Select the date, month, and year you were born using the date picker.</li>
+                        <li><strong>Select End Date</strong> - By default, today's date is used. You can uncheck "Use Today" and select a different date if you want to calculate your age at a specific point in time.</li>
+                        <li><strong>Click Calculate</strong> - Press the "Calculate Age" button to see your results.</li>
+                        <li><strong>View Results</strong> - Your age will be displayed in years, months, and days, along with additional measurements.</li>
+                        <li><strong>Share or Copy</strong> - Use the buttons at the bottom to share your results or copy them to clipboard.</li>
+                    </ol>
+                    <p>The calculator accounts for leap years and varying month lengths to give you the most accurate calculation possible.</p>
+                </div>
+                
+                <div id="examples" class="tab-content">
+                    <h3>Example Calculations</h3>
+                    <p>Here are some example age calculations:</p>
+                    
+                    <div class="example-card">
+                        <div class="example-header">Example 1: Basic Age Calculation</div>
+                        <div class="example-detail">
+                            <strong>Birth Date:</strong> January 15, 1990<br>
+                            <strong>Current Date:</strong> May 5, 2023<br>
+                            <strong>Result:</strong> 33 years, 3 months, 20 days
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-header">Example 2: Calculating Age for a Past Date</div>
+                        <div class="example-detail">
+                            <strong>Birth Date:</strong> March 10, 2000<br>
+                            <strong>Target Date:</strong> December 31, 2020<br>
+                            <strong>Result:</strong> 20 years, 9 months, 21 days
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-header">Example 3: Leap Year Example</div>
+                        <div class="example-detail">
+                            <strong>Birth Date:</strong> February 29, 2000 (leap day)<br>
+                            <strong>Current Date:</strong> February 28, 2023<br>
+                            <strong>Result:</strong> 22 years, 11 months, 28 days
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="features" class="tab-content">
+                    <h3>Features of Our Age Calculator</h3>
+                    <ul>
+                        <li><strong>Precise Calculations</strong> - Our calculator accounts for leap years, different month lengths, and time zones for accurate results.</li>
+                        <li><strong>Multiple Units</strong> - View your age in years, months, days, hours, minutes, and even seconds.</li>
+                        <li><strong>Next Birthday</strong> - See how many days are left until your next birthday.</li>
+                        <li><strong>Flexible Dates</strong> - Calculate your age at any past or future date, not just the current day.</li>
+                        <li><strong>Shareable Results</strong> - Copy your results or share them directly with friends via social media or email.</li>
+                        <li><strong>Mobile Friendly</strong> - Works perfectly on all devices, from desktop computers to smartphones.</li>
+                        <li><strong>No Data Storage</strong> - All calculations are done in your browser. We don't store your dates or personal information.</li>
+                    </ul>
+                </div>
+                
+                <div id="calculations" class="tab-content">
+                    <h3>How We Calculate Your Age</h3>
+                    <p>Our age calculator uses a precise algorithm that accounts for the following:</p>
+                    <ul>
+                        <li><strong>Leap Years</strong> - We properly account for leap years (including the special rules for century years).</li>
+                        <li><strong>Month Lengths</strong> - Different months have different numbers of days, which our calculator handles correctly.</li>
+                        <li><strong>Date Order</strong> - If the end date is before the birth date, we'll notify you of the error.</li>
+                    </ul>
+                    
+                    <p>The calculation is performed using the following steps:</p>
+                    <ol>
+                        <li>Calculate the difference in years between the two dates.</li>
+                        <li>Check if the birth month/day has occurred this year. If not, subtract 1 from the year difference.</li>
+                        <li>Calculate the month difference, accounting for if the birth day has occurred in the current month.</li>
+                        <li>Calculate the remaining days.</li>
+                        <li>Convert to other units (total months, days, hours, etc.) as needed.</li>
+                    </ol>
+                </div>
+                
+                <div id="faq" class="tab-content">
+                    <h3>Frequently Asked Questions</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How accurate is this age calculator?</div>
+                        <div class="faq-answer">
+                            Our age calculator is extremely accurate. It takes into account leap years, varying month lengths, and other calendar irregularities to provide the most precise results possible.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Can I calculate age for any historical date?</div>
+                        <div class="faq-answer">
+                            Yes, the calculator works for any valid dates in the Gregorian calendar. You can calculate the age between any two dates, past or future.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How does it handle leap years?</div>
+                        <div class="faq-answer">
+                            The calculator properly accounts for leap years, including the special rules for century years (e.g., 1900 is not a leap year, but 2000 is). If you were born on February 29, it correctly calculates your age on non-leap years.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Is my data private when using this calculator?</div>
+                        <div class="faq-answer">
+                            Yes, absolutely. All calculations are performed directly in your browser. We don't store, transmit, or share any of the dates or information you enter.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Can I use this for legal documents?</div>
+                        <div class="faq-answer">
+                            While our calculator is highly accurate, for official or legal purposes, we recommend verifying the results with an official source or legal authority if needed.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feedback-section">
+                <h3><i class="ri-feedback-fill"></i> Rate This Tool</h3>
+                <p>How would you rate your experience with the Age Calculator?</p>
+                
+                <div class="rating-stars">
+                    <i class="ri-star-line" data-value="1"></i>
+                    <i class="ri-star-line" data-value="2"></i>
+                    <i class="ri-star-line" data-value="3"></i>
+                    <i class="ri-star-line" data-value="4"></i>
+                    <i class="ri-star-line" data-value="5"></i>
+                </div>
+                
+                <div class="feedback-form">
+                    <textarea placeholder="Share your feedback or suggestions (optional)"></textarea>
+                    <input type="hidden" id="rating-value" value="0">
+                    <div class="feedback-actions">
+                        <button class="btn btn-primary">Submit Feedback</button>
+                        <button id="report-bug-btn" class="btn btn-secondary">
+                            <i class="ri-bug-line"></i> Report a Bug
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bug Report Modal -->
+            <div id="report-bug-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="ri-bug-line"></i> Report a Bug</h3>
+                        <button class="close-modal" aria-label="Close modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please describe the issue you're experiencing with this tool:</p>
+                        <textarea placeholder="Describe the bug in detail. What happened? What did you expect to happen?"></textarea>
+                        
+                        <div class="form-field">
+                            <label for="bug-email">Your Email (optional):</label>
+                            <input type="email" id="bug-email" placeholder="For us to contact you with a fix">
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="checkbox" id="include-details">
+                            <label for="include-details">Include technical details (browser info, etc.)</label>
+                        </div>
+                        
+                        <button class="btn btn-primary">Submit Bug Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <a href="../../index.html" class="footer-logo">
+                <i class="ri-tools-fill logo-icon"></i>
+                <span>Daily Tools</span>
+            </a>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../common.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

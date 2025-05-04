@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Tools - Simplify your daily tasks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100..900;1,100..900&family=Product+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class="ri-tools-fill logo-icon"></i>
+            <span>Daily Tools</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">Popular Tools</a>
+            <a href="#">Categories</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                <i class="ri-sun-line light-icon"></i>
+                <i class="ri-moon-line dark-icon"></i>
+            </div>
+            <div class="notification-icon" aria-label="Notifications">
+                <i class="ri-notification-2-fill"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="profile-icon" aria-label="User profile">
+                <i class="ri-user-3-fill"></i>
+            </div>  
+        </div>
+        <div class="menu-icon" id="menu-toggle" aria-label="Toggle menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Online Tools to <span class="highlight">Simplify</span> Your Life</h1>
+                <p>Powerful, fast and easy-to-use utilities for everyday tasks</p>
+            </div>
+
+            <div class="search-container">
+                <div class="search-bar">
+                    <i class="ri-search-line search-icon"></i>
+                    <input type="text" placeholder="Search for a tool">
+                    <button><span>Search</span> <i class="ri-arrow-right-up-line"></i></button>
+                </div>
+
+                <div class="keywords">
+                    <button><i class="ri-cake-fill"></i> Age Calculator</button>
+                    <button><i class="ri-file-text-fill"></i> Word Counter</button>
+                    <button><i class="ri-calendar-fill"></i> Calendar</button>
+                    <button><i class="ri-key-fill"></i> Password Generator</button>
+                    <button><i class="ri-scales-3-fill"></i> Unit Converter</button>
+                    <button><i class="ri-exchange-dollar-fill"></i> Currency Converter</button>
+                </div>
+            </div>  
+
+            <div class="section-title">
+                <h2>Featured Tools</h2>
+                <a href="#" class="view-all">View All <i class="ri-arrow-right-s-line"></i></a>
+            </div>
+
+            <div class="highlited-tools">
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-cake-fill"></i>
+                        <h3>Age Calculator</h3>
+                        <span class="tool-badge">Popular</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Calculate your age in years, months, and days with precision. Perfect for official documents and planning.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button id="age-calculator-btn">Try Now <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-file-text-fill"></i>
+                        <h3>Word Counter</h3>
+                        <span class="tool-badge">New</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Count words, characters, sentences, and paragraphs in your text. Great for essays and content writing.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button id="word-counter-btn">Try Now <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-calendar-fill"></i>
+                        <h3>Calendar</h3>
+                        <span class="tool-badge">Updated</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Interactive calendar to manage your schedule and appointments. Syncs with your accounts for seamless planning.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-key-fill"></i>
+                        <h3>Password Generator</h3>
+                        <span class="tool-badge">Secure</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Create strong, secure passwords with customizable options. Includes strength checker and quick copy feature.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+                
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-divide-fill"></i>
+                        <h3>Prime Factor</h3>
+                        <span class="tool-badge">Mathematics</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Find all prime factors of any number instantly. Helps understand number theory and solve complex math problems.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+                
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-roman-numerals-fill"></i>
+                        <h3>Roman to Number</h3>
+                        <span class="tool-badge">Converter</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Convert Roman numerals to numbers and vice versa. Perfect for historical research, dates, and learning Roman numerals.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>New Tools</h2>
+                <a href="#" class="view-all">View All <i class="ri-arrow-right-s-line"></i></a>
+            </div>
+            
+            <div class="highlited-tools">
+
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-clipboard-fill"></i>
+                        <h3>Note Keeper</h3>
+                        <span class="tool-badge">Cloud Sync</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Take and organize notes with rich text formatting. Access your notes from any device with cloud syncing.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-smartphone-line"></i>
+                        <h3>QR Code Generator</h3>
+                        <span class="tool-badge">Free</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Generate custom QR codes for URLs, text, or contact information. Customize colors and download in high resolution.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>Coming Soon</h2>
+                <a href="#" class="view-all">Request Tool <i class="ri-add-circle-line"></i></a>
+            </div>
+            
+            <div class="coming-soon">
+                <div class="coming-soon-item">
+                    <div class="coming-soon-icon">
+                        <i class="ri-video-line"></i>
+                        <div class="release-countdown">12 days</div>
+                    </div>
+                    <div class="coming-soon-details">
+                        <h3>Video Compressor</h3>
+                        <p><span class="status">Coming Soon</span> <span class="release-date">• June 15</span></p>
+                        <div class="tool-features">
+                            <span><i class="ri-hd-fill"></i> 4K Support</span>
+                            <span><i class="ri-hard-drive-line"></i> Cloud Storage</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="coming-soon-item">
+                    <div class="coming-soon-icon">
+                        <i class="ri-markdown-fill"></i>
+                        <div class="release-countdown">19 days</div>
+                    </div>
+                    <div class="coming-soon-details">
+                        <h3>Markdown Editor</h3>
+                        <p><span class="status">Coming Soon</span> <span class="release-date">• June 22</span></p>
+                        <div class="tool-features">
+                            <span><i class="ri-file-pdf-line"></i> PDF Export</span>
+                            <span><i class="ri-history-line"></i> Auto-save</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="coming-soon-item">
+                    <div class="coming-soon-icon">
+                        <i class="ri-barcode-line"></i>
+                        <div class="release-countdown">32 days</div>
+                    </div>
+                    <div class="coming-soon-details">
+                        <h3>Barcode Generator</h3>
+                        <p><span class="status">Coming Soon</span> <span class="release-date">• July 5</span></p>
+                        <div class="tool-features">
+                            <span><i class="ri-qr-code-line"></i> Multiple Formats</span>
+                            <span><i class="ri-image-line"></i> High Resolution</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>Popular Categories</h2>
+            </div>
+
+            <div class="categories">
+                <div class="category">
+                    <i class="ri-calculator-fill"></i>
+                    <h3>Calculators</h3>
+                </div>
+                <div class="category">
+                    <i class="ri-text-wrap"></i>
+                    <h3>Text Tools</h3>
+                </div>
+                <div class="category">
+                    <i class="ri-time-fill"></i>
+                    <h3>Date & Time</h3>
+                </div>
+                <div class="category">
+                    <i class="ri-file-fill"></i>
+                    <h3>File Tools</h3>
+                </div>
+            </div>
+
+            <div class="all-tools">
+                <a href="#">See All Tools <i class="ri-arrow-right-s-line"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="ri-tools-fill logo-icon"></i>
+                <span>Daily Tools</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality with enhanced animation
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Save user preference to localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Check for saved user preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Mobile menu toggle with animation
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            menuToggle.classList.toggle('active');
+            
+            // Toggle between menu and close icons
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('show')) {
+                icon.classList.remove('ri-menu-line');
+                icon.classList.add('ri-close-line');
+            } else {
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-line');
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target) && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                menuToggle.classList.remove('active');
+                
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-line');
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                menuToggle.classList.remove('active');
+                
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-line');
+            }
+        });
+    </script>
+    <script src="navigation.js"></script>
+</body>
+</html>

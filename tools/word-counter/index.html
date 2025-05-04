@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Word Counter - Daily Tools</title>
+    <meta name="description" content="Count words, characters, sentences, and paragraphs in your text. Perfect for essays, blog posts, social media, and SEO content optimization.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="../../index.html" class="logo">
+            <i class="ri-tools-fill logo-icon"></i>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="#">Popular Tools</a>
+            <a href="#">Categories</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                <i class="ri-sun-line light-icon"></i>
+                <i class="ri-moon-line dark-icon"></i>
+            </div>
+            <div class="notification-icon" aria-label="Notifications">
+                <i class="ri-notification-2-fill"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="profile-icon" aria-label="User profile">
+                <i class="ri-user-3-fill"></i>
+            </div>  
+        </div>
+        <div class="menu-icon" id="menu-toggle" aria-label="Toggle menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="tool-container">
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="../../index.html">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="#">Text Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Word Counter</span>
+                </div>
+                <h1><i class="ri-file-text-fill"></i> Word Counter</h1>
+                <p class="description">Count words, characters, sentences, and paragraphs in your text. Perfect for essays, blog posts, social media, and SEO content optimization.</p>
+                
+                <div class="meta">
+                    <div class="meta-item">
+                        <i class="ri-calendar-check-fill"></i>
+                        <span>Last Updated: May 5, 2023</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-star-fill"></i>
+                        <span>Rating: 4.9/5</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-eye-fill"></i>
+                        <span>Used 245,712 times</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card calculator-card">
+                <h2><i class="ri-file-text-fill"></i> Word Counter</h2>
+                
+                <div class="calculator-container">
+                    <div class="input-section">
+                        <div class="text-input-wrapper">
+                            <label for="text-input"><i class="ri-text-wrap"></i> Your Text</label>
+                            <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <button id="count-btn" class="btn btn-primary">
+                                <i class="ri-number-1"></i> Count Text
+                            </button>
+                            <button id="clear-btn" class="btn btn-secondary">
+                                <i class="ri-delete-bin-line"></i> Clear
+                            </button>
+                        </div>
+
+                        <div class="secondary-actions">
+                            <button id="copy-btn" class="btn btn-secondary copy-btn" data-copy-target="text-input">
+                                <i class="ri-clipboard-line"></i> Copy Text
+                            </button>
+                            <button id="sample-text-btn" class="btn btn-secondary">
+                                <i class="ri-file-text-line"></i> Sample Text
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-section" id="result-section">
+                        <div class="result-heading">Text Statistics:</div>
+                        <div class="age-display">
+                            <div class="age-unit">
+                                <div class="age-value" id="word-count">0</div>
+                                <div class="age-label">Words</div>
+                            </div>
+                            <div class="age-divider"></div>
+                            <div class="age-unit">
+                                <div class="age-value" id="character-count">0</div>
+                                <div class="age-label">Characters</div>
+                            </div>
+                            <div class="age-divider"></div>
+                            <div class="age-unit">
+                                <div class="age-value" id="paragraph-count">0</div>
+                                <div class="age-label">Paragraphs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="detailed-results">
+                            <div class="detail-item">
+                                <span class="detail-label">Characters (no spaces):</span>
+                                <span class="detail-value" id="character-no-spaces">0</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Sentences:</span>
+                                <span class="detail-value" id="sentence-count">0</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Reading Time:</span>
+                                <span class="detail-value" id="reading-time">0</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Average Word Length:</span>
+                                <span class="detail-value" id="avg-word-length">0</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Words per Sentence:</span>
+                                <span class="detail-value" id="words-per-sentence">0</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Unique Words:</span>
+                                <span class="detail-value" id="unique-words">0</span> (<span id="unique-words-percent">0</span>%)
+                            </div>
+                        </div>
+                        
+                        <div class="word-density-section">
+                            <h3><i class="ri-bar-chart-fill"></i> Word Density <span class="density-note">(excluding common words)</span></h3>
+                            <div class="density-container" id="word-density-container">
+                                <!-- Word density will be populated by JavaScript -->
+                                <div class="empty-state">Enter text to see word density</div>
+                            </div>
+                        </div>
+                        
+                        <div class="share-results">
+                            <button class="btn btn-secondary copy-btn" data-copy-target="result-text">
+                                <i class="ri-clipboard-line"></i> Copy Results
+                            </button>
+                            <button class="btn btn-secondary share-btn">
+                                <i class="ri-share-line"></i> Share
+                            </button>
+                            <button class="btn btn-secondary print-btn">
+                                <i class="ri-printer-line"></i> Print
+                            </button>
+                            <textarea id="result-text" hidden></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-sidebar">
+                <div class="sidebar-card">
+                    <h3><i class="ri-link-m"></i> Related Tools</h3>
+                    <div class="related-tools">
+                        <a href="../age-calculator/" class="related-tool">
+                            <i class="ri-cake-fill"></i>
+                            <span>Age Calculator</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-text-wrap"></i>
+                            <span>Text Case Converter</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-ai-generate"></i>
+                            <span>Text Summarizer</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-spell-check-fill"></i>
+                            <span>Grammar Checker</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-character-recognition-line"></i>
+                            <span>Readability Checker</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3><i class="ri-lightbulb-flash-line"></i> Writing Tips</h3>
+                    <ul class="quick-tips">
+                        <li>Aim for an average of 15-20 words per sentence for optimal readability</li>
+                        <li>Use a variety of sentence lengths to create rhythm in your writing</li>
+                        <li>Break up long paragraphs (more than 3-4 sentences) for better visual flow</li>
+                        <li>For SEO content, aim for a keyword density of 1-2%</li>
+                        <li>Blog posts typically perform best at 1,500-2,500 words</li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3><i class="ri-share-forward-fill"></i> Share This Tool</h3>
+                    <div class="social-share">
+                        <a href="#" class="social-btn facebook" title="Share on Facebook">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="social-btn twitter" title="Share on Twitter">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="#" class="social-btn linkedin" title="Share on LinkedIn">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="#" class="social-btn whatsapp" title="Share on WhatsApp">
+                            <i class="ri-whatsapp-fill"></i>
+                        </a>
+                        <a href="#" class="social-btn email" title="Share via Email">
+                            <i class="ri-mail-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-info-section">
+                <div class="info-tabs">
+                    <div class="info-tab active" data-tab="how-to-use"><i class="ri-guide-fill"></i> How to Use</div>
+                    <div class="info-tab" data-tab="features"><i class="ri-function-fill"></i> Features</div>
+                    <div class="info-tab" data-tab="use-cases"><i class="ri-file-list-3-fill"></i> Use Cases</div>
+                    <div class="info-tab" data-tab="tips"><i class="ri-lightbulb-line"></i> Tips & Tricks</div>
+                    <div class="info-tab" data-tab="faq"><i class="ri-questionnaire-fill"></i> FAQ</div>
+                </div>
+                
+                <div id="how-to-use" class="tab-content active">
+                    <h3>How to Use the Word Counter</h3>
+                    <p>Using our Word Counter tool is simple and intuitive:</p>
+                    <ol>
+                        <li><strong>Enter Your Text</strong> - Type or paste your content into the text area.</li>
+                        <li><strong>Automatic Counting</strong> - The counter automatically updates as you type, showing word count, character count, and more.</li>
+                        <li><strong>View Statistics</strong> - See detailed statistics about your text, including reading time and word density.</li>
+                        <li><strong>Export or Share</strong> - Copy results, share them with others, or print for your records.</li>
+                    </ol>
+                    <p>The tool works with any text content and helps you analyze various aspects of your writing.</p>
+                </div>
+                
+                <div id="features" class="tab-content">
+                    <h3>Features of Our Word Counter</h3>
+                    <ul>
+                        <li><strong>Real-time Counting</strong> - See counts update instantly as you type or edit your text.</li>
+                        <li><strong>Multiple Metrics</strong> - Track words, characters (with and without spaces), sentences, and paragraphs.</li>
+                        <li><strong>Reading Time Estimation</strong> - Know how long it will take to read your content.</li>
+                        <li><strong>Text Analysis</strong> - Get insights on average word length, sentence structure, and readability.</li>
+                        <li><strong>Word Density</strong> - Identify the most frequently used words in your text.</li>
+                        <li><strong>Easy Sharing</strong> - Copy, export, or share your text and statistics with others.</li>
+                        <li><strong>Mobile Friendly</strong> - Works perfectly on all devices, from desktops to smartphones.</li>
+                    </ul>
+                </div>
+                
+                <div id="use-cases" class="tab-content">
+                    <h3>Common Use Cases</h3>
+                    
+                    <div class="example-card">
+                        <div class="example-header">Academic Writing</div>
+                        <div class="example-detail">
+                            Track word count for essays and papers that have specific length requirements. Make sure you're meeting the minimum word count without exceeding the maximum limit.
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-header">Content Creation</div>
+                        <div class="example-detail">
+                            Optimize blog posts and articles for SEO by monitoring keyword density and ensuring content is the ideal length for search engines (typically 1,500-2,500 words for blog posts).
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-header">Social Media</div>
+                        <div class="example-detail">
+                            Check that your tweets, Instagram captions, and other social media posts stay within character limits while maximizing impact.
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-header">Professional Writing</div>
+                        <div class="example-detail">
+                            Ensure business reports, resumes, and cover letters are concise and focused by tracking word and sentence counts.
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tips" class="tab-content">
+                    <h3>Tips for Better Writing</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Optimize Content Length</div>
+                        <div class="faq-answer">
+                            Different content types have ideal length ranges. Blog posts perform best at 1,500-2,500 words, social media posts should be brief (under 280 characters for Twitter), and paragraphs should generally contain 3-5 sentences for optimal readability.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Improve Readability</div>
+                        <div class="faq-answer">
+                            Aim for an average sentence length of 15-20 words. Mix short and long sentences to create rhythm. Use the readability score to ensure your content is accessible to your target audience.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Keyword Optimization</div>
+                        <div class="faq-answer">
+                            For SEO content, use the word density feature to monitor keyword usage. Aim for a primary keyword density of 1-2%, and include related keywords naturally throughout the text.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Edit Efficiently</div>
+                        <div class="faq-answer">
+                            Use the word counter during editing to identify areas to trim. Look for sections with unusually long sentences or paragraphs, and consider breaking them up for better flow.
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="faq" class="tab-content">
+                    <h3>Frequently Asked Questions</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How accurate is the word count?</div>
+                        <div class="faq-answer">
+                            Our word counter is highly accurate. It counts words by identifying sequences of characters separated by spaces, punctuation, or line breaks. Hyphenated words are counted as one word, in line with most academic and professional standards.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How is reading time calculated?</div>
+                        <div class="faq-answer">
+                            Reading time is calculated based on an average reading speed of 225-250 words per minute for adults reading web content. The calculation may vary slightly based on the complexity of your text.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Does the counter save my text?</div>
+                        <div class="faq-answer">
+                            No, our word counter processes all text directly in your browser. We don't store, save, or transmit your text to any servers, ensuring your content remains private and secure.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What languages does the counter support?</div>
+                        <div class="faq-answer">
+                            The word counter primarily supports English text, but it can count words and characters in most Latin-based languages. For languages with different word separation systems (like Chinese or Japanese), character count may be more reliable than word count.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feedback-section">
+                <h3><i class="ri-feedback-fill"></i> Rate This Tool</h3>
+                <p>How would you rate your experience with the Word Counter?</p>
+                
+                <div class="rating-stars">
+                    <i class="ri-star-line" data-value="1"></i>
+                    <i class="ri-star-line" data-value="2"></i>
+                    <i class="ri-star-line" data-value="3"></i>
+                    <i class="ri-star-line" data-value="4"></i>
+                    <i class="ri-star-line" data-value="5"></i>
+                </div>
+                
+                <div class="feedback-form">
+                    <textarea placeholder="Share your feedback or suggestions (optional)"></textarea>
+                    <input type="hidden" id="rating-value" value="0">
+                    <div class="feedback-actions">
+                        <button class="btn btn-primary">Submit Feedback</button>
+                        <button id="report-bug-btn" class="btn btn-secondary">
+                            <i class="ri-bug-line"></i> Report a Bug
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bug Report Modal -->
+            <div id="report-bug-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="ri-bug-line"></i> Report a Bug</h3>
+                        <button class="close-modal" aria-label="Close modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please describe the issue you're experiencing with this tool:</p>
+                        <textarea placeholder="Describe the bug in detail. What happened? What did you expect to happen?"></textarea>
+                        
+                        <div class="form-field">
+                            <label for="bug-email">Your Email (optional):</label>
+                            <input type="email" id="bug-email" placeholder="For us to contact you with a fix">
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="checkbox" id="include-details">
+                            <label for="include-details">Include technical details (browser info, etc.)</label>
+                        </div>
+                        
+                        <button class="btn btn-primary">Submit Bug Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <a href="../../index.html" class="footer-logo">
+                <i class="ri-tools-fill logo-icon"></i>
+                <span>Daily Tools</span>
+            </a>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../common.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

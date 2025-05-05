@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QR Code Generator - Daily Tools</title>
+    <meta name="description" content="Generate QR codes for URLs, text, contact information, and more. Customize colors, size, and download as PNG.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Poppins:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../favicon.png">
+</head>
+<body>
+    <nav>
+        <a href="../../index.html" class="logo">
+            <i class="ri-tools-fill logo-icon"></i>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="#">Popular Tools</a>
+            <a href="#">Categories</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="notification-icon" aria-label="Notifications">
+                <i class="ri-notification-2-line"></i>
+            </div>
+            <div class="share-icon" id="share-tool" aria-label="Share this tool">
+                <i class="ri-share-line"></i>
+            </div>
+        </div>
+        <div class="menu-icon" id="menu-toggle" aria-label="Toggle menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="tool-header">
+                <h1><i class="ri-qr-code-line"></i> QR Code Generator</h1>
+                <p>Generate QR codes for URLs, text, contact information, and more. Customize colors, size, and download as PNG.</p>
+            </div>
+
+            <div class="qr-generator-container">
+                <div class="qr-options">
+                    <div class="option-group">
+                        <h3>Content Type</h3>
+                        <div class="content-type-tabs">
+                            <button class="tab-btn active" data-tab="url">URL</button>
+                            <button class="tab-btn" data-tab="text">Text</button>
+                            <button class="tab-btn" data-tab="contact">Contact</button>
+                            <button class="tab-btn" data-tab="email">Email</button>
+                            <button class="tab-btn" data-tab="sms">SMS</button>
+                            <button class="tab-btn" data-tab="wifi">Wi-Fi</button>
+                        </div>
+                    </div>
+
+                    <!-- URL Tab Content -->
+                    <div class="tab-content active" id="url-tab">
+                        <div class="input-group">
+                            <label for="url-input">Website URL</label>
+                            <input type="url" id="url-input" placeholder="https://example.com" value="https://dailytools.app">
+                        </div>
+                    </div>
+
+                    <!-- Text Tab Content -->
+                    <div class="tab-content" id="text-tab">
+                        <div class="input-group">
+                            <label for="text-input">Text Content</label>
+                            <textarea id="text-input" placeholder="Enter your text here..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Contact Tab Content -->
+                    <div class="tab-content" id="contact-tab">
+                        <div class="input-group">
+                            <label for="contact-name">Name</label>
+                            <input type="text" id="contact-name" placeholder="Full Name">
+                        </div>
+                        <div class="input-group">
+                            <label for="contact-phone">Phone</label>
+                            <input type="tel" id="contact-phone" placeholder="Phone Number">
+                        </div>
+                        <div class="input-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" placeholder="Email Address">
+                        </div>
+                        <div class="input-group">
+                            <label for="contact-company">Company (Optional)</label>
+                            <input type="text" id="contact-company" placeholder="Company Name">
+                        </div>
+                        <div class="input-group">
+                            <label for="contact-address">Address (Optional)</label>
+                            <textarea id="contact-address" placeholder="Address"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Email Tab Content -->
+                    <div class="tab-content" id="email-tab">
+                        <div class="input-group">
+                            <label for="email-address">Email Address</label>
+                            <input type="email" id="email-address" placeholder="recipient@example.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="email-subject">Subject (Optional)</label>
+                            <input type="text" id="email-subject" placeholder="Email Subject">
+                        </div>
+                        <div class="input-group">
+                            <label for="email-body">Body (Optional)</label>
+                            <textarea id="email-body" placeholder="Email Body"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- SMS Tab Content -->
+                    <div class="tab-content" id="sms-tab">
+                        <div class="input-group">
+                            <label for="sms-number">Phone Number</label>
+                            <input type="tel" id="sms-number" placeholder="Phone Number">
+                        </div>
+                        <div class="input-group">
+                            <label for="sms-message">Message</label>
+                            <textarea id="sms-message" placeholder="Message"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- WiFi Tab Content -->
+                    <div class="tab-content" id="wifi-tab">
+                        <div class="input-group">
+                            <label for="wifi-ssid">Network Name (SSID)</label>
+                            <input type="text" id="wifi-ssid" placeholder="Network Name">
+                        </div>
+                        <div class="input-group">
+                            <label for="wifi-password">Password</label>
+                            <input type="text" id="wifi-password" placeholder="Password">
+                        </div>
+                        <div class="input-group">
+                            <label for="wifi-encryption">Encryption</label>
+                            <select id="wifi-encryption">
+                                <option value="WPA">WPA/WPA2</option>
+                                <option value="WEP">WEP</option>
+                                <option value="nopass">None</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="wifi-hidden">
+                                <label for="wifi-hidden">Hidden Network</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="options-divider"></div>
+
+                    <!-- QR Code Style Options -->
+                    <div class="option-group">
+                        <h3>Customization</h3>
+                        <div class="input-group">
+                            <label for="qr-size">QR Code Size</label>
+                            <div class="range-container">
+                                <input type="range" id="qr-size" min="5" max="12" step="1" value="8">
+                                <span id="size-value">8</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="error-correction">Error Correction</label>
+                            <select id="error-correction">
+                                <option value="L">Low (7%)</option>
+                                <option value="M" selected>Medium (15%)</option>
+                                <option value="Q">Quartile (25%)</option>
+                                <option value="H">High (30%)</option>
+                            </select>
+                        </div>
+                        <div class="color-options">
+                            <div class="input-group color-option">
+                                <label for="foreground-color">Foreground Color</label>
+                                <div class="color-picker-container">
+                                    <input type="color" id="foreground-color" value="#000000">
+                                    <input type="text" id="foreground-color-text" value="#000000">
+                                </div>
+                            </div>
+                            <div class="input-group color-option">
+                                <label for="background-color">Background Color</label>
+                                <div class="color-picker-container">
+                                    <input type="color" id="background-color" value="#ffffff">
+                                    <input type="text" id="background-color-text" value="#ffffff">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group add-logo-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="add-logo">
+                                <label for="add-logo">Add Logo (Optional)</label>
+                            </div>
+                            <div class="logo-input" style="display: none;">
+                                <input type="file" id="logo-file" accept="image/*">
+                                <p class="hint">For best results, use a transparent PNG of 50×50 to 150×150 pixels</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qr-preview">
+                    <div class="qr-preview-header">
+                        <h3>QR Code Preview</h3>
+                        <div class="action-buttons">
+                            <button id="refresh-qr" title="Refresh QR Code">
+                                <i class="ri-refresh-line"></i>
+                            </button>
+                            <button id="download-qr" title="Download QR Code">
+                                <i class="ri-download-line"></i>
+                            </button>
+                            <button id="share-qr" title="Share QR Code">
+                                <i class="ri-share-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="qr-code-container">
+                        <div id="qr-code"></div>
+                    </div>
+                    <div class="qr-test-hint">
+                        <p><i class="ri-smartphone-line"></i> Point your phone's camera at the QR code to test it</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-tabs">
+                    <div class="tab-header active" data-tab="how-to-use">How to Use</div>
+                    <div class="tab-header" data-tab="tips">Tips</div>
+                    <div class="tab-header" data-tab="faq">FAQ</div>
+                </div>
+                
+                <div class="tab-content active" id="how-to-use-content">
+                    <h3>How to Create a QR Code</h3>
+                    <ol>
+                        <li><strong>Select the content type</strong> - Choose what kind of information you want to encode (URL, text, contact, etc.)</li>
+                        <li><strong>Enter your information</strong> - Fill in the required fields based on your selected content type</li>
+                        <li><strong>Customize your QR code</strong> - Adjust size, colors, and error correction as needed</li>
+                        <li><strong>Generate and test</strong> - The QR code updates automatically. Test it with your phone's camera</li>
+                        <li><strong>Download your QR code</strong> - Click the download button to save as a PNG image</li>
+                    </ol>
+                </div>
+                
+                <div class="tab-content" id="tips-content">
+                    <h3>Tips for Better QR Codes</h3>
+                    <ul>
+                        <li><strong>Contrast is key</strong> - Make sure there's high contrast between foreground and background colors</li>
+                        <li><strong>Test before printing</strong> - Always test your QR code with multiple devices before printing or distributing</li>
+                        <li><strong>Higher error correction</strong> - Use "High" error correction if you plan to add a logo or if the QR code will be printed in less-than-ideal conditions</li>
+                        <li><strong>Avoid overloading</strong> - Keep content minimal. Long text increases code complexity and reduces readability</li>
+                        <li><strong>Size matters</strong> - When printing, ensure your QR code is at least 1 inch (2.5cm) in size for reliable scanning</li>
+                        <li><strong>Add margin space</strong> - Leave white space around your QR code when using it in designs</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="faq-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How secure are QR codes?</h4>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>QR codes themselves aren't secure or insecure - they're just a way to encode information. The security depends on what's in the QR code and how it's used. Be cautious about scanning QR codes from untrusted sources, as they could contain malicious URLs or commands.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I track how many times my QR code is scanned?</h4>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This basic generator doesn't include tracking. For scan tracking, you'll need to use a URL shortener service with analytics (like Bitly) for the website link in your QR code, or use a dedicated QR code marketing platform.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What is error correction and why does it matter?</h4>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Error correction allows a QR code to be read even when it's partially damaged or obscured. Higher error correction levels make your code more reliable but also more complex (with more modules/pixels). Use higher levels when printing on irregular surfaces, adding logos, or when durability is important.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Why isn't my QR code working?</h4>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Common reasons include: low contrast between colors, too small size when printed, too much data encoded, poor lighting when scanning, damaged code, or outdated scanning app. Try simplifying your content, increasing the error correction level, and ensuring good contrast.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I use colored QR codes?</h4>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, but maintaining high contrast is essential. The best practice is to use a dark foreground with a light background. Avoid using multiple colors within the QR code pattern itself, as this can reduce scanability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Daily Tools | <a href="../../index.html">Home</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+        </div>
+    </footer>
+
+    <script src="../common.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

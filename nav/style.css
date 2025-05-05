@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /* Global Variables - Modern Color Theme */
+  :root {
+    /* Primary colors */
+    --primary-blue: #4285F4;
+    --primary-red: #EA4335;
+    --primary-yellow: #FBBC05;
+    --primary-green: #34A853;
+    --primary-purple: #673AB7;
+    --primary-teal: #009688;
+    --primary-orange: #FF9800;
+    
+    /* UI colors */
+    --primary-hover: #1a73e8;
+    --card-header: #4285F4;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1f2937;
+    --text-secondary: #4b5563;
+    --border-color: #e2e8f0;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Tool themes */
+    --purple-theme: #673AB7;
+    --purple-lighter: #EDE7F6;
+    --teal-theme: #009688;
+    --teal-lighter: #E0F2F1;
+    --orange-theme: #FF9800;
+    --orange-lighter: #FFF3E0;
+    --blue-theme: #03A9F4;
+    --blue-lighter: #E1F5FE;
+    
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-8: 48px;
+    --space-10: 64px;
+    
+    /* Border radius */
+    --radius-sm: 4px;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+  }
+  
+  /* Dark Theme Variables */
+  .dark-mode {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    
+    /* Darker versions of theme colors */
+    --purple-lighter: #4527A0;
+    --teal-lighter: #00796B;
+    --orange-lighter: #EF6C00;
+    --blue-lighter: #0288D1;
+    
+    /* Shadows for dark mode */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+  
+  /* Utility classes */
+  .highlight {
+    background: linear-gradient(90deg, var(--primary-blue), #1a73e8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+  
+  /* Redesigned Navigation Bar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) var(--space-6);
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Glass effect for modern look */
+  .dark-mode nav {
+    background-color: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Brand logo styling */
+  nav .logo {
+    font-family: "Product Sans", "Archivo Black", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    position: relative;
+    transition: var(--transition);
+    text-decoration: none;
+  }
+  
+  nav .logo span {
+    background: linear-gradient(135deg, var(--primary-blue), #1a73e8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: var(--transition);
+  }
+  
+  nav .logo:hover {
+    transform: translateY(-2px);
+  }
+  
+  nav .logo .logo-icon {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue), #1a73e8);
+    color: white;
+    padding: var(--space-2);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+  
+  nav .logo:hover .logo-icon {
+    transform: rotate(5deg);
+    box-shadow: var(--shadow);
+  }
+  
+  /* Nav links styling */
+  nav .nav-links {
+    display: flex;
+    gap: var(--space-5);
+    align-items: center;
+  }
+  
+  nav .nav-links a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    position: relative;
+    padding: var(--space-2);
+    transition: var(--transition);
+  }
+  
+  /* Improved underline effect for nav links */
+  nav .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: linear-gradient(90deg, var(--primary-blue), #1a73e8);
+    transition: 0.3s ease;
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  
+  nav .nav-links a:hover {
+    color: var(--primary-blue);
+  }
+  
+  nav .nav-links a:hover::after {
+    width: 70%;
+    opacity: 1;
+  }
+  
+  nav .nav-links a.active {
+    color: var(--primary-blue);
+    font-weight: 600;
+  }
+  
+  nav .nav-links a.active::after {
+    width: 70%;
+    opacity: 1;
+  }
+  
+  /* Right side nav items */
+  nav .nav-right {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+  }
+  
+  /* Improved styles for nav icons */
+  nav .nav-right > div {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition-fast);
+    color: var(--text-secondary);
+    background-color: transparent;
+  }
+  
+  nav .nav-right > div:hover {
+    background-color: rgba(66, 133, 244, 0.08);
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+  }

@@ -1,0 +1,359 @@
+/* Prime Factor Calculator Specific Styles */
+
+:root {
+    --primary-color: #4285F4;
+    --secondary-color: #34A853;
+    --accent-color: #FBBC05;
+    --danger-color: #EA4335;
+    --math-color: #673AB7;
+}
+
+.dark-mode {
+    --math-color: #B388FF;
+}
+
+/* Tool-specific header icon */
+.tool-header h1 i {
+    color: var(--math-color);
+    background: linear-gradient(135deg, var(--math-color), #9C27B0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Number input styling */
+.number-input-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.number-input-wrapper label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.number-input-wrapper label i {
+    color: var(--math-color);
+}
+
+.number-input-wrapper input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    transition: all 0.3s ease;
+}
+
+.number-input-wrapper input:focus {
+    border-color: var(--math-color);
+    box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.2);
+    outline: none;
+}
+
+.number-input-wrapper input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Examples section */
+.input-examples {
+    margin-top: 1.5rem;
+}
+
+.input-examples p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.example-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.example-btn {
+    padding: 0.4rem 0.8rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.example-btn:hover {
+    background-color: var(--math-color);
+    color: white;
+    border-color: var(--math-color);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(103, 58, 183, 0.3);
+}
+
+/* Factor result styling */
+.factor-display {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.factor-result {
+    padding: 1.5rem;
+    background-color: rgba(103, 58, 183, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--math-color);
+    border: 2px solid rgba(103, 58, 183, 0.2);
+}
+
+.factor-result.has-result {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+}
+
+.factor-result.has-result .factor-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.factor-result.has-result .factors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.factor-result.has-result .factor {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+    background-color: var(--math-color);
+    border-radius: 50px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(103, 58, 183, 0.3);
+}
+
+.factor-result.has-result .factor-power {
+    font-size: 0.8em;
+    margin-left: 2px;
+    position: relative;
+    top: -6px;
+}
+
+.factor-result.has-result .operator {
+    margin: 0 0.2rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.factor-result .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0.7;
+}
+
+.factor-result .empty-state i {
+    font-size: 3rem;
+    color: var(--math-color);
+}
+
+.factor-result .empty-state p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+/* Factor tree visualization */
+.factor-tree {
+    margin: 2rem 0;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.factor-tree svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.factor-tree .node {
+    fill: var(--card-bg);
+    stroke: var(--math-color);
+    stroke-width: 2;
+}
+
+.factor-tree .node.prime {
+    fill: var(--math-color);
+}
+
+.factor-tree .node-text {
+    fill: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.factor-tree .node.prime .node-text {
+    fill: white;
+}
+
+.factor-tree .edge {
+    stroke: var(--math-color);
+    stroke-width: 2;
+}
+
+/* Factor explanation section */
+.factor-explanation {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    border-left: 4px solid var(--math-color);
+}
+
+.factor-explanation h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--math-color);
+}
+
+.factor-explanation p {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.factor-explanation .step {
+    margin-bottom: 0.8rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.factor-explanation .step-number {
+    min-width: 24px;
+    height: 24px;
+    background-color: var(--math-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.factor-explanation .step-text {
+    display: flex;
+    align-items: center;
+}
+
+.factor-explanation .math {
+    font-family: 'Inter', sans-serif;
+    padding: 0.2rem 0.4rem;
+    background-color: rgba(103, 58, 183, 0.1);
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    color: var(--math-color);
+}
+
+/* Formula box in the info tabs */
+.formula-box {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background-color: rgba(103, 58, 183, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(103, 58, 183, 0.2);
+}
+
+.formula-box .formula {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: var(--math-color);
+    text-align: center;
+}
+
+.formula-box .math {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--math-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .factor-result {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+    
+    .factor-result.has-result .factor-number {
+        font-size: 1.5rem;
+    }
+    
+    .formula-box .formula {
+        font-size: 1rem;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .example-buttons {
+        justify-content: center;
+    }
+    
+    .factor-result {
+        font-size: 1rem;
+    }
+    
+    .factor-result.has-result .factor-number {
+        font-size: 1.3rem;
+    }
+    
+    .factor-result.has-result .factors {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Theme-specific adjustments */
+.dark-mode .factor-result {
+    background-color: rgba(179, 136, 255, 0.1);
+    border-color: rgba(179, 136, 255, 0.2);
+}
+
+.dark-mode .factor-explanation {
+    border-left-color: var(--math-color);
+}
+
+.dark-mode .formula-box {
+    background-color: rgba(179, 136, 255, 0.05);
+    border-color: rgba(179, 136, 255, 0.2);
+} 

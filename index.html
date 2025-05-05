@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Tools - Simplify your daily tasks</title>
+    <meta name="description" content="Free online tools to simplify your everyday tasks. Calculate ages, count words, convert units and more with our easy-to-use utilities.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100..900;1,100..900&family=Product+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Poppins:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
     <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
     <nav>
-        <div class="logo">
+        <a href="index.html" class="logo">
             <i class="ri-tools-fill logo-icon"></i>
             <span>Daily Tools</span>
-        </div>
+        </a>
         <div class="nav-links">
             <a href="#" class="active">Home</a>
             <a href="#">Popular Tools</a>
@@ -25,8 +28,11 @@
         </div>
         <div class="nav-right">
             <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
-                <i class="ri-sun-line light-icon"></i>
-                <i class="ri-moon-line dark-icon"></i>
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
             </div>
             <div class="notification-icon" aria-label="Notifications">
                 <i class="ri-notification-2-fill"></i>
@@ -60,8 +66,8 @@
                     <button><i class="ri-file-text-fill"></i> Word Counter</button>
                     <button><i class="ri-calendar-fill"></i> Calendar</button>
                     <button><i class="ri-key-fill"></i> Password Generator</button>
-                    <button><i class="ri-scales-3-fill"></i> Unit Converter</button>
-                    <button><i class="ri-exchange-dollar-fill"></i> Currency Converter</button>
+                    <button><i class="ri-divide-fill"></i> Prime Factor</button>
+                    <button><i class="ri-hashtag"></i> Roman Converter</button>
                 </div>
             </div>  
 
@@ -101,34 +107,6 @@
 
                 <div class="tool">
                     <div class="tool-icon">
-                        <i class="ri-calendar-fill"></i>
-                        <h3>Calendar</h3>
-                        <span class="tool-badge">Updated</span>
-                    </div>
-                    <div class="tool-description">
-                        <p>Interactive calendar to manage your schedule and appointments. Syncs with your accounts for seamless planning.</p>
-                    </div>
-                    <div class="tool-link">
-                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
-                    </div>
-                </div>
-
-                <div class="tool">
-                    <div class="tool-icon">
-                        <i class="ri-key-fill"></i>
-                        <h3>Password Generator</h3>
-                        <span class="tool-badge">Secure</span>
-                    </div>
-                    <div class="tool-description">
-                        <p>Create strong, secure passwords with customizable options. Includes strength checker and quick copy feature.</p>
-                    </div>
-                    <div class="tool-link">
-                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
-                    </div>
-                </div>
-                
-                <div class="tool">
-                    <div class="tool-icon">
                         <i class="ri-divide-fill"></i>
                         <h3>Prime Factor</h3>
                         <span class="tool-badge">Mathematics</span>
@@ -137,21 +115,49 @@
                         <p>Find all prime factors of any number instantly. Helps understand number theory and solve complex math problems.</p>
                     </div>
                     <div class="tool-link">
-                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                        <a href="tools/prime-factor/index.html"><button id="prime-factor-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
-                
+
                 <div class="tool">
                     <div class="tool-icon">
-                        <i class="ri-roman-numerals-fill"></i>
-                        <h3>Roman to Number</h3>
+                        <i class="ri-hashtag"></i>
+                        <h3>Roman Converter</h3>
                         <span class="tool-badge">Converter</span>
                     </div>
                     <div class="tool-description">
                         <p>Convert Roman numerals to numbers and vice versa. Perfect for historical research, dates, and learning Roman numerals.</p>
                     </div>
                     <div class="tool-link">
-                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                        <a href="tools/roman-converter/index.html"><button id="roman-converter-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-timer-line"></i>
+                        <h3>Countdown Timer</h3>
+                        <span class="tool-badge">Utility</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Create custom countdown timers for events, deadlines, or activities. Features alerts and multiple timer support.</p>
+                    </div>
+                    <div class="tool-link">
+                        <a href="tools/countdown-timer/index.html"><button id="countdown-timer-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
+                    </div>
+                </div>
+
+                <div class="tool">
+                    <div class="tool-icon">
+                        <i class="ri-palette-line"></i>
+                        <h3>Color Converter</h3>
+                        <span class="tool-badge">Design</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Convert colors between RGB, HEX, HSL, and more. Essential tool for web designers and developers.</p>
+                    </div>
+                    <div class="tool-link">
+                        <a href="tools/color-converter/index.html"><button id="color-converter-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
             </div>
@@ -161,33 +167,60 @@
                 <a href="#" class="view-all">View All <i class="ri-arrow-right-s-line"></i></a>
             </div>
             
-            <div class="highlited-tools">
-
-                <div class="tool">
+            <div class="highlited-tools new-tools">
+                <div class="tool purple-theme">
                     <div class="tool-icon">
-                        <i class="ri-clipboard-fill"></i>
-                        <h3>Note Keeper</h3>
-                        <span class="tool-badge">Cloud Sync</span>
+                        <i class="ri-divide-fill"></i>
+                        <h3>Prime Factor</h3>
+                        <span class="tool-badge">Mathematics</span>
                     </div>
                     <div class="tool-description">
-                        <p>Take and organize notes with rich text formatting. Access your notes from any device with cloud syncing.</p>
+                        <p>Find all prime factors of any number instantly. Helps understand number theory and solve complex math problems.</p>
                     </div>
                     <div class="tool-link">
-                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                        <a href="tools/prime-factor/index.html"><button id="prime-factor-btn-2">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
-
-                <div class="tool">
+                
+                <div class="tool orange-theme">
                     <div class="tool-icon">
-                        <i class="ri-smartphone-line"></i>
-                        <h3>QR Code Generator</h3>
-                        <span class="tool-badge">Free</span>
+                        <i class="ri-hashtag"></i>
+                        <h3>Roman Converter</h3>
+                        <span class="tool-badge">Converter</span>
                     </div>
                     <div class="tool-description">
-                        <p>Generate custom QR codes for URLs, text, or contact information. Customize colors and download in high resolution.</p>
+                        <p>Convert Roman numerals to numbers and vice versa. Perfect for historical research, dates, and learning Roman numerals.</p>
                     </div>
                     <div class="tool-link">
-                        <button>Try Now <i class="ri-arrow-right-line"></i></button>
+                        <a href="tools/roman-converter/index.html"><button id="roman-converter-btn-2">Try Now <i class="ri-arrow-right-line"></i></button></a>
+                    </div>
+                </div>
+                
+                <div class="tool teal-theme">
+                    <div class="tool-icon">
+                        <i class="ri-sticky-note-fill"></i>
+                        <h3>Note Keeper</h3>
+                        <span class="tool-badge">New</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Create, edit, and save notes online. Features auto-save, rich text formatting, and categorization options.</p>
+                    </div>
+                    <div class="tool-link">
+                        <a href="tools/note-keeper/index.html"><button id="note-keeper-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
+                    </div>
+                </div>
+                
+                <div class="tool blue-theme">
+                    <div class="tool-icon">
+                        <i class="ri-qr-code-fill"></i>
+                        <h3>QR Generator</h3>
+                        <span class="tool-badge">Coming Soon</span>
+                    </div>
+                    <div class="tool-description">
+                        <p>Generate QR codes for URLs, text, contact information, and more. Customizable design and download options.</p>
+                    </div>
+                    <div class="tool-link">
+                        <button id="qr-generator-btn" disabled>Coming Soon <i class="ri-time-line"></i></button>
                     </div>
                 </div>
             </div>
@@ -201,7 +234,6 @@
                 <div class="coming-soon-item">
                     <div class="coming-soon-icon">
                         <i class="ri-video-line"></i>
-                        <div class="release-countdown">12 days</div>
                     </div>
                     <div class="coming-soon-details">
                         <h3>Video Compressor</h3>
@@ -216,7 +248,6 @@
                 <div class="coming-soon-item">
                     <div class="coming-soon-icon">
                         <i class="ri-markdown-fill"></i>
-                        <div class="release-countdown">19 days</div>
                     </div>
                     <div class="coming-soon-details">
                         <h3>Markdown Editor</h3>
@@ -231,7 +262,6 @@
                 <div class="coming-soon-item">
                     <div class="coming-soon-icon">
                         <i class="ri-barcode-line"></i>
-                        <div class="release-countdown">32 days</div>
                     </div>
                     <div class="coming-soon-details">
                         <h3>Barcode Generator</h3>
@@ -250,20 +280,56 @@
 
             <div class="categories">
                 <div class="category">
-                    <i class="ri-calculator-fill"></i>
+                    <div class="icon-container">
+                        <i class="ri-calculator-fill"></i>
+                    </div>
                     <h3>Calculators</h3>
+                    <ul>
+                        <li><a href="tools/age-calculator/index.html">Age Calculator</a></li>
+                        <li><a href="#">Percentage Calculator</a></li>
+                        <li><a href="#">Loan Calculator</a></li>
+                        <li><a href="#">BMI Calculator</a></li>
+                        <li><a href="tools/prime-factor/index.html">Prime Factor</a></li>
+                    </ul>
                 </div>
                 <div class="category">
-                    <i class="ri-text-wrap"></i>
+                    <div class="icon-container">
+                        <i class="ri-text-wrap"></i>
+                    </div>
                     <h3>Text Tools</h3>
+                    <ul>
+                        <li><a href="tools/word-counter/index.html">Word Counter</a></li>
+                        <li><a href="#">Text Case Converter</a></li>
+                        <li><a href="#">Lorem Ipsum Generator</a></li>
+                        <li><a href="#">Markdown Editor</a></li>
+                        <li><a href="tools/note-keeper/index.html">Note Keeper</a></li>
+                    </ul>
                 </div>
                 <div class="category">
-                    <i class="ri-time-fill"></i>
-                    <h3>Date & Time</h3>
+                    <div class="icon-container">
+                        <i class="ri-exchange-fill"></i>
+                    </div>
+                    <h3>Converters</h3>
+                    <ul>
+                        <li><a href="#">Unit Converter</a></li>
+                        <li><a href="#">Currency Converter</a></li>
+                        <li><a href="#">Time Zone Converter</a></li>
+                        <li><a href="tools/roman-converter/index.html">Roman Numeral Converter</a></li>
+                        <li><a href="#">Color Code Converter</a></li>
+                    </ul>
                 </div>
                 <div class="category">
-                    <i class="ri-file-fill"></i>
-                    <h3>File Tools</h3>
+                    <div class="icon-container">
+                        <i class="ri-secure-payment-fill"></i>
+                    </div>
+                    <h3>Security</h3>
+                    <ul>
+                        <li><a href="#">Password Generator</a></li>
+                        <li><a href="#">Password Strength Checker</a></li>
+                        <li><a href="#">Hash Generator</a></li>
+                        <li><a href="#">Encryption Tool</a></li>
+                        <li><a href="#">Privacy Policy Generator</a></li>
+                    </ul>
                 </div>
             </div>
 
@@ -275,81 +341,61 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">
-                <i class="ri-tools-fill logo-icon"></i>
-                <span>Daily Tools</span>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="#">Popular Tools</a></li>
+                        <li><a href="#">New Tools</a></li>
+                        <li><a href="#">Calculators</a></li>
+                        <li><a href="#">Converters</a></li>
+                        <li><a href="#">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Contact Us</a>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
             </div>
-            <p>&copy; 2023 Daily Tools. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Theme toggle functionality with enhanced animation
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            // Save user preference to localStorage
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-            } else {
-                localStorage.setItem('theme', 'light');
-            }
-        });
-        
-        // Check for saved user preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-
-        // Mobile menu toggle with animation
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-            menuToggle.classList.toggle('active');
-            
-            // Toggle between menu and close icons
-            const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('show')) {
-                icon.classList.remove('ri-menu-line');
-                icon.classList.add('ri-close-line');
-            } else {
-                icon.classList.remove('ri-close-line');
-                icon.classList.add('ri-menu-line');
-            }
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target) && navLinks.classList.contains('show')) {
-                navLinks.classList.remove('show');
-                menuToggle.classList.remove('active');
-                
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('ri-close-line');
-                icon.classList.add('ri-menu-line');
-            }
-        });
-        
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && navLinks.classList.contains('show')) {
-                navLinks.classList.remove('show');
-                menuToggle.classList.remove('active');
-                
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('ri-close-line');
-                icon.classList.add('ri-menu-line');
-            }
-        });
+        // All functionality moved to navigation.js
+        // Use that file for any changes to navigation behavior
     </script>
     <script src="navigation.js"></script>
 </body>

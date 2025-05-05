@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Roman Numeral Converter - Daily Tools</title>
+    <meta name="description" content="Convert Roman numerals to numbers and numbers to Roman numerals with our free online tool. Perfect for historical research, dates, and learning Roman numerals.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOURPUBIDHERE" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html" class="logo">
+            <i class="ri-tools-fill logo-icon"></i>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="#">Popular Tools</a>
+            <a href="#">Categories</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="notification-icon" aria-label="Notifications">
+                <i class="ri-notification-2-fill"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="profile-icon" aria-label="User profile">
+                <i class="ri-user-3-fill"></i>
+            </div>  
+        </div>
+        <div class="menu-icon" id="menu-toggle" aria-label="Toggle menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="tool-container">
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="../../index.html">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="#">Converters</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Roman Numeral Converter</span>
+                </div>
+                <h1><i class="ri-roman-s-fill"></i> Roman Numeral Converter</h1>
+                <p class="description">Convert Roman numerals to numbers and numbers to Roman numerals with our bidirectional converter. Perfect for historical research, dates, and learning the Roman numeral system.</p>
+                
+                <div class="meta">
+                    <div class="meta-item">
+                        <i class="ri-calendar-check-fill"></i>
+                        <span>Last Updated: May 5, 2023</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-star-fill"></i>
+                        <span>Rating: 4.9/5</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-eye-fill"></i>
+                        <span>Used 197,342 times</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOURPUBIDHERE"
+                     data-ad-slot="YOURADSLOTHERE"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="tool-card calculator-card">
+                <h2><i class="ri-roman-s-fill"></i> Roman Numeral Converter</h2>
+                
+                <div class="converter-mode">
+                    <button class="mode-btn active" data-mode="to-number">Roman to Number</button>
+                    <button class="mode-btn" data-mode="to-roman">Number to Roman</button>
+                </div>
+                
+                <div class="calculator-container">
+                    <div class="input-section">
+                        <div class="converter-input-wrapper">
+                            <div class="input-group to-number active">
+                                <label for="roman-input"><i class="ri-roman-s-fill"></i> Roman Numeral</label>
+                                <input type="text" id="roman-input" placeholder="Enter Roman numeral (e.g., MCMXCIV)" pattern="^[IVXLCDM]+$">
+                                <div class="input-examples">
+                                    <div class="example-buttons roman-examples">
+                                        <button class="example-btn" data-value="MCMXCIX">MCMXCIX</button>
+                                        <button class="example-btn" data-value="MMXXIII">MMXXIII</button>
+                                        <button class="example-btn" data-value="CDXLIV">CDXLIV</button>
+                                        <button class="example-btn" data-value="LXXXVII">LXXXVII</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group to-roman">
+                                <label for="number-input"><i class="ri-number-5"></i> Number</label>
+                                <input type="number" id="number-input" placeholder="Enter number (1-3999)" min="1" max="3999">
+                                <div class="input-examples">
+                                    <div class="example-buttons number-examples">
+                                        <button class="example-btn" data-value="1999">1999</button>
+                                        <button class="example-btn" data-value="2023">2023</button>
+                                        <button class="example-btn" data-value="444">444</button>
+                                        <button class="example-btn" data-value="87">87</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <button id="convert-btn" class="btn btn-primary">
+                                <i class="ri-exchange-fill"></i> Convert
+                            </button>
+                            <button id="clear-btn" class="btn btn-secondary">
+                                <i class="ri-delete-bin-line"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-section" id="result-section">
+                        <div class="result-heading">Conversion Result:</div>
+                        <div class="conversion-display">
+                            <div class="conversion-result" id="conversion-result">
+                                <div class="empty-state">
+                                    <i class="ri-roman-s-fill"></i>
+                                    <p>Enter a Roman numeral or number to convert</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="breakdown" id="breakdown">
+                            <!-- Breakdown will be populated by JavaScript -->
+                        </div>
+                        
+                        <div class="share-results">
+                            <button class="btn btn-secondary copy-btn" data-copy-target="result-text">
+                                <i class="ri-clipboard-line"></i> Copy Result
+                            </button>
+                            <button class="btn btn-secondary share-btn">
+                                <i class="ri-share-line"></i> Share
+                            </button>
+                            <button class="btn btn-secondary print-btn">
+                                <i class="ri-printer-line"></i> Print
+                            </button>
+                            <textarea id="result-text" hidden></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-info">
+                <div class="info-tab">
+                    <div class="tab-header active" data-tab="what-is">Roman Numeral System</div>
+                    <div class="tab-content" id="what-is-content">
+                        <p>Roman numerals are a numeral system that originated in ancient Rome. Numbers are represented by combinations of letters from the Latin alphabet.</p>
+                        
+                        <div class="roman-value-table">
+                            <div class="table-row table-header">
+                                <div>Symbol</div>
+                                <div>Value</div>
+                            </div>
+                            <div class="table-row">
+                                <div>I</div>
+                                <div>1</div>
+                            </div>
+                            <div class="table-row">
+                                <div>V</div>
+                                <div>5</div>
+                            </div>
+                            <div class="table-row">
+                                <div>X</div>
+                                <div>10</div>
+                            </div>
+                            <div class="table-row">
+                                <div>L</div>
+                                <div>50</div>
+                            </div>
+                            <div class="table-row">
+                                <div>C</div>
+                                <div>100</div>
+                            </div>
+                            <div class="table-row">
+                                <div>D</div>
+                                <div>500</div>
+                            </div>
+                            <div class="table-row">
+                                <div>M</div>
+                                <div>1000</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Roman Numeral Rules:</h3>
+                        <ul>
+                            <li>Numerals are generally written largest to smallest from left to right.</li>
+                            <li>When a smaller value precedes a larger value, the smaller value is subtracted from the larger value.</li>
+                            <li>Examples of subtractive notation: IV = 4, IX = 9, XL = 40, XC = 90, CD = 400, CM = 900.</li>
+                            <li>The same numeral cannot be used more than three times in succession (e.g., III = 3, but IIII is not valid).</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-tab">
+                    <div class="tab-header" data-tab="how-to">How to Use This Converter</div>
+                    <div class="tab-content" id="how-to-content" style="display: none;">
+                        <p>Our Roman Numeral Converter is easy to use:</p>
+                        
+                        <h3>Converting Roman to Number:</h3>
+                        <ol>
+                            <li>Select the "Roman to Number" mode (default)</li>
+                            <li>Enter a valid Roman numeral in the input field</li>
+                            <li>Click "Convert" button to see the result</li>
+                            <li>View the breakdown to understand how the conversion works</li>
+                        </ol>
+                        
+                        <h3>Converting Number to Roman:</h3>
+                        <ol>
+                            <li>Select the "Number to Roman" mode</li>
+                            <li>Enter a number between 1 and 3999</li>
+                            <li>Click "Convert" button to see the result</li>
+                            <li>View the breakdown to understand how the conversion works</li>
+                        </ol>
+                        
+                        <p>You can also use the example buttons to try out pre-defined values.</p>
+                    </div>
+                </div>
+                
+                <div class="info-tab">
+                    <div class="tab-header" data-tab="examples">Common Examples</div>
+                    <div class="tab-content" id="examples-content" style="display: none;">
+                        <h3>Common Roman Numerals:</h3>
+                        
+                        <div class="examples-grid">
+                            <div class="example-card">
+                                <div class="example-title">Years</div>
+                                <ul>
+                                    <li><span class="example-roman">MCMXCIX</span> = <span class="example-number">1999</span></li>
+                                    <li><span class="example-roman">MM</span> = <span class="example-number">2000</span></li>
+                                    <li><span class="example-roman">MMXXIII</span> = <span class="example-number">2023</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example-card">
+                                <div class="example-title">Famous Numbers</div>
+                                <ul>
+                                    <li><span class="example-roman">VII</span> = <span class="example-number">7</span> (Seven Wonders)</li>
+                                    <li><span class="example-roman">XII</span> = <span class="example-number">12</span> (Months, Zodiac Signs)</li>
+                                    <li><span class="example-roman">C</span> = <span class="example-number">100</span> (Century)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example-card">
+                                <div class="example-title">Special Cases</div>
+                                <ul>
+                                    <li><span class="example-roman">IV</span> = <span class="example-number">4</span> (Not IIII)</li>
+                                    <li><span class="example-roman">IX</span> = <span class="example-number">9</span> (Not VIIII)</li>
+                                    <li><span class="example-roman">XL</span> = <span class="example-number">40</span> (Not XXXX)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example-card">
+                                <div class="example-title">Movies & Books</div>
+                                <ul>
+                                    <li><span class="example-roman">III</span> = <span class="example-number">3</span> (Trilogies)</li>
+                                    <li><span class="example-roman">IV</span> = <span class="example-number">4</span> (Star Wars Episode IV)</li>
+                                    <li><span class="example-roman">V</span> = <span class="example-number">5</span> (Book Chapters)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Container -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOURPUBIDHERE"
+                     data-ad-slot="YOURADSLOTHERE"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <div class="tool-sidebar">
+                <div class="sidebar-card">
+                    <h3><i class="ri-link-m"></i> Related Tools</h3>
+                    <div class="related-tools">
+                        <a href="../prime-factor/" class="related-tool">
+                            <i class="ri-divide-fill"></i>
+                            <span>Prime Factor Calculator</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-scales-3-fill"></i>
+                            <span>Unit Converter</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-exchange-dollar-fill"></i>
+                            <span>Currency Converter</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-calendar-fill"></i>
+                            <span>Date Calculator</span>
+                        </a>
+                        <a href="#" class="related-tool">
+                            <i class="ri-base-station-fill"></i>
+                            <span>Binary Converter</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3><i class="ri-question-fill"></i> FAQ</h3>
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What is the largest number I can convert?</span>
+                                <i class="ri-add-line"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Standard Roman numerals can represent numbers from 1 to 3,999. Beyond that, special notation with overlines would be needed, which isn't commonly used today. Our converter supports numbers within the 1-3,999 range.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Why can't I convert the number 0?</span>
+                                <i class="ri-add-line"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>The ancient Romans didn't have a symbol for zero. The concept of zero as a number came from Indian mathematics and was later adopted in Europe through Arabic numerals. Roman numerals only represent positive integers.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Are Roman numerals still used today?</span>
+                                <i class="ri-add-line"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, Roman numerals are still used in several contexts: clock faces, book chapters and volumes, movie sequels, major sporting events like the Olympics and Super Bowl, outlines, and monarchs' names (like Elizabeth II).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Can Roman numerals represent fractions?</span>
+                                <i class="ri-add-line"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Standard Roman numerals cannot represent fractions or decimal values. The Romans did have separate symbols for fractions in certain contexts (particularly for weights and measures), but these aren't part of the standard Roman numeral system we use today.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="#">Popular Tools</a></li>
+                        <li><a href="#">New Tools</a></li>
+                        <li><a href="#">Calculators</a></li>
+                        <li><a href="#">Converters</a></li>
+                        <li><a href="#">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../common.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

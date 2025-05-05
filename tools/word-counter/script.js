@@ -1,320 +1,405 @@
-// Word Counter JavaScript
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Get DOM elements
+    // Elements
     const textInput = document.getElementById('text-input');
-    const countBtn = document.getElementById('count-btn');
+    const urlInput = document.getElementById('url-input');
+    const fetchUrlBtn = document.getElementById('fetch-url-btn');
+    const fileInput = document.getElementById('file-input');
+    const fileDropArea = document.getElementById('file-drop-area');
+    const fileInfo = document.getElementById('file-info');
+    const fileName = document.getElementById('file-name');
+    const fileSize = document.getElementById('file-size');
+    const removeFileBtn = document.getElementById('remove-file-btn');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
     const clearBtn = document.getElementById('clear-btn');
-    const sampleTextBtn = document.getElementById('sample-text-btn');
+    const copyBtn = document.getElementById('copy-btn');
+    const increaseFontBtn = document.getElementById('increase-font');
+    const decreaseFontBtn = document.getElementById('decrease-font');
     const wordCount = document.getElementById('word-count');
-    const characterCount = document.getElementById('character-count');
-    const characterNoSpaces = document.getElementById('character-no-spaces');
-    const sentenceCount = document.getElementById('sentence-count');
+    const charCount = document.getElementById('char-count');
+    const charNoSpaceCount = document.getElementById('char-no-space-count');
     const paragraphCount = document.getElementById('paragraph-count');
+    const sentenceCount = document.getElementById('sentence-count');
     const readingTime = document.getElementById('reading-time');
+    const longestWord = document.getElementById('longest-word');
     const avgWordLength = document.getElementById('avg-word-length');
-    const wordsPerSentence = document.getElementById('words-per-sentence');
-    const uniqueWords = document.getElementById('unique-words');
-    const uniqueWordsPercent = document.getElementById('unique-words-percent');
-    const wordDensityContainer = document.getElementById('word-density-container');
-    const resultText = document.getElementById('result-text');
-    const copyResultsBtn = document.querySelector('.share-results .copy-btn');
-    const shareBtn = document.querySelector('.share-results .share-btn');
-    const printBtn = document.querySelector('.share-results .print-btn');
-    const reportBugBtn = document.getElementById('report-bug-btn');
-    const reportBugModal = document.getElementById('report-bug-modal');
-    const closeModalBtn = document.querySelector('.close-modal');
-    const resultSection = document.getElementById('result-section');
+    const commonWord = document.getElementById('common-word');
+    const keywordDensity = document.getElementById('keyword-density');
+    const minWordLength = document.getElementById('min-word-length');
+    const excludeCommon = document.getElementById('exclude-common');
+    const wordCloud = document.getElementById('word-cloud');
+    const frequencyTableBody = document.getElementById('frequency-table-body');
+    const faqItems = document.querySelectorAll('.faq-item');
     
-    // Common words to exclude from word density
+    // Common words to exclude from frequency analysis
     const commonWords = [
         'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i', 
         'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at', 
         'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she', 
         'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what', 
         'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
-        'is', 'are', 'was', 'were', 'am', 'has', 'had', 'been', 'when', 'where',
-        'why', 'how', 'your', 'can', 'could', 'should', 'would', 'may', 'might',
-        'must', 'shall', 'will', 'them', 'then', 'than', 'these', 'those', 'its',
-        'any', 'some', 'many', 'few', 'most', 'our', 'us', 'him', 'himself',
-        'herself', 'myself', 'yourself', 'yourselves', 'ourselves', 'themselves'
+        'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+        'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+        'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+        'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+        'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us'
     ];
     
-    // Sample text for demonstration
-    const sampleText = `The quick brown fox jumps over the lazy dog. This sentence is often used because it contains all the letters in the English alphabet.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-This is a third paragraph with some different vocabulary to ensure a good mix of word density. The analysis of text provides insights about sentence structure, word frequency, and overall readability of content.`;
+    // Current font size for the text input area
+    let currentFontSize = 16; // in pixels
     
-    // Event listeners
-    textInput.addEventListener('input', debounce(analyzeText, 300));
-    countBtn.addEventListener('click', function() {
-        countBtn.classList.add('calculating');
-        setTimeout(() => {
-            analyzeText();
-            countBtn.classList.remove('calculating');
-        }, 300);
-    });
-    clearBtn.addEventListener('click', function() {
-        clearBtn.classList.add('resetting');
-        setTimeout(() => {
-            clearText();
-            clearBtn.classList.remove('resetting');
-        }, 300);
-    });
-    sampleTextBtn.addEventListener('click', loadSampleText);
-    
-    // Copy, share, and print functionality
-    if (copyResultsBtn) {
-        copyResultsBtn.addEventListener('click', copyResults);
-    }
-    
-    if (shareBtn) {
-        shareBtn.addEventListener('click', shareResults);
-    }
-    
-    if (printBtn) {
-        printBtn.addEventListener('click', printResults);
-    }
-    
-    // Info tabs functionality
-    const infoTabs = document.querySelectorAll('.info-tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    infoTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Remove active class from all tabs and contents
-            infoTabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked tab and corresponding content
-            tab.classList.add('active');
-            const contentId = tab.getAttribute('data-tab');
-            document.getElementById(contentId).classList.add('active');
-        });
-    });
-    
-    // Rating stars functionality
-    const ratingStars = document.querySelectorAll('.rating-stars i');
-    const ratingValue = document.getElementById('rating-value');
-    
-    ratingStars.forEach(star => {
-        star.addEventListener('mouseover', () => {
-            const value = parseInt(star.getAttribute('data-value'));
-            highlightStars(value);
-        });
-        
-        star.addEventListener('mouseout', () => {
-            const currentRating = parseInt(ratingValue.value) || 0;
-            highlightStars(currentRating);
-        });
-        
-        star.addEventListener('click', () => {
-            const value = parseInt(star.getAttribute('data-value'));
-            ratingValue.value = value;
-            highlightStars(value);
-        });
-    });
-    
-    // Bug report modal functionality
-    if (reportBugBtn && reportBugModal && closeModalBtn) {
-        reportBugBtn.addEventListener('click', () => {
-            reportBugModal.classList.add('active');
-        });
-        
-        closeModalBtn.addEventListener('click', () => {
-            reportBugModal.classList.remove('active');
-        });
-        
-        // Close modal when clicking outside
-        reportBugModal.addEventListener('click', (e) => {
-            if (e.target === reportBugModal) {
-                reportBugModal.classList.remove('active');
-            }
-        });
-    }
-    
-    // Initialize with empty text
-    if (textInput.value.trim() === '') {
-        textInput.value = '';
-        analyzeText();
-    } else {
-        analyzeText();
-    }
+    // Initialize
+    init();
     
     // Functions
+    function init() {
+        // Set up event listeners
+        textInput.addEventListener('input', analyzeText);
+        fetchUrlBtn.addEventListener('click', fetchUrlContent);
+        urlInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                fetchUrlContent();
+            }
+        });
+        fileInput.addEventListener('change', handleFileUpload);
+        fileDropArea.addEventListener('dragover', handleDragOver);
+        fileDropArea.addEventListener('dragleave', handleDragLeave);
+        fileDropArea.addEventListener('drop', handleFileDrop);
+        fileDropArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+        removeFileBtn.addEventListener('click', removeFile);
+        clearBtn.addEventListener('click', clearText);
+        copyBtn.addEventListener('click', copyText);
+        increaseFontBtn.addEventListener('click', increaseFontSize);
+        decreaseFontBtn.addEventListener('click', decreaseFontSize);
+        minWordLength.addEventListener('change', updateWordFrequency);
+        excludeCommon.addEventListener('change', updateWordFrequency);
+        
+        // Set up tab switching
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+        });
+        
+        // Setup FAQ accordions
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Theme toggle if it exists
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.body.classList.add('dark-mode');
+            }
+        }
+        
+        // Mobile menu toggle if it exists
+        const menuToggle = document.getElementById('menu-toggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        }
+    }
+    
     function analyzeText() {
         const text = textInput.value;
         
         // Basic counts
-        const words = text.trim() === '' ? [] : text.trim().split(/\s+/);
-        const wordCountValue = words.length;
-        const characterCountValue = text.length;
-        const characterNoSpacesValue = text.replace(/\s+/g, '').length;
-        const sentenceCountValue = text.trim() === '' ? 0 : text.split(/[.!?]+/).filter(Boolean).length;
-        const paragraphCountValue = text.trim() === '' ? 0 : text.split(/\n{2,}/).filter(Boolean).length;
+        const words = text.trim() ? text.trim().split(/\s+/) : [];
+        const wordCount = words.length;
+        const charCount = text.length;
+        const charNoSpaceCount = text.replace(/\s+/g, '').length;
+        const paragraphs = text.trim() ? text.split(/\n+/).filter(p => p.trim().length > 0) : [];
+        const paragraphCount = paragraphs.length;
         
-        // Reading time (average 225 words per minute)
-        const readingTimeValue = Math.ceil(wordCountValue / 225);
-        const readingTimeText = readingTimeValue <= 1 ? 'less than 1 min' : `${readingTimeValue} mins`;
+        // Count sentences (this is simplified and might not be perfect)
+        const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+        const sentenceCount = sentences.length;
         
-        // Advanced statistics
-        const avgWordLengthValue = wordCountValue === 0 ? 0 : (characterNoSpacesValue / wordCountValue).toFixed(1);
+        // Calculate reading time (average 225 words per minute)
+        const readingTimeValue = Math.ceil(wordCount / 225);
         
-        // Word frequency analysis
-        const wordFrequency = {};
+        // Find longest word
+        let longestWordValue = '-';
+        let totalWordLength = 0;
         
-        if (wordCountValue > 0) {
-            words.forEach(word => {
-                const cleanWord = word.toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '');
-                if (cleanWord && !commonWords.includes(cleanWord)) {
-                    wordFrequency[cleanWord] = (wordFrequency[cleanWord] || 0) + 1;
-                }
-            });
+        if (words.length > 0) {
+            const cleanWords = words.map(word => word.replace(/[^\w\s]/gi, ''));
+            longestWordValue = cleanWords.reduce((a, b) => a.length > b.length ? a : b);
+            totalWordLength = cleanWords.reduce((sum, word) => sum + word.length, 0);
         }
         
-        // Words per sentence
-        const wordsPerSentenceValue = sentenceCountValue === 0 ? 0 : (wordCountValue / sentenceCountValue).toFixed(1);
+        // Calculate average word length
+        const avgWordLengthValue = words.length ? (totalWordLength / words.length).toFixed(1) : '0';
         
-        // Unique words
-        const uniqueWordsCount = Object.keys(wordFrequency).length;
-        const uniqueWordsPercentValue = wordCountValue === 0 ? 0 : Math.round((uniqueWordsCount / wordCountValue) * 100);
+        // Update UI
+        document.getElementById('word-count').textContent = wordCount;
+        document.getElementById('char-count').textContent = charCount;
+        document.getElementById('char-no-space-count').textContent = charNoSpaceCount;
+        document.getElementById('paragraph-count').textContent = paragraphCount;
+        document.getElementById('sentence-count').textContent = sentenceCount;
+        document.getElementById('reading-time').textContent = readingTimeValue;
+        document.getElementById('longest-word').textContent = longestWordValue;
+        document.getElementById('avg-word-length').textContent = avgWordLengthValue;
         
-        // Update the DOM with animation effects
-        updateElementWithAnimation(wordCount, wordCountValue);
-        updateElementWithAnimation(characterCount, characterCountValue);
-        updateElementWithAnimation(characterNoSpaces, characterNoSpacesValue);
-        updateElementWithAnimation(sentenceCount, sentenceCountValue);
-        updateElementWithAnimation(paragraphCount, paragraphCountValue);
-        updateElementWithAnimation(readingTime, readingTimeText);
-        updateElementWithAnimation(avgWordLength, avgWordLengthValue);
-        updateElementWithAnimation(wordsPerSentence, wordsPerSentenceValue);
-        updateElementWithAnimation(uniqueWords, uniqueWordsCount);
-        updateElementWithAnimation(uniqueWordsPercent, uniqueWordsPercentValue);
-        
-        // Update word density display
-        updateWordDensity(wordFrequency);
-        
-        // Show result section with animation
-        if (resultSection && !resultSection.classList.contains('results-visible')) {
-            resultSection.classList.add('results-visible');
-        }
-        
-        // Prepare result text for copying
-        prepareResultTextForCopy(wordCountValue, characterCountValue, characterNoSpacesValue, 
-            sentenceCountValue, paragraphCountValue, readingTimeText, avgWordLengthValue,
-            wordsPerSentenceValue, uniqueWordsCount, uniqueWordsPercentValue);
+        // Update word frequency
+        updateWordFrequency();
     }
     
-    function updateElementWithAnimation(element, value) {
-        if (!element) return;
-        
-        // Add animation when value changes
-        if (element.textContent !== String(value)) {
-            element.classList.add('highlight-value');
-            setTimeout(() => {
-                element.classList.remove('highlight-value');
-            }, 600);
-        }
-        
-        element.textContent = value;
-    }
-    
-    function updateWordDensity(wordFrequency) {
-        if (!wordDensityContainer) return;
-        
-        // Sort words by frequency
-        const sortedWords = Object.entries(wordFrequency)
-            .filter(([word]) => word.length > 1) // Only include words with 2+ characters
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 10); // Show top 10 words
-        
-        // Find the max frequency for scaling bars
-        const maxFrequency = sortedWords.length > 0 ? sortedWords[0][1] : 0;
-        
-        // Clear container
-        wordDensityContainer.innerHTML = '';
-        
-        if (sortedWords.length === 0) {
-            const emptyState = document.createElement('div');
-            emptyState.className = 'empty-state';
-            emptyState.textContent = 'Enter text to see word density';
-            wordDensityContainer.appendChild(emptyState);
+    function updateWordFrequency() {
+        const text = textInput.value;
+        if (!text.trim()) {
+            // Show empty message
+            frequencyTableBody.innerHTML = '<tr class="empty-table-message"><td colspan="3">Enter text to see word frequency analysis</td></tr>';
+            wordCloud.innerHTML = 'Enter text to generate a word cloud';
+            document.getElementById('common-word').textContent = '-';
+            document.getElementById('keyword-density').textContent = '-';
             return;
         }
         
-        // Create density items
-        sortedWords.forEach(([word, frequency], index) => {
-            const densityItem = document.createElement('div');
-            densityItem.className = 'density-item';
+        // Get words and clean them
+        const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+        const minLength = parseInt(minWordLength.value);
+        const shouldExcludeCommon = excludeCommon.checked;
+        
+        // Filter words by minimum length and exclude common words if requested
+        const filteredWords = words.filter(word => {
+            return word.length >= minLength && 
+                (!shouldExcludeCommon || !commonWords.includes(word));
+        });
+        
+        // Count word frequency
+        const wordFrequency = {};
+        filteredWords.forEach(word => {
+            wordFrequency[word] = (wordFrequency[word] || 0) + 1;
+        });
+        
+        // Convert to array and sort by frequency
+        const wordFrequencyArray = Object.entries(wordFrequency)
+            .map(([word, count]) => ({ word, count }))
+            .sort((a, b) => b.count - a.count);
+        
+        // Find most common word
+        let mostCommonWord = '-';
+        let keywordDensityValue = '-';
+        
+        if (wordFrequencyArray.length > 0) {
+            mostCommonWord = `"${wordFrequencyArray[0].word}" (${wordFrequencyArray[0].count} times)`;
+            keywordDensityValue = `${((wordFrequencyArray[0].count / words.length) * 100).toFixed(1)}%`;
+        }
+        
+        document.getElementById('common-word').textContent = mostCommonWord;
+        document.getElementById('keyword-density').textContent = keywordDensityValue;
+        
+        // Generate table
+        generateFrequencyTable(wordFrequencyArray, words.length);
+        
+        // Generate word cloud
+        generateWordCloud(wordFrequencyArray);
+    }
+    
+    function generateFrequencyTable(wordFrequencyArray, totalWordCount) {
+        // Clear table
+        frequencyTableBody.innerHTML = '';
+        
+        // Use only top 10 words for the table
+        const topWords = wordFrequencyArray.slice(0, 10);
+        
+        if (topWords.length === 0) {
+            frequencyTableBody.innerHTML = '<tr class="empty-table-message"><td colspan="3">No words match your filter criteria</td></tr>';
+            return;
+        }
+        
+        // Add rows
+        topWords.forEach(item => {
+            const row = document.createElement('tr');
             
-            const wordSpan = document.createElement('span');
-            wordSpan.className = 'density-word';
-            wordSpan.textContent = word;
+            const wordCell = document.createElement('td');
+            wordCell.textContent = item.word;
             
-            const countSpan = document.createElement('span');
-            countSpan.className = 'density-count';
-            countSpan.textContent = frequency;
+            const countCell = document.createElement('td');
+            countCell.textContent = item.count;
             
-            const percentageBar = document.createElement('div');
-            percentageBar.className = 'density-bar';
+            const frequencyCell = document.createElement('td');
+            const frequency = ((item.count / totalWordCount) * 100).toFixed(1);
+            frequencyCell.textContent = `${frequency}%`;
             
-            // Create inner bar with appropriate width
-            const innerBar = document.createElement('div');
-            innerBar.style.width = `${(frequency / maxFrequency) * 100}%`;
-            innerBar.style.height = '100%';
-            innerBar.style.backgroundColor = getBarColor(index);
-            percentageBar.appendChild(innerBar);
+            row.appendChild(wordCell);
+            row.appendChild(countCell);
+            row.appendChild(frequencyCell);
             
-            densityItem.appendChild(wordSpan);
-            densityItem.appendChild(countSpan);
-            densityItem.appendChild(percentageBar);
-            
-            // Add delayed appearance animation
-            setTimeout(() => {
-                densityItem.style.opacity = '1';
-                densityItem.style.transform = 'translateX(0)';
-            }, index * 50);
-            
-            wordDensityContainer.appendChild(densityItem);
+            frequencyTableBody.appendChild(row);
         });
     }
     
-    function getBarColor(index) {
-        const colors = [
-            'var(--primary-blue)',
-            'var(--primary-red)',
-            'var(--primary-green)',
-            'var(--primary-yellow)',
-            'var(--primary-purple)',
-            'var(--primary-teal)',
-            'var(--primary-blue)',
-            'var(--primary-red)',
-            'var(--primary-green)',
-            'var(--primary-yellow)'
-        ];
-        return colors[index % colors.length];
+    function generateWordCloud(wordFrequencyArray) {
+        // Simple word cloud representation
+        wordCloud.innerHTML = '';
+        
+        if (wordFrequencyArray.length === 0) {
+            wordCloud.innerHTML = 'No words match your filter criteria';
+            return;
+        }
+        
+        // Use top 20 words for the cloud
+        const topWords = wordFrequencyArray.slice(0, 20);
+        const maxFrequency = topWords[0].count;
+        
+        topWords.forEach(item => {
+            const wordSpan = document.createElement('span');
+            const size = Math.max(1, Math.min(4, (item.count / maxFrequency) * 4));
+            const opacity = 0.6 + ((item.count / maxFrequency) * 0.4);
+            
+            wordSpan.textContent = item.word;
+            wordSpan.style.fontSize = `${size}em`;
+            wordSpan.style.opacity = opacity;
+            wordSpan.style.margin = '0.25em';
+            wordSpan.style.display = 'inline-block';
+            
+            wordCloud.appendChild(wordSpan);
+        });
     }
     
-    function prepareResultTextForCopy(words, chars, charsNoSpaces, sentences, paragraphs, readingTime, avgWordLength, wordsPerSentence, uniqueWordsCount, uniqueWordsPercent) {
-        if (!resultText) return;
+    function fetchUrlContent() {
+        const url = urlInput.value.trim();
         
-        resultText.value = 
-`Word Count Results:
------------------
-Words: ${words}
-Characters: ${chars}
-Characters (no spaces): ${charsNoSpaces}
-Sentences: ${sentences}
-Paragraphs: ${paragraphs}
-Reading Time: ${readingTime}
-Average Word Length: ${avgWordLength} characters
-Words per Sentence: ${wordsPerSentence}
-Unique Words: ${uniqueWordsCount} (${uniqueWordsPercent}% of total)
-
-Generated by Daily Tools Word Counter
-https://dailytools.example.com/tools/word-counter/`;
+        if (!url) {
+            alert('Please enter a valid URL');
+            return;
+        }
+        
+        // Check if the URL is valid
+        try {
+            new URL(url);
+        } catch (e) {
+            alert('Please enter a valid URL including http:// or https://');
+            return;
+        }
+        
+        // Show loading message
+        textInput.value = 'Loading content from URL...';
+        switchTab('text-tab');
+        
+        // Normally we would use a server-side proxy to fetch the URL content
+        // For this demo, we'll simulate the fetch
+        setTimeout(() => {
+            textInput.value = 'This is simulated content from a URL fetch.\n\nIn a real implementation, this would use a server-side proxy to fetch the actual content from the provided URL.\n\nThe content would then be analyzed just like text that was directly pasted into the editor.';
+            analyzeText();
+        }, 1500);
+        
+        // In a real implementation, we would use something like:
+        /*
+        fetch('/api/proxy-url?url=' + encodeURIComponent(url))
+            .then(response => response.text())
+            .then(html => {
+                // Extract text content from HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const content = doc.body.textContent || "";
+                
+                // Set the text content and analyze
+                textInput.value = content;
+                analyzeText();
+            })
+            .catch(error => {
+                alert('Error fetching URL: ' + error.message);
+                textInput.value = '';
+            });
+        */
+    }
+    
+    function handleFileUpload(e) {
+        const file = e.target.files[0];
+        if (file) {
+            processFile(file);
+        }
+    }
+    
+    function handleDragOver(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        fileDropArea.classList.add('drag-over');
+    }
+    
+    function handleDragLeave(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        fileDropArea.classList.remove('drag-over');
+    }
+    
+    function handleFileDrop(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        fileDropArea.classList.remove('drag-over');
+        
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            processFile(file);
+        }
+    }
+    
+    function processFile(file) {
+        // Check file type (simplified)
+        const validFileTypes = ['.txt', '.doc', '.docx', '.rtf', '.md', '.html'];
+        const extension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+        
+        if (!validFileTypes.includes(extension)) {
+            alert('Unsupported file type. Please upload a text file.');
+            return;
+        }
+        
+        // Show file info
+        fileName.textContent = file.name;
+        fileSize.textContent = formatFileSize(file.size);
+        fileInfo.style.display = 'flex';
+        
+        // Read the file
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            textInput.value = e.target.result;
+            analyzeText();
+            switchTab('text-tab');
+        };
+        
+        reader.onerror = function() {
+            alert('Error reading file');
+        };
+        
+        reader.readAsText(file);
+    }
+    
+    function removeFile() {
+        fileInput.value = '';
+        fileInfo.style.display = 'none';
+    }
+    
+    function formatFileSize(bytes) {
+        if (bytes < 1024) return bytes + ' bytes';
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+        else return (bytes / 1048576).toFixed(1) + ' MB';
+    }
+    
+    function switchTab(tabId) {
+        // Remove active class from all tabs
+        tabButtons.forEach(button => button.classList.remove('active'));
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+        
+        // Add active class to the selected tab
+        document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+        document.getElementById(tabId).classList.add('active');
     }
     
     function clearText() {
@@ -323,143 +408,68 @@ https://dailytools.example.com/tools/word-counter/`;
         textInput.focus();
     }
     
-    function loadSampleText() {
-        textInput.value = sampleText;
-        analyzeText();
-    }
-    
-    function copyResults() {
-        if (!resultText) return;
-        
-        resultText.select();
+    function copyText() {
+        textInput.select();
         document.execCommand('copy');
         
-        const copyBtn = document.querySelector('.copy-btn');
-        if (copyBtn) {
-            const originalText = copyBtn.innerHTML;
-            copyBtn.classList.add('copied');
-            copyBtn.innerHTML = '<i class="ri-check-line"></i> Copied!';
-            
-            setTimeout(() => {
-                copyBtn.classList.remove('copied');
-                copyBtn.innerHTML = originalText;
-            }, 2000);
-        }
-    }
-    
-    function shareResults() {
-        const title = 'Word Count Results';
-        const text = `My text contains ${wordCount.textContent} words and ${characterCount.textContent} characters.`;
-        const url = window.location.href;
-        
-        if (navigator.share) {
-            navigator.share({
-                title: title,
-                text: text,
-                url: url
-            }).catch(err => {
-                console.error('Share failed:', err);
-                fallbackShare();
-            });
-        } else {
-            fallbackShare();
-        }
-        
-        function fallbackShare() {
-            const shareURL = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text + '\n\n' + url)}`;
-            window.open(shareURL, '_blank');
-        }
-    }
-    
-    function printResults() {
-        const printContent = `
-            <html>
-            <head>
-                <title>Word Count Results</title>
-                <style>
-                    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
-                    h1 { color: #4285f4; }
-                    .section { margin-bottom: 20px; }
-                    .result-item { margin-bottom: 10px; }
-                    .label { font-weight: bold; }
-                    .footer { margin-top: 40px; color: #777; font-size: 12px; text-align: center; }
-                </style>
-            </head>
-            <body>
-                <h1>Word Count Results</h1>
-                <div class="section">
-                    <div class="result-item"><span class="label">Words:</span> ${wordCount.textContent}</div>
-                    <div class="result-item"><span class="label">Characters:</span> ${characterCount.textContent}</div>
-                    <div class="result-item"><span class="label">Characters (no spaces):</span> ${characterNoSpaces.textContent}</div>
-                    <div class="result-item"><span class="label">Sentences:</span> ${sentenceCount.textContent}</div>
-                    <div class="result-item"><span class="label">Paragraphs:</span> ${paragraphCount.textContent}</div>
-                    <div class="result-item"><span class="label">Reading Time:</span> ${readingTime.textContent}</div>
-                    <div class="result-item"><span class="label">Average Word Length:</span> ${avgWordLength.textContent} characters</div>
-                    <div class="result-item"><span class="label">Words per Sentence:</span> ${wordsPerSentence.textContent}</div>
-                    <div class="result-item"><span class="label">Unique Words:</span> ${uniqueWords.textContent} (${uniqueWordsPercent.textContent}% of total)</div>
-                </div>
-                <div class="footer">
-                    Generated by Daily Tools Word Counter<br>
-                    https://dailytools.example.com/tools/word-counter/
-                </div>
-            </body>
-            </html>
-        `;
-        
-        const printWindow = window.open('', '_blank');
-        printWindow.document.write(printContent);
-        printWindow.document.close();
-        
-        // Wait for content to load then print
+        // Show copied feedback
+        const originalText = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="ri-check-line"></i>';
         setTimeout(() => {
-            printWindow.print();
-        }, 250);
+            copyBtn.innerHTML = originalText;
+        }, 2000);
     }
     
-    function highlightStars(rating) {
-        ratingStars.forEach(star => {
-            const value = parseInt(star.getAttribute('data-value'));
-            if (value <= rating) {
-                star.classList.remove('ri-star-line');
-                star.classList.add('ri-star-fill');
-            } else {
-                star.classList.remove('ri-star-fill');
-                star.classList.add('ri-star-line');
-            }
-        });
+    function increaseFontSize() {
+        if (currentFontSize < 24) {
+            currentFontSize += 2;
+            textInput.style.fontSize = `${currentFontSize}px`;
+        }
     }
     
-    function debounce(func, delay) {
-        let timer;
-        return function() {
-            const context = this;
-            const args = arguments;
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-                func.apply(context, args);
-            }, delay);
-        };
+    function decreaseFontSize() {
+        if (currentFontSize > 12) {
+            currentFontSize -= 2;
+            textInput.style.fontSize = `${currentFontSize}px`;
+        }
     }
     
-    // Initialize tooltips for social links
-    const socialLinks = document.querySelectorAll('.social-btn');
-    socialLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            const title = link.getAttribute('title');
-            if (title) {
-                const tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                tooltip.textContent = title;
-                document.body.appendChild(tooltip);
-                
-                const linkRect = link.getBoundingClientRect();
-                tooltip.style.left = `${linkRect.left + (linkRect.width / 2) - (tooltip.offsetWidth / 2)}px`;
-                tooltip.style.top = `${linkRect.top - tooltip.offsetHeight - 10}px`;
-                
-                link.addEventListener('mouseleave', () => {
-                    tooltip.remove();
-                }, { once: true });
-            }
-        });
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }
+});
+
+// Create the word counter icon if it doesn't exist
+(function() {
+    window.addEventListener('load', function() {
+        const img = document.querySelector('.header-image img');
+        if (!img.complete || img.naturalHeight === 0) {
+            // Create a placeholder SVG icon
+            const iconSVG = `
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="120" height="120" rx="12" fill="#F3F4F6"/>
+                <rect x="20" y="20" width="80" height="80" rx="8" fill="#EEF2FF"/>
+                <rect x="35" y="35" width="50" height="6" rx="3" fill="#C7D2FE"/>
+                <rect x="35" y="47" width="35" height="6" rx="3" fill="#C7D2FE"/>
+                <rect x="35" y="59" width="45" height="6" rx="3" fill="#C7D2FE"/>
+                <rect x="35" y="71" width="25" height="6" rx="3" fill="#C7D2FE"/>
+                <path d="M32 30L42 20H78L88 30V38H32V30Z" fill="#4F46E5"/>
+                <path d="M40 24H80L86 30H34L40 24Z" fill="#818CF8"/>
+                <circle cx="88" cy="80" r="16" fill="#4F46E5"/>
+                <path d="M82 80H94" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M88 74V86" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            `;
+            
+            // Create a blob from the SVG
+            const blob = new Blob([iconSVG], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            
+            // Set the image
+            img.src = url;
+            img.alt = "Word Counter";
+        }
     });
-}); 
+})();

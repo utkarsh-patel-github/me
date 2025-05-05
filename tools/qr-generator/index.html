@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Poppins:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
     <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
     <link rel="stylesheet" href="style.css">
     <!-- QR Code Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
@@ -18,12 +20,12 @@
 </head>
 <body>
     <nav>
-        <a href="../../index.html" class="logo">
+        <a href="index.html" class="logo">
             <i class="ri-tools-fill logo-icon"></i>
             <span>Daily Tools</span>
         </a>
         <div class="nav-links">
-            <a href="../../index.html">Home</a>
+            <a href="#" class="active">Home</a>
             <a href="#">Popular Tools</a>
             <a href="#">Categories</a>
             <a href="#">About</a>
@@ -38,11 +40,12 @@
                 </div>
             </div>
             <div class="notification-icon" aria-label="Notifications">
-                <i class="ri-notification-2-line"></i>
+                <i class="ri-notification-2-fill"></i>
+                <span class="notification-badge">2</span>
             </div>
-            <div class="share-icon" id="share-tool" aria-label="Share this tool">
-                <i class="ri-share-line"></i>
-            </div>
+            <div class="profile-icon" aria-label="User profile">
+                <i class="ri-user-3-fill"></i>
+            </div>  
         </div>
         <div class="menu-icon" id="menu-toggle" aria-label="Toggle menu">
             <i class="ri-menu-line"></i>
@@ -325,7 +328,55 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2023 Daily Tools | <a href="../../index.html">Home</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="#">Popular Tools</a></li>
+                        <li><a href="#">New Tools</a></li>
+                        <li><a href="#">Calculators</a></li>
+                        <li><a href="#">Converters</a></li>
+                        <li><a href="#">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
         </div>
     </footer>
 

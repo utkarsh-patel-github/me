@@ -393,7 +393,7 @@ nav .menu-icon:hover {
     box-shadow: var(--shadow-lg);
     padding: var(--space-10) var(--space-4);
     opacity: 0;
-  }
+}
 
   .dark-mode nav .nav-links {
     background-color: rgba(30, 41, 59, 0.95);
@@ -1576,7 +1576,7 @@ footer::after {
 @media (max-width: 992px) {
   .coming-soon {
     gap: var(--space-3);
-  }
+}
 }
 
 @media (max-width: 768px) {
@@ -1741,7 +1741,7 @@ footer::after {
 @media (max-width: 992px) {
   .categories {
     gap: var(--space-3);
-  }
+}
 }
 
 @media (max-width: 768px) {

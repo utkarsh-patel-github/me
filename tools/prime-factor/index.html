@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Prime Factor Calculator - Daily Tools</title>
-    <meta name="description" content="Find all prime factors of any number instantly. Learn about number theory and solve complex math problems with our free online prime factorization tool.">
+    <meta name="description" content="Calculate the prime factorization of any positive integer with our free and easy-to-use Prime Factor Calculator tool.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOURPUBIDHERE" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav>
-        <a href="../../index.html" class="logo">
+        <a href="index.html" class="logo">
             <i class="ri-tools-fill logo-icon"></i>
             <span>Daily Tools</span>
         </a>
         <div class="nav-links">
-            <a href="../../index.html">Home</a>
+            <a href="#" class="active">Home</a>
             <a href="#">Popular Tools</a>
             <a href="#">Categories</a>
             <a href="#">About</a>
@@ -48,249 +48,259 @@
     </nav>
 
     <main>
-        <div class="tool-container">
+        <div class="container">
+            <!-- Tool Header with Image -->
             <div class="tool-header">
                 <div class="breadcrumb">
-                    <a href="../../index.html">Home</a>
+                    <a href="/">Home</a>
                     <i class="ri-arrow-right-s-line"></i>
-                    <a href="#">Mathematics</a>
+                    <a href="/tools">Tools</a>
                     <i class="ri-arrow-right-s-line"></i>
                     <span>Prime Factor Calculator</span>
                 </div>
-                <h1><i class="ri-divide-fill"></i> Prime Factor Calculator</h1>
-                <p class="description">Find all prime factors of any number instantly. Our tool quickly decomposes numbers into their prime components, helping you understand number theory and solve complex math problems.</p>
                 
-                <div class="meta">
-                    <div class="meta-item">
-                        <i class="ri-calendar-check-fill"></i>
-                        <span>Last Updated: May 5, 2023</span>
+                <div class="header-content">
+                    <div class="header-image">
+                        <img src="prime-factor-icon.svg" alt="Prime Factor Calculator" />
                     </div>
-                    <div class="meta-item">
-                        <i class="ri-star-fill"></i>
-                        <span>Rating: 4.8/5</span>
-                    </div>
-                    <div class="meta-item">
-                        <i class="ri-eye-fill"></i>
-                        <span>Used 138,452 times</span>
+                    <div class="header-text">
+                        <h1>Prime Factor Calculator</h1>
+                        <p>Calculate the prime factorization of any positive integer. Useful for mathematics, cryptography, and understanding number properties.</p>
+                        
+                        <div class="tool-meta">
+                            <div class="meta-item">
+                                <i class="ri-calendar-check-line"></i>
+                                <span>Last Updated: July 10, 2023</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-star-fill"></i>
+                                <span>Rating: 4.7/5</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-eye-line"></i>
+                                <span>Used 193,426 times</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="ad-container">
-                <div class="ad-label">Advertisement</div>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-YOURPUBIDHERE"
-                     data-ad-slot="YOURADSLOTHERE"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-
-            <div class="tool-card calculator-card">
-                <h2><i class="ri-divide-fill"></i> Prime Factor Calculator</h2>
-                
-                <div class="calculator-container">
-                    <div class="input-section">
-                        <div class="number-input-wrapper">
-                            <label for="number-input"><i class="ri-number-5"></i> Enter a Number</label>
-                            <input type="number" id="number-input" placeholder="Enter any positive integer" min="1" max="9007199254740991">
+            
+            <!-- Main Tool Content -->
+            <div class="tool-content">
+                <div class="calculator-card">
+                    <div class="card-section input-section">
+                        <h2><i class="ri-number-1"></i> Enter a Number</h2>
+                        
+                        <div class="input-group">
+                            <label for="number-input">Enter a positive integer:</label>
+                            <div class="number-input-container">
+                                <input 
+                                    type="number" 
+                                    id="number-input" 
+                                    class="number-input" 
+                                    placeholder="Enter a number (e.g., 60)" 
+                                    min="1" 
+                                    step="1"
+                                >
+                                <div class="input-buttons">
+                                    <button id="clear-btn" class="input-btn" title="Clear">
+                                        <i class="ri-delete-bin-line"></i>
+                                    </button>
+                                    <button id="example-btn" class="input-btn" title="Show example">
+                                        <i class="ri-magic-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="input-hint">
+                                Enter any positive integer up to 10^15
+                            </div>
                         </div>
                         
-                        <div class="tool-actions">
-                            <button id="factor-btn" class="btn btn-primary">
-                                <i class="ri-play-circle-fill"></i> Find Prime Factors
+                        <div class="button-row">
+                            <button id="calculate-btn" class="primary-button">
+                                <i class="ri-calculator-line"></i> Calculate Prime Factors
                             </button>
-                            <button id="clear-btn" class="btn btn-secondary">
-                                <i class="ri-delete-bin-line"></i> Clear
-                            </button>
-                        </div>
-
-                        <div class="input-examples">
-                            <p>Examples:</p>
-                            <div class="example-buttons">
-                                <button class="example-btn" data-value="42">42</button>
-                                <button class="example-btn" data-value="144">144</button>
-                                <button class="example-btn" data-value="1001">1001</button>
-                                <button class="example-btn" data-value="3487">3487</button>
-                                <button class="example-btn" data-value="9999">9999</button>
-                            </div>
                         </div>
                     </div>
                     
-                    <div class="result-section" id="result-section">
-                        <div class="result-heading">Prime Factorization:</div>
-                        <div class="factor-display">
-                            <div class="factor-result" id="factor-result">
-                                <div class="empty-state">
-                                    <i class="ri-divide-fill"></i>
-                                    <p>Enter a number to see its prime factorization</p>
+                    <div class="card-section result-section" id="result-section">
+                        <h2><i class="ri-list-check-2"></i> Results</h2>
+                        
+                        <div class="result-container" id="results-container">
+                            <div class="calculation-steps" id="calculation-steps">
+                                <div class="step-title">Factorization Process:</div>
+                                <div class="steps-list" id="steps-list">
+                                    <!-- Steps will be added here by JavaScript -->
                                 </div>
+                            </div>
+                            
+                            <div class="factorization-result">
+                                <div class="result-item">
+                                    <span class="result-label">Prime Factorization:</span>
+                                    <div class="result-value" id="prime-factorization">-</div>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Factor Tree:</span>
+                                    <div class="tree-container" id="factor-tree">
+                                        <!-- Tree will be drawn here by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="additional-info">
+                                <div class="info-title">Additional Information</div>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">Number of Factors:</span>
+                                        <span class="info-value" id="num-factors">-</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Sum of Factors:</span>
+                                        <span class="info-value" id="sum-factors">-</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Is Prime?</span>
+                                        <span class="info-value" id="is-prime">-</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Is Perfect?</span>
+                                        <span class="info-value" id="is-perfect">-</span>
+                                    </div>
+                                </div>
+                                <div class="all-factors">
+                                    <span class="all-factors-label">All Factors:</span>
+                                    <div class="all-factors-list" id="all-factors">-</div>
+                                </div>
+                            </div>
+                            
+                            <div class="buttons-container">
+                                <button id="copy-btn" class="outline-button">
+                                    <i class="ri-clipboard-line"></i> Copy Results
+                                </button>
+                                <button id="print-btn" class="outline-button">
+                                    <i class="ri-printer-line"></i> Print
+                                </button>
                             </div>
                         </div>
                         
-                        <div class="result-detail">
-                            <div class="factor-tree" id="factor-tree"></div>
+                        <div class="empty-state" id="empty-state">
+                            <div class="empty-icon">
+                                <i class="ri-calculator-line"></i>
+                            </div>
+                            <div class="empty-text">
+                                Enter a positive integer and click "Calculate Prime Factors" to see the results.
+                            </div>
                         </div>
-                        
-                        <div class="factor-explanation" id="factor-explanation"></div>
-                        
-                        <div class="share-results">
-                            <button class="btn btn-secondary copy-btn" data-copy-target="factor-result-text">
-                                <i class="ri-clipboard-line"></i> Copy Results
-                            </button>
-                            <button class="btn btn-secondary share-btn">
-                                <i class="ri-share-line"></i> Share
-                            </button>
-                            <button class="btn btn-secondary print-btn">
-                                <i class="ri-printer-line"></i> Print
-                            </button>
-                            <textarea id="factor-result-text" hidden></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tool-info">
-                <div class="info-tab">
-                    <div class="tab-header active" data-tab="what-is">What is Prime Factorization?</div>
-                    <div class="tab-content" id="what-is-content">
-                        <p>Prime factorization is the process of determining which prime numbers multiply together to give the original number. A prime number is a natural number greater than 1 that is not a product of two smaller natural numbers.</p>
-                        <p>For example, the prime factorization of 12 is 2² × 3, because 12 = 2 × 2 × 3 and both 2 and 3 are prime numbers.</p>
-                        <h3>Why is Prime Factorization Important?</h3>
-                        <ul>
-                            <li>It's fundamental to number theory and cryptography</li>
-                            <li>Used to find GCD (Greatest Common Divisor) and LCM (Least Common Multiple)</li>
-                            <li>Essential in various mathematical applications</li>
-                            <li>Used in computer science algorithms</li>
-                        </ul>
                     </div>
                 </div>
                 
-                <div class="info-tab">
-                    <div class="tab-header" data-tab="how-to">How to Use This Calculator</div>
-                    <div class="tab-content" id="how-to-content" style="display: none;">
-                        <p>Using our Prime Factor Calculator is simple:</p>
-                        <ol>
-                            <li>Enter any positive integer in the input field</li>
-                            <li>Click the "Find Prime Factors" button</li>
-                            <li>View the complete prime factorization results</li>
-                            <li>See the factor tree visualization</li>
-                            <li>Read the step-by-step explanation</li>
-                        </ol>
-                        <p>You can also use the example buttons to try out the calculator with pre-defined numbers.</p>
-                    </div>
-                </div>
-                
-                <div class="info-tab">
-                    <div class="tab-header" data-tab="formulas">Formulas & Methods</div>
-                    <div class="tab-content" id="formulas-content" style="display: none;">
-                        <h3>Methods of Prime Factorization</h3>
-                        <p>There are several methods to find prime factors:</p>
-                        
-                        <h4>1. Trial Division</h4>
-                        <p>This is the simplest method. It involves dividing the number by the smallest prime number (2), then by the next prime, and so on until the quotient becomes 1.</p>
-                        
-                        <h4>2. Factor Tree</h4>
-                        <p>A graphical method that recursively breaks down a number into its factors until only prime numbers remain.</p>
-                        
-                        <h4>3. Sieve of Eratosthenes</h4>
-                        <p>An algorithm for finding all prime numbers up to a specified limit, which can then be used for factorization.</p>
-                        
-                        <div class="formula-box">
-                            <p>For any number <span class="math">n</span>, if we write it as a product of prime numbers:</p>
-                            <p class="formula">n = p₁<sup>a₁</sup> × p₂<sup>a₂</sup> × ... × pₖ<sup>aₖ</sup></p>
-                            <p>Where p₁, p₂, ..., pₖ are distinct primes and a₁, a₂, ..., aₖ are positive integers.</p>
+                <!-- How to Use Section -->
+                <div class="info-card">
+                    <h2><i class="ri-question-line"></i> How to Use</h2>
+                    <div class="step-list">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Enter a number</h3>
+                                <p>Type any positive integer in the input field. The calculator supports numbers up to 10^15.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Calculate prime factors</h3>
+                                <p>Click the "Calculate Prime Factors" button to see the prime factorization of your number.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Analyze the results</h3>
+                                <p>View the prime factorization, factor tree, and additional information about your number.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Ad Container -->
-            <div class="ad-container">
-                <div class="ad-label">Advertisement</div>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-YOURPUBIDHERE"
-                     data-ad-slot="YOURADSLOTHERE"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-            
-            <div class="tool-sidebar">
-                <div class="sidebar-card">
-                    <h3><i class="ri-link-m"></i> Related Tools</h3>
-                    <div class="related-tools">
-                        <a href="../roman-converter/" class="related-tool">
-                            <i class="ri-roman-s-fill"></i>
-                            <span>Roman Numeral Converter</span>
-                        </a>
-                        <a href="#" class="related-tool">
-                            <i class="ri-percentage-fill"></i>
-                            <span>Percentage Calculator</span>
-                        </a>
-                        <a href="#" class="related-tool">
+                
+                <!-- Explanation Section -->
+                <div class="info-card">
+                    <h2><i class="ri-book-open-line"></i> What Are Prime Factors?</h2>
+                    <div class="explanation-content">
+                        <p>Prime factors are the prime numbers that, when multiplied together, give the original number. A prime number is a number greater than 1 that is only divisible by 1 and itself.</p>
+                        
+                        <div class="example-box">
+                            <div class="example-title">Example:</div>
+                            <p>The prime factorization of 60 is <strong>2² × 3 × 5</strong>.</p>
+                            <p>This means that 60 = 2 × 2 × 3 × 5 = 4 × 15 = 60.</p>
+                        </div>
+                        
+                        <p>Every positive integer greater than 1 has a unique prime factorization. This is known as the Fundamental Theorem of Arithmetic.</p>
+                        
+                        <div class="math-concept">
+                            <div class="concept-title">Why Prime Factorization Matters</div>
+                            <p>Prime factorization is fundamental in number theory and has applications in:</p>
+                            <ul>
+                                <li>Cryptography and data security</li>
+                                <li>Finding greatest common divisors (GCD)</li>
+                                <li>Finding least common multiples (LCM)</li>
+                                <li>Simplifying fractions</li>
+                                <li>Solving various mathematical problems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="info-card">
+                    <h2><i class="ri-question-answer-line"></i> Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">What is prime factorization?</div>
+                            <div class="faq-answer">
+                                <p>Prime factorization is the process of breaking down a number into a product of prime numbers. For example, the prime factorization of 12 is 2² × 3, which means 12 = 2 × 2 × 3.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">How do you find the prime factorization of a number?</div>
+                            <div class="faq-answer">
+                                <p>To find the prime factorization of a number, you divide it by the smallest possible prime number (usually starting with 2), and continue dividing the quotient by the smallest possible prime until you reach 1. The prime numbers used in these divisions are the prime factors.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">What is a perfect number?</div>
+                            <div class="faq-answer">
+                                <p>A perfect number is a positive integer that is equal to the sum of its proper divisors (all divisors excluding the number itself). For example, 6 is a perfect number because its proper divisors are 1, 2, and 3, and 1 + 2 + 3 = 6.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Why can't I factor some very large numbers?</div>
+                            <div class="faq-answer">
+                                <p>Factoring very large numbers can be computationally demanding. For numbers with more than 15 digits, the calculation may take too long or exceed browser capabilities. The difficulty of factoring large numbers is actually the basis for some encryption algorithms used in cybersecurity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Tools Section -->
+                <div class="related-tools">
+                    <h2>Related Tools You Might Like</h2>
+                    <div class="tools-grid">
+                        <a href="#" class="tool-card">
                             <i class="ri-divide-line"></i>
                             <span>GCD & LCM Calculator</span>
                         </a>
-                        <a href="#" class="related-tool">
-                            <i class="ri-grid-fill"></i>
-                            <span>Quadratic Equation Solver</span>
+                        <a href="#" class="tool-card">
+                            <i class="ri-check-double-line"></i>
+                            <span>Primality Test</span>
                         </a>
-                        <a href="#" class="related-tool">
-                            <i class="ri-calculator-fill"></i>
-                            <span>Scientific Calculator</span>
+                        <a href="#" class="tool-card">
+                            <i class="ri-numbers-line"></i>
+                            <span>Number Base Converter</span>
                         </a>
-                    </div>
-                </div>
-                
-                <div class="sidebar-card">
-                    <h3><i class="ri-question-fill"></i> FAQ</h3>
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What is a prime number?</span>
-                                <i class="ri-add-line"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>A prime number is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers. The first few prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Is 1 a prime number?</span>
-                                <i class="ri-add-line"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>No, 1 is not considered a prime number. By definition, a prime number must be greater than 1 and have exactly two distinct positive divisors: 1 and itself.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What is the largest number this calculator can handle?</span>
-                                <i class="ri-add-line"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Our calculator can reliably find prime factors for numbers up to JavaScript's safe integer limit (2^53 - 1 or 9,007,199,254,740,991). For very large numbers, the calculation may take longer.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Why do I need to know the prime factors of a number?</span>
-                                <i class="ri-add-line"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Prime factorization is useful for simplifying fractions, finding GCDs and LCMs, solving certain types of equations, and understanding number properties. It's also fundamental in cryptography, where large prime numbers are used to create secure encryption systems.</p>
-                            </div>
-                        </div>
+                        <a href="#" class="tool-card">
+                            <i class="ri-percent-line"></i>
+                            <span>Percentage Calculator</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -351,7 +361,6 @@
         </div>
     </footer>
 
-    <script src="../common.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

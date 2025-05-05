@@ -23,10 +23,10 @@
         </a>
         <div class="nav-links">
             <a href="/">Home</a>
-            <a href="/tools">Tools</a>
-            <a href="/categories">Categories</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
+            <a href="/pages/tools">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
         </div>
         <div class="nav-right">
             <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
@@ -36,12 +36,66 @@
                     <div class="toggle-circle"></div>
                 </div>
             </div>
-            <div class="icon-button" title="Notifications">
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
                 <i class="ri-notification-2-line"></i>
                 <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-item unread">
+                            <div class="notification-icon tool-update">
+                                <i class="ri-tools-fill"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p class="notification-text"><strong>New Tool Added:</strong> Check out our new QR Code Generator!</p>
+                                <p class="notification-time">2 hours ago</p>
+                            </div>
+                            <button class="mark-read" title="Mark as read">
+                                <i class="ri-check-double-line"></i>
+                            </button>
+                        </div>
+                        <div class="notification-item unread">
+                            <div class="notification-icon account">
+                                <i class="ri-shield-check-fill"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p class="notification-text">Your account was successfully created. Welcome to Daily Tools!</p>
+                                <p class="notification-time">1 day ago</p>
+                            </div>
+                            <button class="mark-read" title="Mark as read">
+                                <i class="ri-check-double-line"></i>
+                            </button>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon system">
+                                <i class="ri-information-fill"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p class="notification-text">We've updated our <a href="/pages/legal/privacy-policy.html">Privacy Policy</a>.</p>
+                                <p class="notification-time">3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/pages/user/notifications.html">See all notifications</a>
+                    </div>
+                </div>
             </div>
-            <div class="icon-button" title="Profile">
+            <div class="icon-button user-dropdown-trigger" title="Profile">
                 <i class="ri-user-3-line"></i>
+                <div class="user-dropdown">
+                    <div class="user-login-options">
+                        <p>Sign in to save your preferences and access your saved tools.</p>
+                        <a href="/pages/user/login.html" class="btn-primary">Sign In</a>
+                        <div class="create-account">
+                            <span>Don't have an account?</span>
+                            <a href="/pages/user/login.html#register">Create Account</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="menu-toggle" class="menu-icon" title="Menu">
@@ -75,7 +129,7 @@
 
             <div class="section-title">
                 <h2>Featured Tools</h2>
-                <a href="#" class="view-all">View All <i class="ri-arrow-right-s-line"></i></a>
+                <a href="/pages/tools" class="view-all">View All <i class="ri-arrow-right-s-line"></i></a>
             </div>
 
             <div class="highlited-tools">
@@ -89,7 +143,7 @@
                         <p>Calculate your age in years, months, and days with precision. Perfect for official documents and planning.</p>
                     </div>
                     <div class="tool-link">
-                        <button id="age-calculator-btn">Try Now <i class="ri-arrow-right-line"></i></button>
+                        <a href="tools/age-calculator/index.html"><button id="age-calculator-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
 
@@ -103,7 +157,7 @@
                         <p>Count words, characters, sentences, and paragraphs in your text. Great for essays and content writing.</p>
                     </div>
                     <div class="tool-link">
-                        <button id="word-counter-btn">Try Now <i class="ri-arrow-right-line"></i></button>
+                        <a href="tools/word-counter/index.html"><button id="word-counter-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
 
@@ -166,7 +220,7 @@
             
             <div class="section-title">
                 <h2>New Tools</h2>
-                <a href="#" class="view-all">View All <i class="ri-arrow-right-s-line"></i></a>
+                <a href="/pages/tools?category=new" class="view-all">View All <i class="ri-arrow-right-s-line"></i></a>
             </div>
             
             <div class="highlited-tools new-tools">
@@ -229,7 +283,7 @@
 
             <div class="section-title">
                 <h2>Coming Soon</h2>
-                <a href="#" class="view-all">Request Tool <i class="ri-add-circle-line"></i></a>
+                <a href="/pages/contact" class="view-all">Request Tool <i class="ri-add-circle-line"></i></a>
             </div>
             
             <div class="coming-soon">
@@ -336,7 +390,7 @@
             </div>
 
             <div class="all-tools">
-                <a href="#">See All Tools <i class="ri-arrow-right-s-line"></i></a>
+                <a href="/pages/tools">See All Tools <i class="ri-arrow-right-s-line"></i></a>
             </div>
         </div>
     </main>
@@ -360,36 +414,36 @@
                 <div class="footer-column">
                     <h3>Tools</h3>
                     <ul>
-                        <li><a href="#">Popular Tools</a></li>
-                        <li><a href="#">New Tools</a></li>
-                        <li><a href="#">Calculators</a></li>
-                        <li><a href="#">Converters</a></li>
-                        <li><a href="#">Text Tools</a></li>
+                        <li><a href="/pages/tools">Popular Tools</a></li>
+                        <li><a href="/pages/tools?category=new">New Tools</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#blog">Blog</a></li>
+                        <li><a href="/pages/about#careers">Careers</a></li>
+                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">GDPR Compliance</a></li>
-                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/legal/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/pages/legal/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+                        <li><a href="/pages/legal/accessibility.html">Accessibility</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+                <p>&copy; 2024 Daily Tools. All rights reserved.</p>
                 <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
             </div>
         </div>

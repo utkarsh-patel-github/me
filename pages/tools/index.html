@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tools - Daily Tools</title>
+    <meta name="description" content="Browse our collection of free online tools for everyday tasks. Find calculators, converters, and productivity tools.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="/pages/tools/style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="icon-button" title="Profile">
+                <i class="ri-user-3-line"></i>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>All Tools</h1>
+                <p>Browse our collection of free online tools for your everyday needs. No downloads required - use them directly in your browser.</p>
+                
+                <div class="tools-search">
+                    <input type="text" id="tools-search-input" placeholder="Search tools...">
+                    <button id="tools-search-btn">
+                        <i class="ri-search-line"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tools-categories">
+                <div class="category-filter active" data-category="all">All</div>
+                <div class="category-filter" data-category="converters">Converters</div>
+                <div class="category-filter" data-category="calculators">Calculators</div>
+                <div class="category-filter" data-category="productivity">Productivity</div>
+                <div class="category-filter" data-category="text">Text Tools</div>
+                <div class="category-filter" data-category="generators">Generators</div>
+            </div>
+            
+            <div class="tools-list">
+                <!-- Tools Grid -->
+                <div class="tool-card" data-category="converters">
+                    <div class="tool-icon">
+                        <img src="/tools/color-converter/color-converter-icon.svg" alt="Color Converter">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Color Converter</h3>
+                        <p>Convert between RGB, HEX, HSL, and CMYK color formats with real-time preview.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge converter">Converter</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.8</span>
+                    </div>
+                    <a href="/tools/color-converter" class="tool-link"></a>
+                </div>
+                
+                <div class="tool-card" data-category="productivity">
+                    <div class="tool-icon">
+                        <img src="/tools/countdown-timer/countdown-timer-icon.svg" alt="Countdown Timer">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Countdown Timer</h3>
+                        <p>Create and save event countdowns with customizable options and sharing capabilities.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge productivity">Productivity</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.6</span>
+                    </div>
+                    <a href="/tools/countdown-timer" class="tool-link"></a>
+                </div>
+                
+                <div class="tool-card" data-category="productivity">
+                    <div class="tool-icon">
+                        <img src="/tools/note-keeper/note-keeper-icon.svg" alt="Note Keeper">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Note Keeper</h3>
+                        <p>Create, save, and organize your notes online with rich text formatting.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge productivity">Productivity</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.7</span>
+                    </div>
+                    <a href="/tools/note-keeper" class="tool-link"></a>
+                </div>
+                
+                <div class="tool-card" data-category="converters">
+                    <div class="tool-icon">
+                        <img src="/assets/icons/roman-numeral-icon.svg" alt="Roman Numeral Converter">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Roman Numeral Converter</h3>
+                        <p>Convert between Roman numerals and standard numbers with validation and history.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge converter">Converter</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.5</span>
+                    </div>
+                    <a href="/tools/roman-numeral-converter" class="tool-link"></a>
+                </div>
+                
+                <div class="tool-card" data-category="calculators">
+                    <div class="tool-icon">
+                        <img src="/assets/icons/bmi-calculator-icon.svg" alt="BMI Calculator">
+                    </div>
+                    <div class="tool-info">
+                        <h3>BMI Calculator</h3>
+                        <p>Calculate your Body Mass Index (BMI) and get personalized health insights.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge calculator">Calculator</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.9</span>
+                    </div>
+                    <a href="/tools/bmi-calculator" class="tool-link"></a>
+                </div>
+                
+                <div class="tool-card" data-category="text">
+                    <div class="tool-icon">
+                        <img src="/assets/icons/word-counter-icon.svg" alt="Word Counter">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Word Counter</h3>
+                        <p>Count words, characters, sentences, and paragraphs with detailed statistics.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge text">Text Tool</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.4</span>
+                    </div>
+                    <a href="/tools/word-counter" class="tool-link"></a>
+                </div>
+                
+                <div class="tool-card" data-category="converters">
+                    <div class="tool-icon">
+                        <img src="/assets/icons/unit-converter-icon.svg" alt="Unit Converter">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Unit Converter</h3>
+                        <p>Convert between different units of measurement including length, weight, and volume.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge converter">Converter</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.7</span>
+                    </div>
+                    <a href="/tools/unit-converter" class="tool-link"></a>
+                </div>
+                
+                <div class="tool-card" data-category="generators">
+                    <div class="tool-icon">
+                        <img src="/assets/icons/password-generator-icon.svg" alt="Password Generator">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Password Generator</h3>
+                        <p>Generate secure, random passwords with customizable complexity and length.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge generator">Generator</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.8</span>
+                    </div>
+                    <a href="/tools/password-generator" class="tool-link"></a>
+                </div>
+                
+                <!-- Add more tool cards as needed -->
+            </div>
+            
+            <div class="pagination">
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn next"><i class="ri-arrow-right-s-line"></i></button>
+            </div>
+            
+            <div class="suggest-tool">
+                <div class="suggest-content">
+                    <h2>Can't find what you're looking for?</h2>
+                    <p>We're constantly adding new tools. Let us know what you need, and we'll consider adding it to our collection.</p>
+                    <a href="/pages/contact" class="suggest-btn">Suggest a Tool</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/pages/tools">All Tools</a></li>
+                        <li><a href="/pages/categories">Categories</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#blog">Blog</a></li>
+                        <li><a href="/pages/about#careers">Careers</a></li>
+                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/about#privacy">Privacy Policy</a></li>
+                        <li><a href="/pages/about#terms">Terms of Service</a></li>
+                        <li><a href="/pages/about#cookies">Cookie Policy</a></li>
+                        <li><a href="/pages/about#gdpr">GDPR Compliance</a></li>
+                        <li><a href="/pages/about#accessibility">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/nav/script.js"></script>
+    <script src="/pages/tools/script.js"></script>
+</body>
+</html> 

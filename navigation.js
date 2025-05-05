@@ -131,6 +131,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+        
+        // Escape key to close dropdowns
+        if (e.key === 'Escape') {
+            const notificationDropdown = document.querySelector('.notification-dropdown');
+            const userDropdown = document.querySelector('.user-dropdown');
+            
+            if (notificationDropdown && notificationDropdown.classList.contains('active')) {
+                notificationDropdown.classList.remove('active');
+            }
+            
+            if (userDropdown && userDropdown.classList.contains('active')) {
+                userDropdown.classList.remove('active');
+            }
+        }
     });
     
     // Search functionality
@@ -195,7 +209,93 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Notification handling
+    // Notification dropdown toggle
+    const notificationTrigger = document.querySelector('.notification-dropdown-trigger');
+    const notificationDropdown = document.querySelector('.notification-dropdown');
+    
+    if (notificationTrigger && notificationDropdown) {
+        notificationTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notificationDropdown.classList.toggle('active');
+            
+            // Close user dropdown if open
+            const userDropdown = document.querySelector('.user-dropdown');
+            if (userDropdown && userDropdown.classList.contains('active')) {
+                userDropdown.classList.remove('active');
+            }
+        });
+    }
+    
+    // User dropdown toggle
+    const userTrigger = document.querySelector('.user-dropdown-trigger');
+    const userDropdown = document.querySelector('.user-dropdown');
+    
+    if (userTrigger && userDropdown) {
+        userTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userDropdown.classList.toggle('active');
+            
+            // Close notification dropdown if open
+            if (notificationDropdown && notificationDropdown.classList.contains('active')) {
+                notificationDropdown.classList.remove('active');
+            }
+        });
+    }
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (notificationDropdown && !notificationTrigger.contains(e.target) && notificationDropdown.classList.contains('active')) {
+            notificationDropdown.classList.remove('active');
+        }
+        
+        if (userDropdown && !userTrigger.contains(e.target) && userDropdown.classList.contains('active')) {
+            userDropdown.classList.remove('active');
+        }
+    });
+    
+    // Mark notification as read
+    const markReadButtons = document.querySelectorAll('.mark-read');
+    markReadButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const notificationItem = button.closest('.notification-item');
+            notificationItem.classList.remove('unread');
+            
+            // Update notification count
+            updateNotificationCount();
+        });
+    });
+    
+    // Mark all notifications as read
+    const markAllReadButton = document.querySelector('.mark-all-read');
+    if (markAllReadButton) {
+        markAllReadButton.addEventListener('click', () => {
+            const unreadItems = document.querySelectorAll('.notification-item.unread');
+            unreadItems.forEach(item => {
+                item.classList.remove('unread');
+            });
+            
+            // Update notification count
+            updateNotificationCount();
+        });
+    }
+    
+    // Function to update notification count
+    function updateNotificationCount() {
+        const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+        const badge = document.querySelector('.notification-badge');
+        
+        if (badge) {
+            if (unreadCount > 0) {
+                badge.textContent = unreadCount;
+                badge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+    }
+    
+    // Notification handling (legacy - kept for compatibility)
     const notificationIcon = document.querySelector('.notification-icon');
     
     if (notificationIcon) {
@@ -248,172 +348,255 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => {
                         toast.classList.remove('show');
                         setTimeout(() => {
-                            if (document.body.contains(toast)) {
-                                document.body.removeChild(toast);
-                            }
+                            document.body.removeChild(toast);
                         }, 300);
                     }, 6000);
-                }, index * 300);
+                }, index * 1000); // Stagger notifications
             });
         });
     }
     
-    // Add styles for notification toast
+    // Helper function to add CSS styles
+    function addCSSStyles(css) {
+        const style = document.createElement('style');
+        style.textContent = css;
+        document.head.appendChild(style);
+    }
+    
+    // Add styles for notification dropdowns and user dropdowns
     addCSSStyles(`
-        .notification-toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            max-width: 350px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            padding: 16px;
-            transform: translateX(400px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            border-left: 4px solid var(--primary-blue);
+        /* Notification Dropdown */
+        .notification-dropdown-trigger {
+            position: relative;
         }
         
-        .notification-toast.show {
-            transform: translateX(0);
+        .notification-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 320px;
+            margin-top: 10px;
+            background-color: var(--bg-light, #ffffff);
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .notification-dropdown.active {
             opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
         
         .notification-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color, #e0e0e0);
         }
         
-        .notification-header h4 {
-            margin: 0;
+        .notification-header h3 {
             font-size: 1rem;
             font-weight: 600;
+            margin: 0;
         }
         
-        .close-notification {
-            background: transparent;
+        .mark-all-read {
+            background: none;
             border: none;
-            color: var(--text-secondary);
+            color: var(--primary-color, #4285F4);
+            font-size: 0.85rem;
             cursor: pointer;
+        }
+        
+        .notification-list {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        
+        .notification-item {
+            display: flex;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color, #e0e0e0);
+            transition: background-color 0.2s ease;
+        }
+        
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        
+        .notification-item.unread {
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            transition: all 0.2s ease;
+            margin-right: 1rem;
+            flex-shrink: 0;
         }
         
-        .close-notification:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-            color: var(--text-color);
+        .notification-icon.tool-update {
+            background-color: rgba(52, 168, 83, 0.1);
+            color: var(--secondary-color, #34A853);
         }
         
-        .notification-toast p {
-            margin: 8px 0 12px;
+        .notification-icon.account {
+            background-color: rgba(66, 133, 244, 0.1);
+            color: var(--primary-color, #4285F4);
+        }
+        
+        .notification-icon.system {
+            background-color: rgba(251, 188, 5, 0.1);
+            color: var(--accent-color, #FBBC05);
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-text {
+            margin: 0 0 0.25rem;
+            color: var(--text-primary, #333333);
             font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
         }
         
-        .notification-link {
-            display: inline-block;
-            color: var(--primary-blue);
+        .notification-time {
+            margin: 0;
+            color: var(--text-light, #888888);
+            font-size: 0.8rem;
+        }
+        
+        .mark-read {
+            background: none;
+            border: none;
+            color: var(--text-light, #888888);
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+        
+        .notification-footer {
+            padding: 0.75rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color, #e0e0e0);
+        }
+        
+        .notification-footer a {
+            color: var(--primary-color, #4285F4);
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: 8px;
-            transition: all 0.2s ease;
         }
         
-        .notification-link:hover {
+        .notification-footer a:hover {
             text-decoration: underline;
         }
         
-        @media (max-width: 576px) {
-            .notification-toast {
-                left: 20px;
-                right: 20px;
-                bottom: 20px;
-                max-width: none;
-            }
+        /* User Dropdown Menu */
+        .user-dropdown-trigger {
+            position: relative;
         }
-    `);
-    
-    // Utility function to add CSS styles
-    function addCSSStyles(css) {
-        const styleElement = document.createElement('style');
-        styleElement.textContent = css;
-        document.head.appendChild(styleElement);
-    }
-    
-    // Scroll to top button
-    const scrollToTopBtn = document.createElement('button');
-    scrollToTopBtn.classList.add('scroll-to-top');
-    scrollToTopBtn.innerHTML = '<i class="ri-arrow-up-line"></i>';
-    scrollToTopBtn.style.display = 'none';
-    document.body.appendChild(scrollToTopBtn);
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.style.display = 'flex';
-        } else {
-            scrollToTopBtn.style.display = 'none';
-        }
-    });
-    
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    // Add styles for scroll to top button
-    addCSSStyles(`
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-blue), #1a73e8);
-            color: white;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 99;
-            box-shadow: var(--shadow);
+        
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 240px;
+            margin-top: 10px;
+            background-color: var(--bg-light, #ffffff);
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
             transition: all 0.3s ease;
         }
         
-        .scroll-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+        .user-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
         
-        .scroll-to-top i {
-            font-size: 24px;
+        .user-login-options {
+            padding: 1.25rem;
         }
         
-        @media (max-width: 576px) {
-            .scroll-to-top {
-                bottom: 15px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-            }
-            
-            .scroll-to-top i {
-                font-size: 20px;
+        .user-login-options p {
+            margin: 0 0 1rem;
+            color: var(--text-secondary, #666666);
+            font-size: 0.9rem;
+        }
+        
+        .user-login-options .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary-color, #4285F4);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .user-login-options .btn-primary:hover {
+            background-color: var(--primary-hover, #2a75f3);
+        }
+        
+        .create-account {
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary, #666666);
+        }
+        
+        .create-account a {
+            color: var(--primary-color, #4285F4);
+            text-decoration: none;
+            margin-left: 0.25rem;
+        }
+        
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Dark mode adjustments */
+        .dark-mode .notification-dropdown,
+        .dark-mode .user-dropdown {
+            background-color: var(--bg-dark, #1a1a1a);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dark-mode .notification-item.unread {
+            background-color: rgba(66, 133, 244, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .notification-dropdown,
+            .user-dropdown {
+                position: fixed;
+                top: 80px;
+                right: 0;
+                left: 0;
+                width: 100%;
+                margin-top: 0;
+                border-radius: 0;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
             }
         }
     `);

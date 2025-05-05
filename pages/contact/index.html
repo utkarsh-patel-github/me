@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Us - Daily Tools</title>
+    <meta name="description" content="Get in touch with the Daily Tools team. We're here to help with your questions, feedback, or suggestions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="/pages/contact/style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact" class="active">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="icon-button" title="Profile">
+                <i class="ri-user-3-line"></i>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Contact Us</h1>
+                <p>Have questions, feedback, or suggestions? We'd love to hear from you. Use the form below or choose one of our contact options.</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-options">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>For general inquiries and support</p>
+                        <a href="mailto:hello@dailytools.com" class="contact-link">hello@dailytools.com</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="ri-chat-3-line"></i>
+                        </div>
+                        <h3>Live Chat</h3>
+                        <p>Chat with our support team</p>
+                        <button class="contact-btn" id="open-chat-btn">Start Chat</button>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="ri-twitter-fill"></i>
+                        </div>
+                        <h3>Twitter</h3>
+                        <p>Follow us for updates and quick responses</p>
+                        <a href="https://twitter.com/dailytools" target="_blank" class="contact-link">@dailytools</a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h2>Send us a message</h2>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Tool Support</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="suggestion">Tool Suggestion</option>
+                                <option value="bug">Report a Bug</option>
+                                <option value="business">Business Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Subscribe to our newsletter for updates on new tools and features</label>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="reset" class="reset-btn">Reset</button>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </div>
+                        
+                        <div id="form-status" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Are all tools really free to use?</h3>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all of our core tools are completely free to use. We're committed to providing accessible tools for everyone. We may offer premium features or advanced versions of some tools in the future, but the basic functionality will always remain free.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How can I suggest a new tool?</h3>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We love hearing your ideas! You can suggest a new tool by using the contact form on this page. Select "Tool Suggestion" from the subject dropdown and describe the tool you'd like to see. Our team reviews all suggestions and prioritizes based on user demand.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is my data secure when using your tools?</h3>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely. Most of our tools process data directly in your browser, which means your information never leaves your device. For tools that require server processing, we use secure, encrypted connections and never store your data longer than necessary. You can read our full privacy policy for more details.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I use these tools offline?</h3>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Currently, our tools require an internet connection to load initially. However, some tools may continue to function after loading, even if your internet connection drops. We're working on developing Progressive Web App (PWA) versions of our most popular tools to enable full offline functionality.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I report a bug or issue?</h3>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If you encounter a bug or issue with any of our tools, please use the contact form and select "Report a Bug" from the subject dropdown. Include as much detail as possible, including the specific tool, your device, browser, and steps to reproduce the issue. Screenshots are also very helpful!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you offer API access to your tools?</h3>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We're currently developing API access for some of our most popular tools. If you're interested in integrating our tools into your application or website, please contact us with details about your use case, and we'll be happy to discuss possibilities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="locations-section">
+                <h2>Our Offices</h2>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <div class="location-image">
+                            <img src="/assets/images/locations/san-francisco.jpg" alt="San Francisco Office">
+                        </div>
+                        <div class="location-info">
+                            <h3>San Francisco</h3>
+                            <p class="location-address">
+                                <i class="ri-map-pin-line"></i>
+                                123 Tech Avenue, Suite 400<br>
+                                San Francisco, CA 94107
+                            </p>
+                            <p class="location-phone">
+                                <i class="ri-phone-line"></i>
+                                +1 (415) 555-0123
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <div class="location-image">
+                            <img src="/assets/images/locations/london.jpg" alt="London Office">
+                        </div>
+                        <div class="location-info">
+                            <h3>London</h3>
+                            <p class="location-address">
+                                <i class="ri-map-pin-line"></i>
+                                45 Innovation Street<br>
+                                London, EC2A 4BQ, UK
+                            </p>
+                            <p class="location-phone">
+                                <i class="ri-phone-line"></i>
+                                +44 20 7123 4567
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <div class="location-image">
+                            <img src="/assets/images/locations/singapore.jpg" alt="Singapore Office">
+                        </div>
+                        <div class="location-info">
+                            <h3>Singapore</h3>
+                            <p class="location-address">
+                                <i class="ri-map-pin-line"></i>
+                                78 Digital Boulevard, #12-01<br>
+                                Singapore 138642
+                            </p>
+                            <p class="location-phone">
+                                <i class="ri-phone-line"></i>
+                                +65 6123 4567
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="newsletter-section">
+                <div class="newsletter-content">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter to receive updates about new tools, features, and tips.</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <p class="newsletter-terms">By subscribing, you agree to our <a href="/pages/about#privacy">Privacy Policy</a> and consent to receive updates from Daily Tools.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/pages/tools">All Tools</a></li>
+                        <li><a href="/pages/categories">Categories</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#blog">Blog</a></li>
+                        <li><a href="/pages/about#careers">Careers</a></li>
+                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/about#privacy">Privacy Policy</a></li>
+                        <li><a href="/pages/about#terms">Terms of Service</a></li>
+                        <li><a href="/pages/about#cookies">Cookie Policy</a></li>
+                        <li><a href="/pages/about#gdpr">GDPR Compliance</a></li>
+                        <li><a href="/pages/about#accessibility">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/nav/script.js"></script>
+    <script src="/pages/contact/script.js"></script>
+</body>
+</html> 

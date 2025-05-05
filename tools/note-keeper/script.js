@@ -152,6 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
         filteredNotes.forEach(note => {
             const noteItem = document.createElement('div');
             noteItem.className = 'note-item';
+            noteItem.setAttribute('data-id', note.id);
+            
             if (note.id === currentNoteId) {
                 noteItem.classList.add('active');
             }
@@ -867,6 +869,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize the app
     initNotes();
     
+    // Activate FAQ toggles
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', toggleFAQ);
+    });
+    
     // Do a storage limit check after init
     checkStorageLimit();
+
+    // Close modals when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === linkModal) {
+            linkModal.classList.remove('visible');
+        }
+        if (e.target === imageModal) {
+            imageModal.classList.remove('visible');
+        }
+    });
 }); 

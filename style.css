@@ -1426,3 +1426,70 @@ footer::after {
     min-width: 100%;
   }
 }
+
+/* Notification Badge */
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--primary-red);
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: var(--transition-fast);
+}
+
+/* User dropdown styles for landing page */
+.user-login-options {
+  padding: 1.25rem;
+}
+
+.user-login-options p {
+  margin: 0 0 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.user-login-options .btn-primary {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.user-login-options .btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.create-account {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.create-account a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+
+.create-account a:hover {
+  text-decoration: underline;
+}

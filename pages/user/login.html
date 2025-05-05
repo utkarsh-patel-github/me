@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sign In - Daily Tools</title>
+    <meta name="description" content="Sign in to your Daily Tools account to save your preferences and access your saved tools.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="/pages/user/style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="icon-button active" title="Profile">
+                <i class="ri-user-3-line"></i>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="auth-container">
+                <div class="tabs">
+                    <button class="tab active" data-tab="login">Sign In</button>
+                    <button class="tab" data-tab="register">Create Account</button>
+                </div>
+                
+                <div id="login-form" class="form-container active">
+                    <h1>Welcome Back</h1>
+                    <p class="subtitle">Sign in to access your saved tools and preferences</p>
+                    
+                    <form action="#" method="post" id="signin-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <div class="input-with-icon">
+                                <i class="ri-mail-line"></i>
+                                <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="input-with-icon">
+                                <i class="ri-lock-line"></i>
+                                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                                <button type="button" class="toggle-password" title="Show password">
+                                    <i class="ri-eye-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="/pages/user/forgot-password.html" class="forgot-password">Forgot password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Sign In</button>
+                    </form>
+                    
+                    <div class="social-login">
+                        <p>Or sign in with</p>
+                        <div class="social-buttons">
+                            <button class="social-btn google">
+                                <i class="ri-google-fill"></i>
+                                <span>Google</span>
+                            </button>
+                            <button class="social-btn facebook">
+                                <i class="ri-facebook-fill"></i>
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="register-form" class="form-container">
+                    <h1>Create Your Account</h1>
+                    <p class="subtitle">Join Daily Tools to save your preferences and access from anywhere</p>
+                    
+                    <form action="#" method="post" id="signup-form">
+                        <div class="form-group">
+                            <label for="register-name">Full Name</label>
+                            <div class="input-with-icon">
+                                <i class="ri-user-3-line"></i>
+                                <input type="text" id="register-name" name="name" placeholder="Enter your name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <div class="input-with-icon">
+                                <i class="ri-mail-line"></i>
+                                <input type="email" id="register-email" name="email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <div class="input-with-icon">
+                                <i class="ri-lock-line"></i>
+                                <input type="password" id="register-password" name="password" placeholder="Create a password" required>
+                                <button type="button" class="toggle-password" title="Show password">
+                                    <i class="ri-eye-line"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-meter">
+                                    <span></span>
+                                </div>
+                                <div class="password-tips">
+                                    <p>Password should contain:</p>
+                                    <ul>
+                                        <li class="requirement" data-requirement="length">At least 8 characters</li>
+                                        <li class="requirement" data-requirement="uppercase">Uppercase letters</li>
+                                        <li class="requirement" data-requirement="lowercase">Lowercase letters</li>
+                                        <li class="requirement" data-requirement="number">Numbers</li>
+                                        <li class="requirement" data-requirement="special">Special characters</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-confirm">Confirm Password</label>
+                            <div class="input-with-icon">
+                                <i class="ri-lock-line"></i>
+                                <input type="password" id="register-confirm" name="confirm_password" placeholder="Confirm your password" required>
+                                <button type="button" class="toggle-password" title="Show password">
+                                    <i class="ri-eye-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">I agree to the <a href="/pages/legal/terms-of-service.html">Terms of Service</a> and <a href="/pages/legal/privacy-policy.html">Privacy Policy</a></label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Create Account</button>
+                    </form>
+                    
+                    <div class="social-login">
+                        <p>Or sign up with</p>
+                        <div class="social-buttons">
+                            <button class="social-btn google">
+                                <i class="ri-google-fill"></i>
+                                <span>Google</span>
+                            </button>
+                            <button class="social-btn facebook">
+                                <i class="ri-facebook-fill"></i>
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/pages/tools">Popular Tools</a></li>
+                        <li><a href="/pages/tools?category=new">New Tools</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#blog">Blog</a></li>
+                        <li><a href="/pages/about#careers">Careers</a></li>
+                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/legal/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/pages/legal/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+                        <li><a href="/pages/legal/accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/nav/script.js"></script>
+    <script src="/pages/user/script.js"></script>
+</body>
+</html> 

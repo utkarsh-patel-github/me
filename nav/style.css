@@ -305,7 +305,6 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  margin-right: auto;
   margin-left: 2rem;
 }
 

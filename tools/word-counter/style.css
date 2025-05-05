@@ -849,6 +849,28 @@ body.dark-mode .file-size {
   }
 }
 
+@media (max-width: 576px) {
+  .header-content {
+      align-items: center;
+  }
+  
+  .header-image {
+      margin: 0 auto;
+  }
+  
+  .header-text {
+      text-align: center;
+  }
+  
+  .tool-meta {
+      justify-content: center;
+  }
+  
+  .reference-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 480px) {
   .tools-grid {
       grid-template-columns: 1fr;

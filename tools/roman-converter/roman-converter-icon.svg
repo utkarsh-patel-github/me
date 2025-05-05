@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#E9EFFF"/>
+  <g transform="translate(20,20)">
+    <!-- Roman numeral M -->
+    <path d="M9,10 L13,10 L13,50 L23,50 L23,10 L27,10 L27,50 L37,50 L37,10 L41,10 L41,60 L9,60 Z" fill="#4361EE"/>
+    <!-- Arrow pointing to decimal -->
+    <path d="M50,35 L65,35 L58,28 L60,26 L70,35 L60,44 L58,42 L65,35" fill="#FF8C42"/>
+    <!-- Decimal 1000 -->
+    <text x="72" y="40" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">
+      1000
+    </text>
+  </g>
+</svg> 

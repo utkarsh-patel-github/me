@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Color Converter - Daily Tools</title>
+    <meta name="description" content="Convert between RGB, HEX, HSL, and more color formats with our free online Color Converter tool.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/tools">Tools</a>
+            <a href="/categories">Categories</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="icon-button" title="Profile">
+                <i class="ri-user-3-line"></i>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Tool Header with Image -->
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/tools">Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Color Converter</span>
+                </div>
+                
+                <div class="header-content">
+                    <div class="header-image">
+                        <img src="color-converter-icon.svg" alt="Color Converter" />
+                    </div>
+                    <div class="header-text">
+                        <h1>Color Converter</h1>
+                        <p>Convert colors between different formats (HEX, RGB, HSL, CMYK, and more) with ease. Perfect for web designers, developers, and digital artists.</p>
+                        
+                        <div class="tool-meta">
+                            <div class="meta-item">
+                                <i class="ri-calendar-check-line"></i>
+                                <span>Last Updated: September 5, 2023</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-star-fill"></i>
+                                <span>Rating: 4.9/5</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-eye-line"></i>
+                                <span>Used 178,246 times</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Tool Content -->
+            <div class="tool-content">
+                <div class="color-converter-card">
+                    <div class="color-picker-section">
+                        <div class="color-preview-container">
+                            <div class="color-preview" id="color-preview"></div>
+                            <div class="color-preview-text" id="color-name">Select a color</div>
+                        </div>
+                        
+                        <div class="color-input-methods">
+                            <div class="input-method visual-picker">
+                                <label>Visual Color Picker</label>
+                                <input type="color" id="color-picker" value="#4361ee">
+                            </div>
+                            
+                            <div class="input-method text-input">
+                                <label for="color-input">Enter Color (HEX, RGB, or color name)</label>
+                                <div class="input-with-buttons">
+                                    <input 
+                                        type="text" 
+                                        id="color-input" 
+                                        class="input-field" 
+                                        placeholder="e.g. #4361ee, rgb(67, 97, 238), blue" 
+                                    >
+                                    <div class="input-buttons">
+                                        <button id="clear-btn" class="input-btn" title="Clear">
+                                            <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                        <button id="random-btn" class="input-btn" title="Random color">
+                                            <i class="ri-shuffle-line"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="input-hint">
+                                    Enter color in any format and press Enter
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-formats-section">
+                        <h3>Color Formats</h3>
+                        
+                        <div class="color-formats-grid">
+                            <div class="format-card" data-format="hex">
+                                <div class="format-label">HEX</div>
+                                <div class="format-value" id="hex-value">#4361ee</div>
+                                <button class="copy-button" data-format="hex">
+                                    <i class="ri-clipboard-line"></i> Copy
+                                </button>
+                            </div>
+                            
+                            <div class="format-card" data-format="rgb">
+                                <div class="format-label">RGB</div>
+                                <div class="format-value" id="rgb-value">rgb(67, 97, 238)</div>
+                                <button class="copy-button" data-format="rgb">
+                                    <i class="ri-clipboard-line"></i> Copy
+                                </button>
+                            </div>
+                            
+                            <div class="format-card" data-format="rgba">
+                                <div class="format-label">RGBA</div>
+                                <div class="format-value" id="rgba-value">rgba(67, 97, 238, 1)</div>
+                                <button class="copy-button" data-format="rgba">
+                                    <i class="ri-clipboard-line"></i> Copy
+                                </button>
+                            </div>
+                            
+                            <div class="format-card" data-format="hsl">
+                                <div class="format-label">HSL</div>
+                                <div class="format-value" id="hsl-value">hsl(229, 83%, 60%)</div>
+                                <button class="copy-button" data-format="hsl">
+                                    <i class="ri-clipboard-line"></i> Copy
+                                </button>
+                            </div>
+                            
+                            <div class="format-card" data-format="hsla">
+                                <div class="format-label">HSLA</div>
+                                <div class="format-value" id="hsla-value">hsla(229, 83%, 60%, 1)</div>
+                                <button class="copy-button" data-format="hsla">
+                                    <i class="ri-clipboard-line"></i> Copy
+                                </button>
+                            </div>
+                            
+                            <div class="format-card" data-format="cmyk">
+                                <div class="format-label">CMYK</div>
+                                <div class="format-value" id="cmyk-value">cmyk(72%, 59%, 0%, 7%)</div>
+                                <button class="copy-button" data-format="cmyk">
+                                    <i class="ri-clipboard-line"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-tools-section">
+                        <h3>Color Tools</h3>
+                        
+                        <div class="tools-grid">
+                            <div class="tool-option">
+                                <div class="tool-header">
+                                    <i class="ri-contrast-2-line"></i>
+                                    <span>Adjust Opacity</span>
+                                </div>
+                                <div class="tool-content">
+                                    <label for="opacity-slider">Opacity: <span id="opacity-value">100%</span></label>
+                                    <input type="range" id="opacity-slider" min="0" max="100" value="100">
+                                </div>
+                            </div>
+                            
+                            <div class="tool-option">
+                                <div class="tool-header">
+                                    <i class="ri-contrast-drop-line"></i>
+                                    <span>Shade Generator</span>
+                                </div>
+                                <div class="tool-content">
+                                    <div class="shades-container" id="shades-container">
+                                        <div class="shade-item" style="background-color: #0c1c94"></div>
+                                        <div class="shade-item" style="background-color: #1d2fba"></div>
+                                        <div class="shade-item" style="background-color: #2e45d4"></div>
+                                        <div class="shade-item" style="background-color: #4361ee"></div>
+                                        <div class="shade-item" style="background-color: #6f87f2"></div>
+                                        <div class="shade-item" style="background-color: #9dadf6"></div>
+                                        <div class="shade-item" style="background-color: #cbd3fa"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tool-option">
+                                <div class="tool-header">
+                                    <i class="ri-contrast-drop-2-line"></i>
+                                    <span>Tint Generator</span>
+                                </div>
+                                <div class="tool-content">
+                                    <div class="tints-container" id="tints-container">
+                                        <div class="tint-item" style="background-color: #e9ecfd"></div>
+                                        <div class="tint-item" style="background-color: #d4d9fb"></div>
+                                        <div class="tint-item" style="background-color: #bec7f9"></div>
+                                        <div class="tint-item" style="background-color: #a9b5f7"></div>
+                                        <div class="tint-item" style="background-color: #93a2f5"></div>
+                                        <div class="tint-item" style="background-color: #7e90f3"></div>
+                                        <div class="tint-item" style="background-color: #6878f1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tool-option">
+                                <div class="tool-header">
+                                    <i class="ri-palette-line"></i>
+                                    <span>Color Harmony</span>
+                                </div>
+                                <div class="tool-content">
+                                    <div class="harmony-types">
+                                        <button class="harmony-type active" data-type="complementary">Complementary</button>
+                                        <button class="harmony-type" data-type="analogous">Analogous</button>
+                                        <button class="harmony-type" data-type="triadic">Triadic</button>
+                                    </div>
+                                    <div class="harmony-colors" id="harmony-colors">
+                                        <div class="harmony-color" style="background-color: #4361ee"></div>
+                                        <div class="harmony-color" style="background-color: #ee4361"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- How to Use Section -->
+                <div class="info-card">
+                    <h2><i class="ri-question-line"></i> How to Use</h2>
+                    <div class="step-list">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Enter or pick a color</h3>
+                                <p>Choose a color using the color picker, or enter a color value in any format (HEX, RGB, color name, etc.).</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>View all formats</h3>
+                                <p>See the color represented in multiple formats: HEX, RGB, RGBA, HSL, HSLA, and CMYK.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Copy and use</h3>
+                                <p>Click the copy button to copy any color format to your clipboard. Use additional tools to generate shades, tints, and color harmonies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Color Formats Explanation -->
+                <div class="info-card">
+                    <h2><i class="ri-information-line"></i> Understanding Color Formats</h2>
+                    <div class="format-explanation-content">
+                        <p>Different color formats serve various purposes in design, web development, and digital art. Here's a simple explanation of each format:</p>
+                        
+                        <div class="format-explanation-grid">
+                            <div class="format-explanation">
+                                <h3>HEX (#RRGGBB)</h3>
+                                <p>A 6-digit hexadecimal code that represents RGB values. Used extensively in web design and CSS. Example: <code>#4361ee</code></p>
+                            </div>
+                            
+                            <div class="format-explanation">
+                                <h3>RGB</h3>
+                                <p>Represents color using Red, Green, and Blue values (0-255). Common in web development and digital design. Example: <code>rgb(67, 97, 238)</code></p>
+                            </div>
+                            
+                            <div class="format-explanation">
+                                <h3>RGBA</h3>
+                                <p>RGB with an Alpha (transparency) channel, where 1.0 is fully opaque and 0.0 is fully transparent. Example: <code>rgba(67, 97, 238, 0.5)</code></p>
+                            </div>
+                            
+                            <div class="format-explanation">
+                                <h3>HSL</h3>
+                                <p>Hue (0-360°), Saturation (0-100%), and Lightness (0-100%). Intuitive for adjusting colors. Example: <code>hsl(229, 83%, 60%)</code></p>
+                            </div>
+                            
+                            <div class="format-explanation">
+                                <h3>HSLA</h3>
+                                <p>HSL with an Alpha channel for transparency. Example: <code>hsla(229, 83%, 60%, 0.5)</code></p>
+                            </div>
+                            
+                            <div class="format-explanation">
+                                <h3>CMYK</h3>
+                                <p>Cyan, Magenta, Yellow, and Key (black) percentages (0-100%). Used primarily in print design. Example: <code>cmyk(72%, 59%, 0%, 7%)</code></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="info-card">
+                    <h2><i class="ri-question-answer-line"></i> Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">Which color format should I use for web development?</div>
+                            <div class="faq-answer">
+                                <p>For web development, HEX and RGB/RGBA are the most common. HEX is concise and widely supported, while RGBA allows for transparency control. For more intuitive color manipulation, HSL/HSLA is excellent since you can easily adjust hue, saturation, and lightness independently.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Why are my printed colors different from what I see on screen?</div>
+                            <div class="faq-answer">
+                                <p>Screens use RGB (additive color) while printers use CMYK (subtractive color), resulting in color differences. Additionally, screens emit light while printed materials reflect light. For print work, use CMYK values and consider getting color proofs before final printing.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">What's the difference between shades and tints?</div>
+                            <div class="faq-answer">
+                                <p>Shades are created by adding black to a base color, making it darker while maintaining the same hue. Tints are created by adding white to a base color, making it lighter. Both are useful for creating color variations while maintaining visual harmony in your designs.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">How do I ensure my colors are accessible for all users?</div>
+                            <div class="faq-answer">
+                                <p>For web accessibility, ensure sufficient contrast between text and background colors. The WCAG guidelines recommend a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. You can use accessibility tools to check contrast ratios and ensure your colors are visible to users with visual impairments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Tools Section -->
+                <div class="related-tools">
+                    <h2>Related Tools You Might Like</h2>
+                    <div class="tools-grid">
+                        <a href="/tools/gradient-generator" class="tool-card">
+                            <i class="ri-paint-fill"></i>
+                            <span>Gradient Generator</span>
+                        </a>
+                        <a href="/tools/color-palette-generator" class="tool-card">
+                            <i class="ri-palette-fill"></i>
+                            <span>Color Palette Generator</span>
+                        </a>
+                        <a href="/tools/image-color-picker" class="tool-card">
+                            <i class="ri-dropbox-fill"></i>
+                            <span>Image Color Picker</span>
+                        </a>
+                        <a href="/tools/contrast-checker" class="tool-card">
+                            <i class="ri-contrast-fill"></i>
+                            <span>Contrast Checker</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="#">Popular Tools</a></li>
+                        <li><a href="#">New Tools</a></li>
+                        <li><a href="#">Calculators</a></li>
+                        <li><a href="#">Converters</a></li>
+                        <li><a href="#">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/nav/script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

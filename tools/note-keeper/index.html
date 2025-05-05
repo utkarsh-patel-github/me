@@ -9,11 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/nav/style.css">
     <link rel="stylesheet" href="/footer/style.css">
-    <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOURPUBIDHERE" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav>
@@ -50,55 +48,51 @@
     </nav>
 
     <main>
-        <div class="tool-container">
+        <div class="container">
+            <!-- Tool Header with Image -->
             <div class="tool-header">
                 <div class="breadcrumb">
-                    <a href="../../index.html">Home</a>
+                    <a href="/">Home</a>
                     <i class="ri-arrow-right-s-line"></i>
-                    <a href="#">Productivity</a>
+                    <a href="/tools">Tools</a>
                     <i class="ri-arrow-right-s-line"></i>
                     <span>Note Keeper</span>
                 </div>
-                <h1><i class="ri-sticky-note-fill"></i> Note Keeper</h1>
-                <p class="description">Create, edit, and save notes online. Features auto-save, rich text formatting, and categorization options. Perfect for jotting down ideas, making to-do lists, or saving important information.</p>
                 
-                <div class="meta">
-                    <div class="meta-item">
-                        <i class="ri-calendar-check-fill"></i>
-                        <span>Last Updated: May 30, 2023</span>
+                <div class="header-content">
+                    <div class="header-image">
+                        <img src="note-keeper-icon.svg" alt="Note Keeper" />
                     </div>
-                    <div class="meta-item">
-                        <i class="ri-star-fill"></i>
-                        <span>Rating: 4.7/5</span>
-                    </div>
-                    <div class="meta-item">
-                        <i class="ri-eye-fill"></i>
-                        <span>Used 85,712 times</span>
+                    <div class="header-text">
+                        <h1>Note Keeper</h1>
+                        <p>Create, save, and organize your notes online with rich text formatting. Your notes are saved automatically and stored locally on your device.</p>
+                        
+                        <div class="tool-meta">
+                            <div class="meta-item">
+                                <i class="ri-calendar-check-line"></i>
+                                <span>Last Updated: September 10, 2023</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-star-fill"></i>
+                                <span>Rating: 4.7/5</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-eye-line"></i>
+                                <span>Used 156,842 times</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="ad-container">
-                <div class="ad-label">Advertisement</div>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-YOURPUBIDHERE"
-                     data-ad-slot="YOURADSLOTHERE"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-
-            <div class="tool-card calculator-card">
-                <h2><i class="ri-sticky-note-fill"></i> Note Keeper</h2>
-                
+            
+            <!-- Main Tool Content -->
+            <div class="tool-content">
                 <div class="notekeeper-container">
+                    <!-- Sidebar -->
                     <div class="sidebar">
                         <div class="sidebar-header">
                             <h3>My Notes</h3>
-                            <button id="new-note-btn" class="btn btn-primary">
+                            <button id="new-note-btn">
                                 <i class="ri-add-line"></i> New Note
                             </button>
                         </div>
@@ -110,7 +104,7 @@
                         
                         <div class="categories">
                             <div class="category active" data-category="all">
-                                <i class="ri-file-list-line"></i>
+                                <i class="ri-file-list-3-line"></i>
                                 <span>All Notes</span>
                                 <span class="note-count">0</span>
                             </div>
@@ -130,21 +124,18 @@
                                 <span class="note-count">0</span>
                             </div>
                             <div class="category" data-category="todos">
-                                <i class="ri-checkbox-multiple-line"></i>
-                                <span>To-Dos</span>
+                                <i class="ri-checkbox-line"></i>
+                                <span>To-dos</span>
                                 <span class="note-count">0</span>
                             </div>
                         </div>
                         
-                        <div class="notes-list" id="notes-list">
-                            <!-- Notes will be populated by JavaScript -->
-                            <div class="empty-notes">
-                                <i class="ri-sticky-note-line"></i>
-                                <p>No notes yet. Click "New Note" to create one.</p>
-                            </div>
+                        <div id="notes-list" class="notes-list">
+                            <!-- Notes will be dynamically inserted here by JavaScript -->
                         </div>
                     </div>
                     
+                    <!-- Note Editor -->
                     <div class="note-editor">
                         <div class="toolbar">
                             <div class="toolbar-group">
@@ -157,251 +148,252 @@
                                 <button class="toolbar-btn" data-command="underline" title="Underline">
                                     <i class="ri-underline"></i>
                                 </button>
-                                <button class="toolbar-btn" data-command="strikeThrough" title="Strike through">
+                                <button class="toolbar-btn" data-command="strikeThrough" title="Strikethrough">
                                     <i class="ri-strikethrough"></i>
                                 </button>
                             </div>
                             
                             <div class="toolbar-group">
-                                <button class="toolbar-btn" data-command="justifyLeft" title="Align left">
+                                <button class="toolbar-btn" data-command="formatBlock" data-value="h1" title="Heading 1">
+                                    <i class="ri-h-1"></i>
+                                </button>
+                                <button class="toolbar-btn" data-command="formatBlock" data-value="h2" title="Heading 2">
+                                    <i class="ri-h-2"></i>
+                                </button>
+                                <button class="toolbar-btn" data-command="formatBlock" data-value="h3" title="Heading 3">
+                                    <i class="ri-h-3"></i>
+                                </button>
+                                <button class="toolbar-btn" data-command="formatBlock" data-value="p" title="Paragraph">
+                                    <i class="ri-paragraph"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" data-command="insertUnorderedList" title="Bullet List">
+                                    <i class="ri-list-unordered"></i>
+                                </button>
+                                <button class="toolbar-btn" data-command="insertOrderedList" title="Numbered List">
+                                    <i class="ri-list-ordered"></i>
+                                </button>
+                                <button class="toolbar-btn" data-command="indent" title="Indent">
+                                    <i class="ri-indent-increase"></i>
+                                </button>
+                                <button class="toolbar-btn" data-command="outdent" title="Outdent">
+                                    <i class="ri-indent-decrease"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" data-command="justifyLeft" title="Align Left">
                                     <i class="ri-align-left"></i>
                                 </button>
-                                <button class="toolbar-btn" data-command="justifyCenter" title="Align center">
+                                <button class="toolbar-btn" data-command="justifyCenter" title="Align Center">
                                     <i class="ri-align-center"></i>
                                 </button>
-                                <button class="toolbar-btn" data-command="justifyRight" title="Align right">
+                                <button class="toolbar-btn" data-command="justifyRight" title="Align Right">
                                     <i class="ri-align-right"></i>
                                 </button>
                             </div>
                             
                             <div class="toolbar-group">
-                                <button class="toolbar-btn" data-command="insertUnorderedList" title="Bullet list">
-                                    <i class="ri-list-unordered"></i>
-                                </button>
-                                <button class="toolbar-btn" data-command="insertOrderedList" title="Numbered list">
-                                    <i class="ri-list-ordered"></i>
-                                </button>
-                            </div>
-                            
-                            <div class="toolbar-group">
-                                <button class="toolbar-btn" data-command="createLink" title="Insert link">
+                                <button class="toolbar-btn" data-command="link" title="Insert Link">
                                     <i class="ri-link"></i>
                                 </button>
-                                <button class="toolbar-btn" data-command="insertImage" title="Insert image">
+                                <button class="toolbar-btn" data-command="image" title="Insert Image">
                                     <i class="ri-image-line"></i>
+                                </button>
+                                <button class="toolbar-btn" data-command="formatBlock" data-value="blockquote" title="Quote">
+                                    <i class="ri-double-quotes-l"></i>
                                 </button>
                             </div>
                         </div>
                         
                         <div class="note-header">
-                            <input type="text" id="note-title" placeholder="Untitled Note" class="note-title-input">
-                            
+                            <input type="text" id="note-title" class="note-title-input" placeholder="Note Title">
                             <div class="note-options">
                                 <select id="note-category">
-                                    <option value="">Select category</option>
+                                    <option value="">No Category</option>
                                     <option value="personal">Personal</option>
                                     <option value="work">Work</option>
                                     <option value="ideas">Ideas</option>
-                                    <option value="todos">To-Dos</option>
+                                    <option value="todos">To-dos</option>
                                 </select>
-                                
-                                <div class="last-saved">
-                                    <i class="ri-save-line"></i>
-                                    <span id="last-saved-time">Not saved yet</span>
-                                </div>
                             </div>
                         </div>
                         
-                        <div class="note-content" id="note-content" contenteditable="true"></div>
+                        <div id="note-content" class="note-content" contenteditable="true"></div>
                         
                         <div class="note-footer">
+                            <div class="last-saved">
+                                <i class="ri-time-line"></i>
+                                <span id="last-saved-time">Not saved yet</span>
+                            </div>
+                            
                             <div class="word-count">
-                                <i class="ri-text-wrap"></i>
                                 <span id="word-count">0 words</span>
                             </div>
                             
                             <div class="note-actions">
-                                <button id="save-note-btn" class="btn btn-primary">
+                                <button id="save-note-btn">
                                     <i class="ri-save-line"></i> Save
                                 </button>
-                                <button id="delete-note-btn" class="btn btn-secondary">
-                                    <i class="ri-delete-bin-line"></i> Delete
-                                </button>
-                                <button id="export-note-btn" class="btn btn-secondary">
+                                <button id="export-note-btn">
                                     <i class="ri-download-line"></i> Export
+                                </button>
+                                <button id="delete-note-btn">
+                                    <i class="ri-delete-bin-line"></i> Delete
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="tool-info">
-                <div class="info-tab">
-                    <div class="tab-header active" data-tab="what-is">About Note Keeper</div>
-                    <div class="tab-content" id="what-is-content">
-                        <p>Note Keeper is a free online notepad that helps you create, edit, and organize your notes. Whether you're jotting down quick ideas, making to-do lists, or saving important information, Note Keeper makes it easy to keep track of everything.</p>
-                        
-                        <h3>Key Features:</h3>
-                        <ul>
-                            <li><strong>Auto-Save:</strong> Never lose your work with automatic saving</li>
-                            <li><strong>Rich Text Formatting:</strong> Format your notes with bold, italic, lists, and more</li>
-                            <li><strong>Categories:</strong> Organize notes into categories like Personal, Work, Ideas, and To-Dos</li>
-                            <li><strong>Search:</strong> Quickly find notes with the built-in search feature</li>
-                            <li><strong>Local Storage:</strong> Your notes are saved in your browser's local storage</li>
-                            <li><strong>Export Options:</strong> Export your notes as text files</li>
-                            <li><strong>Dark Mode Support:</strong> Comfortable writing in any lighting conditions</li>
-                        </ul>
-                        
-                        <p>Note Keeper is designed to be a simple yet powerful tool for all your note-taking needs, completely free and without requiring any account creation.</p>
+                
+                <!-- How to Use Section -->
+                <div class="info-card">
+                    <h2><i class="ri-question-line"></i> How to Use</h2>
+                    <div class="step-list">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Create a note</h3>
+                                <p>Click the "New Note" button to start a fresh note. Give it a title and start typing in the content area.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Format your text</h3>
+                                <p>Use the toolbar to format your text with headings, lists, links, and more. Select text to apply formatting like bold, italic, or underline.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Organize with categories</h3>
+                                <p>Assign categories to your notes using the dropdown menu. Filter your notes by clicking on categories in the sidebar.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Save and export</h3>
+                                <p>Your notes are automatically saved as you type. Use the "Export" button to download a note as a text file for backup or sharing.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="info-tab">
-                    <div class="tab-header" data-tab="how-to">How to Use Note Keeper</div>
-                    <div class="tab-content" id="how-to-content" style="display: none;">
-                        <p>Getting started with Note Keeper is simple:</p>
+                <!-- Features Section -->
+                <div class="info-card">
+                    <h2><i class="ri-functions-line"></i> Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="ri-save-line"></i>
+                            </div>
+                            <div class="feature-title">Auto-Save</div>
+                            <div class="feature-description">Your notes are automatically saved as you type, so you never lose your work even if you close the browser.</div>
+                        </div>
                         
-                        <h3>Creating a New Note</h3>
-                        <ol>
-                            <li>Click the "New Note" button in the sidebar</li>
-                            <li>Give your note a title (or keep "Untitled Note")</li>
-                            <li>Start typing in the content area</li>
-                            <li>Optionally select a category from the dropdown</li>
-                            <li>Your note is automatically saved as you type</li>
-                        </ol>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="ri-text-wrap"></i>
+                            </div>
+                            <div class="feature-title">Rich Text Formatting</div>
+                            <div class="feature-description">Format your notes with bold, italic, headings, lists, links, images, and more for better organization.</div>
+                        </div>
                         
-                        <h3>Formatting Your Notes</h3>
-                        <p>Use the toolbar above the editor to format your text:</p>
-                        <ul>
-                            <li>Text formatting: Bold, Italic, Underline, Strikethrough</li>
-                            <li>Alignment: Left, Center, Right</li>
-                            <li>Lists: Bulleted and Numbered lists</li>
-                            <li>Insert: Links and Images</li>
-                        </ul>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="ri-folders-line"></i>
+                            </div>
+                            <div class="feature-title">Categories</div>
+                            <div class="feature-description">Organize your notes into categories like Personal, Work, Ideas, and To-dos to find them easily.</div>
+                        </div>
                         
-                        <h3>Managing Your Notes</h3>
-                        <ul>
-                            <li>Filter notes by category using the sidebar</li>
-                            <li>Search for specific notes using the search bar</li>
-                            <li>Delete unwanted notes with the Delete button</li>
-                            <li>Export notes to save them outside the browser</li>
-                        </ul>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="ri-search-line"></i>
+                            </div>
+                            <div class="feature-title">Quick Search</div>
+                            <div class="feature-description">Find notes quickly by typing keywords in the search bar to filter through all your content.</div>
+                        </div>
                         
-                        <p><strong>Note:</strong> Your notes are stored in your browser's local storage. Clearing your browser data will remove your notes, so make sure to export important notes regularly.</p>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="ri-lock-line"></i>
+                            </div>
+                            <div class="feature-title">Privacy-Focused</div>
+                            <div class="feature-description">All notes are stored locally on your device – we don't save your content on our servers.</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="ri-download-line"></i>
+                            </div>
+                            <div class="feature-title">Export Options</div>
+                            <div class="feature-description">Export your notes as text files for easy backup or sharing with others.</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="info-tab">
-                    <div class="tab-header" data-tab="privacy">Privacy & Data</div>
-                    <div class="tab-content" id="privacy-content" style="display: none;">
-                        <p>We take your privacy seriously. Here's how Note Keeper handles your data:</p>
-                        
-                        <h3>Local Storage Only</h3>
-                        <p>All your notes are stored exclusively in your browser's local storage. This means:</p>
-                        <ul>
-                            <li>Your notes never leave your device</li>
-                            <li>We don't have access to your notes</li>
-                            <li>No account creation or login required</li>
-                            <li>No server-side storage or processing</li>
-                        </ul>
-                        
-                        <h3>Important Considerations</h3>
-                        <ul>
-                            <li>Clearing your browser data/cache will delete your notes</li>
-                            <li>Notes are device-specific and not synced across devices</li>
-                            <li>For important notes, we recommend using the Export feature regularly</li>
-                        </ul>
-                        
-                        <h3>Data Limitations</h3>
-                        <p>Local storage has limited capacity (typically 5-10MB depending on your browser). If you store many notes or include images, you may eventually reach this limit. The app will notify you if you're approaching storage limits.</p>
+                <!-- FAQ Section -->
+                <div class="info-card">
+                    <h2><i class="ri-question-answer-line"></i> Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">Are my notes private?</div>
+                            <div class="faq-answer">
+                                <p>Yes, all notes are stored locally in your browser's storage on your device. We don't save your notes on any server, and they are not accessible to anyone but you on your device.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Will I lose my notes if I clear my browser data?</div>
+                            <div class="faq-answer">
+                                <p>Yes, clearing your browser's local storage will delete all saved notes. Before clearing browser data, make sure to export important notes using the "Export" button to save them externally.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Is there a limit to how many notes I can create?</div>
+                            <div class="faq-answer">
+                                <p>The limitation is based on your browser's local storage capacity, which is typically 5-10MB. This allows for hundreds of notes, but if you encounter storage limits, you'll receive a notification to export and delete older notes.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Can I access my notes from different devices?</div>
+                            <div class="faq-answer">
+                                <p>Since notes are stored locally in your browser, they're only available on the device where you created them. To access notes on another device, you'll need to export them from your original device and import them on the new one.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Can I recover deleted notes?</div>
+                            <div class="faq-answer">
+                                <p>Once deleted, notes cannot be automatically recovered. We recommend exporting important notes regularly as a backup measure.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Ad Container -->
-            <div class="ad-container">
-                <div class="ad-label">Advertisement</div>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-YOURPUBIDHERE"
-                     data-ad-slot="YOURADSLOTHERE"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-            
-            <div class="tool-sidebar">
-                <div class="sidebar-card">
-                    <h3><i class="ri-link-m"></i> Related Tools</h3>
-                    <div class="related-tools">
-                        <a href="#" class="related-tool">
-                            <i class="ri-task-line"></i>
-                            <span>To-Do List</span>
+                
+                <!-- Related Tools Section -->
+                <div class="related-tools">
+                    <h2>Related Tools You Might Like</h2>
+                    <div class="tools-grid">
+                        <a href="/tools/todo-list" class="tool-card">
+                            <i class="ri-checkbox-multiple-line"></i>
+                            <span>Todo List</span>
                         </a>
-                        <a href="#" class="related-tool">
-                            <i class="ri-calendar-todo-fill"></i>
-                            <span>Calendar</span>
-                        </a>
-                        <a href="#" class="related-tool">
-                            <i class="ri-timer-line"></i>
-                            <span>Pomodoro Timer</span>
-                        </a>
-                        <a href="../word-counter/index.html" class="related-tool">
+                        <a href="/tools/word-counter" class="tool-card">
                             <i class="ri-text-wrap"></i>
                             <span>Word Counter</span>
                         </a>
-                        <a href="#" class="related-tool">
-                            <i class="ri-markdown-fill"></i>
+                        <a href="/tools/markdown-editor" class="tool-card">
+                            <i class="ri-markdown-line"></i>
                             <span>Markdown Editor</span>
                         </a>
-                    </div>
-                </div>
-                
-                <div class="sidebar-card">
-                    <h3><i class="ri-question-fill"></i> FAQ</h3>
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Are my notes private?</span>
-                                <i class="ri-add-line"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes, your notes are completely private. They are stored only in your browser's local storage and never sent to any server. Only you can access them on your device.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Will I lose my notes if I clear my browser data?</span>
-                                <i class="ri-add-line"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes. Since notes are stored in local storage, clearing your browser data/cache will delete them. We recommend exporting important notes regularly using the Export feature.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Is there a limit to how many notes I can create?</span>
-                                <i class="ri-add-line"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Your browser's local storage has a limit (typically 5-10MB). The number of notes you can create depends on their size. Text-only notes are small, but including images will use more storage. The app will notify you if you're approaching the limit.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Can I access my notes on different devices?</span>
-                                <i class="ri-add-line"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>No. Notes are stored in your browser's local storage, which is specific to the device and browser you're using. To access notes on another device, you would need to export them from one device and import them on another.</p>
-                            </div>
-                        </div>
+                        <a href="/tools/calendar" class="tool-card">
+                            <i class="ri-calendar-line"></i>
+                            <span>Calendar</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -501,7 +493,7 @@
         </div>
     </div>
 
-    <script src="../common.js"></script>
+    <script src="/nav/script.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

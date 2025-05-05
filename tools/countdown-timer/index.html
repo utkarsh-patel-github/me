@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Countdown Timer - Daily Tools</title>
+    <meta name="description" content="Create custom countdowns to any date or event with our free online countdown timer tool. Track days, hours, minutes and seconds remaining.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/tools">Tools</a>
+            <a href="/categories">Categories</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="icon-button" title="Profile">
+                <i class="ri-user-3-line"></i>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Tool Header with Image -->
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/tools">Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Countdown Timer</span>
+                </div>
+                
+                <div class="header-content">
+                    <div class="header-image">
+                        <img src="countdown-timer-icon.svg" alt="Countdown Timer" />
+                    </div>
+                    <div class="header-text">
+                        <h1>Countdown Timer</h1>
+                        <p>Create and track custom countdowns to important dates, events, deadlines, or special occasions. Get accurate time remaining in days, hours, minutes, and seconds.</p>
+                        
+                        <div class="tool-meta">
+                            <div class="meta-item">
+                                <i class="ri-calendar-check-line"></i>
+                                <span>Last Updated: September 2, 2023</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-star-fill"></i>
+                                <span>Rating: 4.8/5</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-eye-line"></i>
+                                <span>Used 234,567 times</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Tool Content -->
+            <div class="tool-content">
+                <div class="countdown-card">
+                    <div class="tabs-container">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" data-tab="new-countdown">
+                                <i class="ri-timer-line"></i> New Countdown
+                            </button>
+                            <button class="tab-button" data-tab="saved-countdowns">
+                                <i class="ri-save-line"></i> Saved Countdowns
+                            </button>
+                        </div>
+                        
+                        <div id="new-countdown" class="tab-pane active">
+                            <form class="countdown-form">
+                                <div class="input-group">
+                                    <label for="event-name">Event Name</label>
+                                    <div class="input-with-buttons">
+                                        <input 
+                                            type="text" 
+                                            id="event-name" 
+                                            class="input-field" 
+                                            placeholder="e.g. Birthday, Anniversary, Project Deadline"
+                                        >
+                                        <div class="input-buttons">
+                                            <button id="name-clear-btn" type="button" class="input-btn" title="Clear">
+                                                <i class="ri-close-line"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="event-date">Event Date & Time</label>
+                                    <div class="datetime-inputs">
+                                        <input 
+                                            type="date" 
+                                            id="event-date" 
+                                            class="date-input"
+                                        >
+                                        <input 
+                                            type="time" 
+                                            id="event-time" 
+                                            class="time-input" 
+                                            value="00:00"
+                                        >
+                                    </div>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <div class="group-label">Options</div>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" id="show-seconds" checked>
+                                            <span>Show seconds</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" id="save-countdown">
+                                            <span>Save this countdown</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" id="start-countdown-btn" class="start-button">
+                                    <i class="ri-play-line"></i> Start Countdown
+                                </button>
+                            </form>
+                            
+                            <div id="countdown-display" class="countdown-display">
+                                <div class="countdown-event">
+                                    <h3 id="display-event-name">New Year's Eve</h3>
+                                    <p id="display-event-date">December 31, 2023, 11:59 PM</p>
+                                </div>
+                                
+                                <div class="countdown-timer">
+                                    <div class="timer-unit days-unit">
+                                        <div id="days-value" class="timer-value">120</div>
+                                        <div class="timer-label">days</div>
+                                    </div>
+                                    <div class="timer-separator">:</div>
+                                    <div class="timer-unit hours-unit">
+                                        <div id="hours-value" class="timer-value">12</div>
+                                        <div class="timer-label">hours</div>
+                                    </div>
+                                    <div class="timer-separator">:</div>
+                                    <div class="timer-unit minutes-unit">
+                                        <div id="minutes-value" class="timer-value">45</div>
+                                        <div class="timer-label">minutes</div>
+                                    </div>
+                                    <div class="timer-separator seconds-sep">:</div>
+                                    <div class="timer-unit seconds-unit">
+                                        <div id="seconds-value" class="timer-value">30</div>
+                                        <div class="timer-label">seconds</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="countdown-actions">
+                                    <button id="reset-btn" class="action-button">
+                                        <i class="ri-refresh-line"></i> Reset
+                                    </button>
+                                    <button id="share-btn" class="action-button">
+                                        <i class="ri-share-line"></i> Share
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="saved-countdowns" class="tab-pane">
+                            <div id="no-saved-countdowns" class="no-saved-message">
+                                <i class="ri-calendar-todo-line"></i>
+                                <p>You don't have any saved countdowns yet.</p>
+                                <button id="create-new-btn" class="start-button">
+                                    <i class="ri-add-line"></i> Create New Countdown
+                                </button>
+                            </div>
+                            
+                            <div id="saved-list" class="saved-list">
+                                <!-- Saved countdowns will be dynamically inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- How to Use Section -->
+                <div class="info-card">
+                    <h2><i class="ri-question-line"></i> How to Use</h2>
+                    <div class="step-list">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Enter event details</h3>
+                                <p>Type a name for your event and select the target date and time. Choose whether to display seconds and save the countdown for later use.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Start your countdown</h3>
+                                <p>Click the "Start Countdown" button to begin tracking the time remaining until your event. The countdown will update in real-time.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Save or share</h3>
+                                <p>Use the save option to store your countdown for future visits. Share your countdown with friends and family using the share button.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Countdown Ideas Section -->
+                <div class="info-card">
+                    <h2><i class="ri-lightbulb-line"></i> Countdown Ideas</h2>
+                    <div class="ideas-content">
+                        <p>Need inspiration for your countdown? Here are some popular events people count down to:</p>
+                        
+                        <div class="ideas-grid">
+                            <div class="idea-item">
+                                <div class="idea-icon">
+                                    <i class="ri-cake-2-line"></i>
+                                </div>
+                                <div class="idea-title">Birthday</div>
+                                <div class="idea-description">Count down to your own or a loved one's special day to build excitement.</div>
+                            </div>
+                            
+                            <div class="idea-item">
+                                <div class="idea-icon">
+                                    <i class="ri-heart-line"></i>
+                                </div>
+                                <div class="idea-title">Anniversary</div>
+                                <div class="idea-description">Track time until your wedding, relationship, or work anniversary.</div>
+                            </div>
+                            
+                            <div class="idea-item">
+                                <div class="idea-icon">
+                                    <i class="ri-flight-takeoff-line"></i>
+                                </div>
+                                <div class="idea-title">Vacation</div>
+                                <div class="idea-description">Count down the days until your next holiday or trip abroad.</div>
+                            </div>
+                            
+                            <div class="idea-item">
+                                <div class="idea-icon">
+                                    <i class="ri-calendar-check-line"></i>
+                                </div>
+                                <div class="idea-title">Project Deadline</div>
+                                <div class="idea-description">Stay motivated by tracking the time left until your project is due.</div>
+                            </div>
+                            
+                            <div class="idea-item">
+                                <div class="idea-icon">
+                                    <i class="ri-graduation-cap-line"></i>
+                                </div>
+                                <div class="idea-title">Graduation</div>
+                                <div class="idea-description">Keep track of when you'll finally complete your education.</div>
+                            </div>
+                            
+                            <div class="idea-item">
+                                <div class="idea-icon">
+                                    <i class="ri-firework-line"></i>
+                                </div>
+                                <div class="idea-title">New Year</div>
+                                <div class="idea-description">Count down to midnight on New Year's Eve or any holiday celebration.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="info-card">
+                    <h2><i class="ri-question-answer-line"></i> Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">Will my countdown work if I close my browser?</div>
+                            <div class="faq-answer">
+                                <p>Yes, if you check the "Save this countdown" option before starting. Your countdown will be stored locally on your device and will be available when you return to this page. No account required!</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">How accurate is the countdown timer?</div>
+                            <div class="faq-answer">
+                                <p>Our countdown timer is highly accurate as it uses your device's internal clock. However, for absolute precision (within milliseconds), you may want to refresh the page closer to the target time.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Is there a limit to how many countdowns I can save?</div>
+                            <div class="faq-answer">
+                                <p>There's no specific limit, but the number of countdowns you can save depends on your browser's local storage capacity. Typically, this allows for dozens of saved countdowns without issues.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">What happens when the countdown reaches zero?</div>
+                            <div class="faq-answer">
+                                <p>When a countdown ends, you'll see a celebratory message indicating your event has arrived. For saved countdowns, it will be automatically marked as expired but remains accessible from the "Saved Countdowns" tab.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Tools Section -->
+                <div class="related-tools">
+                    <h2>Related Tools You Might Like</h2>
+                    <div class="tools-grid">
+                        <a href="/tools/stopwatch" class="tool-card">
+                            <i class="ri-timer-flash-line"></i>
+                            <span>Stopwatch</span>
+                        </a>
+                        <a href="/tools/world-clock" class="tool-card">
+                            <i class="ri-global-line"></i>
+                            <span>World Clock</span>
+                        </a>
+                        <a href="/tools/date-calculator" class="tool-card">
+                            <i class="ri-calendar-line"></i>
+                            <span>Date Calculator</span>
+                        </a>
+                        <a href="/tools/reminder" class="tool-card">
+                            <i class="ri-alarm-line"></i>
+                            <span>Reminder Tool</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="#">Popular Tools</a></li>
+                        <li><a href="#">New Tools</a></li>
+                        <li><a href="#">Calculators</a></li>
+                        <li><a href="#">Converters</a></li>
+                        <li><a href="#">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/nav/script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

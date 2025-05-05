@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const lastSavedTime = document.getElementById('last-saved-time');
     const wordCount = document.getElementById('word-count');
     const toolbarButtons = document.querySelectorAll('.toolbar-btn');
+    const faqItems = document.querySelectorAll('.faq-item');
     
     // Modals
     const linkModal = document.getElementById('link-modal');
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } catch (error) {
             console.error('Error initializing notes:', error);
-            window.showToast('Error loading notes. Starting with a clean slate.', 'error');
+            showToast('Error loading notes. Starting with a clean slate.', 'error');
             notes = [];
             resetNoteEditor();
         }
@@ -77,11 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCategoryCounts();
         } catch (error) {
             console.error('Error saving notes to storage:', error);
-            window.showToast('Error saving notes. Storage might be full.', 'error');
+            showToast('Error saving notes. Storage might be full.', 'error');
             
             // Check if localStorage is full
             if (error.name === 'QuotaExceededError') {
-                window.showToast('Storage is full. Please export and delete some notes.', 'warning', 6000);
+                showToast('Storage is full. Please export and delete some notes.', 'warning', 6000);
             }
         }
     }
@@ -201,70 +202,63 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (date.toDateString() === yesterday.toDateString()) {
             return 'Yesterday, ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         } else {
-            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            return date.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ', ' + 
+                   date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
     }
     
     // Filter notes based on category and search
     function filterNotes() {
-        let filtered = [...notes];
-        
-        // Apply category filter
-        if (currentCategory !== 'all') {
-            filtered = filtered.filter(note => note.category === currentCategory);
-        }
-        
-        // Apply search filter if search input has value
-        const searchTerm = searchInput.value.trim().toLowerCase();
-        if (searchTerm) {
-            filtered = filtered.filter(note => {
-                // Create plain text from HTML for search
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = note.content;
-                const textContent = tempDiv.textContent || tempDiv.innerText || '';
-                
-                return (
-                    note.title.toLowerCase().includes(searchTerm) ||
-                    textContent.toLowerCase().includes(searchTerm) ||
-                    (note.category && note.category.toLowerCase().includes(searchTerm))
-                );
-            });
-        }
-        
-        return filtered;
+        return notes.filter(note => {
+            // Filter by category
+            const categoryMatch = currentCategory === 'all' || note.category === currentCategory;
+            
+            // Filter by search text
+            const searchText = searchInput.value.toLowerCase();
+            const titleMatch = note.title.toLowerCase().includes(searchText);
+            
+            // Create temporary div to parse HTML content for search
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = note.content;
+            const contentText = tempDiv.textContent || tempDiv.innerText;
+            const contentMatch = contentText.toLowerCase().includes(searchText);
+            
+            return categoryMatch && (titleMatch || contentMatch || searchText === '');
+        });
     }
     
     // Create a new note
     function createNewNote() {
-        // Save current note first if needed
+        // Save current note if needed
         saveCurrentNoteIfNeeded();
         
-        // Create new note
+        // Create new note object
         const newNote = {
             id: generateId(),
-            title: 'Untitled Note',
+            title: '',
             content: '',
             category: '',
             created: new Date().toISOString(),
             updated: new Date().toISOString()
         };
         
+        // Add to notes array
         notes.unshift(newNote);
+        
+        // Save notes
         saveNotesToStorage();
-        renderNotesList();
+        
+        // Load new note in editor
         loadNote(newNote.id);
         
         // Focus on title input
         noteTitle.focus();
-        
-        // Show toast notification
-        window.showToast('New note created', 'success');
     }
     
-    // Save current note if it exists
+    // Save current note if there are unsaved changes
     function saveCurrentNoteIfNeeded() {
         if (currentNoteId && unsavedChanges) {
-            saveNote(false); // silent save
+            saveNote(false); // Save without notification
         }
     }
     
@@ -273,46 +267,60 @@ document.addEventListener('DOMContentLoaded', function() {
         const note = notes.find(n => n.id === noteId);
         if (!note) return;
         
-        // Set current note ID
         currentNoteId = noteId;
         
-        // Update fields
+        // Fill editor with note data
         noteTitle.value = note.title;
         noteContent.innerHTML = note.content;
-        noteCategory.value = note.category || '';
-        
-        // Update UI
-        renderNotesList(); // Re-render to show active state
-        updateWordCount();
+        noteCategory.value = note.category;
         
         // Update last saved time
         const updatedDate = new Date(note.updated);
         lastSavedTime.textContent = 'Last saved: ' + formatDate(updatedDate);
         
-        // Set auto-save timer
-        resetAutoSaveTimer();
+        // Update word count
+        updateWordCount();
         
-        // Reset unsavedChanges flag
-        unsavedChanges = false;
-        
-        // Clear selection (fixes issues with text formatting)
-        if (window.getSelection) {
-            window.getSelection().removeAllRanges();
+        // Update active state in notes list
+        document.querySelectorAll('.note-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        const activeItem = document.querySelector(`.note-item[data-id="${noteId}"]`);
+        if (activeItem) {
+            activeItem.classList.add('active');
         }
         
-        // Highlight active toolbar buttons based on current selection/state
+        // Reset unsaved changes flag
+        unsavedChanges = false;
+        
+        // Update toolbar state
         updateToolbarState();
     }
     
-    // Update toolbar buttons state based on current selection/format
+    // Update toolbar buttons based on current selection
     function updateToolbarState() {
-        const commands = ['bold', 'italic', 'underline', 'strikeThrough', 
-                         'justifyLeft', 'justifyCenter', 'justifyRight',
-                         'insertUnorderedList', 'insertOrderedList'];
+        // Get current selection
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
         
-        commands.forEach(command => {
-            const button = document.querySelector(`.toolbar-btn[data-command="${command}"]`);
-            if (button) {
+        // Check for various formatting states
+        toolbarButtons.forEach(button => {
+            const command = button.dataset.command;
+            
+            // Special case for formatBlock commands
+            if (command === 'formatBlock') {
+                const blockType = button.dataset.value;
+                const parentElement = selection.getRangeAt(0).commonAncestorContainer.parentElement;
+                
+                if (parentElement && parentElement.tagName && 
+                    parentElement.tagName.toLowerCase() === blockType) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            } 
+            // Standard formatting commands
+            else if (['bold', 'italic', 'underline', 'strikeThrough'].includes(command)) {
                 if (document.queryCommandState(command)) {
                     button.classList.add('active');
                 } else {
@@ -326,41 +334,31 @@ document.addEventListener('DOMContentLoaded', function() {
     function saveNote(showNotification = true) {
         if (!currentNoteId) return;
         
-        const note = notes.find(n => n.id === currentNoteId);
-        if (!note) return;
+        const noteToUpdate = notes.find(note => note.id === currentNoteId);
+        if (!noteToUpdate) return;
         
-        try {
-            // Update note data
-            note.title = noteTitle.value || 'Untitled Note';
-            note.content = noteContent.innerHTML;
-            note.category = noteCategory.value;
-            note.updated = new Date().toISOString();
-            
-            // Save to storage
-            saveNotesToStorage();
-            
-            // Update UI
-            renderNotesList();
-            
-            // Update last saved time
-            const updatedDate = new Date(note.updated);
-            lastSavedTime.textContent = 'Last saved: ' + formatDate(updatedDate);
-            
-            // Show toast notification if not silent save
-            if (showNotification) {
-                window.showToast('Note saved successfully', 'success');
-            }
-            
-            // Reset unsavedChanges flag
-            unsavedChanges = false;
-            
-            return true;
-        } catch (error) {
-            console.error('Error saving note:', error);
-            if (showNotification) {
-                window.showToast('Error saving note. Please try again.', 'error');
-            }
-            return false;
+        // Update note with current editor values
+        noteToUpdate.title = noteTitle.value;
+        noteToUpdate.content = noteContent.innerHTML;
+        noteToUpdate.category = noteCategory.value;
+        noteToUpdate.updated = new Date().toISOString();
+        
+        // Save to localStorage
+        saveNotesToStorage();
+        
+        // Update last saved time
+        const updatedDate = new Date(noteToUpdate.updated);
+        lastSavedTime.textContent = 'Last saved: ' + formatDate(updatedDate);
+        
+        // Reset unsaved changes flag
+        unsavedChanges = false;
+        
+        // Re-render notes list to reflect any changes
+        renderNotesList();
+        
+        // Show notification if requested
+        if (showNotification) {
+            showToast('Note saved successfully!', 'success');
         }
     }
     
@@ -369,55 +367,29 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!currentNoteId) return;
         
         if (confirm('Are you sure you want to delete this note? This action cannot be undone.')) {
-            try {
-                // Find note index
-                const noteIndex = notes.findIndex(n => n.id === currentNoteId);
-                if (noteIndex === -1) return;
-                
-                // Store note for potential undo
-                const deletedNote = notes[noteIndex];
-                
-                // Remove note
-                notes.splice(noteIndex, 1);
-                saveNotesToStorage();
-                
-                // Reset current note
+            // Find index of note to delete
+            const noteIndex = notes.findIndex(note => note.id === currentNoteId);
+            if (noteIndex === -1) return;
+            
+            // Remove note from array
+            notes.splice(noteIndex, 1);
+            
+            // Save updated notes array
+            saveNotesToStorage();
+            
+            // Show notification
+            showToast('Note deleted successfully!', 'success');
+            
+            // If there are remaining notes, load the first one
+            if (notes.length > 0) {
+                loadNote(notes[0].id);
+            } else {
+                // Otherwise reset the editor
                 resetNoteEditor();
-                
-                // Update UI
-                renderNotesList();
-                
-                // Show toast notification with undo option
-                const toastMsg = document.createElement('div');
-                toastMsg.innerHTML = `Note deleted <span id="undo-delete" style="text-decoration: underline; cursor: pointer; margin-left: 8px;">Undo</span>`;
-                window.showToast(toastMsg, 'success', 6000);
-                
-                // Add undo functionality
-                setTimeout(() => {
-                    const undoBtn = document.getElementById('undo-delete');
-                    if (undoBtn) {
-                        undoBtn.addEventListener('click', () => {
-                            // Restore the deleted note
-                            notes.push(deletedNote);
-                            saveNotesToStorage();
-                            renderNotesList();
-                            loadNote(deletedNote.id);
-                            window.showToast('Note restored', 'success');
-                        });
-                    }
-                }, 100);
-                
-                // Load another note if available
-                if (notes.length > 0) {
-                    loadNote(notes[0].id);
-                }
-                
-                return true;
-            } catch (error) {
-                console.error('Error deleting note:', error);
-                window.showToast('Error deleting note. Please try again.', 'error');
-                return false;
             }
+            
+            // Re-render notes list
+            renderNotesList();
         }
     }
     
@@ -425,87 +397,93 @@ document.addEventListener('DOMContentLoaded', function() {
     function exportNote() {
         if (!currentNoteId) return;
         
-        const note = notes.find(n => n.id === currentNoteId);
-        if (!note) return;
+        const noteToExport = notes.find(note => note.id === currentNoteId);
+        if (!noteToExport) return;
         
-        try {
-            // Create plain text from HTML
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = note.content;
-            const textContent = tempDiv.textContent || tempDiv.innerText || '';
-            
-            // Create file content
-            const fileContent = `# ${note.title}\n${note.category ? 'Category: ' + note.category + '\n' : ''}Updated: ${new Date(note.updated).toLocaleString()}\n\n${textContent}`;
-            
-            // Create blob
-            const blob = new Blob([fileContent], { type: 'text/plain' });
-            
-            // Create download link
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = `${note.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.txt`;
-            document.body.appendChild(a);
-            a.click();
+        // Create plain text version of the note content
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = noteToExport.content;
+        const textContent = tempDiv.textContent || tempDiv.innerText;
+        
+        // Format the text content
+        const title = noteToExport.title || 'Untitled Note';
+        const category = noteToExport.category ? `Category: ${noteToExport.category}` : '';
+        const created = `Created: ${new Date(noteToExport.created).toLocaleString()}`;
+        const updated = `Last updated: ${new Date(noteToExport.updated).toLocaleString()}`;
+        
+        const exportContent = 
+            `${title}\n` +
+            `${category ? category + '\n' : ''}` +
+            `${created}\n` +
+            `${updated}\n\n` +
+            `${textContent}`;
+        
+        // Create download link
+        const blob = new Blob([exportContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        
+        // Clean up
+        setTimeout(() => {
             document.body.removeChild(a);
-            
-            // Show toast notification
-            window.showToast('Note exported successfully', 'success');
-            return true;
-        } catch (error) {
-            console.error('Error exporting note:', error);
-            window.showToast('Error exporting note. Please try again.', 'error');
-            return false;
-        }
+            URL.revokeObjectURL(url);
+        }, 100);
+        
+        showToast('Note exported successfully!', 'success');
     }
     
     // Reset auto-save timer
     function resetAutoSaveTimer() {
-        if (autoSaveTimer) {
-            clearTimeout(autoSaveTimer);
-        }
-        
+        clearTimeout(autoSaveTimer);
         autoSaveTimer = setTimeout(() => {
-            if (unsavedChanges) {
-                saveNote(false); // silent save
+            if (currentNoteId && unsavedChanges) {
+                saveNote(false); // Save without notification
             }
         }, 3000); // Auto-save after 3 seconds of inactivity
     }
     
     // Update word count
     function updateWordCount() {
-        if (!noteContent) return;
-        
-        // Get text content from HTML
-        const text = noteContent.textContent || noteContent.innerText || '';
-        const words = text.trim().split(/\s+/).filter(word => word.length > 0);
-        const count = words.length;
-        const chars = text.length;
-        
-        wordCount.textContent = `${count} ${count === 1 ? 'word' : 'words'} (${chars} chars)`;
+        const text = noteContent.textContent || noteContent.innerText;
+        const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+        wordCount.textContent = words === 1 ? '1 word' : `${words} words`;
     }
     
-    // Rich text editor functions
+    // Execute toolbar commands
     function executeCommand(command, value = null) {
+        if (command === 'link') {
+            showLinkModal();
+            return;
+        }
+        
+        if (command === 'image') {
+            showImageModal();
+            return;
+        }
+        
         document.execCommand(command, false, value);
-        noteContent.focus();
-        resetAutoSaveTimer();
         updateToolbarState();
         unsavedChanges = true;
+        resetAutoSaveTimer();
     }
     
-    // Show modal for link insertion
+    // Show link modal and save current selection
     function showLinkModal() {
-        // Save current selection
         saveSelection();
         
-        // Reset form
+        // Clear previous values
         linkUrl.value = '';
         linkText.value = '';
         
         // Get selected text for link text
-        const sel = window.getSelection();
-        if (sel.toString()) {
-            linkText.value = sel.toString();
+        const selection = window.getSelection();
+        if (selection.toString()) {
+            linkText.value = selection.toString();
         }
         
         // Show modal
@@ -513,12 +491,11 @@ document.addEventListener('DOMContentLoaded', function() {
         linkUrl.focus();
     }
     
-    // Show modal for image insertion
+    // Show image modal and save current selection
     function showImageModal() {
-        // Save current selection
         saveSelection();
         
-        // Reset form
+        // Clear previous values
         imageUrl.value = '';
         imageAlt.value = '';
         
@@ -548,52 +525,63 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Insert link
+    // Insert link from modal
     function insertLink() {
         const url = linkUrl.value.trim();
         let text = linkText.value.trim();
         
         if (!url) {
-            window.showToast('Please enter a URL', 'error');
+            linkUrl.classList.add('input-error');
+            setTimeout(() => {
+                linkUrl.classList.remove('input-error');
+            }, 1000);
             return;
+        }
+        
+        // Default to URL if no text is provided
+        if (!text) {
+            text = url;
         }
         
         // Restore selection
         restoreSelection();
         
-        // Use selected text if no text provided
-        if (!text) {
-            const sel = window.getSelection();
-            if (sel.toString()) {
-                text = sel.toString();
-            } else {
-                text = url;
-            }
-        }
-        
-        // Format URL if needed
-        let formattedUrl = url;
-        if (!/^https?:\/\//i.test(url)) {
-            formattedUrl = 'https://' + url;
-        }
-        
         // Insert link
-        executeCommand('insertHTML', `<a href="${formattedUrl}" target="_blank">${text}</a>`);
+        let urlToInsert = url;
+        
+        // Add https:// if missing and not a relative link
+        if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('/')) {
+            urlToInsert = 'https://' + url;
+        }
+        
+        // If there's a selection, overwrite it with the link
+        const selection = window.getSelection();
+        if (selection.toString()) {
+            document.execCommand('insertHTML', false, 
+                `<a href="${urlToInsert}" target="_blank">${selection.toString()}</a>`);
+        } else {
+            document.execCommand('insertHTML', false, 
+                `<a href="${urlToInsert}" target="_blank">${text}</a>`);
+        }
         
         // Close modal
         linkModal.classList.remove('visible');
         
-        // Set unsaved changes flag
+        // Mark content as changed
         unsavedChanges = true;
+        resetAutoSaveTimer();
     }
     
-    // Insert image
+    // Insert image from modal
     function insertImage() {
         const url = imageUrl.value.trim();
         const alt = imageAlt.value.trim();
         
         if (!url) {
-            window.showToast('Please enter an image URL', 'error');
+            imageUrl.classList.add('input-error');
+            setTimeout(() => {
+                imageUrl.classList.remove('input-error');
+            }, 1000);
             return;
         }
         
@@ -601,13 +589,167 @@ document.addEventListener('DOMContentLoaded', function() {
         restoreSelection();
         
         // Insert image
-        executeCommand('insertHTML', `<img src="${url}" alt="${alt}" />`);
+        document.execCommand('insertHTML', false, 
+            `<img src="${url}" alt="${alt}" style="max-width: 100%; height: auto;">`);
         
         // Close modal
         imageModal.classList.remove('visible');
         
-        // Set unsaved changes flag
+        // Mark content as changed
         unsavedChanges = true;
+        resetAutoSaveTimer();
+    }
+    
+    // Show toast notification
+    function showToast(message, type = 'info', duration = 3000) {
+        // Check if toast container exists, if not create it
+        let toastContainer = document.querySelector('.toast-container');
+        if (!toastContainer) {
+            toastContainer = document.createElement('div');
+            toastContainer.className = 'toast-container';
+            document.body.appendChild(toastContainer);
+            
+            // Add toast container styles if not already in CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                .toast-container {
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                }
+                
+                .toast {
+                    background-color: #333;
+                    color: white;
+                    padding: 12px 16px;
+                    border-radius: 4px;
+                    margin-top: 10px;
+                    max-width: 300px;
+                    display: flex;
+                    align-items: center;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                    animation: slide-in 0.3s ease-out forwards;
+                }
+                
+                .toast.success {
+                    background-color: #2a9d8f;
+                }
+                
+                .toast.error {
+                    background-color: #e63946;
+                }
+                
+                .toast.warning {
+                    background-color: #f9c74f;
+                    color: #333;
+                }
+                
+                .toast i {
+                    margin-right: 8px;
+                    font-size: 18px;
+                }
+                
+                @keyframes slide-in {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+                
+                @keyframes fade-out {
+                    from {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        // Add icon based on type
+        let icon;
+        switch (type) {
+            case 'success':
+                icon = 'ri-check-line';
+                break;
+            case 'error':
+                icon = 'ri-error-warning-line';
+                break;
+            case 'warning':
+                icon = 'ri-alert-line';
+                break;
+            default:
+                icon = 'ri-information-line';
+        }
+        
+        toast.innerHTML = `<i class="${icon}"></i><span>${message}</span>`;
+        
+        // Add to container
+        toastContainer.appendChild(toast);
+        
+        // Remove after duration
+        setTimeout(() => {
+            toast.style.animation = 'fade-out 0.3s ease-out forwards';
+            setTimeout(() => {
+                toastContainer.removeChild(toast);
+            }, 300);
+        }, duration);
+    }
+    
+    // Handle FAQ toggle
+    function toggleFAQ(e) {
+        const faqItem = e.currentTarget.closest('.faq-item');
+        
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+            if (item !== faqItem) {
+                item.classList.remove('active');
+            }
+        });
+        
+        // Toggle clicked item
+        faqItem.classList.toggle('active');
+    }
+    
+    // Debounce function for search input
+    function debounce(func, wait) {
+        let timeout;
+        
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            
+            timeout = setTimeout(() => {
+                func.apply(context, args);
+            }, wait);
+        };
+    }
+    
+    // Check storage limit and warn if getting close
+    function checkStorageLimit() {
+        try {
+            const dataSize = JSON.stringify(notes).length;
+            const estimatedUsage = dataSize / (5 * 1024 * 1024); // Assuming 5MB limit
+            
+            if (estimatedUsage > 0.8) {
+                showToast('Warning: You are using 80% of available storage. Consider exporting and deleting older notes.', 'warning', 6000);
+            }
+        } catch (error) {
+            console.error('Error checking storage limit:', error);
+        }
     }
     
     // Event Listeners
@@ -626,31 +768,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Note content changes
     noteContent.addEventListener('input', () => {
+        unsavedChanges = true;
         resetAutoSaveTimer();
         updateWordCount();
-        updateToolbarState();
-        unsavedChanges = true;
-    });
-    
-    // Note content selection change
-    noteContent.addEventListener('mouseup', updateToolbarState);
-    noteContent.addEventListener('keyup', (e) => {
-        // Only update on navigation keys
-        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
-            updateToolbarState();
-        }
     });
     
     // Note title changes
     noteTitle.addEventListener('input', () => {
-        resetAutoSaveTimer();
         unsavedChanges = true;
+        resetAutoSaveTimer();
     });
     
-    // Note category changes
+    // Category changes
     noteCategory.addEventListener('change', () => {
-        resetAutoSaveTimer();
         unsavedChanges = true;
+        resetAutoSaveTimer();
     });
     
     // Search input
@@ -659,19 +791,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 300));
     
     // Category filters
-    categoryFilters.forEach(category => {
-        category.addEventListener('click', () => {
-            // Save current note before switching category
-            saveCurrentNoteIfNeeded();
+    categoryFilters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            // Update active category
+            categoryFilters.forEach(f => f.classList.remove('active'));
+            filter.classList.add('active');
             
-            // Update active state
-            categoryFilters.forEach(c => c.classList.remove('active'));
-            category.classList.add('active');
+            // Set current category
+            currentCategory = filter.dataset.category;
             
-            // Update current category
-            currentCategory = category.getAttribute('data-category');
-            
-            // Update notes list
+            // Re-render notes list
             renderNotesList();
         });
     });
@@ -679,34 +808,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toolbar buttons
     toolbarButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const command = button.getAttribute('data-command');
-            
-            // Special commands
-            if (command === 'createLink') {
-                showLinkModal();
-                return;
-            }
-            
-            if (command === 'insertImage') {
-                showImageModal();
-                return;
-            }
-            
-            // Execute regular command
-            executeCommand(command);
-            
-            // Set unsaved changes flag
-            unsavedChanges = true;
+            const command = button.dataset.command;
+            const value = button.dataset.value || null;
+            executeCommand(command, value);
         });
     });
     
-    // Link modal events
+    // Selection change in editor to update toolbar state
+    noteContent.addEventListener('mouseup', updateToolbarState);
+    noteContent.addEventListener('keyup', updateToolbarState);
+    
+    // Insert link button
     insertLinkBtn.addEventListener('click', insertLink);
     
-    // Image modal events
+    // Insert image button
     insertImageBtn.addEventListener('click', insertImage);
     
-    // Close modal buttons
+    // Close modals
     closeModalBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             linkModal.classList.remove('visible');
@@ -714,105 +832,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close modals when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target === linkModal) {
-            linkModal.classList.remove('visible');
-        }
-        if (e.target === imageModal) {
-            imageModal.classList.remove('visible');
-        }
-    });
-    
-    // Key events for modals
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            linkModal.classList.remove('visible');
-            imageModal.classList.remove('visible');
-        }
-        
+    // Enter key in modals
+    linkUrl.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
-            if (linkModal.classList.contains('visible') && 
-                (document.activeElement === linkUrl || 
-                 document.activeElement === linkText)) {
-                e.preventDefault();
-                insertLink();
-            }
-            
-            if (imageModal.classList.contains('visible') && 
-                (document.activeElement === imageUrl || 
-                 document.activeElement === imageAlt)) {
-                e.preventDefault();
-                insertImage();
-            }
+            insertLink();
         }
     });
     
-    // Confirm before leaving if unsaved changes
-    window.addEventListener('beforeunload', (e) => {
+    imageUrl.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+            insertImage();
+        }
+    });
+    
+    // FAQ toggles
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', toggleFAQ);
+    });
+    
+    // Before unload event to warn about unsaved changes
+    window.addEventListener('beforeunload', e => {
         if (unsavedChanges) {
-            // Save changes automatically before leaving
+            // Save automatically before leaving
             saveCurrentNoteIfNeeded();
             
-            // Most browsers will ignore this message and show their own standard message
-            const message = 'You have unsaved changes. Do you want to leave without saving?';
+            // Modern browsers require returnValue to be set
+            const message = 'You have unsaved changes. Are you sure you want to leave?';
             e.returnValue = message;
             return message;
         }
     });
     
-    // Debounce function for search
-    function debounce(func, wait) {
-        let timeout;
-        return function() {
-            const context = this;
-            const args = arguments;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                func.apply(context, args);
-            }, wait);
-        };
-    }
-    
-    // Check storage limit
-    function checkStorageLimit() {
-        try {
-            const storageUsed = localStorage.getItem('notekeeper_notes')?.length || 0;
-            const storageLimit = 5 * 1024 * 1024; // 5MB (typical localStorage limit)
-            const usagePercentage = (storageUsed / storageLimit) * 100;
-            
-            if (usagePercentage > 80) {
-                window.showToast(`Storage usage: ${usagePercentage.toFixed(1)}%. Consider exporting some notes.`, 'warning', 5000);
-            }
-            return usagePercentage;
-        } catch (error) {
-            console.error('Error checking storage limit:', error);
-            return 0;
-        }
-    }
-    
     // Initialize the app
     initNotes();
-    updateWordCount();
     
-    // Check storage limit on init
+    // Do a storage limit check after init
     checkStorageLimit();
-    
-    // Check storage limit periodically
-    setInterval(checkStorageLimit, 30 * 60 * 1000); // Every 30 minutes
-    
-    // Add keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-        // Ctrl/Cmd + S to save
-        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-            e.preventDefault();
-            saveNote(true);
-        }
-        
-        // Ctrl/Cmd + N for new note
-        if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
-            e.preventDefault();
-            createNewNote();
-        }
-    });
 }); 

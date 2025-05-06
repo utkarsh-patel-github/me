@@ -443,7 +443,7 @@ button {
     
     .button-row button {
   width: 100%;
-    }
+  }
 }
 
 @media (max-width: 576px) {
@@ -460,7 +460,7 @@ button {
   }
   
   .tool-meta {
-      justify-content: center;
+    justify-content: center;
   }
   
   .reference-grid {

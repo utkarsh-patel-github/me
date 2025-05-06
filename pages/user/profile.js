@@ -156,10 +156,35 @@ async function fetchUserData(token) {
   } catch (error) {
     console.error('Error fetching user data:', error);
     
-    // Token might be invalid, redirect to login
-    //localStorage.removeItem('auth_token');
-    //eraseCookie('auth_token');
-    //window.location.href = '/pages/user/login.html';
+    // Show a user-friendly error message
+    const mainContent = document.querySelector('main .container');
+    if (mainContent) {
+      mainContent.innerHTML = `
+        <div class="error-container">
+          <div class="error-icon"><i class="ri-error-warning-line"></i></div>
+          <h2>Service Temporarily Unavailable</h2>
+          <p>We're having trouble connecting to our servers. Please try again later.</p>
+          <button class="btn-primary retry-button">Retry</button>
+          <a href="/" class="btn-secondary">Go to Homepage</a>
+        </div>
+      `;
+      
+      // Add retry functionality
+      const retryButton = mainContent.querySelector('.retry-button');
+      if (retryButton) {
+        retryButton.addEventListener('click', () => {
+          window.location.reload();
+        });
+      }
+    }
+    
+    // Token might be invalid, but we won't redirect to login right away
+    // to give the user a chance to see the error message
+    // setTimeout(() => {
+    //   localStorage.removeItem('auth_token');
+    //   eraseCookie('auth_token');
+    //   window.location.href = '/pages/user/login.html';
+    // }, 5000);
   }
 }
 

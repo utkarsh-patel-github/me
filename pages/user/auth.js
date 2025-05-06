@@ -1,5 +1,5 @@
 // API Base URL - Change this to your production URL when deployed
-const API_BASE_URL = 'https://dailytools-backend.vercel.app/api';
+const API_BASE_URL = 'http://localhost:3000/api';
 
 // DOM Elements
 const authTabs = document.querySelectorAll('.auth-tab');
@@ -151,7 +151,16 @@ async function handleLogin(e) {
     }, 1500);
     
   } catch (error) {
-    showLoginError(error.message);
+    console.error('Error logging in:', error);
+    // Check if it's a server/connection error or authentication error
+    if (error.message.includes('buffering timed out') || 
+        error.message.includes('NetworkError') || 
+        error.name === 'TypeError') {
+      showLoginError('Service temporarily unavailable. Please try again later.');
+    } else {
+      // showLoginError(error.message);
+      showLoginError('Service is temporarily unavailable. Please try again later.');
+    }
   } finally {
     // Reset button state
     submitBtn.classList.remove('btn-loading');
@@ -219,7 +228,15 @@ async function handleRegister(e) {
     }, 1500);
     
   } catch (error) {
-    showRegisterError(error.message);
+    console.error('Error registering:', error);
+    // Check if it's a server/connection error or authentication error
+    if (error.message.includes('buffering timed out') || 
+        error.message.includes('NetworkError') || 
+        error.name === 'TypeError') {
+      showRegisterError('Service temporarily unavailable. Please try again later.');
+    } else {
+      showRegisterError(error.message);
+    }
   } finally {
     // Reset button state
     submitBtn.classList.remove('btn-loading');

@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sign In - Daily Tools</title>
+    <title>Login - Daily Tools</title>
     <meta name="description" content="Sign in to your Daily Tools account to save your preferences and access your saved tools.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="/pages/user/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/nav/style.css">
     <link rel="stylesheet" href="/footer/style.css">
+    <link rel="stylesheet" href="/pages/user/user-styles.css">
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <nav>
@@ -27,164 +30,189 @@
             <a href="/pages/contact">Contact</a>
         </div>
         <div class="nav-right">
-            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+            <div class="icon-button notification-dropdown-trigger">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">3</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-list">
+                        <!-- Notifications will be dynamically inserted here -->
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/pages/user/notifications.html">View all notifications</a>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-button user-dropdown-trigger">
+                <i class="ri-user-3-line"></i>
+                <div class="user-dropdown">
+                    <!-- User dropdown content will be dynamically inserted based on login status -->
+                </div>
+            </div>
+            <div class="theme-toggle" id="theme-toggle">
                 <div class="toggle-track">
                     <i class="ri-sun-line light-icon"></i>
                     <i class="ri-moon-line dark-icon"></i>
                     <div class="toggle-circle"></div>
                 </div>
             </div>
-            <div class="icon-button" title="Notifications">
-                <i class="ri-notification-2-line"></i>
-                <span class="notification-badge">2</span>
+            <div class="menu-icon" id="menu-toggle">
+                <i class="ri-menu-line"></i>
             </div>
-            <div class="icon-button active" title="Profile">
-                <i class="ri-user-3-line"></i>
-            </div>
-        </div>
-        <div id="menu-toggle" class="menu-icon" title="Menu">
-            <i class="ri-menu-line"></i>
         </div>
     </nav>
 
     <main>
         <div class="container">
             <div class="auth-container">
-                <div class="tabs">
-                    <button class="tab active" data-tab="login">Sign In</button>
-                    <button class="tab" data-tab="register">Create Account</button>
-                </div>
-                
-                <div id="login-form" class="form-container active">
-                    <h1>Welcome Back</h1>
-                    <p class="subtitle">Sign in to access your saved tools and preferences</p>
-                    
-                    <form action="#" method="post" id="signin-form">
-                        <div class="form-group">
-                            <label for="login-email">Email</label>
-                            <div class="input-with-icon">
-                                <i class="ri-mail-line"></i>
-                                <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="login-password">Password</label>
-                            <div class="input-with-icon">
-                                <i class="ri-lock-line"></i>
-                                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
-                                <button type="button" class="toggle-password" title="Show password">
-                                    <i class="ri-eye-line"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="form-options">
-                            <div class="remember-me">
-                                <input type="checkbox" id="remember" name="remember">
-                                <label for="remember">Remember me</label>
-                            </div>
-                            <a href="/pages/user/forgot-password.html" class="forgot-password">Forgot password?</a>
-                        </div>
-                        
-                        <button type="submit" class="btn-primary">Sign In</button>
-                    </form>
-                    
-                    <div class="social-login">
-                        <p>Or sign in with</p>
-                        <div class="social-buttons">
-                            <button class="social-btn google">
-                                <i class="ri-google-fill"></i>
-                                <span>Google</span>
-                            </button>
-                            <button class="social-btn facebook">
-                                <i class="ri-facebook-fill"></i>
-                                <span>Facebook</span>
-                            </button>
-                        </div>
+                <div class="auth-card">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login">Login</button>
+                        <button class="auth-tab" data-tab="register">Register</button>
                     </div>
-                </div>
-                
-                <div id="register-form" class="form-container">
-                    <h1>Create Your Account</h1>
-                    <p class="subtitle">Join Daily Tools to save your preferences and access from anywhere</p>
                     
-                    <form action="#" method="post" id="signup-form">
-                        <div class="form-group">
-                            <label for="register-name">Full Name</label>
-                            <div class="input-with-icon">
-                                <i class="ri-user-3-line"></i>
-                                <input type="text" id="register-name" name="name" placeholder="Enter your name" required>
+                    <div class="auth-form-container">
+                        <!-- Login Form -->
+                        <form id="login-form" class="auth-form active">
+                            <h2>Welcome Back</h2>
+                            <p class="auth-subtitle">Sign in to access your tools and settings</p>
+                            
+                            <div class="form-alert error-message" style="display: none;">
+                                <i class="ri-error-warning-line"></i>
+                                <span id="login-error-message"></span>
                             </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="register-email">Email</label>
-                            <div class="input-with-icon">
-                                <i class="ri-mail-line"></i>
-                                <input type="email" id="register-email" name="email" placeholder="Enter your email" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="register-password">Password</label>
-                            <div class="input-with-icon">
-                                <i class="ri-lock-line"></i>
-                                <input type="password" id="register-password" name="password" placeholder="Create a password" required>
-                                <button type="button" class="toggle-password" title="Show password">
-                                    <i class="ri-eye-line"></i>
-                                </button>
-                            </div>
-                            <div class="password-strength">
-                                <div class="strength-meter">
-                                    <span></span>
-                                </div>
-                                <div class="password-tips">
-                                    <p>Password should contain:</p>
-                                    <ul>
-                                        <li class="requirement" data-requirement="length">At least 8 characters</li>
-                                        <li class="requirement" data-requirement="uppercase">Uppercase letters</li>
-                                        <li class="requirement" data-requirement="lowercase">Lowercase letters</li>
-                                        <li class="requirement" data-requirement="number">Numbers</li>
-                                        <li class="requirement" data-requirement="special">Special characters</li>
-                                    </ul>
+                            
+                            <div class="form-group">
+                                <label for="login-email">Email Address</label>
+                                <div class="input-with-icon">
+                                    <i class="ri-mail-line"></i>
+                                    <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="register-confirm">Confirm Password</label>
-                            <div class="input-with-icon">
-                                <i class="ri-lock-line"></i>
-                                <input type="password" id="register-confirm" name="confirm_password" placeholder="Confirm your password" required>
-                                <button type="button" class="toggle-password" title="Show password">
-                                    <i class="ri-eye-line"></i>
+                            
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <div class="input-with-icon">
+                                    <i class="ri-lock-line"></i>
+                                    <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                                    <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                        <i class="ri-eye-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-options">
+                                <div class="remember-me">
+                                    <input type="checkbox" id="remember-me" name="remember">
+                                    <label for="remember-me">Remember me</label>
+                                </div>
+                                <a href="/pages/user/forgot-password.html" class="forgot-password">Forgot password?</a>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">Sign In</button>
+                            
+                            <div class="auth-divider">
+                                <span>Or continue with</span>
+                            </div>
+                            
+                            <div class="social-login">
+                                <button type="button" class="social-btn google">
+                                    <i class="ri-google-fill"></i>
+                                    <span>Google</span>
+                                </button>
+                                <button type="button" class="social-btn github">
+                                    <i class="ri-github-fill"></i>
+                                    <span>GitHub</span>
                                 </button>
                             </div>
-                        </div>
+                            
+                            <p class="switch-auth">
+                                Don't have an account? <a href="#" class="switch-tab" data-target="register">Create Account</a>
+                            </p>
+                        </form>
                         
-                        <div class="form-options">
-                            <div class="remember-me">
-                                <input type="checkbox" id="terms" name="terms" required>
-                                <label for="terms">I agree to the <a href="/pages/legal/terms-of-service.html">Terms of Service</a> and <a href="/pages/legal/privacy-policy.html">Privacy Policy</a></label>
+                        <!-- Register Form -->
+                        <form id="register-form" class="auth-form">
+                            <h2>Create Account</h2>
+                            <p class="auth-subtitle">Sign up to use all Daily Tools features</p>
+                            
+                            <div class="form-alert error-message" style="display: none;">
+                                <i class="ri-error-warning-line"></i>
+                                <span id="register-error-message"></span>
                             </div>
-                        </div>
-                        
-                        <button type="submit" class="btn-primary">Create Account</button>
-                    </form>
-                    
-                    <div class="social-login">
-                        <p>Or sign up with</p>
-                        <div class="social-buttons">
-                            <button class="social-btn google">
-                                <i class="ri-google-fill"></i>
-                                <span>Google</span>
-                            </button>
-                            <button class="social-btn facebook">
-                                <i class="ri-facebook-fill"></i>
-                                <span>Facebook</span>
-                            </button>
-                        </div>
+                            
+                            <div class="form-group">
+                                <label for="register-name">Full Name</label>
+                                <div class="input-with-icon">
+                                    <i class="ri-user-line"></i>
+                                    <input type="text" id="register-name" name="name" placeholder="Enter your name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="register-username">Username</label>
+                                <div class="input-with-icon">
+                                    <i class="ri-at-line"></i>
+                                    <input type="text" id="register-username" name="username" placeholder="Choose a username" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="register-email">Email Address</label>
+                                <div class="input-with-icon">
+                                    <i class="ri-mail-line"></i>
+                                    <input type="email" id="register-email" name="email" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="register-password">Password</label>
+                                <div class="input-with-icon">
+                                    <i class="ri-lock-line"></i>
+                                    <input type="password" id="register-password" name="password" placeholder="Create a password" required>
+                                    <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                        <i class="ri-eye-line"></i>
+                                    </button>
+                                </div>
+                                <div class="password-strength">
+                                    <div class="strength-meter">
+                                        <div class="strength-bar"></div>
+                                    </div>
+                                    <p class="strength-text">Password strength: <span id="strength-value">Weak</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="terms-checkbox">
+                                    <input type="checkbox" id="agree-terms" name="terms" required>
+                                    <label for="agree-terms">I agree to the <a href="/pages/terms.html">Terms of Service</a> and <a href="/pages/privacy.html">Privacy Policy</a></label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">Create Account</button>
+                            
+                            <div class="auth-divider">
+                                <span>Or continue with</span>
+                            </div>
+                            
+                            <div class="social-login">
+                                <button type="button" class="social-btn google">
+                                    <i class="ri-google-fill"></i>
+                                    <span>Google</span>
+                                </button>
+                                <button type="button" class="social-btn github">
+                                    <i class="ri-github-fill"></i>
+                                    <span>GitHub</span>
+                                </button>
+                            </div>
+                            
+                            <p class="switch-auth">
+                                Already have an account? <a href="#" class="switch-tab" data-target="login">Sign In</a>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -246,7 +274,7 @@
     </footer>
 
     <script src="/nav/script.js"></script>
-    <script src="/pages/user/script.js"></script>
+    <script src="/pages/user/auth.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
      crossorigin="anonymous"></script>
 </body>

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryFilters = document.querySelectorAll('.category-filter');
     const toolCards = document.querySelectorAll('.tool-card');
     const paginationBtns = document.querySelectorAll('.pagination-btn');
+    const comingSoonSection = document.querySelector('.coming-soon-section');
     
     // Current active category
     let activeCategory = 'all';
@@ -63,7 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        // Hide the coming soon section during search
+        if (comingSoonSection) {
+            comingSoonSection.style.display = 'none';
+        }
+        
         // Loop through all tool cards
+        let visibleCount = 0;
         toolCards.forEach(card => {
             // Get tool title and description
             const title = card.querySelector('h3').textContent.toLowerCase();
@@ -77,27 +84,77 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show/hide tool card based on search and category
             if (matchesSearch && matchesCategory) {
                 card.style.display = 'flex';
+                visibleCount++;
             } else {
                 card.style.display = 'none';
             }
         });
+        
+        // Show no results message if needed
+        if (visibleCount === 0) {
+            showNoResultsMessage();
+        } else {
+            hideNoResultsMessage();
+        }
     }
     
     // Filter tools by category
     function filterTools() {
         // Loop through all tool cards
+        let visibleCount = 0;
         toolCards.forEach(card => {
             const category = card.getAttribute('data-category');
             
             // Show/hide tool card based on category
             if (activeCategory === 'all' || category === activeCategory) {
                 card.style.display = 'flex';
+                visibleCount++;
             } else {
                 card.style.display = 'none';
             }
         });
         
+        // Show/hide coming soon section based on active category
+        if (comingSoonSection) {
+            if (activeCategory === 'all') {
+                comingSoonSection.style.display = 'block';
+            } else {
+                comingSoonSection.style.display = 'none';
+            }
+        }
+        
         // Clear search input
         toolsSearchInput.value = '';
+        
+        // Hide no results message
+        hideNoResultsMessage();
     }
+    
+    // Show no results message
+    function showNoResultsMessage() {
+        // Check if message already exists
+        if (!document.querySelector('.no-results-message')) {
+            const noResultsMessage = document.createElement('div');
+            noResultsMessage.className = 'no-results-message';
+            noResultsMessage.innerHTML = `
+                <i class="ri-search-line"></i>
+                <h3>No tools found</h3>
+                <p>Try a different search term or category.</p>
+            `;
+            document.querySelector('.tools-list').appendChild(noResultsMessage);
+        } else {
+            document.querySelector('.no-results-message').style.display = 'flex';
+        }
+    }
+    
+    // Hide no results message
+    function hideNoResultsMessage() {
+        const noResultsMessage = document.querySelector('.no-results-message');
+        if (noResultsMessage) {
+            noResultsMessage.style.display = 'none';
+        }
+    }
+    
+    // Initialize by calling filterTools to set up the initial view
+    filterTools();
 }); 

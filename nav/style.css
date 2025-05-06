@@ -136,10 +136,35 @@
     box-shadow: var(--nav-shadow);
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: var(--nav-padding);
     z-index: 1000;
     transition: background-color var(--transition-speed) ease;
+  }
+  
+  /* Ensure proper layout of elements */
+  nav > *:not(.nav-links) {
+    z-index: 1001; /* Ensure elements remain above mobile menu */
+  }
+  
+  nav .logo {
+    margin-right: auto;
+  }
+  
+  nav .nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  nav .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .menu-icon {
+    display: none;
+    margin-left: 0.8rem;
   }
   
   /* Brand logo styling */
@@ -195,13 +220,6 @@
   }
   
   /* Right side nav items */
-  nav .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  /* Improved styles for nav icons */
   nav .nav-right > div {
     width: 38px;
     height: 38px;
@@ -298,7 +316,7 @@
     position: absolute;
     top: 3px;
     right: 3px;
-    background-color: var(--error-color);
+    background-color: var(--primary-red);
     color: white;
     font-size: 0.6rem;
     width: 14px;
@@ -358,111 +376,497 @@
     transform: translateX(20px);
   }
   
-  .menu-icon {
-    display: none;
-  }
-  
-  /* Responsive Nav */
-  @media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: var(--nav-height);
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: var(--card-bg);
-        padding: 1rem;
-        box-shadow: 0 5px 10px var(--shadow-color);
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        margin-left: 0;
-    }
-    
-    .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .nav-links a {
-        width: 100%;
-        padding: 0.75rem;
-        margin: 0;
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .nav-links a:last-child {
-        border-bottom: none;
-    }
-    
+  /* Mobile layout adjustments */
+  @media (max-width: 900px) {
     nav {
-        justify-content: flex-start;
+      padding: 0 1rem;
     }
     
-    .nav-right {
-        margin-left: auto;
-        margin-right: 0.5rem;
+    nav .logo {
+      margin-right: 0;
+    }
+    
+    nav .nav-links {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: var(--nav-height);
+      transform: none;
+      background-color: var(--nav-background);
+      padding: 1rem;
+      flex-direction: column;
+      gap: 1rem;
+      border-top: 1px solid var(--nav-border-color);
+      box-shadow: var(--nav-shadow);
+      transform: translateY(-150%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+      margin-left: 0;
+    }
+    
+    nav .nav-links.active {
+      transform: translateY(0);
+    }
+    
+    nav .nav-right {
+      margin-left: auto;
+      margin-right: 0.5rem;
     }
     
     .menu-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        cursor: pointer;
-        margin-left: 0.5rem;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    
-    .logo span {
-        display: none;
-    }
-    
-    .nav-right {
-        order: 2;
-    }
-    
-    .menu-icon {
-        order: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
     }
   }
 
+  /* Dropdowns for Notifications and User Profile */
+  .notification-dropdown,
+  .user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 320px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 1001;
+  }
+
+  .notification-dropdown-trigger,
+  .user-dropdown-trigger {
+    position: relative;
+  }
+
+  .notification-dropdown-trigger:hover .notification-dropdown,
+  .user-dropdown-trigger:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Notification Dropdown */
+  .notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .notification-header h3 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+
+  .mark-all-read {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+  }
+
+  .mark-all-read:hover {
+    background-color: rgba(66, 133, 244, 0.1);
+  }
+
+  .notification-list {
+    max-height: 350px;
+    overflow-y: auto;
+  }
+
+  .notification-item {
+    display: flex;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition-fast);
+    cursor: pointer;
+    align-items: flex-start;
+  }
+
+  .notification-item:hover {
+    background-color: rgba(66, 133, 244, 0.05);
+  }
+
+  .notification-item.unread {
+    background-color: rgba(66, 133, 244, 0.08);
+  }
+
+  .notification-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+  }
+
+  .notification-icon.tool-update {
+    background-color: rgba(251, 188, 5, 0.15);
+    color: var(--primary-yellow);
+  }
+
+  .notification-icon.account {
+    background-color: rgba(52, 168, 83, 0.15);
+    color: var(--primary-green);
+  }
+
+  .notification-icon.system {
+    background-color: rgba(66, 133, 244, 0.15);
+    color: var(--primary-blue);
+  }
+
+  .notification-content {
+    flex: 1;
+  }
+
+  .notification-text {
+    margin: 0 0 4px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-color);
+  }
+
+  .notification-text a {
+    color: var(--primary-blue);
+    text-decoration: none;
+  }
+
+  .notification-time {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .mark-read {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: var(--transition-fast);
+    padding: 4px;
+    margin-left: 8px;
+  }
+
+  .mark-read:hover {
+    opacity: 1;
+    color: var(--primary-blue);
+  }
+
+  .notification-footer {
+    padding: 12px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  .notification-footer a {
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .notification-footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* User Dropdown */
+  .user-dropdown {
+    min-width: 250px;
+  }
+
+  .user-login-options {
+    padding: 16px;
+  }
+
+  .user-login-options p {
+    margin: 0 0 12px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .btn-primary {
+    display: block;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    padding: 10px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: var(--transition-fast);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-hover);
+  }
+
+  .create-account {
+    display: flex;
+    justify-content: center;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  .create-account span {
+    color: var(--text-secondary);
+  }
+
+  .create-account a {
+    color: var(--primary-blue);
+    text-decoration: none;
+  }
+
+  .create-account a:hover {
+    text-decoration: underline;
+  }
+
+  /* User Profile (when logged in) */
+  .user-profile {
+    padding: 16px;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .user-details {
+    margin-left: 12px;
+  }
+
+  .user-name {
+    font-weight: 600;
+    margin: 0 0 2px;
+  }
+
+  .user-email {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .user-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .user-links li {
+    margin-bottom: 8px;
+  }
+
+  .user-links a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+  }
+
+  .user-links a i {
+    margin-right: 8px;
+  }
+
+  .user-links a:hover {
+    color: var(--primary-blue);
+  }
+
+  .logout-btn {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color);
+  }
+
   @media (max-width: 900px) {
-    .nav-links {
-        position: fixed;
-        top: var(--nav-height);
-        left: 0;
-        right: 0;
-        background-color: var(--nav-background);
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
-        border-top: 1px solid var(--nav-border-color);
-        box-shadow: var(--nav-shadow);
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
-        z-index: 999;
+    .notification-dropdown,
+    .user-dropdown {
+      width: 320px;
+      max-width: calc(100vw - 20px);
+      position: fixed;
+      top: var(--nav-height);
+      right: 10px;
     }
     
-    .nav-links.active {
-        transform: translateY(0);
+    .notification-item {
+      padding: 12px;
     }
     
-    .nav-links a {
-        padding: 0.5rem 0;
+    .notification-text {
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
     
-    .nav-links a::after {
-        display: none;
+    .notification-time {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .notification-dropdown,
+    .user-dropdown {
+      width: calc(100vw - 20px);
+      right: 10px;
+    }
+    
+    .notification-item {
+      padding: 10px;
+    }
+    
+    .notification-text {
+      font-size: 0.85rem;
+    }
+    
+    .user-login-options p {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Fix scrollbars for better UX */
+  .notification-list::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .notification-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  /* Fix dropdown positioning when scrolling */
+  @media (max-width: 900px) {
+    body.has-dropdown-open {
+      overflow: hidden;
+      position: relative;
+      height: 100%;
+    }
+  }
+
+  /* Add mobile debug helpers */
+  .debug-outline * {
+    outline: 1px solid red;
+  }
+
+  /* Fix logo on very small screens */
+  @media (max-width: 360px) {
+    .logo span {
+      display: none;
+    }
+  }
+
+  /* Fix mobile dropdowns */
+  @media (max-width: 900px) {
+    /* Use !important to ensure these rules are applied */
+    .notification-dropdown-trigger .notification-dropdown,
+    .user-dropdown-trigger .user-dropdown {
+      display: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      transition: none !important;
+      position: fixed !important;
+      top: var(--nav-height) !important;
+      right: 10px !important;
+      max-height: calc(100vh - var(--nav-height) - 20px) !important;
+    }
+    
+    .notification-dropdown-trigger.active .notification-dropdown,
+    .user-dropdown-trigger.active .user-dropdown {
+      display: block !important;
+    }
+    
+    /* Enhance tap targets */
+    .icon-button {
+      min-width: 44px;
+      min-height: 44px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+
+  /* iOS-specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    /* iOS devices */
+    .notification-dropdown-trigger .notification-dropdown,
+    .user-dropdown-trigger .user-dropdown {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    
+    body.has-dropdown-open {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    /* Fix for weird invisible taps on iOS */
+    .icon-button {
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+    
+    /* Prevent scrolling of body when dropdown is open on iOS */
+    .notification-dropdown,
+    .user-dropdown {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Enable proper click target zones */
+  @media (max-width: 900px) {
+    .icon-button,
+    .notification-dropdown-trigger,
+    .user-dropdown-trigger {
+      position: relative;
+      z-index: 10;
     }
     
     .menu-icon {
-        display: flex;
+      position: relative;
+      z-index: 10;
     }
   }

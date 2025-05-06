@@ -34,12 +34,66 @@
                     <div class="toggle-circle"></div>
                 </div>
             </div>
-            <div class="icon-button" title="Notifications">
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
                 <i class="ri-notification-2-line"></i>
                 <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-item unread">
+                            <div class="notification-icon tool-update">
+                                <i class="ri-tools-fill"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p class="notification-text"><strong>New Tool Added:</strong> Check out our new QR Code Generator!</p>
+                                <p class="notification-time">2 hours ago</p>
+                            </div>
+                            <button class="mark-read" title="Mark as read">
+                                <i class="ri-check-double-line"></i>
+                            </button>
+                        </div>
+                        <div class="notification-item unread">
+                            <div class="notification-icon account">
+                                <i class="ri-shield-check-fill"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p class="notification-text">Your account was successfully created. Welcome to Daily Tools!</p>
+                                <p class="notification-time">1 day ago</p>
+                            </div>
+                            <button class="mark-read" title="Mark as read">
+                                <i class="ri-check-double-line"></i>
+                            </button>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon system">
+                                <i class="ri-information-fill"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p class="notification-text">We've updated our <a href="/legal/privacy-policy">Privacy Policy</a>.</p>
+                                <p class="notification-time">3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/user/notifications">See all notifications</a>
+                    </div>
+                </div>
             </div>
-            <div class="icon-button" title="Profile">
+            <div class="icon-button user-dropdown-trigger" title="Profile">
                 <i class="ri-user-3-line"></i>
+                <div class="user-dropdown">
+                    <div class="user-login-options">
+                        <p>Sign in to save your preferences and access your saved tools.</p>
+                        <a href="/user/login" class="btn-primary">Sign In</a>
+                        <div class="create-account">
+                            <span>Don't have an account?</span>
+                            <a href="/user/login#register">Create Account</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="menu-toggle" class="menu-icon" title="Menu">
@@ -287,5 +341,6 @@
     <script src="script.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
      crossorigin="anonymous"></script>
+     <script src="/nav/script.js"></script>
 </body>
 </html> 

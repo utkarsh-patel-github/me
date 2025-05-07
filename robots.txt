@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 
-Sitemap: https://dailytools.com/sitemap.xml 
+Sitemap: https://utkarshpatel.me/sitemap.xml 

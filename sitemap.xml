@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://dailytools.com/</loc>
+        <loc>https://utkarshpatel.me/</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/tools/age-calculator</loc>
+        <loc>https://utkarshpatel.me/tools/age-calculator</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/tools/word-counter</loc>
+        <loc>https://utkarshpatel.me/tools/word-counter</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/tools/roman-converter</loc>
+        <loc>https://utkarshpatel.me/tools/roman-converter</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/tools/prime-factor</loc>
+        <loc>https://utkarshpatel.me/tools/prime-factor</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/tools/note-keeper</loc>
+        <loc>https://utkarshpatel.me/tools/note-keeper</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/tools/color-converter</loc>
+        <loc>https://utkarshpatel.me/tools/color-converter</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/pages/about</loc>
+        <loc>https://utkarshpatel.me/pages/about</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/pages/contact</loc>
+        <loc>https://utkarshpatel.me/pages/contact</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/pages/legal/privacy-policy</loc>
+        <loc>https://utkarshpatel.me/pages/legal/privacy-policy</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://dailytools.com/pages/legal/terms-of-service</loc>
+        <loc>https://utkarshpatel.me/pages/legal/terms-of-service</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
-</urlset> 
+</urlset>

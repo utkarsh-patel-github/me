@@ -1,130 +1,134 @@
 # Daily Tools
 
-Daily Tools is a web application that provides a collection of useful online tools to simplify everyday tasks. It features user accounts, saved tools, and a responsive design for both desktop and mobile users.
+Daily Tools is a comprehensive web application that provides a collection of free, useful online tools to simplify everyday tasks. With over 20 tools including calculators, converters, generators, and more, it's designed to be accessible, user-friendly, and completely free to use.
 
-## Features
+## 🌟 Features
 
-- **User Authentication**: Sign up, login, and account management
-- **Tool Collection**: Various calculators, converters, and other useful tools
-- **Saved Tools**: Save your favorite tools for quick access
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
+- **20+ Free Tools**: Calculators, converters, generators, and more
+- **No Account Required**: Use all tools without signing up
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 - **Dark Mode**: Toggle between light and dark themes
+- **Privacy-Focused**: Most tools work entirely in your browser
+- **Ad-Free Experience**: Clean interface without intrusive ads
 
-## Technology Stack
+## 🛠️ Available Tools
 
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Authentication**: JWT (JSON Web Tokens)
+### Calculators
+- Age Calculator
+- BMI Calculator
+- Loan Calculator
+- Percentage Calculator
+- Prime Factor Calculator
 
-## Getting Started
+### Converters
+- Color Converter
+- Currency Converter
+- Roman Numeral Converter
+- Text Case Converter
+- Timezone Converter
+- Unit Converter
+
+### Generators
+- Hash Generator
+- Lorem Ipsum Generator
+- Password Generator
+- QR Code Generator
+
+### Text Tools
+- Markdown Editor
+- Word Counter
+- Text Case Converter
+
+### Security Tools
+- Encryption Tool
+- Hash Generator
+- Password Strength Checker
+- Password Generator
+
+### Other Tools
+- Countdown Timer
+- Note Keeper
+- Cookie Policy Generator
+- Privacy Policy Generator
+- Terms of Service Generator
+
+## 💻 Technology Stack
+
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **UI Framework**: Custom CSS with modern design principles
+- **Icons**: Remix Icon
+- **Fonts**: Inter and Poppins (Google Fonts)
+- **Analytics**: Google Analytics
+- **Monetization**: Google AdSense (pending approval)
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v14.x or higher)
-- npm (v6.x or higher)
-- MongoDB account (using MongoDB Atlas)
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Internet connection
 
-### Installation
+### Usage
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/daily-tools.git
-   cd daily-tools
-   ```
+1. Visit [Daily Tools](https://dailytools.me)
+2. Choose a tool from the homepage or categories
+3. Use the tool directly in your browser
+4. No installation or account required
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Configure environment variables (in production):
-   - Create a `.env` file in the root directory
-   - Add the following variables:
-     ```
-     PORT=5000
-     MONGODB_URI=your_mongodb_connection_string
-     JWT_SECRET=your_jwt_secret
-     ```
-
-4. Start the development server:
-   ```
-   npm run setup
-   ```
-   This will seed the database with sample data and start the server.
-
-### Default User Accounts
-
-When running the setup script, the following user accounts are created:
-
-1. **Demo User**
-   - Email: demo@example.com
-   - Password: password123
-
-2. **Admin User**
-   - Email: admin@dailytools.com
-   - Password: admin123
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 daily-tools/
-├── server/                 # Backend files
-│   ├── controllers/        # API controllers
-│   ├── models/             # Data models
-│   ├── routes/             # API routes
-│   ├── db.js               # Database connection
-│   ├── seed.js             # Database seeding
-│   └── server.js           # Main server file
-├── pages/                  # Frontend pages
-│   ├── user/               # User account pages
-│   └── tools/              # Tool pages
-├── nav/                    # Navigation components
-│   ├── style.css           # Navigation styles
-│   └── script.js           # Navigation scripts
-└── package.json            # Project dependencies
+├── index.html              # Main homepage
+├── style.css              # Global styles
+├── navigation.js          # Navigation functionality
+├── pages/                 # Additional pages
+│   ├── about/            # About page
+│   ├── contact/          # Contact page
+│   ├── categories/       # Categories page
+│   ├── tools/           # Tools listing page
+│   └── legal/           # Legal documents
+├── tools/                # Individual tools
+│   ├── age-calculator/
+│   ├── bmi-calculator/
+│   ├── currency-converter/
+│   └── ... (other tools)
+├── nav/                  # Navigation components
+├── footer/              # Footer components
+└── assets/             # Images, icons, etc.
 ```
 
-## API Endpoints
+## 🔒 Privacy & Legal
 
-### Authentication
+- [Privacy Policy](/pages/legal/privacy-policy.html)
+- [Terms of Service](/pages/legal/terms-of-service.html)
+- [Cookie Policy](/pages/legal/cookie-policy.html)
+- [GDPR Compliance](/pages/legal/gdpr.html)
+- [Accessibility](/pages/legal/accessibility.html)
 
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/me` - Get current user
-- `PUT /api/auth/profile` - Update user profile
-- `PUT /api/auth/password` - Update user password
-- `PUT /api/auth/preferences` - Update user preferences
+## 🤝 Contributing
 
-### Tools
-
-- `GET /api/tools` - Get all tools
-- `GET /api/tools/category/:category` - Get tools by category
-- `GET /api/tools/popular` - Get popular tools
-- `GET /api/tools/new` - Get new tools
-- `GET /api/tools/:id` - Get tool by ID
-- `POST /api/tools/:id/usage` - Increment tool usage count
-
-### Saved Tools (Requires Authentication)
-
-- `GET /api/tools/user/saved` - Get user's saved tools
-- `POST /api/tools/user/save/:toolId` - Save a tool
-- `DELETE /api/tools/user/save/:toolId` - Remove a saved tool
-
-## Contributing
+We welcome contributions! If you'd like to add a new tool or improve an existing one:
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/amazing-tool`)
+3. Commit your changes (`git commit -m 'Add amazing tool'`)
+4. Push to the branch (`git push origin feature/amazing-tool`)
 5. Open a Pull Request
 
-## License
+## 📝 License
 
 This project is licensed under the MIT License.
 
-## Contact
+## 📞 Contact
 
-Your Name - your.email@example.com
+Utkarsh Patel - [Contact Us](/pages/contact)
 
-Project Link: [https://github.com/yourusername/daily-tools](https://github.com/yourusername/daily-tools) 
+Website: [https://dailytools.me](https://dailytools.me)
+
+## 🙏 Acknowledgments
+
+- Thanks to all our users for their valuable feedback
+- Special thanks to the open-source community
+- Icons provided by [Remix Icon](https://remixicon.com)
+- Fonts by [Google Fonts](https://fonts.google.com) 

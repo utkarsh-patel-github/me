@@ -290,89 +290,91 @@ main {
 .hero-section .keywords {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
-  padding: var(--space-2) 0;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
   justify-content: center;
-  transition: var(--transition);
-  margin-top: var(--space-3);
+  pointer-events: none;
 }
 
 .hero-section .keywords button {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-3);
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: default;
+  transition: none;
+  opacity: 0.9;
+  border: 1px solid var(--border-color);
 }
 
 .hero-section .keywords button i {
-  color: var(--primary-blue);
   font-size: 1.1rem;
-  transition: var(--transition);
+  transition: none;
 }
 
-.hero-section .keywords button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-  background-color: rgba(66, 133, 244, 0.1);
-  border-color: var(--primary-blue);
+/* Restore colors for each button and add matching borders with opacity */
+.hero-section .keywords button:nth-child(1) {
+  border-color: rgba(66, 133, 244, 0.3);
+}
+.hero-section .keywords button:nth-child(1) i {
   color: var(--primary-blue);
 }
 
-.hero-section .keywords button:hover i {
-  transform: scale(1.1);
+.hero-section .keywords button:nth-child(2) {
+  border-color: rgba(234, 67, 53, 0.3);
 }
-
-/* Keyword button variants */
 .hero-section .keywords button:nth-child(2) i {
   color: var(--primary-red);
 }
 
-.hero-section .keywords button:nth-child(2):hover {
-  background-color: rgba(234, 67, 53, 0.1);
-  border-color: var(--primary-red);
-  color: var(--primary-red);
+.hero-section .keywords button:nth-child(3) {
+  border-color: rgba(52, 168, 83, 0.3);
 }
-
 .hero-section .keywords button:nth-child(3) i {
   color: var(--primary-green);
 }
 
-.hero-section .keywords button:nth-child(3):hover {
-  background-color: rgba(52, 168, 83, 0.1);
-  border-color: var(--primary-green);
-  color: var(--primary-green);
+.hero-section .keywords button:nth-child(4) {
+  border-color: rgba(251, 188, 5, 0.3);
 }
-
 .hero-section .keywords button:nth-child(4) i {
   color: var(--primary-yellow);
 }
 
-.hero-section .keywords button:nth-child(4):hover {
-  background-color: rgba(251, 188, 5, 0.1);
-  border-color: var(--primary-yellow);
-  color: var(--primary-yellow);
+.hero-section .keywords button:nth-child(5) {
+  border-color: rgba(103, 58, 183, 0.3);
 }
-
 .hero-section .keywords button:nth-child(5) i {
   color: var(--primary-purple);
 }
 
+.hero-section .keywords button:nth-child(6) {
+  border-color: rgba(255, 152, 0, 0.3);
+}
 .hero-section .keywords button:nth-child(6) i {
   color: var(--primary-orange);
 }
 
+/* Remove all hover effects */
+.hero-section .keywords button:hover,
+.hero-section .keywords button:hover i {
+  transform: none;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.hero-section .keywords button:nth-child(2):hover,
+.hero-section .keywords button:nth-child(3):hover,
+.hero-section .keywords button:nth-child(4):hover,
 .hero-section .keywords button:nth-child(6):hover {
-  background-color: rgba(255, 152, 0, 0.1);
-  border-color: var(--primary-orange);
-  color: var(--primary-orange);
+  transform: none;
+  background: var(--card-bg);
+  color: var(--text-color);
 }
 
 /* Section titles with gradient underline */

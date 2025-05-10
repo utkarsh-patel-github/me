@@ -8,10 +8,23 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
+    <!-- Google tag (gtag.js) -->
+         
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-1B5PV6KP61');
+    </script>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
 </head>
 <body>
     <nav>
@@ -21,9 +34,9 @@
         </a>
         <div class="nav-links">
             <a href="/">Home</a>
-            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/tools">Tools</a>
             <a href="/pages/categories">Categories</a>
-            <a href="/pages/about">About</a>
+            <a href="/pages/about" class="active">About</a>
             <a href="/pages/contact">Contact</a>
         </div>
         <div class="nav-right">
@@ -43,7 +56,7 @@
                         <button class="mark-all-read">Mark all as read</button>
                     </div>
                     <div class="notification-footer">
-                        <a href="/user/notifications">See all notifications</a>
+                        <a href="/user/notifications" id="see-all-notifications">See all notifications</a>
                     </div>
                 </div>
             </div>
@@ -187,35 +200,60 @@
     </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Daily Tools</h2>
-                    <p>Your one-stop solution for everyday calculations and conversions</p>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61573126709749" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="https://x.com/utkarshpatel_me" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="https://www.instagram.com/utkarshpatel3012/" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="https://www.youtube.com/@utkarshpatel4077" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-section">
-                        <h3>Popular Tools</h3>
-                        <a href="/tools/age-calculator">Age Calculator</a>
-                        <a href="/tools/unit-converter">Unit Converter</a>
-                        <a href="/tools/currency-converter">Currency Converter</a>
-                        <a href="/tools/timezone-converter">Time Zone Converter</a>
-                    </div>
-                    <div class="footer-section">
-                        <h3>Categories</h3>
-                        <a href="/#calculators">Calculators</a>
-                        <a href="/#converters">Converters</a>
-                        <a href="/#generators">Generators</a>
-                        <a href="/#formatters">Formatters</a>
-                    </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/pages/tools">Popular Tools</a></li>
+                        <li><a href="/pages/tools?category=new">New Tools</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#mission">Our Mission</a></li>
+                        <li><a href="/pages/about#team">Our Team</a></li>
+                        <li><a href="/pages/about#values">Values</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/legal/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/pages/legal/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+                        <li><a href="/pages/legal/accessibility.html">Accessibility</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Daily Tools. All rights reserved.</p>
+                <p>&copy; 2025 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="/nav/script.js"></script>
 </body>
 </html> 

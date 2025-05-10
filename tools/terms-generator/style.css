@@ -103,8 +103,8 @@ main{
     color: var(--text-secondary);
 }
 
-/* Calculator Card */
-.calculator-card {
+/* Generator Card */
+.generator-card {
     background-color: var(--bg-primary);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
@@ -127,9 +127,11 @@ main{
     color: var(--text-primary);
 }
 
-textarea#input-text {
+input[type="text"],
+input[type="url"],
+input[type="email"],
+textarea {
     width: 100%;
-    min-height: 120px;
     padding: 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -137,54 +139,59 @@ textarea#input-text {
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+textarea {
+    min-height: 100px;
     resize: vertical;
 }
 
-textarea#input-text:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-}
-
-.key-input {
-    position: relative;
+main .icon-button {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    width: 40px;
+    height: 40px;
     display: flex;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-short);
+    color: var(--text-color);
 }
 
-.key-input input {
-    flex: 1;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-}
-
-.key-input input:focus {
-    outline: none;
+main .icon-button:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-select#encryption-algorithm {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     cursor: pointer;
 }
 
-select#encryption-algorithm:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+.checkbox-label input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
 }
 
 .button-group {
@@ -234,53 +241,60 @@ select#encryption-algorithm:focus {
     padding: 1.5rem;
 }
 
-.result-group {
-    margin-bottom: 1.5rem;
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
-.result-group:last-child {
-    margin-bottom: 0;
-}
-
-.result-group label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+.result-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
     color: var(--text-primary);
 }
 
-.result-output {
+.result-actions {
     display: flex;
     gap: 0.5rem;
 }
 
-.result-output textarea {
-    flex: 1;
-    min-height: 100px;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    resize: vertical;
-}
-
-.result-output textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-}
-
-.result-info {
-    padding: 0.75rem;
+.result-content {
     background-color: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
+    padding: 1.5rem;
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
+    line-height: 1.6;
+}
+
+.result-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    color: var(--text-primary);
+}
+
+.result-content p {
+    margin: 0 0 1rem 0;
+}
+
+.result-content ul, .result-content ol {
+    margin: 0 0 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.result-content li {
+    margin-bottom: 0.5rem;
+}
+
+.result-content li:last-child {
+    margin-bottom: 0;
 }
 
 /* Info Cards */
@@ -394,7 +408,7 @@ select#encryption-algorithm:focus {
         font-size: 1.75rem;
     }
 
-    .calculator-card {
+    .generator-card {
         padding: 1.5rem;
     }
 
@@ -416,7 +430,7 @@ select#encryption-algorithm:focus {
         font-size: 1.5rem;
     }
 
-    .calculator-card {
+    .generator-card {
         padding: 1rem;
     }
 
@@ -427,6 +441,10 @@ select#encryption-algorithm:focus {
     .btn-primary, .btn-secondary {
         width: 100%;
         justify-content: center;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -439,9 +457,10 @@ body.dark-mode {
 body.dark-mode .background-light,
 body.dark-mode .calculator-card,
 body.dark-mode .info-card,
-body.dark-mode #toggle-key,
+body.dark-mode .notification,
+body.dark-mode .result-content,
 body.dark-mode .result-section,
-body.dark-mode #copy-result,
+body.dark-mode .generator-card,
 body.dark-mode .faq-item {
   background-color: #1f2937 !important;
   border-radius: 0.75rem !important;
@@ -478,8 +497,6 @@ body.dark-mode .faq-item {
 
 body.dark-mode input,
 body.dark-mode .tool-card,
-body.dark-mode #encryption-algorithm,
-body.dark-mode .result-info,
 body.dark-mode textarea {
   background-color: #1f2937 !important;
   color: #f9fafb !important;

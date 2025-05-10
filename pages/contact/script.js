@@ -1,118 +1,154 @@
+// Contact Page JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all FAQ items
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    // Add click event listeners to FAQ questions
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        
-        question.addEventListener('click', function() {
-            // Toggle active class on clicked item
-            item.classList.toggle('active');
-            
-            // Close other FAQ items when one is opened (optional accordion behavior)
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
-            });
-        });
-    });
-    
-    // Show first FAQ item by default
-    if (faqItems.length > 0) {
-        faqItems[0].classList.add('active');
-    }
-    
-    // Contact Form Handling
+    // Form validation and submission
     const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(contactForm);
-            const formDataObj = {};
+            // Validate form
+            const isValid = validateForm();
             
-            formData.forEach((value, key) => {
-                formDataObj[key] = value;
-            });
-            
-            // Simulate form submission (in a real application, this would be an API call)
-            // Show loading state
-            formStatus.textContent = 'Sending message...';
-            formStatus.className = 'form-status';
-            formStatus.style.display = 'block';
-            
-            // Simulate API delay
-            setTimeout(() => {
-                // Success response
-                formStatus.textContent = 'Your message has been sent successfully! We will get back to you soon.';
-                formStatus.className = 'form-status success';
-                
-                // Reset form after successful submission
-                contactForm.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 5000);
-            }, 1500);
-            
-            // Error handling would be added here in a real application
-        });
-    }
-    
-    // Newsletter Form Handling
-    const newsletterForm = document.getElementById('newsletter-form');
-    
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const emailInput = newsletterForm.querySelector('input[type="email"]');
-            const email = emailInput.value;
-            
-            // Validate email (basic validation)
-            if (!email || !email.includes('@')) {
-                alert('Please enter a valid email address.');
-                return;
+            if (isValid) {
+                // Simulate form submission
+                submitForm();
             }
-            
-            // Simulate subscription (in a real application, this would be an API call)
-            const button = newsletterForm.querySelector('button');
-            const originalText = button.textContent;
-            
-            // Show loading state
-            button.textContent = 'Subscribing...';
-            button.disabled = true;
-            
-            // Simulate API delay
-            setTimeout(() => {
-                // Success response
-                button.textContent = 'Subscribed!';
-                
-                // Reset form after successful submission
-                newsletterForm.reset();
-                
-                // Restore original button text after 2 seconds
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.disabled = false;
-                }, 2000);
-            }, 1500);
         });
     }
     
-    // Live Chat Button Handling
-    const openChatBtn = document.getElementById('open-chat-btn');
+    // Form validation function
+    function validateForm() {
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const subject = document.getElementById('subject');
+        const message = document.getElementById('message');
+        let isValid = true;
+        
+        // Reset previous error states
+        clearErrors();
+        
+        // Name validation
+        if (!name.value.trim()) {
+            showError(name, 'Please enter your name');
+            isValid = false;
+        }
+        
+        // Email validation
+        if (!email.value.trim()) {
+            showError(email, 'Please enter your email');
+            isValid = false;
+        } else if (!isValidEmail(email.value)) {
+            showError(email, 'Please enter a valid email address');
+            isValid = false;
+        }
+        
+        // Subject validation
+        if (!subject.value || subject.value === '') {
+            showError(subject, 'Please select a subject');
+            isValid = false;
+        }
+        
+        // Message validation
+        if (!message.value.trim()) {
+            showError(message, 'Please enter your message');
+            isValid = false;
+        } else if (message.value.trim().length < 10) {
+            showError(message, 'Message must be at least 10 characters');
+            isValid = false;
+        }
+        
+        return isValid;
+    }
     
-    if (openChatBtn) {
-        openChatBtn.addEventListener('click', function() {
-            // In a real application, this would open a chat widget
-            alert('Chat functionality would open here in a real application.');
-        });
+    // Email validation helper
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    // Show error message
+    function showError(input, message) {
+        input.classList.add('invalid');
+        const formGroup = input.closest('.form-group');
+        
+        // Remove any existing error message
+        const existingError = formGroup.querySelector('.error-feedback');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Add new error message
+        const errorElement = document.createElement('div');
+        errorElement.className = 'error-feedback';
+        errorElement.textContent = message;
+        formGroup.appendChild(errorElement);
+    }
+    
+    // Clear all error messages
+    function clearErrors() {
+        document.querySelectorAll('.form-group .error-feedback').forEach(el => el.remove());
+        document.querySelectorAll('.form-group .invalid').forEach(el => el.classList.remove('invalid'));
+    }
+    
+    // Form submission
+    function submitForm() {
+        const submitBtn = contactForm.querySelector('.submit-button');
+        const originalText = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="ri-loader-2-line loading"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Simulate API call with timeout
+        setTimeout(() => {
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Show success toast
+            showToast('success', 'Message sent successfully!');
+            
+            // Reset form
+            contactForm.reset();
+            
+        }, 1500);
+    }
+    
+    // Toast notification function
+    function showToast(type, message) {
+        // Remove any existing toast
+        const existingToast = document.querySelector('.toast-notification');
+        if (existingToast) {
+            existingToast.remove();
+        }
+        
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = `toast-notification ${type}`;
+        
+        // Set icon based on type
+        let icon = 'ri-check-line';
+        if (type === 'error') {
+            icon = 'ri-error-warning-line';
+        }
+        
+        toast.innerHTML = `
+            <i class="${icon}"></i>
+            <span>${message}</span>
+        `;
+        
+        // Add to document
+        document.body.appendChild(toast);
+        
+        // Show toast (with a slight delay for animation)
+        setTimeout(() => {
+            toast.classList.add('visible');
+        }, 10);
+        
+        // Hide and remove toast after timeout
+        setTimeout(() => {
+            toast.classList.remove('visible');
+            setTimeout(() => toast.remove(), 500);
+        }, 5000);
     }
 }); 

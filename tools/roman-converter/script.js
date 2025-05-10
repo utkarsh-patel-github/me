@@ -22,10 +22,10 @@ const romanExampleBtn = document.getElementById('roman-example-btn');
 const faqItems = document.querySelectorAll('.faq-item');
 
 // Theme Toggle and Navigation
-const themeToggle = document.getElementById('theme-toggle');
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-const navLinkItems = document.querySelectorAll('.nav-links a');
+// const themeToggle = document.getElementById('theme-toggle');
+// const menuToggle = document.getElementById('menu-toggle');
+// const navLinks = document.querySelector('.nav-links');
+// const navLinkItems = document.querySelectorAll('.nav-links a');
 
 // Conversion Functions
 function decimalToRoman(num) {
@@ -266,57 +266,57 @@ function toggleFaq(e) {
     // });
 }
 
-function toggleTheme() {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-}
+// function toggleTheme() {
+//     document.body.classList.toggle('dark-mode');
+//     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+// }
 
-function toggleMenu() {
-    navLinks.classList.toggle('active');
+// function toggleMenu() {
+//     navLinks.classList.toggle('active');
     
-    // Toggle menu icon
-    const menuIcon = menuToggle.querySelector('i');
-    if (menuIcon) {
-        if (navLinks.classList.contains('active')) {
-            menuIcon.classList.remove('ri-menu-line');
-            menuIcon.classList.add('ri-close-line');
-        } else {
-            menuIcon.classList.remove('ri-close-line');
-            menuIcon.classList.add('ri-menu-line');
-        }
-    }
-}
+//     // Toggle menu icon
+//     const menuIcon = menuToggle.querySelector('i');
+//     if (menuIcon) {
+//         if (navLinks.classList.contains('active')) {
+//             menuIcon.classList.remove('ri-menu-line');
+//             menuIcon.classList.add('ri-close-line');
+//         } else {
+//             menuIcon.classList.remove('ri-close-line');
+//             menuIcon.classList.add('ri-menu-line');
+//         }
+//     }
+// }
 
 // Close mobile menu when clicking outside
-function handleDocumentClick(e) {
-    const isNavLink = e.target.closest('.nav-links a');
-    const isMenuToggle = e.target.closest('#menu-toggle');
+// function handleDocumentClick(e) {
+//     const isNavLink = e.target.closest('.nav-links a');
+//     const isMenuToggle = e.target.closest('#menu-toggle');
     
-    if ((isNavLink || !e.target.closest('nav')) && !isMenuToggle && navLinks.classList.contains('active')) {
-        toggleMenu();
-    }
-}
+//     if ((isNavLink || !e.target.closest('nav')) && !isMenuToggle && navLinks.classList.contains('active')) {
+//         toggleMenu();
+//     }
+// }
 
 // Apply stored theme preference
-function applyThemePreference() {
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-    }
-}
+// function applyThemePreference() {
+//     if (localStorage.getItem('darkMode') === 'true') {
+//         document.body.classList.add('dark-mode');
+//     }
+// }
 
 // Handle responsive layout
-function setupResponsiveLayout() {
-    // Move buttons to the correct position on mobile
-    if (window.innerWidth <= 576) {
-        const nav = document.querySelector('nav');
-        const navRight = document.querySelector('.nav-right');
-        const menuToggle = document.getElementById('menu-toggle');
+// function setupResponsiveLayout() {
+//     // Move buttons to the correct position on mobile
+//     if (window.innerWidth <= 576) {
+//         const nav = document.querySelector('nav');
+//         const navRight = document.querySelector('.nav-right');
+//         const menuToggle = document.getElementById('menu-toggle');
         
-        // Ensure proper ordering for mobile
-        nav.appendChild(navRight);
-        nav.appendChild(menuToggle);
-    }
-}
+//         // Ensure proper ordering for mobile
+//         nav.appendChild(navRight);
+//         nav.appendChild(menuToggle);
+//     }
+// }
 
 // Initialize
 function init() {

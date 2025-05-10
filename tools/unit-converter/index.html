@@ -10,7 +10,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+
+    <!-- Google tag (gtag.js) -->
+         
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-1B5PV6KP61');
+    </script>
      
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/nav/style.css">
@@ -25,9 +37,9 @@
         </a>
         <div class="nav-links">
             <a href="/">Home</a>
-            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/tools">Tools</a>
             <a href="/pages/categories">Categories</a>
-            <a href="/pages/about">About</a>
+            <a href="/pages/about" class="active">About</a>
             <a href="/pages/contact">Contact</a>
         </div>
         <div class="nav-right">
@@ -47,7 +59,7 @@
                         <button class="mark-all-read">Mark all as read</button>
                     </div>
                     <div class="notification-footer">
-                        <a href="/user/notifications">See all notifications</a>
+                        <a href="/user/notifications" id="see-all-notifications">See all notifications</a>
                     </div>
                 </div>
             </div>
@@ -214,10 +226,35 @@
                         <li><a href="/pages/tools?category=text">Text Tools</a></li>
                     </ul>
                 </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#mission">Our Mission</a></li>
+                        <li><a href="/pages/about#team">Our Team</a></li>
+                        <li><a href="/pages/about#values">Values</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/legal/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/pages/legal/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+                        <li><a href="/pages/legal/accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="/nav/script.js"></script>
 </body>
 </html> 

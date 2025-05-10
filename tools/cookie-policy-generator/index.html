@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy Generator - Daily Tools</title>
-    <meta name="description" content="Generate a professional privacy policy for your website or application with our easy-to-use tool.">
+    <title>Cookie Policy Generator - Daily Tools</title>
+    <meta name="description" content="Create a comprehensive cookie policy for your website or application with our easy-to-use generator.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -79,15 +79,15 @@
                     <i class="ri-arrow-right-s-line"></i>
                     <a href="/pages/tools">Tools</a>
                     <i class="ri-arrow-right-s-line"></i>
-                    <span>Privacy Policy Generator</span>
+                    <span>Cookie Policy Generator</span>
                 </div>
                 <div class="header-content">
                     <div class="tool-icon">
-                        <img src="privacy-policy-generator-icon.svg" alt="Privacy Policy Generator">
+                        <img src="cookie-policy-generator-icon.svg" alt="Cookie Policy Generator">
                     </div>
                     <div class="tool-info">
-                        <h1>Privacy Policy Generator</h1>
-                        <p>Generate a professional privacy policy for your website or application with our easy-to-use tool.</p>
+                        <h1>Cookie Policy Generator</h1>
+                        <p>Create a comprehensive cookie policy for your website or application that complies with GDPR, CCPA, and other privacy regulations.</p>
                     </div>
                 </div>
             </div>
@@ -95,79 +95,111 @@
             <div class="generator-card">
                 <div class="input-section">
                     <div class="input-group">
-                        <label for="company-name">Company/Website Name</label>
-                        <input type="text" id="company-name" placeholder="Enter your company or website name">
+                        <label for="website-name">Website/Company Name</label>
+                        <input type="text" id="website-name" placeholder="Enter your website or company name">
                     </div>
                     <div class="input-group">
                         <label for="website-url">Website URL</label>
                         <input type="url" id="website-url" placeholder="https://example.com">
                     </div>
                     <div class="input-group">
-                        <label for="company-email">Contact Email</label>
-                        <input type="email" id="company-email" placeholder="privacy@example.com">
+                        <label for="contact-email">Contact Email</label>
+                        <input type="email" id="contact-email" placeholder="privacy@example.com">
                     </div>
                     <div class="input-group">
-                        <label for="company-address">Company Address</label>
-                        <textarea id="company-address" placeholder="Enter your company's physical address"></textarea>
-                    </div>
-                    <div class="input-group">
-                        <label>Data Collection</label>
+                        <label>Cookie Types Used</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="collect-name" checked>
-                                <span>Name</span>
+                                <input type="checkbox" id="necessary-cookies" checked>
+                                <span>Necessary Cookies</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="collect-email" checked>
-                                <span>Email Address</span>
+                                <input type="checkbox" id="preference-cookies" checked>
+                                <span>Preference/Functionality Cookies</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="collect-phone">
-                                <span>Phone Number</span>
+                                <input type="checkbox" id="statistics-cookies" checked>
+                                <span>Statistics/Analytics Cookies</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="collect-address">
-                                <span>Physical Address</span>
+                                <input type="checkbox" id="marketing-cookies">
+                                <span>Marketing/Advertising Cookies</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="collect-cookies" checked>
-                                <span>Cookies</span>
+                                <input type="checkbox" id="social-cookies">
+                                <span>Social Media Cookies</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="collect-analytics" checked>
-                                <span>Analytics Data</span>
+                                <input type="checkbox" id="third-party-cookies">
+                                <span>Third-Party Cookies</span>
                             </label>
                         </div>
                     </div>
                     <div class="input-group">
-                        <label>Data Usage</label>
+                        <label>Third-Party Services</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="use-marketing" checked>
-                                <span>Marketing Communications</span>
+                                <input type="checkbox" id="google-analytics" checked>
+                                <span>Google Analytics</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="use-improvement" checked>
-                                <span>Service Improvement</span>
+                                <input type="checkbox" id="google-ads">
+                                <span>Google Ads</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="use-personalization" checked>
-                                <span>Personalization</span>
+                                <input type="checkbox" id="facebook-pixel">
+                                <span>Facebook Pixel</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="use-third-party">
-                                <span>Third-Party Services</span>
+                                <input type="checkbox" id="hotjar">
+                                <span>Hotjar</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="intercom">
+                                <span>Intercom</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="stripe">
+                                <span>Stripe</span>
                             </label>
                         </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Cookie Banner Options</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="opt-in-consent" checked>
+                                <span>Require Opt-In Consent</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="cookie-preferences" checked>
+                                <span>Allow Cookie Preferences</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="reject-all" checked>
+                                <span>Include "Reject All" Option</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="retention-period">Cookie Retention Period</label>
+                        <select id="retention-period">
+                            <option value="session">Session Only</option>
+                            <option value="30-days">30 Days</option>
+                            <option value="6-months">6 Months</option>
+                            <option value="1-year" selected>1 Year</option>
+                            <option value="2-years">2 Years</option>
+                            <option value="custom">Custom Period</option>
+                        </select>
                     </div>
                     <div class="input-group">
                         <label for="additional-info">Additional Information</label>
-                        <textarea id="additional-info" placeholder="Enter any additional information you want to include in your privacy policy"></textarea>
+                        <textarea id="additional-info" placeholder="Enter any additional information you want to include in your cookie policy"></textarea>
                     </div>
                     <div class="button-group">
                         <button id="generate-button" class="btn-primary">
                             <i class="ri-file-text-line"></i>
-                            Generate Privacy Policy
+                            Generate Cookie Policy
                         </button>
                         <button id="preview-button" class="btn-secondary">
                             <i class="ri-eye-line"></i>
@@ -178,7 +210,7 @@
 
                 <div class="result-section">
                     <div class="result-header">
-                        <h2>Generated Privacy Policy</h2>
+                        <h2>Generated Cookie Policy</h2>
                         <div class="result-actions">
                             <button id="copy-result" class="icon-button" title="Copy to clipboard">
                                 <i class="ri-file-copy-line"></i>
@@ -197,61 +229,54 @@
             <div class="info-card">
                 <h2>How to Use</h2>
                 <ol>
-                    <li>Fill in your company/website details</li>
-                    <li>Select the types of data you collect</li>
-                    <li>Choose how you use the collected data</li>
-                    <li>Add any additional information</li>
-                    <li>Click "Generate Privacy Policy" to create your policy</li>
+                    <li>Fill in your website/company details</li>
+                    <li>Select the types of cookies your website uses</li>
+                    <li>Choose third-party services that set cookies on your site</li>
+                    <li>Configure your cookie consent options</li>
+                    <li>Add any additional information specific to your website</li>
+                    <li>Click "Generate Cookie Policy" to create your policy</li>
                     <li>Preview, copy, or download the generated policy</li>
                 </ol>
             </div>
 
             <div class="info-card">
-                <h2>About Privacy Policies</h2>
-                <p>A privacy policy is a legal document that explains how your website or application collects, uses, and protects user data. It's essential for:</p>
+                <h2>About Cookie Policies</h2>
+                <p>A cookie policy is a legal document that explains how your website uses cookies and similar technologies to collect and store information. It's required by privacy laws like:</p>
                 <ul>
-                    <li>Legal compliance with data protection laws (GDPR, CCPA, etc.)</li>
-                    <li>Building trust with your users</li>
-                    <li>Transparency about data practices</li>
-                    <li>Protecting your business from legal issues</li>
+                    <li>GDPR (General Data Protection Regulation) in the EU</li>
+                    <li>CCPA (California Consumer Privacy Act) in California</li>
+                    <li>PECR (Privacy and Electronic Communications Regulations) in the UK</li>
+                    <li>Similar laws in other jurisdictions</li>
                 </ul>
                 <p><strong>Important Notes:</strong></p>
                 <ul>
-                    <li>This tool generates a basic privacy policy template</li>
+                    <li>This tool generates a basic cookie policy template</li>
                     <li>Consider having a legal professional review the policy</li>
-                    <li>Keep your privacy policy updated as your practices change</li>
+                    <li>Keep your cookie policy updated as your practices change</li>
                     <li>Make sure the policy is easily accessible on your website</li>
+                    <li>Implement a proper cookie consent mechanism on your website</li>
                 </ul>
             </div>
 
             <div class="related-tools">
                 <h2>Related Tools</h2>
                 <div class="tools-grid">
+                    <a href="/tools/privacy-policy-generator" class="tool-card">
+                        <div class="tool-icon">
+                            <img src="/tools/privacy-policy-generator/privacy-policy-generator-icon.svg" alt="Privacy Policy Generator">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Privacy Policy Generator</h3>
+                            <p>Generate a professional privacy policy for your website or application.</p>
+                        </div>
+                    </a>
                     <a href="/tools/terms-generator" class="tool-card">
                         <div class="tool-icon">
                             <img src="/tools/terms-generator/terms-generator-icon.svg" alt="Terms of Service Generator">
                         </div>
                         <div class="tool-info">
                             <h3>Terms of Service Generator</h3>
-                            <p>Generate terms of service for your website or application.</p>
-                        </div>
-                    </a>
-                    <a href="/tools/cookie-policy-generator" class="tool-card">
-                        <div class="tool-icon">
-                            <img src="/tools/cookie-policy-generator/cookie-policy-generator-icon.svg" alt="Cookie Policy Generator">
-                        </div>
-                        <div class="tool-info">
-                            <h3>Cookie Policy Generator</h3>
-                            <p>Create a cookie policy for your website.</p>
-                        </div>
-                    </a>
-                    <a href="/tools/encryption-tool" class="tool-card">
-                        <div class="tool-icon">
-                            <img src="/tools/encryption-tool/encryption-tool-icon.svg" alt="Encryption Tool">
-                        </div>
-                        <div class="tool-info">
-                            <h3>Encryption Tool</h3>
-                            <p>Encrypt and decrypt text using various algorithms.</p>
+                            <p>Create terms of service for your website or application.</p>
                         </div>
                     </a>
                 </div>

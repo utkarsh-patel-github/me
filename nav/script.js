@@ -14,40 +14,28 @@ const notificationItems = document.querySelectorAll('.notification-item');
 let isNotificationOpen = false;
 let isUserProfileOpen = false;
 
-// Add console logging to debug mobile issues
-console.log('Nav script loaded');
-console.log('Notification trigger:', notificationTrigger);
-console.log('User trigger:', userTrigger);
-
 // Initialize after DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Re-query elements since they might not be available immediately
     const notificationTriggerRecheck = document.querySelector('.notification-dropdown-trigger');
     const userTriggerRecheck = document.querySelector('.user-dropdown-trigger');
     
-    console.log('DOM loaded - Notification trigger:', notificationTriggerRecheck);
-    console.log('DOM loaded - User trigger:', userTriggerRecheck);
-    
     // If elements weren't found, try to find by icon-button class instead
     if (!notificationTriggerRecheck) {
-        console.log('Trying alternative notification selector');
         // Try to find the notification button by its icon
         const notificationButtons = document.querySelectorAll('.icon-button');
         notificationButtons.forEach(button => {
             if (button.querySelector('.ri-notification-2-line')) {
-                console.log('Found notification button by icon');
                 button.classList.add('notification-dropdown-trigger');
             }
         });
     }
     
     if (!userTriggerRecheck) {
-        console.log('Trying alternative user profile selector');
         // Try to find the user profile button by its icon
         const userButtons = document.querySelectorAll('.icon-button');
         userButtons.forEach(button => {
             if (button.querySelector('.ri-user-3-line')) {
-                console.log('Found user button by icon');
                 button.classList.add('user-dropdown-trigger');
             }
         });
@@ -114,21 +102,26 @@ let isLoggedIn = false;
 let userData = null;
 
 // Theme Toggle Functionality
-function toggleTheme() {
-    const isDarkMode = document.body.classList.contains('dark-mode');
+window.toggleTheme = function() {
+    const body = document.body;
+    const isDarkMode = body.classList.toggle('dark-mode');
     
-    if (isDarkMode) {
-        // Switch to light mode
-        document.body.classList.remove('dark-mode');
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('darkMode', 'false');
-        setCookie('theme', 'light', 30);
-    } else {
-        // Switch to dark mode
-        document.body.classList.add('dark-mode');
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('darkMode', 'true');
-        setCookie('theme', 'dark', 30);
+    // Save theme preference
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    
+    // Update meta theme-color for mobile browsers
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', isDarkMode ? '#1e293b' : '#ffffff');
+    }
+    
+    // Update toggle button state
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        const toggleCircle = themeToggle.querySelector('.toggle-circle');
+        if (toggleCircle) {
+            toggleCircle.style.transform = isDarkMode ? 'scale(1)' : 'scale(0)';
+        }
     }
 }
 
@@ -178,7 +171,6 @@ function openNotificationDropdown() {
         toggleMenu();
     }
     
-    console.log('Notification dropdown opened');
 }
 
 // Close notification dropdown
@@ -194,7 +186,6 @@ function closeNotificationDropdown() {
         toggleBodyScroll(false);
     }
     
-    console.log('Notification dropdown closed');
 }
 
 // Open user dropdown
@@ -223,7 +214,6 @@ function openUserDropdown() {
         toggleMenu();
     }
     
-    console.log('User dropdown opened');
 }
 
 // Close user dropdown
@@ -238,8 +228,6 @@ function closeUserDropdown() {
     if (!isNotificationOpen && window.innerWidth <= 900) {
         toggleBodyScroll(false);
     }
-    
-    console.log('User dropdown closed');
 }
 
 // Close all dropdown menus
@@ -317,7 +305,6 @@ function handleNotifications() {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                console.log('Notification button clicked');
                 
                 // Toggle notification dropdown
                 if (isNotificationOpen) {
@@ -423,7 +410,6 @@ function handleUserProfile() {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                console.log('User button clicked');
                 
                 // Toggle user dropdown
                 if (isUserProfileOpen) {
@@ -562,26 +548,24 @@ function handleUserProfile() {
 
 // Apply stored theme preference
 function applyThemePreference() {
-    // First try to get from cookie for cross-browser consistency
-    const cookieTheme = getCookie('theme');
-    if (cookieTheme === 'dark') {
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
         document.body.classList.add('dark-mode');
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        // Default to light mode for all other cases
-        document.body.classList.remove('dark-mode');
-        document.documentElement.setAttribute('data-theme', 'light');
-        
-        // Sync cookie with light mode preference if not set
-        if (!cookieTheme) {
-            setCookie('theme', 'light', 30);
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            const toggleCircle = themeToggle.querySelector('.toggle-circle');
+            if (toggleCircle) {
+                toggleCircle.style.transform = 'scale(1)';
+            }
         }
     }
 }
 
 // Initialize
 function init() {
-    console.log('Initializing navigation...');
     
     // Apply theme preference
     applyThemePreference();
@@ -624,7 +608,6 @@ function init() {
         }
     });
     
-    console.log('Navigation initialized successfully');
 }
 
 // Make sure we only initialize once when the DOM is loaded
@@ -634,3 +617,34 @@ if (document.readyState === 'loading') {
     // DOM already loaded, initialize now
     init();
 }
+
+// Notification dropdown interaction
+document.addEventListener('DOMContentLoaded', function() {
+    var seeAllBtn = document.getElementById('see-all-notifications');
+    var dropdown = document.querySelector('.notification-dropdown');
+    if (seeAllBtn && dropdown) {
+        seeAllBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var footer = dropdown.querySelector('.notification-footer');
+            var content = document.createElement('div');
+            content.className = 'notification-loading';
+            content.style.display = 'flex';
+            content.style.justifyContent = 'center';
+            content.style.alignItems = 'center';
+            content.style.height = '60px';
+            content.innerHTML = '<div class="loader"></div>';
+            // Remove footer and show loading
+            if (footer) footer.replaceWith(content);
+            // Add simple CSS loader
+            if (!document.getElementById('notif-loader-style')) {
+              var style = document.createElement('style');
+              style.id = 'notif-loader-style';
+              style.innerHTML = '.loader { border: 4px solid #f3f3f3; border-top: 4px solid #555; border-radius: 50%; width: 28px; height: 28px; animation: spin 1s linear infinite; margin: 0 auto; } @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }';
+              document.head.appendChild(style);
+            }
+            setTimeout(function() {
+                content.innerHTML = '<span style="color:#888;font-size:15px;">No new notification.</span>';
+            }, 2000);
+        });
+    }
+});

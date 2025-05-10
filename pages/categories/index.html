@@ -2,14 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Categories - Daily Tools</title>
-    <meta name="description" content="Browse our tool categories including calculators, converters, productivity tools, text tools, and generators.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Categories - Daily Tools</title>
+    <meta name="description" content="Browse our tools by category. Find calculators, converters, generators, and more.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="/pages/categories/style.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+    crossorigin="anonymous"></script>
+
+    <!-- Google tag (gtag.js) -->
+        
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-1B5PV6KP61');
+    </script>
+
+
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/nav/style.css">
     <link rel="stylesheet" href="/footer/style.css">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -24,7 +41,7 @@
             <a href="/">Home</a>
             <a href="/pages/tools">Tools</a>
             <a href="/pages/categories">Categories</a>
-            <a href="/pages/about">About</a>
+            <a href="/pages/about" class="active">About</a>
             <a href="/pages/contact">Contact</a>
         </div>
         <div class="nav-right">
@@ -44,7 +61,7 @@
                         <button class="mark-all-read">Mark all as read</button>
                     </div>
                     <div class="notification-footer">
-                        <a href="/user/notifications">See all notifications</a>
+                        <a href="/user/notifications" id="see-all-notifications">See all notifications</a>
                     </div>
                 </div>
             </div>
@@ -58,143 +75,79 @@
         <div class="container">
             <div class="page-header">
                 <h1>Tool Categories</h1>
-                <p>Browse our tools by category to find exactly what you need for your tasks. All tools are free to use and available directly in your browser.</p>
+                <p>Browse our tools by category to find exactly what you need.</p>
             </div>
-            
+
             <div class="categories-grid">
-                <!-- Converters Category -->
-                <div class="category-card" data-category="converters">
-                    <div class="category-header converter">
-                        <div class="category-icon">
-                            <i class="ri-swap-line"></i>
-                        </div>
+                <a href="/pages/tools?category=converters" class="category-card">
+                    <div class="category-icon">
+                        <i class="ri-exchange-box-line"></i>
+                    </div>
+                    <div class="category-info">
                         <h2>Converters</h2>
+                        <p>Convert between different units, formats, and measurements.</p>
                     </div>
-                    <div class="category-content">
-                        <p>Transform values between different formats and units with our easy-to-use conversion tools.</p>
-                        <div class="tools-count"><span>14</span> tools available</div>
-                        <ul class="popular-tools">
-                            <li><a href="/tools/color-converter">Color Converter</a></li>
-                            <li><a href="/tools/roman-numeral-converter">Roman Numeral Converter</a></li>
-                            <li><a href="/tools/unit-converter">Unit Converter</a></li>
-                            <li><a href="/tools/time-zone-converter">Time Zone Converter</a></li>
-                        </ul>
-                        <a href="/pages/tools?category=converters" class="view-all-btn">View All Converters</a>
+                </a>
+
+                <a href="/pages/tools?category=calculators" class="category-card">
+                    <div class="category-icon">
+                        <i class="ri-calculator-line"></i>
                     </div>
-                </div>
-                
-                <!-- Calculators Category -->
-                <div class="category-card" data-category="calculators">
-                    <div class="category-header calculator">
-                        <div class="category-icon">
-                            <i class="ri-calculator-line"></i>
-                        </div>
+                    <div class="category-info">
                         <h2>Calculators</h2>
+                        <p>Perform various calculations and computations.</p>
                     </div>
-                    <div class="category-content">
-                        <p>Solve complex calculations quickly with our specialized calculation tools for various needs.</p>
-                        <div class="tools-count"><span>12</span> tools available</div>
-                        <ul class="popular-tools">
-                            <li><a href="/tools/bmi-calculator">BMI Calculator</a></li>
-                            <li><a href="/tools/percentage-calculator">Percentage Calculator</a></li>
-                            <li><a href="/tools/tip-calculator">Tip Calculator</a></li>
-                            <li><a href="/tools/age-calculator">Age Calculator</a></li>
-                        </ul>
-                        <a href="/pages/tools?category=calculators" class="view-all-btn">View All Calculators</a>
+                </a>
+
+                <a href="/pages/tools?category=productivity" class="category-card">
+                    <div class="category-icon">
+                        <i class="ri-timer-line"></i>
                     </div>
-                </div>
-                
-                <!-- Productivity Category -->
-                <div class="category-card" data-category="productivity">
-                    <div class="category-header productivity">
-                        <div class="category-icon">
-                            <i class="ri-timer-line"></i>
-                        </div>
+                    <div class="category-info">
                         <h2>Productivity</h2>
+                        <p>Tools to help you work more efficiently.</p>
                     </div>
-                    <div class="category-content">
-                        <p>Boost your efficiency with tools designed to help you manage time, tasks, and information.</p>
-                        <div class="tools-count"><span>8</span> tools available</div>
-                        <ul class="popular-tools">
-                            <li><a href="/tools/note-keeper">Note Keeper</a></li>
-                            <li><a href="/tools/countdown-timer">Countdown Timer</a></li>
-                            <li><a href="/tools/todo-list">Todo List</a></li>
-                            <li><a href="/tools/pomodoro-timer">Pomodoro Timer</a></li>
-                        </ul>
-                        <a href="/pages/tools?category=productivity" class="view-all-btn">View All Productivity Tools</a>
+                </a>
+
+                <a href="/pages/tools?category=text" class="category-card">
+                    <div class="category-icon">
+                        <i class="ri-text"></i>
                     </div>
-                </div>
-                
-                <!-- Text Tools Category -->
-                <div class="category-card" data-category="text">
-                    <div class="category-header text">
-                        <div class="category-icon">
-                            <i class="ri-text"></i>
-                        </div>
+                    <div class="category-info">
                         <h2>Text Tools</h2>
+                        <p>Manipulate and analyze text content.</p>
                     </div>
-                    <div class="category-content">
-                        <p>Manipulate, analyze, and transform text with our specialized text processing utilities.</p>
-                        <div class="tools-count"><span>10</span> tools available</div>
-                        <ul class="popular-tools">
-                            <li><a href="/tools/word-counter">Word Counter</a></li>
-                            <li><a href="/tools/case-converter">Case Converter</a></li>
-                            <li><a href="/tools/text-diff">Text Difference Checker</a></li>
-                            <li><a href="/tools/markdown-editor">Markdown Editor</a></li>
-                        </ul>
-                        <a href="/pages/tools?category=text" class="view-all-btn">View All Text Tools</a>
+                </a>
+
+                <a href="/pages/tools?category=generators" class="category-card">
+                    <div class="category-icon">
+                        <i class="ri-magic-line"></i>
                     </div>
-                </div>
-                
-                <!-- Generators Category -->
-                <div class="category-card" data-category="generators">
-                    <div class="category-header generator">
-                        <div class="category-icon">
-                            <i class="ri-magic-line"></i>
-                        </div>
+                    <div class="category-info">
                         <h2>Generators</h2>
+                        <p>Generate various types of content and data.</p>
                     </div>
-                    <div class="category-content">
-                        <p>Create random or custom content with our generator tools for various purposes.</p>
-                        <div class="tools-count"><span>9</span> tools available</div>
-                        <ul class="popular-tools">
-                            <li><a href="/tools/password-generator">Password Generator</a></li>
-                            <li><a href="/tools/qr-code-generator">QR Code Generator</a></li>
-                            <li><a href="/tools/lorem-ipsum-generator">Lorem Ipsum Generator</a></li>
-                            <li><a href="/tools/uuid-generator">UUID Generator</a></li>
-                        </ul>
-                        <a href="/pages/tools?category=generators" class="view-all-btn">View All Generators</a>
+                </a>
+
+                <a href="/pages/tools?category=security" class="category-card">
+                    <div class="category-icon">
+                        <i class="ri-shield-check-line"></i>
                     </div>
-                </div>
-                
-                <!-- Date & Time Category -->
-                <div class="category-card" data-category="datetime">
-                    <div class="category-header datetime">
-                        <div class="category-icon">
-                            <i class="ri-calendar-line"></i>
-                        </div>
-                        <h2>Date & Time</h2>
+                    <div class="category-info">
+                        <h2>Security</h2>
+                        <p>Tools for data security and protection.</p>
                     </div>
-                    <div class="category-content">
-                        <p>Work with dates, times, and durations using our specialized chronological utilities.</p>
-                        <div class="tools-count"><span>6</span> tools available</div>
-                        <ul class="popular-tools">
-                            <li><a href="/tools/date-calculator">Date Calculator</a></li>
-                            <li><a href="/tools/time-converter">Time Converter</a></li>
-                            <li><a href="/tools/world-clock">World Clock</a></li>
-                            <li><a href="/tools/stopwatch">Stopwatch</a></li>
-                        </ul>
-                        <a href="/pages/tools?category=datetime" class="view-all-btn">View All Date & Time Tools</a>
+                </a>
+
+                <a href="/pages/tools?category=privacy" class="category-card">
+                    <div class="category-icon">
+                        <i class="ri-lock-line"></i>
                     </div>
-                </div>
-            </div>
-            
-            <div class="suggest-category">
-                <div class="suggest-content">
-                    <h2>Suggest a New Category</h2>
-                    <p>Can't find a category that fits your needs? Let us know what category of tools you'd like to see added.</p>
-                    <a href="/pages/contact" class="suggest-btn">Contact Us</a>
-                </div>
+                    <div class="category-info">
+                        <h2>Privacy</h2>
+                        <p>Tools for privacy and legal compliance.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </main>
@@ -229,9 +182,9 @@
                     <h3>Company</h3>
                     <ul>
                         <li><a href="/pages/about">About Us</a></li>
-                        <li><a href="/pages/about#blog">Blog</a></li>
-                        <li><a href="/pages/about#careers">Careers</a></li>
-                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/about#mission">Our Mission</a></li>
+                        <li><a href="/pages/about#team">Our Team</a></li>
+                        <li><a href="/pages/about#values">Values</a></li>
                         <li><a href="/pages/contact">Contact Us</a></li>
                     </ul>
                 </div>
@@ -253,17 +206,7 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script src="/nav/script.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
-     crossorigin="anonymous"></script>
-     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1B5PV6KP61');
-    </script>
 </body>
 </html> 

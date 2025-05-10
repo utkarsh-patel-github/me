@@ -487,3 +487,105 @@ button {
         gap: 0.75rem;
     }
 }
+
+/* --- DARK MODE: MATCH OTHER TOOLS --- */
+body.dark-mode {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+body.dark-mode .background-light,
+body.dark-mode .calculator-card,
+body.dark-mode .info-card,
+body.dark-mode .faq-item {
+  background-color: #1f2937 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06) !important;
+  border: 1px solid #374151 !important;
+  margin-bottom: 2rem !important;
+}
+
+body.dark-mode .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem !important;
+}
+
+body.dark-mode main {
+  margin-top: 100px !important;
+  min-height: calc(100vh - 180px) !important;
+}
+
+body.dark-mode .card-section {
+  border-radius: 0.75rem !important;
+}
+
+body.dark-mode .result-container,
+body.dark-mode .additional-info {
+  border-radius: 0.5rem !important;
+  background-color: #374151 !important;
+  border: 1px solid #374151 !important;
+}
+
+body.dark-mode .faq-item {
+  border-color: #374151 !important;
+}
+
+body.dark-mode .date-input {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+body.dark-mode .age-box,
+body.dark-mode .additional-details {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid #374151 !important;
+}
+
+body.dark-mode .age-label,
+body.dark-mode .detail-label,
+body.dark-mode .faq-answer {
+  color: #d1d5db !important;
+}
+body.dark-mode .detail-value {
+  color: #a5b4fc !important;
+}
+
+body.dark-mode .primary-button:hover,
+body.dark-mode .outline-button:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+/* --- DARK MODE FINAL POLISH --- */
+body.dark-mode .date-input {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+body.dark-mode .age-box,
+body.dark-mode .additional-details {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid #374151 !important;
+}
+
+body.dark-mode .age-label,
+body.dark-mode .detail-label,
+body.dark-mode .faq-answer {
+  color: #d1d5db !important;
+}
+body.dark-mode .detail-value {
+  color: #a5b4fc !important;
+}
+
+body.dark-mode .primary-button:hover,
+body.dark-mode .outline-button:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}

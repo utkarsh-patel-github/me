@@ -32,6 +32,10 @@ body {
     padding: 0;
 }
 
+main{
+    margin-top: 100px;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -224,25 +228,6 @@ select#hash-algorithm:focus {
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-.icon-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    background-color: var(--bg-primary);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.icon-button:hover {
-    background-color: var(--bg-secondary);
-    color: var(--primary-color);
-}
-
 .hash-info {
     padding: 0.75rem;
     background-color: var(--bg-primary);
@@ -394,4 +379,86 @@ select#hash-algorithm:focus {
         width: 100%;
         justify-content: center;
     }
+}
+
+/* --- DARK MODE: MATCH OTHER TOOLS --- */
+body.dark-mode {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+body.dark-mode .background-light,
+body.dark-mode .calculator-card,
+body.dark-mode .info-card,
+body.dark-mode .result-section,
+body.dark-mode #copy-hash,
+body.dark-mode .notification,
+body.dark-mode .faq-item {
+  background-color: #1f2937 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06) !important;
+  border: 1px solid #374151 !important;
+  margin-bottom: 2rem !important;
+}
+
+body.dark-mode .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body.dark-mode main {
+  margin-top: 100px !important;
+  min-height: calc(100vh - 180px) !important;
+}
+
+body.dark-mode .card-section {
+  border-radius: 0.75rem !important;
+}
+
+body.dark-mode .result-container,
+body.dark-mode .additional-info {
+  border-radius: 0.5rem !important;
+  background-color: #374151 !important;
+  border: 1px solid #374151 !important;
+}
+
+body.dark-mode .faq-item {
+  border-color: #374151 !important;
+}
+
+body.dark-mode input,
+body.dark-mode .tool-card,
+body.dark-mode #hash-algorithm,
+body.dark-mode .hash-info,
+body.dark-mode textarea {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+body.dark-mode .primary-button,
+body.dark-mode .outline-button,
+body.dark-mode .btn-primary {
+  background: #3b82f6 !important;
+  color: #fff !important;
+  border-color: #3b82f6 !important;
+}
+
+body.dark-mode .primary-button:hover,
+body.dark-mode .outline-button:hover,
+body.dark-mode .btn-primary:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+body.dark-mode .label,
+body.dark-mode label,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode .faq-answer {
+  color: #d1d5db !important;
+}
+body.dark-mode .value,
+body.dark-mode .detail-value {
+  color: #a5b4fc !important;
 } 

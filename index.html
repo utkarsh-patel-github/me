@@ -19,6 +19,15 @@
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
      crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
+    <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+ 
+         gtag('config', 'G-1B5PV6KP61');
+    </script>
+
     <script>
         
     // Prevent theme flicker on page load - load user's last selected theme
@@ -57,7 +66,7 @@
             <a href="/">Home</a>
             <a href="/pages/tools">Tools</a>
             <a href="/pages/categories">Categories</a>
-            <a href="/pages/about">About</a>
+            <a href="/pages/about" class="active">About</a>
             <a href="/pages/contact">Contact</a>
         </div>
         <div class="nav-right">
@@ -77,7 +86,7 @@
                         <button class="mark-all-read">Mark all as read</button>
                     </div>
                     <div class="notification-footer">
-                        <a href="/user/notifications">See all notifications</a>
+                        <a href="/user/notifications" id="see-all-notifications">See all notifications</a>
                     </div>
                 </div>
             </div>
@@ -409,9 +418,9 @@
                     <h3>Company</h3>
                     <ul>
                         <li><a href="/pages/about">About Us</a></li>
-                        <li><a href="/pages/about#blog">Blog</a></li>
-                        <li><a href="/pages/about#careers">Careers</a></li>
-                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/about#mission">Our Mission</a></li>
+                        <li><a href="/pages/about#team">Our Team</a></li>
+                        <li><a href="/pages/about#values">Values</a></li>
                         <li><a href="/pages/contact">Contact Us</a></li>
                     </ul>
                 </div>
@@ -481,14 +490,5 @@
             }
         });
      </script>
-     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1B5PV6KP61');
-    </script>
 </body>
 </html>

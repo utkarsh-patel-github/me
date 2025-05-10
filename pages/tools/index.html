@@ -9,7 +9,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="/pages/tools/style.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+    crossorigin="anonymous"></script>
+
+    <!-- Google tag (gtag.js) -->
+        
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-1B5PV6KP61');
+    </script>
+
+
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/nav/style.css">
     <link rel="stylesheet" href="/footer/style.css">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -24,7 +41,7 @@
             <a href="/">Home</a>
             <a href="/pages/tools">Tools</a>
             <a href="/pages/categories">Categories</a>
-            <a href="/pages/about">About</a>
+            <a href="/pages/about" class="active">About</a>
             <a href="/pages/contact">Contact</a>
         </div>
         <div class="nav-right">
@@ -44,7 +61,7 @@
                         <button class="mark-all-read">Mark all as read</button>
                     </div>
                     <div class="notification-footer">
-                        <a href="/user/notifications">See all notifications</a>
+                        <a href="/user/notifications" id="see-all-notifications">See all notifications</a>
                     </div>
                 </div>
             </div>
@@ -410,6 +427,51 @@
                     </div>
                     <a href="/tools/privacy-policy-generator" class="tool-link"></a>
                 </div>
+
+                <div class="tool-card" data-category="privacy">
+                    <div class="tool-icon">
+                        <img src="/tools/cookie-policy-generator/cookie-policy-generator-icon.svg" alt="Cookie Policy Generator">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Cookie Policy Generator</h3>
+                        <p>Create comprehensive cookie policies that comply with GDPR and other privacy regulations.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge privacy">Privacy</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.7</span>
+                    </div>
+                    <a href="/tools/cookie-policy-generator" class="tool-link"></a>
+                </div>
+
+                <div class="tool-card" data-category="privacy">
+                    <div class="tool-icon">
+                        <img src="/tools/terms-generator/terms-generator-icon.svg" alt="Terms of Service Generator">
+                    </div>
+                    <div class="tool-info">
+                        <h3>Terms of Service Generator</h3>
+                        <p>Generate comprehensive terms of service for your website or application with customizable options.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge privacy">Privacy</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.7</span>
+                    </div>
+                    <a href="/tools/terms-generator" class="tool-link"></a>
+                </div>
+
+                <!-- <div class="tool-card" data-category="privacy">
+                    <div class="tool-icon">
+                        <img src="/tools/gdpr-checklist/gdpr-checklist-icon.svg" alt="GDPR Checklist Generator">
+                    </div>
+                    <div class="tool-info">
+                        <h3>GDPR Checklist Generator</h3>
+                        <p>Generate a comprehensive GDPR compliance checklist for your website or business with customizable options.</p>
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-badge privacy">Privacy</span>
+                        <span class="tool-rating"><i class="ri-star-fill"></i> 4.9</span>
+                    </div>
+                    <a href="/tools/gdpr-checklist" class="tool-link"></a>
+                </div> -->
                 
                 <!-- Coming Soon Tools -->
                 <div class="coming-soon-section">
@@ -425,12 +487,12 @@
                 </div>
             </div>
             
-            <div class="pagination">
+            <!-- <div class="pagination">
                 <button class="pagination-btn active">1</button>
                 <button class="pagination-btn">2</button>
                 <button class="pagination-btn">3</button>
                 <button class="pagination-btn next"><i class="ri-arrow-right-s-line"></i></button>
-            </div>
+            </div> -->
             
             <div class="suggest-tool">
                 <div class="suggest-content">
@@ -472,9 +534,9 @@
                     <h3>Company</h3>
                     <ul>
                         <li><a href="/pages/about">About Us</a></li>
-                        <li><a href="/pages/about#blog">Blog</a></li>
-                        <li><a href="/pages/about#careers">Careers</a></li>
-                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/about#mission">Our Mission</a></li>
+                        <li><a href="/pages/about#team">Our Team</a></li>
+                        <li><a href="/pages/about#values">Values</a></li>
                         <li><a href="/pages/contact">Contact Us</a></li>
                     </ul>
                 </div>
@@ -495,19 +557,8 @@
             </div>
         </div>
     </footer>
-
+    
+    <script src="script.js"></script>
     <script src="/nav/script.js"></script>
-    <script src="/pages/tools/script.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
-     crossorigin="anonymous"></script>
-          <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1B5PV6KP61');
-    </script>
 </body>
 </html> 

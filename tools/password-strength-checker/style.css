@@ -44,6 +44,10 @@ body {
     padding: 0;
 }
 
+main{
+    margin-top: 100px;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -420,4 +424,112 @@ body {
     .calculator-card {
         padding: 1rem;
     }
+}
+
+/* --- DARK MODE: MATCH OTHER TOOLS --- */
+body.dark-mode {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+body.dark-mode .background-light,
+body.dark-mode .calculator-card,
+body.dark-mode .password-analysis,
+body.dark-mode .recommendations,
+body.dark-mode .info-card,
+body.dark-mode .faq-item {
+  background-color: #1f2937 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06) !important;
+  border: 1px solid #374151 !important;
+  margin-bottom: 2rem !important;
+}
+
+body.dark-mode .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body.dark-mode main {
+  margin-top: 100px !important;
+  min-height: calc(100vh - 180px) !important;
+}
+
+body.dark-mode .card-section {
+  border-radius: 0.75rem !important;
+}
+
+body.dark-mode .result-container,
+body.dark-mode .additional-info {
+  border-radius: 0.5rem !important;
+  background-color: #374151 !important;
+  border: 1px solid #374151 !important;
+}
+
+body.dark-mode .faq-item {
+  border-color: #374151 !important;
+}
+
+body.dark-mode input,
+body.dark-mode .tool-card,
+body.dark-mode textarea {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+body.dark-mode .primary-button,
+body.dark-mode .outline-button,
+body.dark-mode .btn-primary {
+  background: #3b82f6 !important;
+  color: #fff !important;
+  border-color: #3b82f6 !important;
+}
+
+body.dark-mode .primary-button:hover,
+body.dark-mode .outline-button:hover,
+body.dark-mode .btn-primary:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+body.dark-mode .label,
+body.dark-mode label,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode .faq-answer {
+  color: #d1d5db !important;
+}
+body.dark-mode .value,
+body.dark-mode .detail-value {
+  color: #a5b4fc !important;
+}
+
+body.dark-mode #password-output,
+body.dark-mode .password-display {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+body.dark-mode .option-label input[type="checkbox"] {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+body.dark-mode #password-length {
+  background-color: #374151 !important;
+}
+body.dark-mode #password-length::-webkit-slider-thumb,
+body.dark-mode .strength-meter::-webkit-slider-thumb {
+  background-color: #6366F1 !important;
+}
+body.dark-mode #password-length::-webkit-slider-thumb:hover,
+body.dark-mode .strength-meter::-webkit-slider-thumb:hover {
+  background-color: #818CF8 !important;
+}
+
+body.dark-mode .option-label,
+body.dark-mode .strength-text {
+  color: #d1d5db !important;
 } 

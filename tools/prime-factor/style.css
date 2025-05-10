@@ -698,3 +698,111 @@ button {
         grid-template-columns: repeat(2, 1fr);
     }
   }
+
+/* --- DARK MODE: MATCH WORD COUNTER TOOL --- */
+body.dark-mode {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+body.dark-mode .background-light,
+body.dark-mode .calculator-card,
+body.dark-mode .info-card,
+body.dark-mode .faq-item {
+  background-color: #1f2937 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06) !important;
+  border: 1px solid #374151 !important;
+  margin-bottom: 2rem !important;
+}
+
+body.dark-mode .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem !important;
+}
+
+body.dark-mode main {
+  margin-top: 100px !important;
+  min-height: calc(100vh - 180px) !important;
+}
+
+body.dark-mode .card-section {
+  border-radius: 0.75rem !important;
+}
+
+body.dark-mode .result-container,
+body.dark-mode .additional-info,
+body.dark-mode .tree-container {
+  border-radius: 0.5rem !important;
+  background-color: #374151 !important;
+  border: 1px solid #374151 !important;
+}
+
+body.dark-mode .faq-item {
+  border-color: #374151 !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+    background: #1e293b;
+    color: #f1f5f9;
+    border-color: #334155;
+}
+
+body.dark-mode label,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .empty-state,
+body.dark-mode .empty-text {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .result-label,
+body.dark-mode .info-label,
+body.dark-mode .all-factors-label {
+    color: #a5b4fc !important;
+}
+
+body.dark-mode .result-value,
+body.dark-mode .info-value,
+body.dark-mode .all-factors-list {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .step-number {
+    background: #3b82f6 !important;
+    color: #fff !important;
+}
+
+body.dark-mode .breadcrumb a,
+body.dark-mode .breadcrumb i {
+    color: #a5b4fc !important;
+}
+
+body.dark-mode .example-box {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .math-concept {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .faq-question {
+    color: #a5b4fc !important;
+}
+
+body.dark-mode .faq-answer {
+    color: #f1f5f9 !important;
+}

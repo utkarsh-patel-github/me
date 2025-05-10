@@ -45,17 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Theme toggle if it exists
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-        
-        // Check for saved theme preference or respect OS preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.body.classList.add('dark-mode');
-        }
-    }
     
     // Mobile menu toggle if it exists
     const menuToggle = document.getElementById('menu-toggle');

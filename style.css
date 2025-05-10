@@ -1431,3 +1431,22 @@ footer::after {
     min-width: 100%;
   }
 }
+
+.all-tools{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.all-tools a{
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.all-tools a:hover{
+  color: var(--primary-light-color);
+}
+
+
+

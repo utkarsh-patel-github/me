@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hash Generator - Daily Tools</title>
-    <meta name="description" content="Generate various types of hash values for your data using different algorithms.">
+    <title>Terms of Service Generator - Daily Tools</title>
+    <meta name="description" content="Generate professional terms of service for your website or application with our easy-to-use tool.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,6 @@
 
         gtag('config', 'G-1B5PV6KP61');
     </script>
-
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/nav/style.css">
@@ -79,59 +78,125 @@
                     <i class="ri-arrow-right-s-line"></i>
                     <a href="/pages/tools">Tools</a>
                     <i class="ri-arrow-right-s-line"></i>
-                    <span>Hash Generator</span>
+                    <span>Terms of Service Generator</span>
                 </div>
                 <div class="header-content">
                     <div class="tool-icon">
-                        <img src="hash-generator-icon.svg" alt="Hash Generator">
+                        <img src="terms-generator-icon.svg" alt="Terms of Service Generator">
                     </div>
                     <div class="tool-info">
-                        <h1>Hash Generator</h1>
-                        <p>Generate various types of hash values for your data using different algorithms.</p>
+                        <h1>Terms of Service Generator</h1>
+                        <p>Generate professional terms of service for your website or application with our easy-to-use tool.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="calculator-card">
+            <div class="generator-card">
                 <div class="input-section">
                     <div class="input-group">
-                        <label for="input-text">Input Text</label>
-                        <textarea id="input-text" placeholder="Enter text to generate hash..."></textarea>
+                        <label for="company-name">Company/Website Name</label>
+                        <input type="text" id="company-name" placeholder="Enter your company or website name">
                     </div>
                     <div class="input-group">
-                        <label for="hash-algorithm">Hash Algorithm</label>
-                        <select id="hash-algorithm">
-                            <option value="md5">MD5</option>
-                            <option value="sha1">SHA-1</option>
-                            <option value="sha256">SHA-256</option>
-                            <option value="sha384">SHA-384</option>
-                            <option value="sha512">SHA-512</option>
-                            <option value="ripemd160">RIPEMD-160</option>
-                        </select>
+                        <label for="website-url">Website URL</label>
+                        <input type="url" id="website-url" placeholder="https://example.com">
                     </div>
-                    <button id="generate-hash" class="btn-primary">
-                        <i class="ri-hashtag"></i>
-                        Generate Hash
-                    </button>
+                    <div class="input-group">
+                        <label for="company-email">Contact Email</label>
+                        <input type="email" id="company-email" placeholder="legal@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="company-address">Company Address</label>
+                        <textarea id="company-address" placeholder="Enter your company's physical address"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Service Features</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="feature-accounts" checked>
+                                <span>User Accounts</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="feature-payments" checked>
+                                <span>Payment Processing</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="feature-content">
+                                <span>User-Generated Content</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="feature-subscription">
+                                <span>Subscription Services</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="feature-api">
+                                <span>API Access</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="feature-mobile">
+                                <span>Mobile Application</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Additional Clauses</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="clause-disclaimer" checked>
+                                <span>Disclaimer of Warranties</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="clause-limitation" checked>
+                                <span>Limitation of Liability</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="clause-indemnification" checked>
+                                <span>Indemnification</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="clause-termination" checked>
+                                <span>Termination</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="clause-governing">
+                                <span>Governing Law</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="clause-disputes">
+                                <span>Dispute Resolution</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="additional-info">Additional Information</label>
+                        <textarea id="additional-info" placeholder="Enter any additional information you want to include in your terms of service"></textarea>
+                    </div>
+                    <div class="button-group">
+                        <button id="generate-button" class="btn-primary">
+                            <i class="ri-file-text-line"></i>
+                            Generate Terms of Service
+                        </button>
+                        <button id="preview-button" class="btn-secondary">
+                            <i class="ri-eye-line"></i>
+                            Preview
+                        </button>
+                    </div>
                 </div>
 
                 <div class="result-section">
-                    <div class="result-group">
-                        <label>Hash Value</label>
-                        <div class="hash-output">
-                            <input type="text" id="hash-output" readonly>
-                            <button id="copy-hash" class="icon-button" title="Copy to clipboard">
+                    <div class="result-header">
+                        <h2>Generated Terms of Service</h2>
+                        <div class="result-actions">
+                            <button id="copy-result" class="icon-button" title="Copy to clipboard">
                                 <i class="ri-file-copy-line"></i>
+                            </button>
+                            <button id="download-result" class="icon-button" title="Download as HTML">
+                                <i class="ri-download-line"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="result-group">
-                        <label>Hash Length</label>
-                        <div class="hash-info" id="hash-length">-</div>
-                    </div>
-                    <div class="result-group">
-                        <label>Hash Type</label>
-                        <div class="hash-info" id="hash-type">-</div>
+                    <div class="result-content">
+                        <div id="terms-preview"></div>
                     </div>
                 </div>
             </div>
@@ -139,53 +204,52 @@
             <div class="info-card">
                 <h2>How to Use</h2>
                 <ol>
-                    <li>Enter the text you want to hash in the input field</li>
-                    <li>Select the desired hash algorithm from the dropdown</li>
-                    <li>Click "Generate Hash" to create the hash value</li>
-                    <li>Use the copy button to copy the hash to your clipboard</li>
+                    <li>Fill in your company/website details</li>
+                    <li>Select the features of your service</li>
+                    <li>Choose additional legal clauses</li>
+                    <li>Add any additional information</li>
+                    <li>Click "Generate Terms of Service" to create your terms</li>
+                    <li>Preview, copy, or download the generated terms</li>
                 </ol>
             </div>
 
             <div class="info-card">
-                <h2>About Hash Functions</h2>
-                <p>A hash function is a mathematical function that converts an input of arbitrary length into a fixed-size string of characters. Hash functions are commonly used in:</p>
+                <h2>About Terms of Service</h2>
+                <p>Terms of Service (ToS) is a legal agreement between your service and its users. It's essential for:</p>
                 <ul>
-                    <li>Data integrity verification</li>
-                    <li>Digital signatures</li>
-                    <li>Password storage</li>
-                    <li>File identification</li>
-                    <li>Blockchain technology</li>
+                    <li>Protecting your business from legal issues</li>
+                    <li>Setting clear rules for using your service</li>
+                    <li>Limiting your liability</li>
+                    <li>Establishing user responsibilities</li>
                 </ul>
-                <p>Each algorithm has different characteristics:</p>
+                <p><strong>Important Notes:</strong></p>
                 <ul>
-                    <li><strong>MD5:</strong> 128-bit hash, widely used but considered cryptographically broken</li>
-                    <li><strong>SHA-1:</strong> 160-bit hash, widely used but no longer recommended for security</li>
-                    <li><strong>SHA-256:</strong> 256-bit hash, part of the SHA-2 family, widely used and secure</li>
-                    <li><strong>SHA-384:</strong> 384-bit hash, part of the SHA-2 family, provides higher security</li>
-                    <li><strong>SHA-512:</strong> 512-bit hash, part of the SHA-2 family, highest security in SHA-2</li>
-                    <li><strong>RIPEMD-160:</strong> 160-bit hash, used in Bitcoin and other cryptocurrencies</li>
+                    <li>This tool generates a basic terms of service template</li>
+                    <li>Consider having a legal professional review the terms</li>
+                    <li>Keep your terms updated as your service evolves</li>
+                    <li>Make sure the terms are easily accessible on your website</li>
                 </ul>
             </div>
 
             <div class="related-tools">
                 <h2>Related Tools</h2>
                 <div class="tools-grid">
-                    <a href="/tools/password-generator" class="tool-card">
+                    <a href="/tools/privacy-policy-generator" class="tool-card">
                         <div class="tool-icon">
-                            <img src="/tools/password-generator/password-generator-icon.svg" alt="Password Generator">
+                            <img src="/tools/privacy-policy-generator/privacy-policy-generator-icon.svg" alt="Privacy Policy Generator">
                         </div>
                         <div class="tool-info">
-                            <h3>Password Generator</h3>
-                            <p>Generate strong, secure passwords with customizable options.</p>
+                            <h3>Privacy Policy Generator</h3>
+                            <p>Generate a privacy policy for your website or application.</p>
                         </div>
                     </a>
-                    <a href="/tools/password-strength-checker" class="tool-card">
+                    <a href="/tools/cookie-policy-generator" class="tool-card">
                         <div class="tool-icon">
-                            <img src="/tools/password-strength-checker/password-strength-checker-icon.svg" alt="Password Strength Checker">
+                            <img src="/tools/cookie-policy-generator/cookie-policy-generator-icon.svg" alt="Cookie Policy Generator">
                         </div>
                         <div class="tool-info">
-                            <h3>Password Strength Checker</h3>
-                            <p>Check the strength of your passwords and get security recommendations.</p>
+                            <h3>Cookie Policy Generator</h3>
+                            <p>Create a cookie policy for your website.</p>
                         </div>
                     </a>
                     <a href="/tools/encryption-tool" class="tool-card">
@@ -258,6 +322,5 @@
 
     <script src="script.js"></script>
     <script src="/nav/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </body>
 </html> 

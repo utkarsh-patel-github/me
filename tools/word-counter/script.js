@@ -92,18 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Theme toggle if it exists
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', toggleTheme);
-            
-            // Check for saved theme preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.body.classList.add('dark-mode');
-            }
-        }
-        
         // Mobile menu toggle if it exists
         const menuToggle = document.getElementById('menu-toggle');
         if (menuToggle) {
@@ -435,9 +423,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function toggleTheme() {
-        document.body.classList.toggle('dark-mode');
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        // Use the global theme toggle function
+        if (typeof window.toggleTheme === 'function') {
+            window.toggleTheme();
+        }
     }
 });
 

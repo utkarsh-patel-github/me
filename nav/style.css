@@ -328,55 +328,70 @@
   }
   
   .theme-toggle {
-    margin-left: 0.5rem;
+    position: relative;
+    width: 38px;
+    height: 38px;
   }
   
   .toggle-track {
-    width: 40px;
-    height: 20px;
-    background-color: var(--border-color);
-    border-radius: 10px;
     position: relative;
-    cursor: pointer;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 2px;
-    justify-content: space-between;
-  }
-  
-  .dark-mode .toggle-track {
-    background-color: var(--primary-color);
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background-color: transparent;
+    transition: var(--transition);
+    cursor: pointer;
   }
   
   .light-icon, .dark-icon {
-    font-size: 0.75rem;
-    z-index: 1;
+    position: absolute;
+    font-size: 1rem;
+    transition: var(--transition);
+    opacity: 0.7;
+    z-index: 2;
   }
   
   .dark-icon {
-    color: var(--text-light);
+    opacity: 0;
   }
   
   .light-icon {
-    color: #fff;
+    opacity: 1;
+  }
+  
+  .dark-mode .dark-icon {
+    opacity: 1;
+    color: #94a3b8;
+  }
+  
+  .dark-mode .light-icon {
+    opacity: 0;
   }
   
   .toggle-circle {
     position: absolute;
-    width: 16px;
-    height: 16px;
-    background-color: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    width: 20px;
+    height: 20px;
+    /* background-color: var(--primary-color); */
+    border-radius: var(--radius-full);
+    transition: transform var(--transition);
+    transform: scale(0);
+    z-index: 1;
   }
   
-  body.dark-mode .toggle-circle,
-  .dark-mode .toggle-circle,
-  html.dark-mode .toggle-circle {
-    transform: translateX(20px);
+  body.dark-mode .toggle-circle {
+    transform: scale(1);
+  }
+  
+  .theme-toggle:hover .toggle-track {
+    background-color: rgba(66, 133, 244, 0.08);
+  }
+  
+  .dark-mode .theme-toggle:hover .toggle-track {
+    background-color: rgba(255, 255, 255, 0.15);
   }
   
   /* Mobile layout adjustments */

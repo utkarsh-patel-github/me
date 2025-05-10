@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption Tool - Daily Tools</title>
+    <meta name="description" content="Encrypt and decrypt text using various encryption algorithms securely.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/user/notifications">See all notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/pages/tools">Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Encryption Tool</span>
+                </div>
+                <div class="header-content">
+                    <div class="tool-icon">
+                        <img src="encryption-tool-icon.svg" alt="Encryption Tool">
+                    </div>
+                    <div class="tool-info">
+                        <h1>Encryption Tool</h1>
+                        <p>Encrypt and decrypt text using various encryption algorithms securely.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="input-text">Input Text</label>
+                        <textarea id="input-text" placeholder="Enter text to encrypt or decrypt..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="encryption-key">Encryption Key</label>
+                        <div class="key-input">
+                            <input type="password" id="encryption-key" placeholder="Enter encryption key">
+                            <button id="toggle-key" class="icon-button" title="Show/Hide Key">
+                                <i class="ri-eye-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="encryption-algorithm">Encryption Algorithm</label>
+                        <select id="encryption-algorithm">
+                            <option value="aes">AES (Advanced Encryption Standard)</option>
+                            <option value="des">DES (Data Encryption Standard)</option>
+                            <option value="tripledes">Triple DES</option>
+                            <option value="rabbit">Rabbit</option>
+                            <option value="rc4">RC4</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button id="encrypt-button" class="btn-primary">
+                            <i class="ri-lock-line"></i>
+                            Encrypt
+                        </button>
+                        <button id="decrypt-button" class="btn-secondary">
+                            <i class="ri-lock-unlock-line"></i>
+                            Decrypt
+                        </button>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <div class="result-group">
+                        <label>Result</label>
+                        <div class="result-output">
+                            <textarea id="result-output" readonly></textarea>
+                            <button id="copy-result" class="icon-button" title="Copy to clipboard">
+                                <i class="ri-file-copy-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="result-group">
+                        <label>Status</label>
+                        <div class="result-info" id="result-status">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h2>How to Use</h2>
+                <ol>
+                    <li>Enter the text you want to encrypt or decrypt</li>
+                    <li>Enter a secure encryption key (keep it safe!)</li>
+                    <li>Select the encryption algorithm</li>
+                    <li>Click "Encrypt" or "Decrypt" to process the text</li>
+                    <li>Use the copy button to copy the result to your clipboard</li>
+                </ol>
+            </div>
+
+            <div class="info-card">
+                <h2>About Encryption</h2>
+                <p>Encryption is the process of converting information into a secure format that can only be read by authorized parties. Our tool supports several encryption algorithms:</p>
+                <ul>
+                    <li><strong>AES:</strong> Advanced Encryption Standard, widely used and considered very secure</li>
+                    <li><strong>DES:</strong> Data Encryption Standard, older algorithm with lower security</li>
+                    <li><strong>Triple DES:</strong> Enhanced version of DES with three rounds of encryption</li>
+                    <li><strong>Rabbit:</strong> Stream cipher known for its speed and efficiency</li>
+                    <li><strong>RC4:</strong> Stream cipher, simple but should be used with caution</li>
+                </ul>
+                <p><strong>Important Security Notes:</strong></p>
+                <ul>
+                    <li>Always use strong, unique encryption keys</li>
+                    <li>Keep your encryption keys secure and never share them</li>
+                    <li>For maximum security, use AES encryption</li>
+                    <li>Remember that encryption is only as secure as your key management</li>
+                </ul>
+            </div>
+
+            <div class="related-tools">
+                <h2>Related Tools</h2>
+                <div class="tools-grid">
+                    <a href="/tools/password-generator" class="tool-card">
+                        <div class="tool-icon">
+                            <img src="/tools/password-generator/password-generator-icon.svg" alt="Password Generator">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Password Generator</h3>
+                            <p>Generate strong, secure passwords with customizable options.</p>
+                        </div>
+                    </a>
+                    <a href="/tools/password-strength-checker" class="tool-card">
+                        <div class="tool-icon">
+                            <img src="/tools/password-strength-checker/password-strength-checker-icon.svg" alt="Password Strength Checker">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Password Strength Checker</h3>
+                            <p>Check the strength of your passwords and get security recommendations.</p>
+                        </div>
+                    </a>
+                    <a href="/tools/hash-generator" class="tool-card">
+                        <div class="tool-icon">
+                            <img src="/tools/hash-generator/hash-generator-icon.svg" alt="Hash Generator">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Hash Generator</h3>
+                            <p>Generate various types of hash values for your data.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61573126709749" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="https://x.com/utkarshpatel_me" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="https://www.instagram.com/utkarshpatel3012/" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="https://www.youtube.com/@utkarshpatel4077" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/pages/tools">Popular Tools</a></li>
+                        <li><a href="/pages/tools?category=new">New Tools</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#blog">Blog</a></li>
+                        <li><a href="/pages/about#careers">Careers</a></li>
+                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/legal/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/pages/legal/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+                        <li><a href="/pages/legal/accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/nav/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1B5PV6KP61');
+    </script>
+</body>
+</html> 

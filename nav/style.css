@@ -370,9 +370,12 @@
     top: 2px;
     left: 2px;
     transition: transform 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   }
   
-  .dark-mode .toggle-circle {
+  body.dark-mode .toggle-circle,
+  .dark-mode .toggle-circle,
+  html.dark-mode .toggle-circle {
     transform: translateX(20px);
   }
   

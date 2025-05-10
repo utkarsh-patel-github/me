@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="120" height="120" rx="24" fill="#F3F4F6"/>
+    
+    <!-- Lock Body -->
+    <rect x="40" y="50" width="40" height="30" rx="4" fill="#E5E7EB"/>
+    
+    <!-- Lock Top -->
+    <rect x="50" y="35" width="20" height="15" rx="4" fill="#E5E7EB"/>
+    
+    <!-- Lock Hole -->
+    <circle cx="60" cy="65" r="4" fill="#3B82F6"/>
+    
+    <!-- Encryption Lines -->
+    <path d="M30 85L90 85" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+    <path d="M30 75L90 75" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+    <path d="M30 95L90 95" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Decorative Elements -->
+    <circle cx="35" cy="85" r="2" fill="#3B82F6"/>
+    <circle cx="45" cy="85" r="2" fill="#3B82F6"/>
+    <circle cx="55" cy="85" r="2" fill="#3B82F6"/>
+    <circle cx="65" cy="85" r="2" fill="#3B82F6"/>
+    <circle cx="75" cy="85" r="2" fill="#3B82F6"/>
+    <circle cx="85" cy="85" r="2" fill="#3B82F6"/>
+</svg> 

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BMI Calculator - Daily Tools</title>
+    <meta name="description" content="Calculate your Body Mass Index (BMI) easily with our free online BMI calculator. Get your BMI classification and health recommendations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <script>
+    // Prevent theme flicker on page load - load user's last selected theme
+    (function() {
+        // Get the theme from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Apply the theme the user last selected (dark or light)
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('dark-mode');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.classList.remove('dark-mode');
+        }
+    })();
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/user/notifications">See all notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Tool Header with Image -->
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/tools">Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>BMI Calculator</span>
+                </div>
+                
+                <div class="header-content">
+                    <div class="header-image">
+                        <i class="ri-heart-pulse-line"></i>
+                    </div>
+                    <div class="header-text">
+                        <h1>BMI Calculator</h1>
+                        <p>Calculate your Body Mass Index (BMI) to measure body fat based on height and weight. Get insights on your weight status and potential health risks.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Tool Content -->
+            <div class="tool-content">
+                <div class="calculator-card">
+                    <div class="card-tabs">
+                        <button class="tab-btn active" data-tab="metric">Metric (cm/kg)</button>
+                        <button class="tab-btn" data-tab="imperial">Imperial (ft/lbs)</button>
+                    </div>
+
+                    <!-- Metric BMI Calculator -->
+                    <div class="tab-content active" id="metric-tab">
+                        <div class="card-section input-section">
+                            <h2><i class="ri-ruler-line"></i> Enter Your Measurements</h2>
+                            
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="metric-height">Height (cm):</label>
+                                    <input type="number" id="metric-height" placeholder="Enter height" min="50" max="300" step="any">
+                                </div>
+                                <div class="input-group">
+                                    <label for="metric-weight">Weight (kg):</label>
+                                    <input type="number" id="metric-weight" placeholder="Enter weight" min="10" max="500" step="any">
+                                </div>
+                            </div>
+                            
+                            <div class="gender-age-row">
+                                <div class="input-group radio-group">
+                                    <label>Gender:</label>
+                                    <div class="radio-buttons">
+                                        <label class="radio-label">
+                                            <input type="radio" name="metric-gender" value="male" checked> Male
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="metric-gender" value="female"> Female
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="metric-age">Age (years):</label>
+                                    <input type="number" id="metric-age" placeholder="Enter age" min="2" max="120">
+                                </div>
+                            </div>
+                            
+                            <div class="button-row">
+                                <button id="metric-calculate-btn" class="primary-button">
+                                    <i class="ri-calculator-line"></i> Calculate BMI
+                                </button>
+                                <button id="metric-clear-btn" class="secondary-button">
+                                    <i class="ri-delete-bin-line"></i> Clear
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="card-section result-section" id="metric-result-section" style="display: none;">
+                            <h2><i class="ri-heart-line"></i> BMI Results</h2>
+                            
+                            <div class="bmi-display">
+                                <div class="bmi-value-container">
+                                    <div class="bmi-value" id="metric-bmi-value">0.0</div>
+                                    <div class="bmi-label">Your BMI</div>
+                                </div>
+                                <div class="bmi-category-container">
+                                    <div class="bmi-category" id="metric-bmi-category">-</div>
+                                    <div class="healthy-range">Healthy BMI range: 18.5 - 24.9</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bmi-scale-container">
+                                <div class="bmi-scale">
+                                    <div class="scale-segment underweight">
+                                        <div class="segment-label">Underweight</div>
+                                        <div class="segment-range">&lt;18.5</div>
+                                    </div>
+                                    <div class="scale-segment normal">
+                                        <div class="segment-label">Normal</div>
+                                        <div class="segment-range">18.5-24.9</div>
+                                    </div>
+                                    <div class="scale-segment overweight">
+                                        <div class="segment-label">Overweight</div>
+                                        <div class="segment-range">25-29.9</div>
+                                    </div>
+                                    <div class="scale-segment obese">
+                                        <div class="segment-label">Obese</div>
+                                        <div class="segment-range">≥30</div>
+                                    </div>
+                                    <div class="bmi-pointer" id="metric-bmi-pointer"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="result-details" id="metric-result-details">
+                                <div class="result-row">
+                                    <div class="detail-label">Weight Classification:</div>
+                                    <div class="detail-value" id="metric-weight-classification">-</div>
+                                </div>
+                                <div class="result-row">
+                                    <div class="detail-label">Ideal Weight Range:</div>
+                                    <div class="detail-value" id="metric-ideal-weight">-</div>
+                                </div>
+                                <div class="result-row">
+                                    <div class="detail-label">Health Risk:</div>
+                                    <div class="detail-value" id="metric-health-risk">-</div>
+                                </div>
+                            </div>
+                            
+                            <div class="recommendation" id="metric-recommendation">
+                                <!-- Recommendation content will be added by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Imperial BMI Calculator -->
+                    <div class="tab-content" id="imperial-tab">
+                        <div class="card-section input-section">
+                            <h2><i class="ri-ruler-line"></i> Enter Your Measurements</h2>
+                            
+                            <div class="input-row">
+                                <div class="input-group height-imperial">
+                                    <label>Height:</label>
+                                    <div class="imperial-inputs">
+                                        <div class="imperial-input-group">
+                                            <input type="number" id="imperial-feet" placeholder="ft" min="1" max="8">
+                                            <span>ft</span>
+                                        </div>
+                                        <div class="imperial-input-group">
+                                            <input type="number" id="imperial-inches" placeholder="in" min="0" max="11">
+                                            <span>in</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="imperial-weight">Weight (lbs):</label>
+                                    <input type="number" id="imperial-weight" placeholder="Enter weight" min="20" max="1000" step="any">
+                                </div>
+                            </div>
+                            
+                            <div class="gender-age-row">
+                                <div class="input-group radio-group">
+                                    <label>Gender:</label>
+                                    <div class="radio-buttons">
+                                        <label class="radio-label">
+                                            <input type="radio" name="imperial-gender" value="male" checked> Male
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="imperial-gender" value="female"> Female
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="imperial-age">Age (years):</label>
+                                    <input type="number" id="imperial-age" placeholder="Enter age" min="2" max="120">
+                                </div>
+                            </div>
+                            
+                            <div class="button-row">
+                                <button id="imperial-calculate-btn" class="primary-button">
+                                    <i class="ri-calculator-line"></i> Calculate BMI
+                                </button>
+                                <button id="imperial-clear-btn" class="secondary-button">
+                                    <i class="ri-delete-bin-line"></i> Clear
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="card-section result-section" id="imperial-result-section" style="display: none;">
+                            <h2><i class="ri-heart-line"></i> BMI Results</h2>
+                            
+                            <div class="bmi-display">
+                                <div class="bmi-value-container">
+                                    <div class="bmi-value" id="imperial-bmi-value">0.0</div>
+                                    <div class="bmi-label">Your BMI</div>
+                                </div>
+                                <div class="bmi-category-container">
+                                    <div class="bmi-category" id="imperial-bmi-category">-</div>
+                                    <div class="healthy-range">Healthy BMI range: 18.5 - 24.9</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bmi-scale-container">
+                                <div class="bmi-scale">
+                                    <div class="scale-segment underweight">
+                                        <div class="segment-label">Underweight</div>
+                                        <div class="segment-range">&lt;18.5</div>
+                                    </div>
+                                    <div class="scale-segment normal">
+                                        <div class="segment-label">Normal</div>
+                                        <div class="segment-range">18.5-24.9</div>
+                                    </div>
+                                    <div class="scale-segment overweight">
+                                        <div class="segment-label">Overweight</div>
+                                        <div class="segment-range">25-29.9</div>
+                                    </div>
+                                    <div class="scale-segment obese">
+                                        <div class="segment-label">Obese</div>
+                                        <div class="segment-range">≥30</div>
+                                    </div>
+                                    <div class="bmi-pointer" id="imperial-bmi-pointer"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="result-details" id="imperial-result-details">
+                                <div class="result-row">
+                                    <div class="detail-label">Weight Classification:</div>
+                                    <div class="detail-value" id="imperial-weight-classification">-</div>
+                                </div>
+                                <div class="result-row">
+                                    <div class="detail-label">Ideal Weight Range:</div>
+                                    <div class="detail-value" id="imperial-ideal-weight">-</div>
+                                </div>
+                                <div class="result-row">
+                                    <div class="detail-label">Health Risk:</div>
+                                    <div class="detail-value" id="imperial-health-risk">-</div>
+                                </div>
+                            </div>
+                            
+                            <div class="recommendation" id="imperial-recommendation">
+                                <!-- Recommendation content will be added by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BMI Information -->
+                <div class="info-section">
+                    <h2>About Body Mass Index (BMI)</h2>
+                    <p>Body Mass Index (BMI) is a measure of body fat based on height and weight that applies to adult men and women. It's a simple way to determine if your weight is appropriate for your height.</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3><i class="ri-scales-3-line"></i> BMI Categories</h3>
+                            <div class="category-table">
+                                <div class="table-row">
+                                    <div class="table-cell">Below 18.5</div>
+                                    <div class="table-cell">Underweight</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">18.5 - 24.9</div>
+                                    <div class="table-cell">Normal weight</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">25.0 - 29.9</div>
+                                    <div class="table-cell">Overweight</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">30.0 - 34.9</div>
+                                    <div class="table-cell">Obesity (Class 1)</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">35.0 - 39.9</div>
+                                    <div class="table-cell">Obesity (Class 2)</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">40.0 and above</div>
+                                    <div class="table-cell">Obesity (Class 3)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3><i class="ri-information-line"></i> BMI Limitations</h3>
+                            <p>While BMI is a useful screening tool, it does have limitations:</p>
+                            <ul>
+                                <li>It doesn't directly measure body fat</li>
+                                <li>It doesn't account for muscle mass</li>
+                                <li>It may not be suitable for athletes or highly muscular individuals</li>
+                                <li>It doesn't consider factors like age, gender, ethnicity, or body composition</li>
+                                <li>It doesn't distinguish between fat, muscle, and bone mass</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- How to Use Section -->
+                <div class="how-to-use">
+                    <h2>How to Use the BMI Calculator</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Choose Your Preferred Unit</h3>
+                                <p>Select either the Metric (cm/kg) or Imperial (ft/in/lbs) tab depending on which units you're more comfortable with.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Enter Your Measurements</h3>
+                                <p>Input your height, weight, gender, and age accurately for the most reliable results.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>View Your Results</h3>
+                                <p>After clicking "Calculate BMI", you'll see your BMI value, classification, and personalized health recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What is BMI and how is it calculated?</h3>
+                                <div class="toggle-icon"><i class="ri-add-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>BMI (Body Mass Index) is a measure of body fat based on height and weight. It's calculated using the formula: BMI = weight(kg) / height²(m²). In imperial units, the formula is: BMI = 703 × weight(lbs) / height²(in²).</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Is BMI accurate for everyone?</h3>
+                                <div class="toggle-icon"><i class="ri-add-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>BMI is a good general indicator for most people, but it has limitations. It doesn't account for muscle mass, bone density, or body composition. Athletes and very muscular individuals may have a high BMI despite low body fat. Similarly, older adults and those who have lost muscle may have a "normal" BMI despite having too much body fat.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What are the health risks associated with a high BMI?</h3>
+                                <div class="toggle-icon"><i class="ri-add-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>A high BMI is associated with increased risk of various conditions including heart disease, stroke, type 2 diabetes, high blood pressure, certain cancers, sleep apnea, osteoarthritis, and fatty liver disease. The risk increases as BMI increases.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Are there other ways to measure body fat besides BMI?</h3>
+                                <div class="toggle-icon"><i class="ri-add-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, there are several other methods to measure body fat including waist circumference, waist-to-hip ratio, skinfold thickness measurements, bioelectrical impedance analysis, underwater weighing, air displacement plethysmography (Bod Pod), and dual-energy X-ray absorptiometry (DEXA). Each method has its own advantages and limitations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61573126709749" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="https://x.com/utkarshpatel_me" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="https://www.instagram.com/utkarshpatel3012/" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="https://www.youtube.com/@utkarshpatel4077" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/pages/tools">Popular Tools</a></li>
+                        <li><a href="/pages/tools?category=new">New Tools</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#blog">Blog</a></li>
+                        <li><a href="/pages/about#careers">Careers</a></li>
+                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/legal/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/pages/legal/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+                        <li><a href="/pages/legal/accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="/navigation.js"></script>
+    <script src="/nav/script.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+    crossorigin="anonymous"></script>
+         <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
+   <script>
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+
+       gtag('config', 'G-1B5PV6KP61');
+   </script>
+    <!-- Direct fix for theme toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    if (isDarkMode) {
+                        // Switch to light mode
+                        document.body.classList.remove('dark-mode');
+                        document.documentElement.classList.remove('dark-mode');
+                        document.documentElement.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        // Switch to dark mode
+                        document.body.classList.add('dark-mode');
+                        document.documentElement.classList.add('dark-mode');
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                    
+                    // Store current theme preference
+                    localStorage.setItem('theme', isDarkMode ? 'light' : 'dark');
+                    console.log('Theme toggled, new theme:', isDarkMode ? 'light' : 'dark');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

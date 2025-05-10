@@ -4,12 +4,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     
-    // Check for saved theme preference or use system preference
+    // Check for saved theme preference - default to light mode for new users
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+    if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
         document.documentElement.setAttribute('data-theme', 'dark');
     } else {
+        // Always default to light mode for new users
+        document.body.classList.remove('dark-mode');
         document.documentElement.setAttribute('data-theme', 'light');
     }
     

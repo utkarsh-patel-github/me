@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Zone Converter - Daily Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+     crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/user/notifications">See all notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/#all-tools">All Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Time Zone Converter</span>
+                </div>
+                <div class="header-content">
+                    <div class="header-text">
+                        <h1>Time Zone Converter</h1>
+                        <p>Convert time between different time zones around the world</p>
+                    </div>
+                    <div class="header-image">
+                        <img src="timezone-converter-icon.svg" alt="Time Zone Converter">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="tool-content">
+                <!-- Calculator Card -->
+                <div class="calculator-card">
+                    <div class="converter-section">
+                        <div class="input-group">
+                            <label for="date-time">Date & Time</label>
+                            <input type="datetime-local" id="date-time">
+                        </div>
+                        <div class="input-group">
+                            <label for="from-timezone">From</label>
+                            <select id="from-timezone">
+                                <option value="UTC">UTC - Coordinated Universal Time</option>
+                                <option value="EST">EST - Eastern Standard Time</option>
+                                <option value="CST">CST - Central Standard Time</option>
+                                <option value="MST">MST - Mountain Standard Time</option>
+                                <option value="PST">PST - Pacific Standard Time</option>
+                                <option value="GMT">GMT - Greenwich Mean Time</option>
+                                <option value="CET">CET - Central European Time</option>
+                                <option value="JST">JST - Japan Standard Time</option>
+                                <option value="CST_CN">CST - China Standard Time</option>
+                                <option value="AEST">AEST - Australian Eastern Standard Time</option>
+                            </select>
+                        </div>
+                        <button class="swap-button" id="swap-button">
+                            <i class="ri-swap-horizontal-line"></i>
+                        </button>
+                        <div class="input-group">
+                            <label for="to-timezone">To</label>
+                            <select id="to-timezone">
+                                <option value="EST">EST - Eastern Standard Time</option>
+                                <option value="UTC">UTC - Coordinated Universal Time</option>
+                                <option value="CST">CST - Central Standard Time</option>
+                                <option value="MST">MST - Mountain Standard Time</option>
+                                <option value="PST">PST - Pacific Standard Time</option>
+                                <option value="GMT">GMT - Greenwich Mean Time</option>
+                                <option value="CET">CET - Central European Time</option>
+                                <option value="JST">JST - Japan Standard Time</option>
+                                <option value="CST_CN">CST - China Standard Time</option>
+                                <option value="AEST">AEST - Australian Eastern Standard Time</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="result-section">
+                        <div class="result-value">
+                            <span id="converted-time">00:00:00</span>
+                            <span id="converted-date">January 1, 2024</span>
+                        </div>
+                        <div class="time-info">
+                            <p>Current Time: <span id="current-time">Loading...</span></p>
+                            <p>Time Difference: <span id="time-difference">0 hours</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Use -->
+                <div class="info-card">
+                    <h2>How to Use</h2>
+                    <ol class="step-list">
+                        <li>Select the date and time you want to convert</li>
+                        <li>Choose the source time zone from the "From" dropdown</li>
+                        <li>Select the target time zone from the "To" dropdown</li>
+                        <li>The converted time will be displayed automatically</li>
+                    </ol>
+                </div>
+
+                <!-- Common Time Zones -->
+                <div class="info-card">
+                    <h2>Common Time Zones</h2>
+                    <div class="timezone-grid">
+                        <div class="timezone-item">
+                            <h3>UTC - Coordinated Universal Time</h3>
+                            <p>The primary time standard by which all time zones are defined</p>
+                        </div>
+                        <div class="timezone-item">
+                            <h3>EST - Eastern Standard Time</h3>
+                            <p>UTC-5, used in Eastern North America</p>
+                        </div>
+                        <div class="timezone-item">
+                            <h3>CET - Central European Time</h3>
+                            <p>UTC+1, used in most of Europe</p>
+                        </div>
+                        <div class="timezone-item">
+                            <h3>JST - Japan Standard Time</h3>
+                            <p>UTC+9, used in Japan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Tools -->
+                <div class="related-tools">
+                    <h2>Related Tools</h2>
+                    <div class="tools-grid">
+                        <a href="/tools/unit-converter" class="tool-card">
+                            <i class="ri-ruler-line"></i>
+                            <span>Unit Converter</span>
+                        </a>
+                        <a href="/tools/currency-converter" class="tool-card">
+                            <i class="ri-money-dollar-circle-line"></i>
+                            <span>Currency Converter</span>
+                        </a>
+                        <a href="/tools/color-converter" class="tool-card">
+                            <i class="ri-palette-line"></i>
+                            <span>Color Converter</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Daily Tools</h2>
+                    <p>Your one-stop solution for everyday calculations and conversions</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>Popular Tools</h3>
+                        <a href="/tools/age-calculator">Age Calculator</a>
+                        <a href="/tools/unit-converter">Unit Converter</a>
+                        <a href="/tools/currency-converter">Currency Converter</a>
+                        <a href="/tools/timezone-converter">Time Zone Converter</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Categories</h3>
+                        <a href="/#calculators">Calculators</a>
+                        <a href="/#converters">Converters</a>
+                        <a href="/#generators">Generators</a>
+                        <a href="/#formatters">Formatters</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Daily Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

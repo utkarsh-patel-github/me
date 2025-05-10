@@ -1,0 +1,683 @@
+/* Global styles */
+:root {
+    --primary-blue: #4285F4;
+    --primary-hover: #1a73e8;
+    --primary-red: #EA4335;
+    --primary-yellow: #FBBC05;
+    --primary-green: #34A853;
+    --primary-purple: #673AB7;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1f2937;
+    --text-secondary: #4b5563;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-sm: 4px;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
+}
+
+/* Dark theme variables */
+body.dark-mode,
+html.dark-mode,
+:root[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    transition: var(--transition);
+}
+
+main {
+    padding: 80px 0 60px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Tool Header Styles */
+.tool-header {
+    margin-bottom: 40px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-blue);
+}
+
+.breadcrumb i {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.header-image {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    background-color: rgba(66, 133, 244, 0.1);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-image i {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+}
+
+.header-text h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-text p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 700px;
+}
+
+/* Calculator Container */
+.calculator-container {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.calculator-tabs {
+    display: flex;
+    overflow-x: auto;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    padding: 16px 24px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: var(--primary-blue);
+}
+
+.tab-btn.active {
+    color: var(--primary-blue);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-blue);
+    border-radius: 3px 3px 0 0;
+}
+
+.calculator-content {
+    padding: 30px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.tab-description {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+/* Input Styles */
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    transition: var(--transition-fast);
+}
+
+.input-group input:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+/* Input with addon */
+.input-with-addon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-addon input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.input-with-addon .input-addon {
+    position: absolute;
+    right: 16px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.input-with-addon .input-addon.prepend {
+    left: 16px;
+    right: auto;
+}
+
+.input-with-addon input:focus + .input-addon {
+    color: var(--primary-blue);
+}
+
+/* Tip calculator specific styles */
+.tip-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.tip-preset {
+    padding: 8px 12px;
+    background-color: rgba(66, 133, 244, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    color: var(--primary-blue);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.tip-preset:hover {
+    background-color: rgba(66, 133, 244, 0.2);
+}
+
+.tip-preset.active {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+.split-controls {
+    display: flex;
+    align-items: center;
+    max-width: 150px;
+}
+
+.split-adjust {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.split-adjust:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#decrease-split {
+    border-radius: var(--radius) 0 0 var(--radius);
+}
+
+#increase-split {
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.split-controls input {
+    width: 60px;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+
+.split-label {
+    margin-left: 12px;
+    color: var(--text-secondary);
+}
+
+/* Button styles */
+.button-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.primary-button {
+    padding: 12px 24px;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.primary-button:hover {
+    background-color: var(--primary-hover);
+}
+
+.secondary-button {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.secondary-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Result styles */
+.result {
+    margin-top: 24px;
+    padding: 24px;
+    background-color: rgba(66, 133, 244, 0.05);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.result-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+}
+
+.result-explanation {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Tip result styles */
+.tip-result {
+    margin-top: 24px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+}
+
+.tip-result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tip-result-label {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.tip-result-value {
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+/* Info Section */
+.info-section {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.info-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.info-card {
+    padding: 24px;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.info-icon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(66, 133, 244, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.info-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.info-card p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.info-example {
+    padding: 12px;
+    background-color: rgba(66, 133, 244, 0.05);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* Formulas Section */
+.formulas-section {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.formulas-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.formula-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.formula-card {
+    padding: 24px;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+.formula-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-color);
+}
+
+.formula {
+    padding: 16px;
+    background-color: rgba(66, 133, 244, 0.05);
+    border-radius: var(--radius-sm);
+    margin-bottom: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    color: var(--primary-blue);
+    font-weight: 500;
+    text-align: center;
+}
+
+.formula-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* FAQ Section */
+.faq-section {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.faq-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: var(--transition-fast);
+}
+
+.faq-question {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faq-question h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.faq-question i {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    transition: var(--transition-fast);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 20px 20px;
+    max-height: 500px;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .header-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .calculator-content {
+        padding: 20px;
+    }
+    
+    .info-section,
+    .formulas-section,
+    .faq-section {
+        padding: 30px 20px;
+    }
+    
+    .info-section h2,
+    .formulas-section h2,
+    .faq-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .formula {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        flex: 1;
+        padding: 12px 16px;
+        text-align: center;
+        min-width: 120px;
+        font-size: 0.9rem;
+    }
+    
+    .header-text h1 {
+        font-size: 1.6rem;
+    }
+    
+    .button-row {
+        flex-direction: column;
+    }
+    
+    .tip-buttons {
+        justify-content: space-between;
+    }
+    
+    .tip-preset {
+        flex: 1;
+        text-align: center;
+        padding: 8px 0;
+    }
+    
+    .result-value {
+        font-size: 2rem;
+    }
+} 

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Percentage Calculator - Daily Tools</title>
+    <meta name="description" content="Calculate percentages easily with our free online percentage calculator. Find percentages, increases, decreases, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+     crossorigin="anonymous"></script>
+     
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <script>
+    // Prevent theme flicker on page load - load user's last selected theme
+    (function() {
+        // Get the theme from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Apply the theme the user last selected (dark or light)
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('dark-mode');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.classList.remove('dark-mode');
+        }
+    })();
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/user/notifications">See all notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Tool Header with Image -->
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/tools">Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Percentage Calculator</span>
+                </div>
+                
+                <div class="header-content">
+                    <div class="header-image">
+                        <i class="ri-percent-line"></i>
+                    </div>
+                    <div class="header-text">
+                        <h1>Percentage Calculator</h1>
+                        <p>Calculate percentages quickly and easily. Find what percent one number is of another, calculate percentage increase or decrease, and more.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Tool Content -->
+            <div class="calculator-container">
+                <div class="calculator-tabs">
+                    <button class="tab-btn active" data-tab="basic">Basic Calculator</button>
+                    <button class="tab-btn" data-tab="percentage-of">Percentage of a Number</button>
+                    <button class="tab-btn" data-tab="percentage-change">Percentage Change</button>
+                    <button class="tab-btn" data-tab="tip-calculator">Tip Calculator</button>
+                </div>
+                
+                <div class="calculator-content">
+                    <!-- Basic Percentage Calculator -->
+                    <div class="tab-content active" id="basic-tab">
+                        <h2>Basic Percentage Calculator</h2>
+                        <p class="tab-description">Find what percent one number is of another. For example, what percent is 25 of 200?</p>
+                        
+                        <div class="input-group">
+                            <label for="basic-value">Value:</label>
+                            <input type="number" id="basic-value" placeholder="Enter a number" step="any">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="basic-percentage">Percentage of:</label>
+                            <input type="number" id="basic-percentage" placeholder="Enter a number" step="any">
+                        </div>
+                        
+                        <div class="button-row">
+                            <button id="basic-calculate-btn" class="primary-button">Calculate</button>
+                            <button id="basic-clear-btn" class="secondary-button">Clear</button>
+                        </div>
+                        
+                        <div class="result" id="basic-result-container">
+                            <div id="basic-result" class="result-value">0%</div>
+                            <div id="basic-calculation" class="result-explanation"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Percentage of a Number Calculator -->
+                    <div class="tab-content" id="percentage-of-tab">
+                        <h2>Percentage of a Number</h2>
+                        <p class="tab-description">Calculate a percentage of a given number. For example, what is 15% of 200?</p>
+                        
+                        <div class="input-group">
+                            <label for="percentage-value">Percentage:</label>
+                            <div class="input-with-addon">
+                                <input type="number" id="percentage-value" placeholder="Enter percentage" step="any">
+                                <span class="input-addon">%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="percentage-of-value">of:</label>
+                            <input type="number" id="percentage-of-value" placeholder="Enter a number" step="any">
+                        </div>
+                        
+                        <div class="button-row">
+                            <button id="percentage-of-calculate-btn" class="primary-button">Calculate</button>
+                            <button id="percentage-of-clear-btn" class="secondary-button">Clear</button>
+                        </div>
+                        
+                        <div class="result" id="percentage-of-result-container">
+                            <div id="percentage-of-result" class="result-value">0</div>
+                            <div id="percentage-of-calculation" class="result-explanation"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Percentage Change Calculator -->
+                    <div class="tab-content" id="percentage-change-tab">
+                        <h2>Percentage Change Calculator</h2>
+                        <p class="tab-description">Calculate the percentage increase or decrease between two values.</p>
+                        
+                        <div class="input-group">
+                            <label for="original-value">Original Value:</label>
+                            <input type="number" id="original-value" placeholder="Enter original value" step="any">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="new-value">New Value:</label>
+                            <input type="number" id="new-value" placeholder="Enter new value" step="any">
+                        </div>
+                        
+                        <div class="button-row">
+                            <button id="percentage-change-calculate-btn" class="primary-button">Calculate</button>
+                            <button id="percentage-change-clear-btn" class="secondary-button">Clear</button>
+                        </div>
+                        
+                        <div class="result" id="percentage-change-result-container">
+                            <div id="percentage-change-result" class="result-value">0%</div>
+                            <div id="percentage-change-calculation" class="result-explanation"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tip Calculator -->
+                    <div class="tab-content" id="tip-calculator-tab">
+                        <h2>Tip Calculator</h2>
+                        <p class="tab-description">Calculate how much to tip based on your bill amount and desired tip percentage.</p>
+                        
+                        <div class="input-group">
+                            <label for="bill-amount">Bill Amount:</label>
+                            <div class="input-with-addon">
+                                <span class="input-addon prepend">$</span>
+                                <input type="number" id="bill-amount" placeholder="Enter bill amount" step="any">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="tip-percentage">Tip Percentage:</label>
+                            <div class="tip-buttons">
+                                <button class="tip-preset" data-tip="15">15%</button>
+                                <button class="tip-preset" data-tip="18">18%</button>
+                                <button class="tip-preset" data-tip="20">20%</button>
+                                <button class="tip-preset" data-tip="25">25%</button>
+                            </div>
+                            <div class="input-with-addon">
+                                <input type="number" id="tip-percentage" placeholder="Enter percentage" step="any">
+                                <span class="input-addon">%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="split-count">Split Between:</label>
+                            <div class="split-controls">
+                                <button class="split-adjust" id="decrease-split">-</button>
+                                <input type="number" id="split-count" min="1" value="1">
+                                <button class="split-adjust" id="increase-split">+</button>
+                            </div>
+                            <div class="split-label"><span id="split-text">person</span></div>
+                        </div>
+                        
+                        <div class="button-row">
+                            <button id="tip-calculate-btn" class="primary-button">Calculate</button>
+                            <button id="tip-clear-btn" class="secondary-button">Clear</button>
+                        </div>
+                        
+                        <div class="tip-result" id="tip-result-container">
+                            <div class="tip-result-item">
+                                <div class="tip-result-label">Tip Amount:</div>
+                                <div class="tip-result-value" id="tip-amount">$0.00</div>
+                            </div>
+                            <div class="tip-result-item">
+                                <div class="tip-result-label">Total Bill:</div>
+                                <div class="tip-result-value" id="total-amount">$0.00</div>
+                            </div>
+                            <div class="tip-result-item" id="per-person-container">
+                                <div class="tip-result-label">Per Person:</div>
+                                <div class="tip-result-value" id="per-person-amount">$0.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- How to Use Section -->
+            <div class="info-section">
+                <h2>How to Use the Percentage Calculator</h2>
+                
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-calculator-line"></i>
+                        </div>
+                        <h3>Basic Calculator</h3>
+                        <p>Find what percent one number is of another. Enter two values and get the percentage.</p>
+                        <div class="info-example">
+                            <strong>Example:</strong> What percent is 25 of 200?<br>
+                            Answer: 12.5%
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-percent-line"></i>
+                        </div>
+                        <h3>Percentage of a Number</h3>
+                        <p>Calculate a specific percentage of a given number.</p>
+                        <div class="info-example">
+                            <strong>Example:</strong> What is 15% of 200?<br>
+                            Answer: 30
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-arrow-up-down-line"></i>
+                        </div>
+                        <h3>Percentage Change</h3>
+                        <p>Calculate the percentage increase or decrease between two values.</p>
+                        <div class="info-example">
+                            <strong>Example:</strong> Change from 100 to 120?<br>
+                            Answer: 20% increase
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="ri-money-dollar-circle-line"></i>
+                        </div>
+                        <h3>Tip Calculator</h3>
+                        <p>Calculate how much to tip based on your bill amount and desired percentage.</p>
+                        <div class="info-example">
+                            <strong>Example:</strong> 20% tip on $50 bill?<br>
+                            Answer: $10 tip, $60 total
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Percentage Formulas Section -->
+            <div class="formulas-section">
+                <h2>Percentage Formulas</h2>
+                <div class="formula-cards">
+                    <div class="formula-card">
+                        <h3>Basic Percentage Formula</h3>
+                        <div class="formula">Percentage = (Value / Total Value) × 100</div>
+                        <p>This formula calculates what percent one number is of another.</p>
+                    </div>
+                    
+                    <div class="formula-card">
+                        <h3>Percentage of a Number</h3>
+                        <div class="formula">Result = (Percentage / 100) × Number</div>
+                        <p>This formula calculates a specific percentage of a given number.</p>
+                    </div>
+                    
+                    <div class="formula-card">
+                        <h3>Percentage Change</h3>
+                        <div class="formula">Percentage Change = ((New Value - Original Value) / Original Value) × 100</div>
+                        <p>This formula calculates the percentage increase or decrease between two values.</p>
+                    </div>
+                    
+                    <div class="formula-card">
+                        <h3>Tip Amount</h3>
+                        <div class="formula">Tip Amount = Bill Amount × (Tip Percentage / 100)</div>
+                        <p>This formula calculates how much to tip based on the bill amount and tip percentage.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I calculate what percent one number is of another?</h3>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To calculate what percent one number is of another, divide the first number by the second number, then multiply by 100. For example, to find what percent 25 is of 200: (25 ÷ 200) × 100 = 12.5%.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I calculate a percentage of a number?</h3>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To calculate a percentage of a number, convert the percentage to a decimal by dividing by 100, then multiply by the number. For example, to find 15% of 200: (15 ÷ 100) × 200 = 0.15 × 200 = 30.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I calculate percentage increase or decrease?</h3>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To calculate percentage change, subtract the original value from the new value, divide by the original value, then multiply by 100. If the result is positive, it's an increase; if negative, it's a decrease. For example, to find the percentage change from 100 to 120: ((120 - 100) ÷ 100) × 100 = 20% increase.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is a good tip percentage?</h3>
+                            <i class="ri-add-line"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Tipping customs vary by country and service type, but in many places, 15-20% is standard for good service at restaurants. For exceptional service, 20-25% may be appropriate. In the U.S., 15% is typically considered the minimum for standard service, 18% for good service, and 20%+ for excellent service.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61573126709749" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="https://x.com/utkarshpatel_me" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="https://www.instagram.com/utkarshpatel3012/" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="https://www.youtube.com/@utkarshpatel4077" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/pages/tools">Popular Tools</a></li>
+                        <li><a href="/pages/tools?category=new">New Tools</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#blog">Blog</a></li>
+                        <li><a href="/pages/about#careers">Careers</a></li>
+                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/legal/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/pages/legal/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+                        <li><a href="/pages/legal/accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="/navigation.js"></script>
+    <script src="/nav/script.js"></script>
+    <!-- Direct fix for theme toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    if (isDarkMode) {
+                        // Switch to light mode
+                        document.body.classList.remove('dark-mode');
+                        document.documentElement.classList.remove('dark-mode');
+                        document.documentElement.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        // Switch to dark mode
+                        document.body.classList.add('dark-mode');
+                        document.documentElement.classList.add('dark-mode');
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                    
+                    // Store current theme preference
+                    localStorage.setItem('theme', isDarkMode ? 'light' : 'dark');
+                    console.log('Theme toggled, new theme:', isDarkMode ? 'light' : 'dark');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

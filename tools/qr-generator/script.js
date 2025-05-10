@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoFile = document.getElementById('logo-file');
     const qrCodeContainer = document.getElementById('qr-code');
     
+    // Info box elements
+    const infoTabHeaders = document.querySelectorAll('.info-tabs .tab-header');
+    const infoTabContents = document.querySelectorAll('.info-box .tab-content');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
     // QR Code Input Elements (for different tab contents)
     const urlInput = document.getElementById('url-input');
     const textInput = document.getElementById('text-input');
@@ -56,6 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show logo input if checkbox is checked initially
         logoInput.style.display = addLogo.checked ? 'block' : 'none';
+        
+        // Initialize FAQ items to ensure they're closed by default
+        faqItems.forEach(item => {
+            item.classList.remove('open');
+        });
     }
     
     function setupEventListeners() {
@@ -64,6 +74,22 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', () => {
                 const tab = button.getAttribute('data-tab');
                 switchTab(tab);
+            });
+        });
+        
+        // Info box tabs
+        infoTabHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const tabId = header.getAttribute('data-tab');
+                switchInfoTab(tabId);
+            });
+        });
+        
+        // FAQ accordion
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                toggleFaqItem(item);
             });
         });
         
@@ -171,6 +197,40 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Generate QR code for the new tab
         generateQrCode();
+    }
+    
+    function switchInfoTab(tabId) {
+        // Update active state for tab headers
+        infoTabHeaders.forEach(header => {
+            if (header.getAttribute('data-tab') === tabId) {
+                header.classList.add('active');
+            } else {
+                header.classList.remove('active');
+            }
+        });
+        
+        // Show the active tab content and hide others
+        infoTabContents.forEach(content => {
+            if (content.id === `${tabId}-content`) {
+                content.classList.add('active');
+            } else {
+                content.classList.remove('active');
+            }
+        });
+    }
+    
+    function toggleFaqItem(item) {
+        // Toggle the open class on the current item
+        item.classList.toggle('open');
+        
+        // Optionally close other items when opening one
+        if (item.classList.contains('open')) {
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('open');
+                }
+            });
+        }
     }
     
     function generateQrCode() {

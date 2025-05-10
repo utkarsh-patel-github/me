@@ -1,0 +1,423 @@
+:root {
+    --primary-color: #4F46E5;
+    --primary-light: #E0E7FF;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+    --danger-color: #EF4444;
+    --text-color: #1F2937;
+    --text-secondary: #4B5563;
+    --text-light: #6B7280;
+    --border-color: #E5E7EB;
+    --background-color: #F9FAFB;
+    --card-background: #FFFFFF;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-sm: 0.25rem;
+    --radius: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+}
+
+[data-theme="dark"] {
+    --primary-color: #6366F1;
+    --primary-light: #312E81;
+    --success-color: #059669;
+    --warning-color: #D97706;
+    --danger-color: #DC2626;
+    --text-color: #F9FAFB;
+    --text-secondary: #E5E7EB;
+    --text-light: #D1D5DB;
+    --border-color: #374151;
+    --background-color: #111827;
+    --card-background: #1F2937;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Tool Header */
+.tool-header {
+    margin-bottom: 2rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.breadcrumb a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.tool-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--primary-light);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tool-info h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-color);
+}
+
+.tool-info p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 1.125rem;
+}
+
+/* Calculator Card */
+.calculator-card {
+    background-color: var(--card-background);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.password-input {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.password-input input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.password-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.password-input .icon-button {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s;
+}
+
+.password-input .icon-button:hover {
+    color: var(--primary-color);
+}
+
+/* Strength Meter */
+.strength-meter {
+    margin-bottom: 1.5rem;
+}
+
+.strength-bar {
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.strength-progress {
+    height: 100%;
+    width: 0;
+    background-color: var(--danger-color);
+    transition: width 0.3s, background-color 0.3s;
+}
+
+.strength-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+#strength-value {
+    font-weight: 500;
+}
+
+/* Strength Details */
+.strength-details {
+    margin-bottom: 1.5rem;
+}
+
+.strength-criteria {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.criterion {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.criterion i {
+    font-size: 1.25rem;
+    transition: color 0.2s;
+}
+
+.criterion.valid i {
+    color: var(--success-color);
+}
+
+/* Password Analysis */
+.password-analysis {
+    background-color: var(--background-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.password-analysis h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: var(--text-color);
+}
+
+.analysis-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.analysis-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.analysis-label {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.analysis-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Recommendations */
+.recommendations {
+    background-color: var(--background-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.recommendations h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: var(--text-color);
+}
+
+.recommendations ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recommendations li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.recommendations li:last-child {
+    margin-bottom: 0;
+}
+
+.recommendations li::before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* Info Cards */
+.info-card {
+    background-color: var(--card-background);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.info-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: var(--text-color);
+}
+
+.info-card ol,
+.info-card ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.info-card li {
+    margin-bottom: 0.75rem;
+}
+
+.info-card li:last-child {
+    margin-bottom: 0;
+}
+
+/* Related Tools */
+.related-tools {
+    margin-top: 3rem;
+}
+
+.related-tools h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem;
+    color: var(--text-color);
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.tool-card {
+    background-color: var(--card-background);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.tool-card .tool-icon {
+    width: 48px;
+    height: 48px;
+    padding: 0.75rem;
+}
+
+.tool-card .tool-info h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+}
+
+.tool-card .tool-info p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .tool-info h1 {
+        font-size: 1.75rem;
+    }
+
+    .calculator-card {
+        padding: 1.5rem;
+    }
+
+    .analysis-content {
+        grid-template-columns: 1fr;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tool-info h1 {
+        font-size: 1.5rem;
+    }
+
+    .tool-info p {
+        font-size: 1rem;
+    }
+
+    .calculator-card {
+        padding: 1rem;
+    }
+} 

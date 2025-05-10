@@ -64,7 +64,9 @@
 }
 
 /* Dark Theme Variables */
-.dark-mode {
+body.dark-mode,
+html.dark-mode,
+:root[data-theme="dark"] {
   --bg-color: #0f172a;
   --card-bg: #1e293b;
   --text-color: #f1f5f9;
@@ -82,6 +84,9 @@
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
   --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --nav-background: #1e1e1e;
+  --nav-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --nav-border-color: #333;
 }
 
 html {

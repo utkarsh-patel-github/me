@@ -115,10 +115,21 @@ let userData = null;
 
 // Theme Toggle Functionality
 function toggleTheme() {
-    document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode);
-    setCookie('theme', isDarkMode ? 'dark' : 'light', 30);
+    
+    if (isDarkMode) {
+        // Switch to light mode
+        document.body.classList.remove('dark-mode');
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('darkMode', 'false');
+        setCookie('theme', 'light', 30);
+    } else {
+        // Switch to dark mode
+        document.body.classList.add('dark-mode');
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('darkMode', 'true');
+        setCookie('theme', 'dark', 30);
+    }
 }
 
 // Mobile Menu Toggle
@@ -555,14 +566,15 @@ function applyThemePreference() {
     const cookieTheme = getCookie('theme');
     if (cookieTheme === 'dark') {
         document.body.classList.add('dark-mode');
-    } else if (cookieTheme === 'light') {
-        document.body.classList.remove('dark-mode');
+        document.documentElement.setAttribute('data-theme', 'dark');
     } else {
-        // Fall back to localStorage
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            // Sync cookie with localStorage
-            setCookie('theme', 'dark', 30);
+        // Default to light mode for all other cases
+        document.body.classList.remove('dark-mode');
+        document.documentElement.setAttribute('data-theme', 'light');
+        
+        // Sync cookie with light mode preference if not set
+        if (!cookieTheme) {
+            setCookie('theme', 'light', 30);
         }
     }
 }

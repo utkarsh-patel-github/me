@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker - Daily Tools</title>
+    <meta name="description" content="Check the strength of your passwords and get security recommendations to improve them.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+     crossorigin="anonymous"></script>
+     
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/user/notifications">See all notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/pages/tools">Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Password Strength Checker</span>
+                </div>
+                <div class="header-content">
+                    <div class="tool-icon">
+                        <img src="password-strength-checker-icon.svg" alt="Password Strength Checker">
+                    </div>
+                    <div class="tool-info">
+                        <h1>Password Strength Checker</h1>
+                        <p>Check the strength of your passwords and get security recommendations to improve them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <div class="password-input">
+                    <input type="password" id="password-input" placeholder="Enter your password">
+                    <button id="toggle-password" class="icon-button" title="Show/Hide Password">
+                        <i class="ri-eye-line"></i>
+                    </button>
+                </div>
+
+                <div class="strength-meter">
+                    <div class="strength-bar">
+                        <div class="strength-progress"></div>
+                    </div>
+                    <div class="strength-text">Password Strength: <span id="strength-value">Enter a password</span></div>
+                </div>
+
+                <div class="strength-details">
+                    <div class="strength-criteria">
+                        <div class="criterion" data-criterion="length">
+                            <i class="ri-checkbox-blank-circle-line"></i>
+                            <span>At least 8 characters</span>
+                        </div>
+                        <div class="criterion" data-criterion="uppercase">
+                            <i class="ri-checkbox-blank-circle-line"></i>
+                            <span>Contains uppercase letter</span>
+                        </div>
+                        <div class="criterion" data-criterion="lowercase">
+                            <i class="ri-checkbox-blank-circle-line"></i>
+                            <span>Contains lowercase letter</span>
+                        </div>
+                        <div class="criterion" data-criterion="number">
+                            <i class="ri-checkbox-blank-circle-line"></i>
+                            <span>Contains number</span>
+                        </div>
+                        <div class="criterion" data-criterion="special">
+                            <i class="ri-checkbox-blank-circle-line"></i>
+                            <span>Contains special character</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="password-analysis">
+                    <h3>Password Analysis</h3>
+                    <div class="analysis-content">
+                        <div class="analysis-item">
+                            <div class="analysis-label">Length</div>
+                            <div class="analysis-value" id="length-value">0</div>
+                        </div>
+                        <div class="analysis-item">
+                            <div class="analysis-label">Character Types</div>
+                            <div class="analysis-value" id="char-types">0</div>
+                        </div>
+                        <div class="analysis-item">
+                            <div class="analysis-label">Estimated Time to Crack</div>
+                            <div class="analysis-value" id="crack-time">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendations">
+                    <h3>Recommendations</h3>
+                    <ul id="recommendations-list">
+                        <li>Enter a password to get recommendations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h2>How to Use</h2>
+                <ol>
+                    <li>Enter your password in the input field above</li>
+                    <li>The strength meter will automatically analyze your password</li>
+                    <li>Check the criteria list to see which requirements are met</li>
+                    <li>Review the recommendations to improve your password strength</li>
+                </ol>
+            </div>
+
+            <div class="info-card">
+                <h2>Password Security Tips</h2>
+                <ul>
+                    <li>Use a minimum of 12 characters for better security</li>
+                    <li>Include a mix of uppercase and lowercase letters</li>
+                    <li>Add numbers and special characters</li>
+                    <li>Avoid using personal information or common words</li>
+                    <li>Use unique passwords for each account</li>
+                    <li>Consider using a password manager</li>
+                </ul>
+            </div>
+
+            <div class="related-tools">
+                <h2>Related Tools</h2>
+                <div class="tools-grid">
+                    <a href="/tools/password-generator" class="tool-card">
+                        <div class="tool-icon">
+                            <img src="/tools/password-generator/password-generator-icon.svg" alt="Password Generator">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Password Generator</h3>
+                            <p>Generate strong, secure passwords with customizable options.</p>
+                        </div>
+                    </a>
+                    <a href="/tools/hash-generator" class="tool-card">
+                        <div class="tool-icon">
+                            <img src="/tools/hash-generator/hash-generator-icon.svg" alt="Hash Generator">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Hash Generator</h3>
+                            <p>Generate various types of hash values for your data.</p>
+                        </div>
+                    </a>
+                    <a href="/tools/encryption-tool" class="tool-card">
+                        <div class="tool-icon">
+                            <img src="/tools/encryption-tool/encryption-tool-icon.svg" alt="Encryption Tool">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Encryption Tool</h3>
+                            <p>Encrypt and decrypt text using various algorithms.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="ri-tools-fill logo-icon"></i>
+                        <span>Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Simple, powerful, free online tools for your everyday needs. No downloads required.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61573126709749" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="https://x.com/utkarshpatel_me" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="https://www.instagram.com/utkarshpatel3012/" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="https://www.youtube.com/@utkarshpatel4077" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/pages/tools">Popular Tools</a></li>
+                        <li><a href="/pages/tools?category=new">New Tools</a></li>
+                        <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                        <li><a href="/pages/tools?category=converters">Converters</a></li>
+                        <li><a href="/pages/tools?category=text">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/about#blog">Blog</a></li>
+                        <li><a href="/pages/about#careers">Careers</a></li>
+                        <li><a href="/pages/about#press">Press</a></li>
+                        <li><a href="/pages/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/legal/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/pages/legal/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+                        <li><a href="/pages/legal/accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Daily Tools. All rights reserved.</p>
+                <p>Made with <i class="ri-heart-fill"></i> by Daily Tools Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/nav/script.js"></script>
+    <script src="script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1B5PV6KP61');
+    </script>
+</body>
+</html> 

@@ -1,0 +1,893 @@
+/* Global styles */
+:root {
+    --primary-blue: #4285F4;
+    --primary-hover: #1a73e8;
+    --primary-red: #EA4335;
+    --primary-yellow: #FBBC05;
+    --primary-green: #34A853;
+    --primary-purple: #673AB7;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1f2937;
+    --text-secondary: #4b5563;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-sm: 4px;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
+    
+    /* BMI colors */
+    --underweight-color: #4dabf7;
+    --normal-color: #40c057;
+    --overweight-color: #ff922b;
+    --obese-color: #fa5252;
+}
+
+/* Dark theme variables */
+body.dark-mode,
+html.dark-mode,
+:root[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    
+    /* BMI dark colors */
+    --underweight-color: #339af0;
+    --normal-color: #2b8a3e;
+    --overweight-color: #e67700;
+    --obese-color: #e03131;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    transition: var(--transition);
+}
+
+main {
+    padding: 80px 0 60px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Tool Header Styles */
+.tool-header {
+    margin-bottom: 40px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-blue);
+}
+
+.breadcrumb i {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.header-image {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    background-color: rgba(66, 133, 244, 0.1);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-image i {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+}
+
+.header-text h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-text p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 700px;
+}
+
+/* Calculator Card Styles */
+.calculator-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.card-tabs {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 16px;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    padding: 16px 24px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: var(--primary-blue);
+}
+
+.tab-btn.active {
+    color: var(--primary-blue);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-blue);
+    border-radius: 3px 3px 0 0;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.card-section {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-section:last-child {
+    border-bottom: none;
+}
+
+.card-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-section h2 i {
+    color: var(--primary-blue);
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.gender-age-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-group input[type="number"] {
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    transition: var(--transition-fast);
+}
+
+.input-group input[type="number"]:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+/* Imperial height inputs */
+.height-imperial .imperial-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.imperial-input-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
+
+.imperial-input-group input {
+    height: 48px;
+    padding: 0 16px;
+    padding-right: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    transition: var(--transition-fast);
+    width: 100%;
+}
+
+.imperial-input-group input:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.imperial-input-group span {
+    position: absolute;
+    right: 12px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+/* Radio buttons */
+.radio-group .radio-buttons {
+    display: flex;
+    gap: 24px;
+    margin-top: 4px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.radio-label input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.radio-label input[type="radio"]:checked {
+    border-color: var(--primary-blue);
+}
+
+.radio-label input[type="radio"]:focus {
+    outline: 2px solid rgba(66, 133, 244, 0.2);
+    outline-offset: 2px;
+}
+
+.radio-label input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+}
+
+.button-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.primary-button {
+    padding: 12px 24px;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.primary-button:hover {
+    background-color: var(--primary-hover);
+}
+
+.secondary-button {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.secondary-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* BMI Results Section */
+.bmi-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: rgba(66, 133, 244, 0.05);
+    border-radius: var(--radius);
+}
+
+.bmi-value-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.bmi-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.bmi-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.bmi-category-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+.bmi-category {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.healthy-range {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* BMI Scale */
+.bmi-scale-container {
+    margin-bottom: 30px;
+}
+
+.bmi-scale {
+    display: flex;
+    height: 60px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.scale-segment {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-fast);
+}
+
+.scale-segment.underweight {
+    background-color: var(--underweight-color);
+}
+
+.scale-segment.normal {
+    background-color: var(--normal-color);
+}
+
+.scale-segment.overweight {
+    background-color: var(--overweight-color);
+}
+
+.scale-segment.obese {
+    background-color: var(--obese-color);
+}
+
+.segment-label {
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    z-index: 2;
+}
+
+.segment-range {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    z-index: 2;
+}
+
+.bmi-pointer {
+    position: absolute;
+    top: -10px;
+    height: 80px;
+    width: 2px;
+    background-color: var(--text-color);
+    z-index: 3;
+    transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bmi-pointer:after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+}
+
+/* Result details */
+.result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.result-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: var(--radius);
+}
+
+.detail-label {
+    font-weight: 600;
+    min-width: 180px;
+    color: var(--text-color);
+}
+
+.detail-value {
+    flex: 1;
+    color: var(--text-color);
+}
+
+/* Recommendation section */
+.recommendation {
+    padding: 20px;
+    background-color: var(--normal-color);
+    color: white;
+    border-radius: var(--radius);
+    margin-top: 16px;
+}
+
+.recommendation.underweight {
+    background-color: var(--underweight-color);
+}
+
+.recommendation.normal {
+    background-color: var(--normal-color);
+}
+
+.recommendation.overweight {
+    background-color: var(--overweight-color);
+}
+
+.recommendation.obese {
+    background-color: var(--obese-color);
+}
+
+.recommendation h3 {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.recommendation p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* BMI Information Section */
+.info-section {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.info-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.info-section > p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.info-card {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.info-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    color: var(--text-color);
+}
+
+.info-card h3 i {
+    color: var(--primary-blue);
+}
+
+.info-card p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.info-card ul {
+    padding-left: 20px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.info-card li {
+    margin-bottom: 8px;
+}
+
+.info-card li:last-child {
+    margin-bottom: 0;
+}
+
+/* BMI Categories Table */
+.category-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-row {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-cell {
+    padding: 12px 8px;
+    font-size: 0.95rem;
+}
+
+.table-cell:first-child {
+    flex: 1;
+    font-weight: 500;
+}
+
+.table-cell:last-child {
+    flex: 1.5;
+    color: var(--text-secondary);
+}
+
+/* How to Use Section */
+.how-to-use {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.how-to-use h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.steps {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    gap: 16px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.step-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.step-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* FAQ Section */
+.faq-section {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.faq-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: var(--transition-fast);
+}
+
+.faq-question {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.faq-question h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.toggle-icon {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    transition: var(--transition-fast);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 20px 20px;
+    max-height: 500px;
+}
+
+.faq-item.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .header-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .bmi-display {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .card-tabs {
+        padding: 0 8px;
+    }
+    
+    .tab-btn {
+        padding: 16px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .card-section, 
+    .how-to-use, 
+    .faq-section,
+    .info-section {
+        padding: 20px;
+    }
+    
+    .steps {
+        flex-direction: column;
+    }
+    
+    .radio-group .radio-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-text h1 {
+        font-size: 1.6rem;
+    }
+    
+    .header-text p {
+        font-size: 1rem;
+    }
+    
+    .button-row {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .primary-button, 
+    .secondary-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .height-imperial .imperial-inputs {
+        flex-direction: column;
+    }
+    
+    .result-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .detail-label {
+        min-width: auto;
+    }
+    
+    .bmi-value {
+        font-size: 2.8rem;
+    }
+    
+    .bmi-category {
+        font-size: 1.4rem;
+    }
+} 

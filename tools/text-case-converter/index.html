@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Text Case Converter - Daily Tools</title>
+    <meta name="description" content="Transform your text to different letter cases: uppercase, lowercase, title case, sentence case, and more. Free online text formatting tool.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+     crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <link rel="stylesheet" href="/footer/style.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <script>
+    // Prevent theme flicker on page load - load user's last selected theme
+    (function() {
+        // Get the theme from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Apply the theme the user last selected (dark or light)
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('dark-mode');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.classList.remove('dark-mode');
+        }
+    })();
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/user/notifications">See all notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Tool Header with Image -->
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/tools">Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Text Case Converter</span>
+                </div>
+                
+                <div class="header-content">
+                    <div class="header-image">
+                        <img src="text-case-converter-icon.svg" alt="Text Case Converter" />
+                    </div>
+                    <div class="header-text">
+                        <h1>Text Case Converter</h1>
+                        <p>Transform your text between different letter cases: UPPERCASE, lowercase, Title Case, Sentence case, and more. Perfect for formatting text for titles, headings, and proper citation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Tool Content -->
+            <div class="tool-content">
+                <div class="case-converter-card">
+                    <div class="editor-section">
+                        <div class="text-controls">
+                            <button class="text-control-btn" id="clear-btn" title="Clear text">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                            <button class="text-control-btn" id="copy-btn" title="Copy text">
+                                <i class="ri-clipboard-line"></i>
+                            </button>
+                            <div class="font-size-control">
+                                <button class="text-control-btn" id="decrease-font" title="Decrease font size">
+                                    <i class="ri-text-spacing"></i>
+                                </button>
+                                <button class="text-control-btn" id="increase-font" title="Increase font size">
+                                    <i class="ri-character-recognition-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <textarea 
+                            id="text-input" 
+                            class="text-input" 
+                            placeholder="Type or paste your text here to convert its case..."
+                            spellcheck="true"
+                            autofocus
+                        ></textarea>
+                    </div>
+                    
+                    <div class="case-options">
+                        <div class="case-option-buttons">
+                            <button id="lowercase-btn" class="case-btn">
+                                <i class="ri-text"></i> lowercase
+                            </button>
+                            <button id="uppercase-btn" class="case-btn">
+                                <i class="ri-font-size"></i> UPPERCASE
+                            </button>
+                            <button id="capitalize-btn" class="case-btn">
+                                <i class="ri-heading"></i> Capitalize Each Word
+                            </button>
+                            <button id="sentence-case-btn" class="case-btn">
+                                <i class="ri-paragraph"></i> Sentence case
+                            </button>
+                            <button id="toggle-case-btn" class="case-btn">
+                                <i class="ri-contrast-2-line"></i> tOGGLE cASE
+                            </button>
+                            <button id="camel-case-btn" class="case-btn">
+                                <i class="ri-code-line"></i> camelCase
+                            </button>
+                            <button id="pascal-case-btn" class="case-btn">
+                                <i class="ri-braces-line"></i> PascalCase
+                            </button>
+                            <button id="snake-case-btn" class="case-btn">
+                                <i class="ri-code-s-slash-line"></i> snake_case
+                            </button>
+                            <button id="kebab-case-btn" class="case-btn">
+                                <i class="ri-code-box-line"></i> kebab-case
+                            </button>
+                            <button id="random-case-btn" class="case-btn">
+                                <i class="ri-shuffle-line"></i> RaNdOm cAsE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-card">
+                        <h3>Text Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-label">Characters:</div>
+                                <div class="stat-value" id="char-count">0</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Characters (no spaces):</div>
+                                <div class="stat-value" id="char-no-space-count">0</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Words:</div>
+                                <div class="stat-value" id="word-count">0</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Lines:</div>
+                                <div class="stat-value" id="line-count">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Usage Information & FAQ -->
+                <div class="help-section">
+                    <h2>How to Use the Text Case Converter</h2>
+                    
+                    <div class="how-to">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">
+                                <h3>Enter Your Text</h3>
+                                <p>Type or paste your text into the input area above.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">
+                                <h3>Choose a Case Format</h3>
+                                <p>Click one of the case conversion buttons to transform your text.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">
+                                <h3>Copy the Result</h3>
+                                <p>Use the copy button to copy the transformed text to your clipboard.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>About Text Case Formats</h2>
+                    
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What is Sentence case?</h3>
+                                <div class="faq-icon"><i class="ri-arrow-down-s-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Sentence case is the standard format for writing sentences in English. It capitalizes the first letter of each sentence while keeping the rest lowercase. For example: "This is a sentence. This is another sentence."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What is Title Case?</h3>
+                                <div class="faq-icon"><i class="ri-arrow-down-s-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Title Case (or Capitalize Each Word) capitalizes the first letter of each word, with some exceptions for smaller words like conjunctions and prepositions (depending on style guides). For example: "The Quick Brown Fox Jumps Over the Lazy Dog".</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What are camelCase, PascalCase, snake_case, and kebab-case?</h3>
+                                <div class="faq-icon"><i class="ri-arrow-down-s-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p><strong>camelCase:</strong> First word is lowercase, and each subsequent word is capitalized with no spaces (e.g., "thisIsCamelCase").</p>
+                                <p><strong>PascalCase:</strong> Every word starts with a capital letter with no spaces (e.g., "ThisIsPascalCase").</p>
+                                <p><strong>snake_case:</strong> All lowercase with underscores between words (e.g., "this_is_snake_case").</p>
+                                <p><strong>kebab-case:</strong> All lowercase with hyphens between words (e.g., "this-is-kebab-case").</p>
+                                <p>These formats are commonly used in programming and web development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+                    <span>Daily Tools</span>
+                </div>
+                <p>Free online tools to simplify your daily tasks. No registration required.</p>
+                <div class="social-links">
+                    <a href="#" title="Twitter"><i class="ri-twitter-fill"></i></a>
+                    <a href="#" title="Facebook"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" title="Instagram"><i class="ri-instagram-line"></i></a>
+                    <a href="#" title="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pages/tools">All Tools</a></li>
+                    <li><a href="/pages/categories">Categories</a></li>
+                    <li><a href="/pages/about">About</a></li>
+                    <li><a href="/pages/contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul class="footer-links">
+                    <li><a href="/pages/tools?category=calculators">Calculators</a></li>
+                    <li><a href="/pages/tools?category=converters">Converters</a></li>
+                    <li><a href="/pages/tools?category=generators">Generators</a></li>
+                    <li><a href="/pages/tools?category=text-tools">Text Tools</a></li>
+                    <li><a href="/pages/tools?category=utilities">Utilities</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="/legal/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/legal/terms-of-service">Terms of Service</a></li>
+                    <li><a href="/legal/cookie-policy">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Daily Tools. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html> 

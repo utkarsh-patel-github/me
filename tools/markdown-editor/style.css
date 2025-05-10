@@ -1,0 +1,210 @@
+/* Global styles */
+:root {
+    --primary-blue: #4285F4;
+    --primary-hover: #1a73e8;
+    --primary-red: #EA4335;
+    --primary-yellow: #FBBC05;
+    --primary-green: #34A853;
+    --primary-purple: #673AB7;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1f2937;
+    --text-secondary: #4b5563;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-sm: 4px;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
+    
+    /* Markdown specific colors */
+    --md-primary: #7c3aed;
+    --md-secondary: #8b5cf6;
+    --md-syntax: #6b7280;
+    --md-highlight: rgba(124, 58, 237, 0.1);
+}
+
+/* Dark theme variables */
+body.dark-mode,
+html.dark-mode,
+:root[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    
+    /* Markdown dark colors */
+    --md-highlight: rgba(124, 58, 237, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    transition: var(--transition);
+}
+
+main {
+    padding: 80px 0 60px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Tool Header Styles */
+.tool-header {
+    margin-bottom: 40px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-blue);
+}
+
+.breadcrumb i {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.header-image {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    background-color: rgba(124, 58, 237, 0.1);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-image img {
+    width: 48px;
+    height: 48px;
+}
+
+.header-text h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-text p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 700px;
+}
+
+/* Coming Soon Message */
+.coming-soon-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+
+.coming-soon-message i {
+    font-size: 4rem;
+    color: var(--md-primary);
+    margin-bottom: 20px;
+}
+
+.coming-soon-message h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+}
+
+.coming-soon-message p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .header-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .coming-soon-message {
+        padding: 60px 20px;
+    }
+    
+    .coming-soon-message i {
+        font-size: 3rem;
+    }
+    
+    .coming-soon-message h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-text h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header-text p {
+        font-size: 1rem;
+    }
+    
+    .coming-soon-message h2 {
+        font-size: 1.5rem;
+    }
+    
+    .coming-soon-message p {
+        font-size: 1rem;
+    }
+}

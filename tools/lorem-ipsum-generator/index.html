@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lorem Ipsum Generator - Daily Tools</title>
+    <meta name="description" content="Generate dummy text for your designs, layouts, and mockups. Customize length and format with our free Lorem Ipsum generator.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+     crossorigin="anonymous"></script>
+     
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/nav/style.css">
+    <script>
+        // Prevent flash of wrong theme
+        let theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Top navigation -->
+    <nav>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="ri-tools-fill"></i></div>
+            <span>Daily Tools</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pages/tools" class="active">Tools</a>
+            <a href="/pages/categories">Categories</a>
+            <a href="/pages/about">About</a>
+            <a href="/pages/contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+                <div class="toggle-track">
+                    <i class="ri-sun-line light-icon"></i>
+                    <i class="ri-moon-line dark-icon"></i>
+                    <div class="toggle-circle"></div>
+                </div>
+            </div>
+            <div class="icon-button notification-dropdown-trigger" title="Notifications">
+                <i class="ri-notification-2-line"></i>
+                <span class="notification-badge">2</span>
+                <div class="notification-dropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/user/notifications">See all notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-toggle" class="menu-icon" title="Menu">
+            <i class="ri-menu-line"></i>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <div class="container">
+            <div class="tool-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <a href="/pages/tools/">Tools</a>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <span>Lorem Ipsum Generator</span>
+                </div>
+                <div class="header-content">
+                    <div class="header-image">
+                        <img src="lorem-ipsum-generator-icon.svg" alt="Lorem Ipsum Generator Icon">
+                    </div>
+                    <div class="header-text">
+                        <h1>Lorem Ipsum Generator</h1>
+                        <p>Generate dummy text for your designs, layouts, and mockups. Customize length and format with our free Lorem Ipsum generator.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-content">
+                <div class="lorem-generator-card">
+                    <div class="options-section">
+                        <div class="option-group">
+                            <label for="type-select">Lorem Ipsum Type</label>
+                            <select id="type-select">
+                                <option value="lorem">Traditional Lorem Ipsum</option>
+                                <option value="cicero">Cicero (De Finibus)</option>
+                                <option value="pangram">English Pangrams</option>
+                                <option value="gibberish">Latin Gibberish</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>Count</label>
+                            <div class="length-controls">
+                                <div class="number-input">
+                                    <input type="number" id="count-input" min="1" max="100" value="5">
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="unit" id="words-radio" value="words">
+                                        <span>Words</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="unit" id="sentences-radio" value="sentences" checked>
+                                        <span>Sentences</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="unit" id="paragraphs-radio" value="paragraphs">
+                                        <span>Paragraphs</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>Options</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="start-with-lorem" checked>
+                                    <span>Start with "Lorem ipsum"</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="include-html">
+                                    <span>Include HTML tags</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button id="generate-btn" class="primary-button">
+                                <i class="ri-refresh-line"></i>
+                                <span>Generate</span>
+                            </button>
+                            <button id="reset-btn" class="secondary-button">
+                                <i class="ri-restart-line"></i>
+                                <span>Reset</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="output-section">
+                        <div class="output-header">
+                            <h3>Generated Text</h3>
+                            <div class="output-controls">
+                                <button id="copy-btn" class="text-control-btn" title="Copy to clipboard">
+                                    <i class="ri-clipboard-line"></i>
+                                </button>
+                                <button id="download-txt-btn" class="text-control-btn" title="Download as TXT">
+                                    <i class="ri-file-text-line"></i>
+                                </button>
+                                <button id="download-html-btn" class="text-control-btn" title="Download as HTML">
+                                    <i class="ri-html5-line"></i>
+                                </button>
+                                <button id="increase-font" class="text-control-btn" title="Increase font size">
+                                    <i class="ri-text-size"></i>
+                                </button>
+                                <button id="decrease-font" class="text-control-btn" title="Decrease font size">
+                                    <i class="ri-font-size"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="output-text" class="output-text"></div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h2>About Lorem Ipsum</h2>
+                    <div class="info-text">
+                        <p>Lorem Ipsum is dummy text used in the design, printing, and typesetting industry. It's been the industry's standard placeholder text since the 1500s when an unknown printer scrambled text to make a specimen book.</p>
+                        <p>It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+                    </div>
+                    
+                    <h2>How to Use</h2>
+                    <div class="how-to">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">
+                                <h3>Choose Type</h3>
+                                <p>Select from traditional Lorem Ipsum, Cicero's text, English pangrams, or random Latin gibberish.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">
+                                <h3>Set Length</h3>
+                                <p>Choose how many words, sentences, or paragraphs you want to generate.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">
+                                <h3>Customize</h3>
+                                <p>Set options like starting with "Lorem ipsum" and including HTML paragraph tags.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">
+                                <h3>Generate & Copy</h3>
+                                <p>Click Generate, then copy the text or download it in your preferred format.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What is Lorem Ipsum used for?</h3>
+                                <div class="faq-icon"><i class="ri-arrow-down-s-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Lorem Ipsum is used as placeholder text in designs, mockups, and layouts. It helps designers and clients focus on the design without being distracted by meaningful content. It's commonly used in:</p>
+                                <ul>
+                                    <li>Website mockups and prototypes</li>
+                                    <li>Graphic design projects</li>
+                                    <li>Print layouts and templates</li>
+                                    <li>UI/UX design presentations</li>
+                                    <li>Word processing and publishing software demos</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Why not use real content instead?</h3>
+                                <div class="faq-icon"><i class="ri-arrow-down-s-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Real content can distract from design issues. Lorem Ipsum helps viewers focus on the layout, typography, and design elements without getting caught up in the meaning of the text. It also helps avoid premature feedback on content when the design is still being developed.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What does the traditional Lorem Ipsum text mean?</h3>
+                                <div class="faq-icon"><i class="ri-arrow-down-s-line"></i></div>
+                            </div>
+                            <div class="faq-answer">
+                                <p>The traditional Lorem Ipsum text is derived from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. It's a philosophical work about the theory of ethics.</p>
+                                <p>The first line, "Lorem ipsum dolor sit amet," is a scrambled version of text that roughly translates to "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="/assets/logo.svg" alt="Daily Tools Logo" class="footer-logo-icon">
+                        <span class="footer-logo-text">Daily Tools</span>
+                    </div>
+                    <p class="footer-description">Free online utilities to simplify your everyday tasks. No sign-up required.</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <div class="footer-links-section">
+                            <h3>Navigation</h3>
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/pages/tools/">Tools</a></li>
+                                <li><a href="/pages/blog/">Blog</a></li>
+                                <li><a href="/pages/about/">About</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-links-section">
+                            <h3>Legal</h3>
+                            <ul>
+                                <li><a href="/pages/privacy/">Privacy Policy</a></li>
+                                <li><a href="/pages/terms/">Terms of Use</a></li>
+                                <li><a href="/pages/cookies/">Cookies</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-links-section">
+                            <h3>Contact</h3>
+                            <ul>
+                                <li><a href="/pages/contact/">Contact Us</a></li>
+                                <li><a href="/pages/feedback/">Feedback</a></li>
+                                <li><a href="/pages/faq/">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Daily Tools. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="ri-facebook-circle-line"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="ri-github-line"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/navigation.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

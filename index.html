@@ -16,6 +16,26 @@
     <meta name="twitter:title" content="Daily Tools - Simplify your daily tasks">
     <meta name="twitter:description" content="Free online tools to simplify your everyday tasks. Calculate ages, count words, convert units and more with our easy-to-use utilities.">
     <link rel="canonical" href="https://utkarshpatel.me">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
+     crossorigin="anonymous"></script>
+    <script>
+        
+    // Prevent theme flicker on page load - load user's last selected theme
+    (function() {
+        // Get the theme from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Apply the theme the user last selected (dark or light)
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('dark-mode');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.classList.remove('dark-mode');
+        }
+    })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Poppins:wght@400..700&display=swap" rel="stylesheet">
@@ -56,56 +76,8 @@
                         <h3>Notifications</h3>
                         <button class="mark-all-read">Mark all as read</button>
                     </div>
-                    <div class="notification-list">
-                        <div class="notification-item unread">
-                            <div class="notification-icon tool-update">
-                                <i class="ri-tools-fill"></i>
-                            </div>
-                            <div class="notification-content">
-                                <p class="notification-text"><strong>New Tool Added:</strong> Check out our new QR Code Generator!</p>
-                                <p class="notification-time">2 hours ago</p>
-                            </div>
-                            <button class="mark-read" title="Mark as read">
-                                <i class="ri-check-double-line"></i>
-                            </button>
-                        </div>
-                        <div class="notification-item unread">
-                            <div class="notification-icon account">
-                                <i class="ri-shield-check-fill"></i>
-                            </div>
-                            <div class="notification-content">
-                                <p class="notification-text">Your account was successfully created. Welcome to Daily Tools!</p>
-                                <p class="notification-time">1 day ago</p>
-                            </div>
-                            <button class="mark-read" title="Mark as read">
-                                <i class="ri-check-double-line"></i>
-                            </button>
-                        </div>
-                        <div class="notification-item">
-                            <div class="notification-icon system">
-                                <i class="ri-information-fill"></i>
-                            </div>
-                            <div class="notification-content">
-                                <p class="notification-text">We've updated our <a href="/legal/privacy-policy">Privacy Policy</a>.</p>
-                                <p class="notification-time">3 days ago</p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="notification-footer">
                         <a href="/user/notifications">See all notifications</a>
-                    </div>
-                </div>
-            </div>
-            <div class="icon-button user-dropdown-trigger" title="Profile">
-                <i class="ri-user-3-line"></i>
-                <div class="user-dropdown">
-                    <div class="user-login-options">
-                        <p>Sign in to save your preferences and access your saved tools.</p>
-                        <a href="/user/login" class="btn-primary">Sign In</a>
-                        <div class="create-account">
-                            <span>Don't have an account?</span>
-                            <a href="/user/login#register">Create Account</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -238,57 +210,57 @@
             <div class="highlited-tools new-tools">
                 <div class="tool purple-theme">
                     <div class="tool-icon">
-                        <i class="ri-divide-fill"></i>
-                        <h3>Prime Factor</h3>
-                        <span class="tool-badge">Mathematics</span>
+                        <i class="ri-exchange-box-fill"></i>
+                        <h3>Unit Converter</h3>
+                        <span class="tool-badge">New</span>
                     </div>
                     <div class="tool-description">
-                        <p>Find all prime factors of any number instantly. Helps understand number theory and solve complex math problems.</p>
+                        <p>Convert between different units of measurement including length, weight, temperature, and volume. Easy to use and accurate.</p>
                     </div>
                     <div class="tool-link">
-                        <a href="tools/prime-factor/index.html"><button id="prime-factor-btn-2">Try Now <i class="ri-arrow-right-line"></i></button></a>
+                        <a href="tools/unit-converter/index.html"><button id="unit-converter-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
                 
                 <div class="tool orange-theme">
                     <div class="tool-icon">
-                        <i class="ri-hashtag"></i>
-                        <h3>Roman Converter</h3>
-                        <span class="tool-badge">Converter</span>
+                        <i class="ri-money-dollar-circle-fill"></i>
+                        <h3>Currency Converter</h3>
+                        <span class="tool-badge">New</span>
                     </div>
                     <div class="tool-description">
-                        <p>Convert Roman numerals to numbers and vice versa. Perfect for historical research, dates, and learning Roman numerals.</p>
+                        <p>Convert between different currencies with real-time exchange rates. Supports major world currencies and automatic updates.</p>
                     </div>
                     <div class="tool-link">
-                        <a href="tools/roman-converter/index.html"><button id="roman-converter-btn-2">Try Now <i class="ri-arrow-right-line"></i></button></a>
+                        <a href="tools/currency-converter/index.html"><button id="currency-converter-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
                 
                 <div class="tool teal-theme">
                     <div class="tool-icon">
-                        <i class="ri-sticky-note-fill"></i>
-                        <h3>Note Keeper</h3>
+                        <i class="ri-time-fill"></i>
+                        <h3>Time Zone Converter</h3>
                         <span class="tool-badge">New</span>
                     </div>
                     <div class="tool-description">
-                        <p>Create, edit, and save notes online. Features auto-save, rich text formatting, and categorization options.</p>
+                        <p>Convert times between different time zones easily. Perfect for international meetings, travel planning, and global coordination.</p>
                     </div>
                     <div class="tool-link">
-                        <a href="tools/note-keeper/index.html"><button id="note-keeper-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
+                        <a href="tools/timezone-converter/index.html"><button id="timezone-converter-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
                 
                 <div class="tool blue-theme">
                     <div class="tool-icon">
-                        <i class="ri-qr-code-fill"></i>
-                        <h3>QR Generator</h3>
-                        <span class="tool-badge">Coming Soon</span>
+                        <i class="ri-palette-fill"></i>
+                        <h3>Color Converter</h3>
+                        <span class="tool-badge">New</span>
                     </div>
                     <div class="tool-description">
-                        <p>Generate QR codes for URLs, text, contact information, and more. Customizable design and download options.</p>
+                        <p>Convert colors between different formats like HEX, RGB, HSL, and more. Essential for web design and digital art.</p>
                     </div>
                     <div class="tool-link">
-                        <button id="qr-generator-btn" disabled>Coming Soon <i class="ri-time-line"></i></button>
+                        <a href="tools/color-converter/index.html"><button id="color-converter-btn">Try Now <i class="ri-arrow-right-line"></i></button></a>
                     </div>
                 </div>
             </div>
@@ -315,14 +287,14 @@
                 
                 <div class="coming-soon-item">
                     <div class="coming-soon-icon">
-                        <i class="ri-markdown-fill"></i>
+                        <i class="ri-file-text-line"></i>
                     </div>
                     <div class="coming-soon-details">
-                        <h3>Markdown Editor</h3>
-                        <p><span class="status">Coming Soon</span> <span class="release-date">• June 22</span></p>
+                        <h3>PDF Tools</h3>
+                        <p><span class="status">Coming Soon</span> <span class="release-date">• July 10</span></p>
                         <div class="tool-features">
-                            <span><i class="ri-file-pdf-line"></i> PDF Export</span>
-                            <span><i class="ri-history-line"></i> Auto-save</span>
+                            <span><i class="ri-file-reduce-line"></i> Compress PDF</span>
+                            <span><i class="ri-file-transfer-line"></i> Convert PDF</span>
                         </div>
                     </div>
                 </div>
@@ -353,11 +325,11 @@
                     </div>
                     <h3>Calculators</h3>
                     <ul>
-                        <li><a href="tools/age-calculator/index.html">Age Calculator</a></li>
-                        <li><a href="#">Percentage Calculator</a></li>
-                        <li><a href="#">Loan Calculator</a></li>
-                        <li><a href="#">BMI Calculator</a></li>
-                        <li><a href="tools/prime-factor/index.html">Prime Factor</a></li>
+                        <li><a href="tools/age-calculator">Age Calculator</a></li>
+                        <li><a href="tools/percentage-calculator">Percentage Calculator</a></li>
+                        <li><a href="tools/loan-calculator">Loan Calculator</a></li>
+                        <li><a href="tools/bmi-calculator">BMI Calculator</a></li>
+                        <li><a href="tools/prime-factor">Prime Factor</a></li>
                     </ul>
                 </div>
                 <div class="category">
@@ -367,9 +339,9 @@
                     <h3>Text Tools</h3>
                     <ul>
                         <li><a href="tools/word-counter/index.html">Word Counter</a></li>
-                        <li><a href="#">Text Case Converter</a></li>
-                        <li><a href="#">Lorem Ipsum Generator</a></li>
-                        <li><a href="#">Markdown Editor</a></li>
+                        <li><a href="tools/text-case-converter/index.html">Text Case Converter</a></li>
+                        <li><a href="tools/lorem-ipsum-generator/index.html">Lorem Ipsum Generator</a></li>
+                        <li><a href="tools/markdown-editor/index.html">Markdown Editor</a></li>
                         <li><a href="tools/note-keeper/index.html">Note Keeper</a></li>
                     </ul>
                 </div>
@@ -379,11 +351,11 @@
                     </div>
                     <h3>Converters</h3>
                     <ul>
-                        <li><a href="#">Unit Converter</a></li>
-                        <li><a href="#">Currency Converter</a></li>
-                        <li><a href="#">Time Zone Converter</a></li>
-                        <li><a href="tools/roman-converter/index.html">Roman Numeral Converter</a></li>
-                        <li><a href="#">Color Code Converter</a></li>
+                        <li><a href="tools/unit-converter/index.html">Unit Converter</a></li>
+                        <li><a href="tools/currency-converter/index.html">Currency Converter</a></li>
+                        <li><a href="tools/timezone-converter/index.html">Time Zone Converter</a></li>
+                        <li><a href="tools/color-converter/index.html">Color Converter</a></li>
+                        <li><a href="tools/roman-converter/index.html">Roman Converter</a></li>
                     </ul>
                 </div>
                 <div class="category">
@@ -466,9 +438,49 @@
         // Use that file for any changes to navigation behavior
     </script>
     <script src="navigation.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456875368268981"
-     crossorigin="anonymous"></script>
      <script src="nav/script.js"></script>
+     <!-- Direct fix for theme toggle -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    if (isDarkMode) {
+                        // Switch to light mode
+                        document.body.classList.remove('dark-mode');
+                        document.documentElement.classList.remove('dark-mode');
+                        document.documentElement.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        // Switch to dark mode
+                        document.body.classList.add('dark-mode');
+                        document.documentElement.classList.add('dark-mode');
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+
+                    // Store the current theme preference
+                    localStorage.setItem('theme', isDarkMode ? 'light' : 'dark');
+                    console.log('Theme toggled, new theme:', isDarkMode ? 'light' : 'dark');
+                });
+            }
+
+            // Apply current theme on page load
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                if (savedTheme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    document.documentElement.classList.add('dark-mode');
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    document.documentElement.classList.remove('dark-mode');
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            }
+        });
+     </script>
      <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B5PV6KP61"></script>
     <script>

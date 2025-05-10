@@ -33,6 +33,23 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+    <script>
+        // Prevent theme flicker on page load - load user's last selected theme
+        (function() {
+            // Get the theme from localStorage
+            const savedTheme = localStorage.getItem('theme');
+            
+            // Apply the theme the user last selected (dark or light)
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+        </script>
 </head>
 <body>
     <nav>

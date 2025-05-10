@@ -27,6 +27,7 @@
 [data-theme="dark"] {
     --primary-color: #6366F1;
     --secondary-color: #8B5CF6;
+    --accent-color: #EC4899;
     --text-color: #F3F4F6;
     --text-light: #D1D5DB;
     --background-color: #111827;
@@ -34,6 +35,10 @@
     --border-color: #374151;
     --success-color: #34D399;
     --danger-color: #F87171;
+    --warning-color: #FBBF24;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
 }
 
 /* Base Styles */
@@ -401,3 +406,25 @@ main {
         min-width: auto;
     }
 } 
+
+/* --- DARK MODE: MATCH OTHER TOOLS --- */
+body.dark-mode {
+    background-color: #111827;
+    color: #f9fafb;
+  }
+  
+  body.dark-mode .contact-form-section,
+  body.dark-mode .contact-form-section input,
+  body.dark-mode .contact-form-section select,
+  body.dark-mode .contact-form-section textarea,
+  body.dark-mode .info-block,
+  body.dark-mode .map-section,
+  body.dark-mode .toast-notification
+  {
+    background-color: #1f2937 !important;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06) !important;
+    border: 1px solid #374151 !important;
+    color: #f9fafb !important;
+  }
+  

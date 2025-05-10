@@ -620,7 +620,7 @@ if (document.readyState === 'loading') {
 
 // Notification dropdown interaction
 document.addEventListener('DOMContentLoaded', function() {
-    var seeAllBtn = document.getElementById('see-all-notifications');
+    var seeAllBtn = document.getElementById('refresh-notifications');
     var dropdown = document.querySelector('.notification-dropdown');
     if (seeAllBtn && dropdown) {
         seeAllBtn.addEventListener('click', function(e) {

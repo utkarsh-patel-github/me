@@ -1,68 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://utkarshpatel.me/</loc>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/tools</loc>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/categories</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/about</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/contact</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/legal/privacy-policy.html</loc>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/legal/terms-of-service.html</loc>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/legal/cookie-policy.html</loc>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/legal/gdpr.html</loc>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://utkarshpatel.me/pages/legal/accessibility.html</loc>
-        <priority>0.6</priority>
-    </url>
-    <!-- Tools -->
-    <url><loc>https://utkarshpatel.me/tools/prime-factor/</loc><priority>0.8</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/word-counter/</loc><priority>0.8</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/age-calculator/</loc><priority>0.8</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/password-generator/</loc><priority>0.8</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/password-strength-checker/</loc><priority>0.8</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/hash-generator/</loc><priority>0.8</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/encryption-tool/</loc><priority>0.8</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/privacy-policy-generator/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/cookie-policy-generator/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/terms-generator/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/timezone-converter/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/currency-converter/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/unit-converter/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/markdown-editor/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/lorem-ipsum-generator/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/text-case-converter/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/qr-generator/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/loan-calculator/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/bmi-calculator/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/percentage-calculator/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/note-keeper/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/color-converter/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/countdown-timer/</loc><priority>0.7</priority></url>
-    <url><loc>https://utkarshpatel.me/tools/roman-converter/</loc><priority>0.7</priority></url>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://utkarshpatel.me/</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/age-calculator/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/word-counter/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/prime-factor/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/roman-converter/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/countdown-timer/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/color-converter/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/unit-converter/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/currency-converter/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/timezone-converter/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/text-case-converter/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/lorem-ipsum-generator/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/markdown-editor/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/note-keeper/index.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/legal/privacy-policy.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/legal/terms-of-service.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/legal/cookie-policy.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/legal/gdpr.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/legal/accessibility.html</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/</loc>
+	<lastmod>2025-05-10T16:17:40+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/categories/</loc>
+	<lastmod>2025-05-10T16:17:41+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/about/</loc>
+	<lastmod>2025-05-10T16:17:42+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/contact/</loc>
+	<lastmod>2025-05-10T16:17:43+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/?category=new</loc>
+	<lastmod>2025-05-10T16:17:44+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/age-calculator/</loc>
+	<lastmod>2025-05-10T16:17:46+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/percentage-calculator/</loc>
+	<lastmod>2025-05-10T16:17:46+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/loan-calculator/</loc>
+	<lastmod>2025-05-10T16:17:46+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/bmi-calculator/</loc>
+	<lastmod>2025-05-10T16:17:47+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/prime-factor/</loc>
+	<lastmod>2025-05-10T16:17:47+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/?category=calculators</loc>
+	<lastmod>2025-05-10T16:17:48+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/?category=converters</loc>
+	<lastmod>2025-05-10T16:17:48+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/?category=text</loc>
+	<lastmod>2025-05-10T16:17:48+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/note-keeper/</loc>
+	<lastmod>2025-05-10T16:17:49+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/countdown-timer/</loc>
+	<lastmod>2025-05-10T16:17:49+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/color-converter/</loc>
+	<lastmod>2025-05-10T16:17:49+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/roman-converter/</loc>
+	<lastmod>2025-05-10T16:17:49+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/text-case-converter/</loc>
+	<lastmod>2025-05-10T16:17:49+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/word-counter/</loc>
+	<lastmod>2025-05-10T16:17:49+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/qr-generator/</loc>
+	<lastmod>2025-05-10T16:17:49+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/lorem-ipsum-generator/</loc>
+	<lastmod>2025-05-10T16:17:50+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/currency-converter/</loc>
+	<lastmod>2025-05-10T16:17:50+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/unit-converter/</loc>
+	<lastmod>2025-05-10T16:17:50+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/markdown-editor/</loc>
+	<lastmod>2025-05-10T16:17:50+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/timezone-converter/</loc>
+	<lastmod>2025-05-10T16:17:50+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/hash-generator/</loc>
+	<lastmod>2025-05-10T16:17:50+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/password-generator/</loc>
+	<lastmod>2025-05-10T16:17:50+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/password-strength-checker/</loc>
+	<lastmod>2025-05-10T16:17:50+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/encryption-tool/</loc>
+	<lastmod>2025-05-10T16:17:51+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/privacy-policy-generator/</loc>
+	<lastmod>2025-05-10T16:17:51+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/terms-generator/</loc>
+	<lastmod>2025-05-10T16:17:51+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/tools/cookie-policy-generator/</loc>
+	<lastmod>2025-05-10T16:17:51+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/?category=productivity</loc>
+	<lastmod>2025-05-10T16:17:51+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/?category=generators</loc>
+	<lastmod>2025-05-10T16:17:51+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/?category=security</loc>
+	<lastmod>2025-05-10T16:17:52+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
+<url>
+	<loc>https://utkarshpatel.me/pages/tools/?category=privacy</loc>
+	<lastmod>2025-05-10T16:17:52+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
 </urlset>

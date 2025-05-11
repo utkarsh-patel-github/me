@@ -29,6 +29,18 @@
     <link rel="stylesheet" href="/nav/style.css">
     <link rel="stylesheet" href="/footer/style.css">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <!-- Add highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <!-- Add marked and highlight.js libraries first -->
+    <script defer src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Add additional language support for highlight.js -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
     <script>
     // Prevent theme flicker on page load - load user's last selected theme
     (function() {
@@ -109,12 +121,42 @@
                 </div>
             </div>
             
-            <!-- Main Tool Content - Will be implemented later -->
+            <!-- Main Tool Content -->
             <div class="tool-content">
-                <div class="coming-soon-message">
-                    <i class="ri-tools-line"></i>
-                    <h2>Under Construction</h2>
-                    <p>We're currently building this tool. Check back soon for the full version!</p>
+                <div class="editor-container">
+                    <div class="editor-toolbar">
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-action="bold" title="Bold"><i class="ri-bold"></i></button>
+                            <button class="toolbar-btn" data-action="italic" title="Italic"><i class="ri-italic"></i></button>
+                            <button class="toolbar-btn" data-action="heading" title="Heading"><i class="ri-heading"></i></button>
+                            <button class="toolbar-btn" data-action="link" title="Link"><i class="ri-link"></i></button>
+                            <button class="toolbar-btn" data-action="image" title="Image"><i class="ri-image-line"></i></button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-action="list-ul" title="Bullet List"><i class="ri-list-unordered"></i></button>
+                            <button class="toolbar-btn" data-action="list-ol" title="Numbered List"><i class="ri-list-ordered"></i></button>
+                            <button class="toolbar-btn" data-action="code" title="Code Block"><i class="ri-code-line"></i></button>
+                            <button class="toolbar-btn" data-action="quote" title="Blockquote"><i class="ri-double-quotes-l"></i></button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-action="table" title="Table"><i class="ri-table-line"></i></button>
+                            <button class="toolbar-btn" data-action="horizontal-rule" title="Horizontal Rule"><i class="ri-separator"></i></button>
+                            <button class="toolbar-btn" data-action="clear-format" title="Clear Formatting"><i class="ri-format-clear"></i></button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-action="download" title="Download Markdown"><i class="ri-download-line"></i></button>
+                            <button class="toolbar-btn" data-action="copy" title="Copy to Clipboard"><i class="ri-file-copy-line"></i></button>
+                            <button class="toolbar-btn" data-action="fullscreen" title="Toggle Fullscreen"><i class="ri-fullscreen-line"></i></button>
+                        </div>
+                    </div>
+                    <div class="editor-main">
+                        <div class="editor-pane">
+                            <textarea id="markdown-editor" placeholder="Write your markdown here..."></textarea>
+                        </div>
+                        <div class="preview-pane">
+                            <div id="markdown-preview"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -174,7 +216,7 @@
         </div>
     </footer>
     
-    <script src="script.js"></script>
-    <script src="/nav/script.js"></script>
+    <script defer src="/nav/script.js"></script>
+    <script defer src="script.js"></script>
 </body>
 </html>

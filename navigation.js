@@ -153,27 +153,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('.search-bar input');
     const searchBtn = document.querySelector('.search-bar button');
     
-    if (searchInput && searchBtn) {
-        // Search when Enter key is pressed
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-        
-        // Search when button is clicked
-        searchBtn.addEventListener('click', performSearch);
-        
-        // Search keyword buttons
-        const keywordButtons = document.querySelectorAll('.keywords button');
-        keywordButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const keyword = button.textContent.trim().split(' ').slice(1).join(' ');
-                searchInput.value = keyword;
-                performSearch();
+    // Attach enhanced search only on homepage
+    if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+        if (searchInput && searchBtn) {
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    enhancedHomepageSearch();
+                }
             });
-        });
+            searchBtn.addEventListener('click', enhancedHomepageSearch);
+        }
+    } else {
+        // For other pages, keep the old performSearch if needed
+        if (searchInput && searchBtn) {
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            searchBtn.addEventListener('click', performSearch);
+        }
     }
+    
+    // Search keyword buttons
+    const keywordButtons = document.querySelectorAll('.keywords button');
+    keywordButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const keyword = button.textContent.trim().split(' ').slice(1).join(' ');
+            searchInput.value = keyword;
+            performSearch();
+        });
+    });
     
     function performSearch() {
         const query = searchInput.value.trim().toLowerCase();
@@ -602,6 +612,247 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     `);
+
+    // --- Featured Tools Search Enhancement ---
+    // Tool data for featured tools (add more as needed)
+    const featuredToolsData = [
+        {
+            name: 'Age Calculator',
+            icon: 'ri-cake-fill',
+            badge: 'Calculator',
+            description: 'Calculate your exact age in years, months, and days. Perfect for determining precise age for official documents, event planning, or just curiosity.',
+            link: 'tools/age-calculator/index.html',
+            btnId: 'age-calculator-btn'
+        },
+        {
+            name: 'Word Counter',
+            icon: 'ri-file-text-fill',
+            badge: 'Text',
+            description: 'Count words, characters, sentences, and paragraphs in your text. Great for essays and content writing.',
+            link: 'tools/word-counter/index.html',
+            btnId: 'word-counter-btn'
+        },
+        {
+            name: 'Prime Factor',
+            icon: 'ri-divide-fill',
+            badge: 'Mathematics',
+            description: 'Find all prime factors of any number instantly. Helps understand number theory and solve complex math problems.',
+            link: 'tools/prime-factor/index.html',
+            btnId: 'prime-factor-btn'
+        },
+        {
+            name: 'Roman Converter',
+            icon: 'ri-hashtag',
+            badge: 'Converter',
+            description: 'Convert Roman numerals to numbers and vice versa. Perfect for historical research, dates, and learning Roman numerals.',
+            link: 'tools/roman-converter/index.html',
+            btnId: 'roman-converter-btn'
+        },
+        {
+            name: 'Countdown Timer',
+            icon: 'ri-timer-line',
+            badge: 'Utility',
+            description: 'Create custom countdown timers for events, deadlines, or activities. Features alerts and multiple timer support.',
+            link: 'tools/countdown-timer/index.html',
+            btnId: 'countdown-timer-btn'
+        },
+        {
+            name: 'Color Converter',
+            icon: 'ri-palette-line',
+            badge: 'Design',
+            description: 'Convert colors between RGB, HEX, HSL, and more. Essential tool for web designers and developers.',
+            link: 'tools/color-converter/index.html',
+            btnId: 'color-converter-btn'
+        },
+        {
+            name: 'Unit Converter',
+            icon: 'ri-exchange-box-fill',
+            badge: 'Converter',
+            description: 'Convert between different units of measurement including length, weight, temperature, and volume. Easy to use and accurate.',
+            link: 'tools/unit-converter/index.html',
+            btnId: 'unit-converter-btn'
+        },
+        {
+            name: 'Currency Converter',
+            icon: 'ri-money-dollar-circle-fill',
+            badge: 'Converter',
+            description: 'Convert between different currencies with real-time exchange rates. Supports major world currencies and automatic updates.',
+            link: 'tools/currency-converter/index.html',
+            btnId: 'currency-converter-btn'
+        },
+        {
+            name: 'Time Zone Converter',
+            icon: 'ri-time-fill',
+            badge: 'Converter',
+            description: 'Convert times between different time zones easily. Perfect for international meetings, travel planning, and global coordination.',
+            link: 'tools/timezone-converter/index.html',
+            btnId: 'timezone-converter-btn'
+        },
+        {
+            name: 'Markdown Editor',
+            icon: 'ri-markdown-fill',
+            badge: 'Text',
+            description: 'Write and preview Markdown with syntax highlighting, instant preview, and export options. Perfect for creating formatted content for GitHub, documentation, and more.',
+            link: 'tools/markdown-editor/index.html',
+            btnId: 'markdown-editor-btn'
+        },
+        {
+            name: 'Note Keeper',
+            icon: 'ri-sticky-note-line',
+            badge: 'Productivity',
+            description: 'Create, save, and organize your notes online with rich text formatting. Your notes are saved automatically and stored locally on your device.',
+            link: 'tools/note-keeper/index.html',
+            btnId: 'note-keeper-btn'
+        },
+        {
+            name: 'QR Code Generator',
+            icon: 'ri-qr-code-line',
+            badge: 'Generator',
+            description: 'Generate QR codes for URLs, text, contact information, and more. Customize colors, size, and download as PNG.',
+            link: 'tools/qr-generator/index.html',
+            btnId: 'qr-generator-btn'
+        },
+        {
+            name: 'BMI Calculator',
+            icon: 'ri-body-scan-line',
+            badge: 'Calculator',
+            description: 'Calculate your Body Mass Index (BMI) and find out if you are underweight, normal, overweight, or obese.',
+            link: 'tools/bmi-calculator/index.html',
+            btnId: 'bmi-calculator-btn'
+        },
+        {
+            name: 'Percentage Calculator',
+            icon: 'ri-percent-line',
+            badge: 'Calculator',
+            description: 'Easily calculate percentages, percentage increase/decrease, and more.',
+            link: 'tools/percentage-calculator/index.html',
+            btnId: 'percentage-calculator-btn'
+        },
+        {
+            name: 'Loan Calculator',
+            icon: 'ri-bank-card-line',
+            badge: 'Calculator',
+            description: 'Calculate loan payments, interest, and amortization schedules for any loan type.',
+            link: 'tools/loan-calculator/index.html',
+            btnId: 'loan-calculator-btn'
+        },
+        {
+            name: 'Text Case Converter',
+            icon: 'ri-font-size',
+            badge: 'Text',
+            description: 'Convert text between uppercase, lowercase, sentence case, title case, and more.',
+            link: 'tools/text-case-converter/index.html',
+            btnId: 'text-case-converter-btn'
+        },
+        {
+            name: 'Lorem Ipsum Generator',
+            icon: 'ri-paragraph',
+            badge: 'Generator',
+            description: 'Generate random Lorem Ipsum placeholder text for your projects and designs.',
+            link: 'tools/lorem-ipsum-generator/index.html',
+            btnId: 'lorem-ipsum-generator-btn'
+        },
+        {
+            name: 'Password Generator',
+            icon: 'ri-key-fill',
+            badge: 'Security',
+            description: 'Generate strong, secure passwords for your accounts and applications.',
+            link: 'tools/password-generator/index.html',
+            btnId: 'password-generator-btn'
+        },
+        {
+            name: 'Password Strength Checker',
+            icon: 'ri-shield-keyhole-line',
+            badge: 'Security',
+            description: 'Check the strength of your passwords and get tips to make them stronger.',
+            link: 'tools/password-strength-checker/index.html',
+            btnId: 'password-strength-checker-btn'
+        },
+        {
+            name: 'Hash Generator',
+            icon: 'ri-hash',
+            badge: 'Security',
+            description: 'Generate cryptographic hashes (MD5, SHA-1, SHA-256, etc.) for your data.',
+            link: 'tools/hash-generator/index.html',
+            btnId: 'hash-generator-btn'
+        },
+        {
+            name: 'Encryption Tool',
+            icon: 'ri-lock-2-line',
+            badge: 'Security',
+            description: 'Encrypt and decrypt text using various algorithms for secure communication.',
+            link: 'tools/encryption-tool/index.html',
+            btnId: 'encryption-tool-btn'
+        },
+        {
+            name: 'Privacy Policy Generator',
+            icon: 'ri-shield-user-line',
+            badge: 'Privacy',
+            description: 'Generate a privacy policy for your website or app in minutes.',
+            link: 'tools/privacy-policy-generator/index.html',
+            btnId: 'privacy-policy-generator-btn'
+        },
+        {
+            name: 'Terms Generator',
+            icon: 'ri-file-list-3-line',
+            badge: 'Privacy',
+            description: 'Generate terms and conditions for your website or app quickly and easily.',
+            link: 'tools/terms-generator/index.html',
+            btnId: 'terms-generator-btn'
+        },
+        {
+            name: 'Cookie Policy Generator',
+            icon: 'ri-cookie-line',
+            badge: 'Privacy',
+            description: 'Create a cookie policy for your website to comply with privacy regulations.',
+            link: 'tools/cookie-policy-generator/index.html',
+            btnId: 'cookie-policy-generator-btn'
+        }
+    ];
+
+    // Save original featured tools HTML for restore
+    const featuredToolsSection = document.querySelector('.highlited-tools');
+    let originalFeaturedHTML = '';
+    if (featuredToolsSection) {
+        originalFeaturedHTML = featuredToolsSection.innerHTML;
+    }
+
+    function renderFeaturedTools(tools) {
+        if (!featuredToolsSection) return;
+        if (!tools || tools.length === 0) {
+            featuredToolsSection.innerHTML = `<div class="no-results-message" style="width:100%;text-align:center;padding:2rem 0;"><i class="ri-error-warning-line" style="font-size:2.5rem;color:#EA4335;"></i><h3 style="margin:1rem 0 0.5rem;">Please enter the correct name!!</h3></div>`;
+            return;
+        }
+        featuredToolsSection.innerHTML = tools.map(tool => `
+            <div class="tool">
+                <div class="tool-icon">
+                    <i class="${tool.icon}"></i>
+                    <h3>${tool.name}</h3>
+                    <span class="tool-badge">${tool.badge}</span>
+                </div>
+                <div class="tool-description">
+                    <p>${tool.description}</p>
+                </div>
+                <div class="tool-link">
+                    <a href="${tool.link}"><button id="${tool.btnId}">Try Now <i class="ri-arrow-right-line"></i></button></a>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Enhance performSearch for homepage
+    function enhancedHomepageSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!featuredToolsSection) return;
+        if (!query) {
+            // Restore original featured tools
+            featuredToolsSection.innerHTML = originalFeaturedHTML;
+            return;
+        }
+        // Find matching tool(s) by name (case-insensitive, partial match)
+        const matched = featuredToolsData.filter(tool => tool.name.toLowerCase().includes(query));
+        renderFeaturedTools(matched);
+    }
 });
 
 
